@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Button } from '@mantine/core';
 import { IconKey } from '@tabler/icons-react';
 import { useState } from 'react';
@@ -28,7 +29,7 @@ export default function PasskeyAuthButton({ onAuthSuccess }: { onAuthSuccess: (d
     } catch (e: any) {
       setErrored(true);
       setTimeout(() => setErrored(false), 3000);
-      notifications.show({ title: 'Auth Failed', message: e.message, color: 'red' });
+      notifications.show({ title: t('Auth Failed'), message: e.message, color: 'red' });
     } finally {
       setLoading(false);
     }
@@ -44,7 +45,7 @@ export default function PasskeyAuthButton({ onAuthSuccess }: { onAuthSuccess: (d
       color={errored ? 'red' : undefined}
       loading={loading}
     >
-      Login with passkey
+      {t('Login with passkey')}
     </Button>
   );
 }

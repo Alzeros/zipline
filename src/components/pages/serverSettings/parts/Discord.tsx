@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import type { Response } from '@/lib/api/response';
 import {
   Button,
@@ -160,7 +161,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         </SimpleGrid>
 
         <Button type='submit' mt='md' loading={isLoading} leftSection={<IconDeviceFloppy size='1rem' />}>
-          Save
+          {t('Save')}
         </Button>
       </form>
 
@@ -230,7 +231,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
                   />
 
                   <ColorInput
-                    label='Color'
+                    label={t('Color')}
                     description='The color of the embed'
                     {...formOnUpload.getInputProps('discordOnUploadEmbedColor')}
                   />
@@ -263,7 +264,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             </Collapse>
 
             <Button type='submit' mt='md' loading={isLoading} leftSection={<IconDeviceFloppy size='1rem' />}>
-              Save
+              {t('Save')}
             </Button>
           </form>
         </Paper>
@@ -333,7 +334,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
                   />
 
                   <ColorInput
-                    label='Color'
+                    label={t('Color')}
                     description='The color of the embed'
                     {...formOnShorten.getInputProps('discordOnShortenEmbedColor')}
                   />
@@ -354,7 +355,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             </Collapse>
 
             <Button type='submit' mt='md' loading={isLoading} leftSection={<IconDeviceFloppy size='1rem' />}>
-              Save
+              {t('Save')}
             </Button>
           </form>
         </Paper>

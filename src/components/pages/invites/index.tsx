@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { Response } from '@/lib/api/response';
 import { Invite } from '@/lib/db/models/invite';
@@ -68,15 +69,15 @@ export default function DashboardInvites() {
               description='Select an expiration for this invite, or choose "never" if you want the invite to never expire.'
               placeholder='Select an expiration...'
               data={[
-                { value: 'never', label: 'Never' },
+                { value: 'never', label: t('Never') },
                 { value: '30min', label: '30 minutes' },
                 { value: '1h', label: '1 hour' },
                 { value: '6h', label: '6 hours' },
                 { value: '12h', label: '12 hours' },
-                { value: '1d', label: '1 day' },
+                { value: '1d', label: t('1 day') },
                 { value: '3d', label: '3 days' },
                 { value: '5d', label: '5 days' },
-                { value: '7d', label: '7 days' },
+                { value: '7d', label: t('7 days') },
               ]}
               comboboxProps={{
                 withinPortal: true,
@@ -97,14 +98,14 @@ export default function DashboardInvites() {
             />
 
             <Button type='submit' variant='outline' fullWidth leftSection={<IconPlus size='1rem' />}>
-              Create
+              {t('Create')}
             </Button>
           </Stack>
         </form>
       </Modal>
 
       <Group>
-        <Title>Invites</Title>
+        <Title>{t('Invites')}</Title>
 
         <Button
           variant='outline'
@@ -112,7 +113,7 @@ export default function DashboardInvites() {
           leftSection={<IconPlus size='1rem' />}
           onClick={() => setOpen(true)}
         >
-          Create
+          {t('Create')}
         </Button>
 
         <GridTableSwitcher type='invites' />

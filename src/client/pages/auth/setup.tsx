@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { type Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import { useTitle } from '@/lib/client/hooks/useTitle';
@@ -80,7 +81,7 @@ export function Component() {
 
     if (error) {
       notifications.show({
-        title: 'Error',
+        title: t('Error'),
         message: error.error,
         color: 'red',
         icon: <IconX size='1rem' />,
@@ -90,8 +91,8 @@ export function Component() {
       setActive(2);
     } else {
       notifications.show({
-        title: 'Setup complete!',
-        message: 'Logging in to new user...',
+        title: t('Setup complete!'),
+        message: t('Logging in to new user...'),
         color: 'green',
         loading: true,
       });
@@ -103,7 +104,7 @@ export function Component() {
 
       if (error) {
         notifications.show({
-          title: 'Error',
+          title: t('Error'),
           message: error.error,
           color: 'red',
           icon: <IconX size='1rem' />,
@@ -122,20 +123,22 @@ export function Component() {
     <>
       <Paper withBorder p='xs' m='sm'>
         <Stepper active={active} onStepClick={setActive} m='md'>
-          <Stepper.Step label='Welcome!' description='Setup Zipline'>
-            <Title>Welcome to Zipline!</Title>
+          <Stepper.Step label={t('Welcome!')} description={t('Setup Zipline')}>
+            <Title>{t('Welcome to Zipline!')}</Title>
             <SimpleGrid spacing='md' cols={{ base: 1, sm: 1 }}>
               <Paper withBorder p='sm' my='sm' h='100%'>
                 <Title order={2}>Documentation</Title>
-                <Text>Here are a couple of useful documentation links to get you started with Zipline:</Text>
+                <Text>
+                  {t('Here are a couple of useful documentation links to get you started with Zipline:')}
+                </Text>
 
                 <Stack mt='xs'>
                   <LinkToDoc href='https://zipline.diced.sh/docs/config' title='Configuration'>
-                    Configuring Zipline to your needs
+                    {t('Configuring Zipline to your needs')}
                   </LinkToDoc>
 
-                  <LinkToDoc href='https://zipline.diced.sh/docs/migrate' title='Migrate from v3 to v4'>
-                    Upgrading from a previous version of Zipline
+                  <LinkToDoc href='https://zipline.diced.sh/docs/migrate' title={t('Migrate from v3 to v4')}>
+                    {t('Upgrading from a previous version of Zipline')}
                   </LinkToDoc>
                 </Stack>
               </Paper>
@@ -176,20 +179,20 @@ export function Component() {
               Continue
             </Button>
           </Stepper.Step>
-          <Stepper.Step label='Create user' description='Create a super-admin account'>
+          <Stepper.Step label={t('Create user')} description={t('Create a super-admin account')}>
             <Stack gap='lg'>
-              <Title order={2}>Create your super-admin account</Title>
+              <Title order={2}>{t('Create your super-admin account')}</Title>
 
               <TextInput
                 label='Username'
-                placeholder='Enter a username...'
+                placeholder={t('Enter a username...')}
                 autoComplete='username'
                 {...form.getInputProps('username')}
               />
 
               <PasswordInput
-                label='Password'
-                placeholder='Enter a password...'
+                label={t('Password')}
+                placeholder={t('Enter a password...')}
                 autoComplete='new-password'
                 {...form.getInputProps('password')}
               />
@@ -217,7 +220,7 @@ export function Component() {
             </Group>
           </Stepper.Step>
           <Stepper.Completed>
-            <Title order={2}>Setup complete!</Title>
+            <Title order={2}>{t('Setup complete!')}</Title>
 
             <Text>
               Clicking &quot;Finish&quot; below will create your super-admin account and log you in. You will

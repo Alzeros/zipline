@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useConfig } from '@/components/ConfigProvider';
 import { Response } from '@/lib/api/response';
 import { bytes } from '@/lib/bytes';
@@ -150,7 +151,7 @@ export async function uploadPartialFiles(
           if (error || !res) {
             notifications.update({
               id: 'upload-partial',
-              title: 'Error uploading file',
+              title: t('Error uploading file'),
               message: `${file.name}: ${error?.error ?? 'An unknown error occurred'}`,
               color: 'red',
               icon: <IconFileXFilled size='1rem' />,

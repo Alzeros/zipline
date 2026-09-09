@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Alert, Box, Button, List, Modal, Code, Group, Divider, Checkbox, Pill } from '@mantine/core';
 import { IconAlertCircle, IconDownload } from '@tabler/icons-react';
 import { useState } from 'react';
@@ -9,7 +10,7 @@ export default function ExportButton() {
 
   return (
     <>
-      <Modal opened={open} onClose={() => setOpen(false)} size='lg' title='Are you sure?'>
+      <Modal opened={open} onClose={() => setOpen(false)} size='lg' title={t('Are you sure?')}>
         <Box px='sm'>
           <p>The export provides a complete snapshot of Zipline’s data and environment. It includes:</p>
 
@@ -37,8 +38,8 @@ export default function ExportButton() {
             </List.Item>
 
             <List.Item>
-              <b>Files:</b> Metadata about uploaded files including size, type, timestamps, expiration, views,
-              password protection, owner, and folder association.
+              <b>{t('Files:')}</b> Metadata about uploaded files including size, type, timestamps, expiration,
+              views, password protection, owner, and folder association.
               <i> (Actual file contents are not included.)</i>
             </List.Item>
 

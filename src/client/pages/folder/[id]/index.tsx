@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useApiPagination } from '@/components/pages/files/useApiPagination';
 import { type Response } from '@/lib/api/response';
 import { useTitle } from '@/lib/client/hooks/useTitle';
@@ -190,7 +191,7 @@ export function Component() {
         {(files.length ?? 0) > 0 && (
           <>
             <Title order={3} mt='md' mb='sm'>
-              Files
+              {t('Files')}
             </Title>
             <SimpleGrid
               cols={{
@@ -211,7 +212,7 @@ export function Component() {
 
         {children.length === 0 && totalRecords === 0 && (
           <Text c='dimmed' mt='md'>
-            This folder is empty.
+            {t('This folder is empty.')}
           </Text>
         )}
 

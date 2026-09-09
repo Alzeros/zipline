@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import type { User } from '@/lib/db/models/user';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
@@ -237,7 +238,7 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
 
           <Group justify='left' mt='sm'>
             <Button type='submit' leftSection={<IconDeviceFloppy size='1rem' />}>
-              Save
+              {t('Save')}
             </Button>
           </Group>
         </form>

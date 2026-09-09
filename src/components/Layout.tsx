@@ -68,13 +68,13 @@ type NavLinks = {
 
 const navLinks: NavLinks[] = [
   {
-    label: 'Home',
+    label: t('Home'),
     icon: <IconHome size='1rem' />,
     active: (path: string) => path === '/dashboard',
     href: '/dashboard',
   },
   {
-    label: 'Metrics',
+    label: t('Metrics'),
     icon: <IconGraph size='1rem' />,
     active: (path: string) => path === '/dashboard/metrics',
     href: '/dashboard/metrics',
@@ -83,30 +83,30 @@ const navLinks: NavLinks[] = [
       (config.features.metrics.adminOnly ? isAdministrator(user?.role) : true),
   },
   {
-    label: 'Files',
+    label: t('Files'),
     icon: <IconFiles size='1rem' />,
     active: (path: string) => path === '/dashboard/files',
     href: '/dashboard/files',
   },
   {
-    label: 'Folders',
+    label: t('Folders'),
     icon: <IconFolder size='1rem' />,
     active: (path: string) => path === '/dashboard/folders',
     href: '/dashboard/folders',
   },
   {
-    label: 'Upload',
+    label: t('Upload'),
     icon: <IconUpload size='1rem' />,
     active: (path: string) => path.startsWith('/dashboard/upload'),
     links: [
       {
-        label: 'File',
+        label: t('File'),
         icon: <IconFileUpload size='1rem' />,
         active: (path: string) => path === '/dashboard/upload/file',
         href: '/dashboard/upload/file',
       },
       {
-        label: 'Text',
+        label: t('Text'),
         icon: <IconFileText size='1rem' />,
         active: (path: string) => path === '/dashboard/upload/text',
         href: '/dashboard/upload/text',
@@ -114,25 +114,25 @@ const navLinks: NavLinks[] = [
     ],
   },
   {
-    label: 'URLs',
+    label: t('URLs'),
     icon: <IconLink size='1rem' />,
     active: (path: string) => path === '/dashboard/urls',
     href: '/dashboard/urls',
   },
   {
-    label: 'Administrator',
+    label: t('Administrator'),
     icon: <IconShieldLockFilled size='1rem' />,
     if: (user) => isAdministrator(user?.role),
     active: (path: string) => path.startsWith('/dashboard/admin'),
     links: [
       {
-        label: 'Dashboard',
+        label: t('Dashboard'),
         icon: <IconHome size='1rem' />,
         active: (path: string) => path === '/dashboard/admin',
         href: '/dashboard/admin',
       },
       {
-        label: 'Settings',
+        label: t('Settings'),
         icon: <IconAdjustments size='1rem' />,
         active: (path: string) => path.startsWith('/dashboard/admin/settings'),
         if: (user) => user?.role === 'SUPERADMIN',
@@ -145,19 +145,19 @@ const navLinks: NavLinks[] = [
         })),
       },
       {
-        label: 'Actions',
+        label: t('Actions'),
         icon: <IconStopwatch size='1rem' />,
         active: (path: string) => path === '/dashboard/admin/actions',
         href: '/dashboard/admin/actions',
       },
       {
-        label: 'Users',
+        label: t('Users'),
         icon: <IconUsersGroup size='1rem' />,
         active: (path: string) => path === '/dashboard/admin/users',
         href: '/dashboard/admin/users',
       },
       {
-        label: 'Invites',
+        label: t('Invites'),
         icon: <IconTags size='1rem' />,
         active: (path: string) => path === '/dashboard/admin/invites',
         href: '/dashboard/admin/invites',
@@ -252,7 +252,7 @@ export default function Layout() {
 
   const copyToken = () => {
     modals.openConfirmModal({
-      title: 'Copy token?',
+      title: t('Copy token?'),
       children:
         'Are you sure you want to copy your token? Your token can interact with all parts of Zipline. Do not share this token with anyone.',
       labels: { confirm: 'Copy', cancel: 'No, close this popup' },
@@ -260,7 +260,7 @@ export default function Layout() {
         const { data, error } = await fetchApi<Response['/api/user/token']>('/api/user/token');
         if (error) {
           showNotification({
-            title: 'Error',
+            title: t('Error'),
             message: error.error,
             color: 'red',
             icon: <IconClipboardCopy size='1rem' />,
@@ -268,8 +268,8 @@ export default function Layout() {
         } else {
           clipboard.copy(data?.token ?? '');
           showNotification({
-            title: 'Copied',
-            message: 'Your token has been copied to your clipboard.',
+            title: t('Copied'),
+            message: t('Your token has been copied to your clipboard.'),
             color: 'green',
             icon: <IconClipboardCopy size='1rem' />,
           });
@@ -280,7 +280,7 @@ export default function Layout() {
 
   const refreshToken = () => {
     modals.openConfirmModal({
-      title: 'Refresh token?',
+      title: t('Refresh token?'),
 
       children:
         'Are you sure you want to refresh your token? Once you refresh/reset your token, you will need to update any scripts or applications that use your token.',
@@ -289,7 +289,7 @@ export default function Layout() {
         const { data, error } = await fetchApi<Response['/api/user/token']>('/api/user/token', 'PATCH');
         if (error) {
           showNotification({
-            title: 'Error',
+            title: t('Error'),
             message: error.error,
             color: 'red',
             icon: <IconRefreshDot size='1rem' />,
@@ -299,8 +299,8 @@ export default function Layout() {
           mutate(data as Response['/api/user']);
 
           showNotification({
-            title: 'Refreshed',
-            message: 'Your token has been refreshed.',
+            title: t('Refreshed'),
+            message: t('Your token has been refreshed.'),
             color: 'green',
             icon: <IconRefreshDot size='1rem' />,
           });

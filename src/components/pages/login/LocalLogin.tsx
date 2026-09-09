@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Stack, TextInput, PasswordInput, Button } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
 
@@ -17,7 +18,7 @@ export default function LocalLogin({
       <Stack my='sm'>
         <TextInput
           size='md'
-          placeholder='Enter your username...'
+          placeholder={t('Enter your username...')}
           autoComplete='username'
           styles={{
             input: { backgroundColor: hasBackground ? 'transparent' : undefined },
@@ -27,7 +28,7 @@ export default function LocalLogin({
 
         <PasswordInput
           size='md'
-          placeholder='Enter your password...'
+          placeholder={t('Enter your password...')}
           autoComplete='current-password'
           styles={{
             input: { backgroundColor: hasBackground ? 'transparent' : undefined },

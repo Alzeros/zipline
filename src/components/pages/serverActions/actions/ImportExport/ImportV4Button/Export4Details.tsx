@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import HighlightCode from '@/components/render/code/HighlightCode';
 import { bytes } from '@/lib/bytes';
 import { Export4 } from '@/lib/import/version4/validateExport';
@@ -239,7 +240,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
         </Accordion.Item>
 
         <Accordion.Item value='users'>
-          <Accordion.Control icon={<IconUsers size='1rem' />}>Users</Accordion.Control>
+          <Accordion.Control icon={<IconUsers size='1rem' />}>{t('Users')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {Object.keys(export4.data.users).length ? (
@@ -250,7 +251,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                         <Table.Th></Table.Th>
                         <Table.Th>ID</Table.Th>
                         <Table.Th>Username</Table.Th>
-                        <Table.Th>Password</Table.Th>
+                        <Table.Th>{t('Password')}</Table.Th>
                         <Table.Th>Role</Table.Th>
                         <Table.Th>OAuth Providers</Table.Th>
                         <Table.Th>Quota</Table.Th>
@@ -297,7 +298,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
         </Accordion.Item>
 
         <Accordion.Item value='files'>
-          <Accordion.Control icon={<IconFiles size='1rem' />}>Files</Accordion.Control>
+          <Accordion.Control icon={<IconFiles size='1rem' />}>{t('Files')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {export4.data.files.length ? (
@@ -305,10 +306,10 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>Name</Table.Th>
-                        <Table.Th>Created At</Table.Th>
-                        <Table.Th>Password</Table.Th>
-                        <Table.Th>Size</Table.Th>
+                        <Table.Th>{t('Name')}</Table.Th>
+                        <Table.Th>{t('Created At')}</Table.Th>
+                        <Table.Th>{t('Password')}</Table.Th>
+                        <Table.Th>{t('Size')}</Table.Th>
                         <Table.Th>Owner</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
@@ -317,7 +318,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No files found</b>
+                  <b>{t('No files found')}</b>
                 </Center>
               )}
             </Paper>
@@ -334,8 +335,8 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th>User</Table.Th>
-                        <Table.Th>Name</Table.Th>
-                        <Table.Th>Files</Table.Th>
+                        <Table.Th>{t('Name')}</Table.Th>
+                        <Table.Th>{t('Files')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{tagsRows}</Table.Tbody>
@@ -351,7 +352,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
         </Accordion.Item>
 
         <Accordion.Item value='folders'>
-          <Accordion.Control icon={<IconFolder size='1rem' />}>Folders</Accordion.Control>
+          <Accordion.Control icon={<IconFolder size='1rem' />}>{t('Folders')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {export4.data.folders.length ? (
@@ -359,11 +360,11 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>Name</Table.Th>
+                        <Table.Th>{t('Name')}</Table.Th>
                         <Table.Th>Owner</Table.Th>
-                        <Table.Th>Public</Table.Th>
-                        <Table.Th>Created At</Table.Th>
-                        <Table.Th>Files</Table.Th>
+                        <Table.Th>{t('Public')}</Table.Th>
+                        <Table.Th>{t('Created At')}</Table.Th>
+                        <Table.Th>{t('Files')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{folderRows}</Table.Tbody>
@@ -389,10 +390,10 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                       <Table.Tr>
                         <Table.Th>Code</Table.Th>
                         <Table.Th>Owner</Table.Th>
-                        <Table.Th>Destination</Table.Th>
+                        <Table.Th>{t('Destination')}</Table.Th>
                         <Table.Th>Vanity</Table.Th>
-                        <Table.Th>Password</Table.Th>
-                        <Table.Th>Created At</Table.Th>
+                        <Table.Th>{t('Password')}</Table.Th>
+                        <Table.Th>{t('Created At')}</Table.Th>
                         <Table.Th>Enabled</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
@@ -409,7 +410,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
         </Accordion.Item>
 
         <Accordion.Item value='invites'>
-          <Accordion.Control icon={<IconTagPlus size='1rem' />}>Invites</Accordion.Control>
+          <Accordion.Control icon={<IconTagPlus size='1rem' />}>{t('Invites')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {export4.data.invites.length ? (
@@ -419,7 +420,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                       <Table.Tr>
                         <Table.Th>Code</Table.Th>
                         <Table.Th>Created By</Table.Th>
-                        <Table.Th>Created At</Table.Th>
+                        <Table.Th>{t('Created At')}</Table.Th>
                         <Table.Th>Uses</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
@@ -436,7 +437,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
         </Accordion.Item>
 
         <Accordion.Item value='metrics'>
-          <Accordion.Control icon={<IconGraphFilled size='1rem' />}>Metrics</Accordion.Control>
+          <Accordion.Control icon={<IconGraphFilled size='1rem' />}>{t('Metrics')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
               <TextDetail name='Total Metrics Entries'>{export4.data.metrics.length}</TextDetail>

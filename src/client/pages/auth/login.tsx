@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import ExternalAuthButton from '@/components/pages/login/ExternalAuthButton';
 import LocalLogin from '@/components/pages/login/LocalLogin';
 import PasskeyAuthButton from '@/components/pages/login/PasskeyAuthButton';
@@ -120,7 +121,7 @@ export default function Login() {
       setTotp({ open: true, disabled: false });
     } else {
       showNotification({
-        message: 'Logging in...',
+        message: t('Logging in...'),
         icon: <IconCheck size='1rem' />,
         autoClose: 700,
       });
@@ -135,7 +136,8 @@ export default function Login() {
   };
 
   if (configLoading || !config) return <LoadingOverlay visible />;
-  if (configError) return <GenericError title='Error' message='Config load failed' details={configError} />;
+  if (configError)
+    return <GenericError title={t('Error')} message='Config load failed' details={configError} />;
 
   const hasBg = !!config.website.loginBackground;
 

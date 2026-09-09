@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import type { User } from '@/lib/db/models/user';
 import { ApiError } from '@/lib/api/errors';
 import { Response } from '@/lib/api/response';
@@ -148,7 +149,7 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
           leftSection={<IconUser size='1rem' />}
         />
         <PasswordInput
-          label='Password'
+          label={t('Password')}
           description='Leave blank to keep the same password'
           autoComplete='new-password'
           {...form.getInputProps('password')}
@@ -165,7 +166,7 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
         )}
 
         <Button type='submit' mt='md' leftSection={<IconDeviceFloppy size='1rem' />}>
-          Save
+          {t('Save')}
         </Button>
       </form>
     </Paper>

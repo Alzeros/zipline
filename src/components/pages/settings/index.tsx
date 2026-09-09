@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useConfig } from '@/components/ConfigProvider';
 import { eitherTrue } from '@/lib/primitive';
 import { Group, SimpleGrid, Stack, Title } from '@mantine/core';
@@ -19,7 +20,7 @@ export default function DashboardSettings() {
   return (
     <>
       <Group gap='sm'>
-        <Title order={1}>Settings</Title>
+        <Title order={1}>{t('Settings')}</Title>
       </Group>
 
       <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>

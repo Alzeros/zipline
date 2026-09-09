@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { readToDataURL } from '@/lib/base64';
 import { bytes } from '@/lib/bytes';
@@ -178,14 +179,14 @@ export default function EditUserModal({
           <Stack gap='sm'>
             <TextInput
               label='Username'
-              placeholder='Enter a username...'
+              placeholder={t('Enter a username...')}
               autoComplete='username'
               {...form.getInputProps('username')}
             />
 
             <PasswordInput
-              label='Password'
-              placeholder='Enter a password...'
+              label={t('Password')}
+              placeholder={t('Enter a password...')}
               autoComplete='new-password'
               {...form.getInputProps('password')}
             />
@@ -214,7 +215,7 @@ export default function EditUserModal({
                 { value: 'USER', label: 'User' },
                 {
                   value: 'ADMIN',
-                  label: 'Administrator',
+                  label: t('Administrator'),
                   disabled: !canInteract(currentUser?.role, 'ADMIN'),
                 },
               ]}

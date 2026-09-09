@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { Response } from '@/lib/api/response';
 import { Invite } from '@/lib/db/models/invite';
@@ -69,13 +70,13 @@ export default function InviteTableView() {
             },
             {
               accessor: 'createdAt',
-              title: 'Created',
+              title: t('Created'),
               sortable: true,
               render: (invite) => <RelativeDate date={invite.createdAt} />,
             },
             {
               accessor: 'updatedAt',
-              title: 'Last update at',
+              title: t('Last update at'),
               sortable: true,
               render: (invite) => <RelativeDate date={invite.updatedAt} />,
             },
@@ -109,7 +110,7 @@ export default function InviteTableView() {
                       <IconCopy size='1rem' />
                     </ActionIcon>
                   </Tooltip>
-                  <Tooltip label='Show QR code'>
+                  <Tooltip label={t('Show QR code')}>
                     <ActionIcon
                       onClick={(e) => {
                         e.stopPropagation();

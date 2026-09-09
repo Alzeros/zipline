@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import type { Config } from '@/lib/config/validate';
 import {
@@ -133,7 +134,7 @@ export default function GeneratorButton({
           <Select
             data={[
               { label: 'Upload File', value: 'file' },
-              { label: 'Shorten URL', value: 'url', disabled: name === 'ishare' },
+              { label: t('Shorten URL'), value: 'url', disabled: name === 'ishare' },
             ]}
             description='Select which type of destination you want to generate'
             label='Destination Type'
@@ -155,11 +156,11 @@ export default function GeneratorButton({
           <Select
             data={[
               { value: 'default', label: 'Default' },
-              { value: 'random', label: 'Random' },
-              { value: 'date', label: 'Date' },
-              { value: 'uuid', label: 'UUID' },
-              { value: 'name', label: 'Use file name' },
-              { value: 'gfycat', label: 'Gfycat-style name' },
+              { value: 'random', label: t('Random') },
+              { value: 'date', label: t('Date') },
+              { value: 'uuid', label: t('UUID') },
+              { value: 'name', label: t('Use file name') },
+              { value: 'gfycat', label: t('Gfycat-style name') },
             ]}
             label='Name format'
             description='The file name format to use when uploading files, the "File name" field will override this value.'
@@ -190,7 +191,7 @@ export default function GeneratorButton({
           />
 
           <NumberInput
-            label='Max Views'
+            label={t('Max Views')}
             description='The maximum number of views files/urls can have before they are deleted. Leave blank to allow as many views as you want.'
             leftSection={<IconEyeFilled size='1rem' />}
             min={0}
@@ -200,7 +201,7 @@ export default function GeneratorButton({
 
           <Select
             data={domainOptions}
-            label='Override Domain'
+            label={t('Override Domain')}
             description='Override the domain with this value. This will change the domain returned in your uploads. Leave blank to use the default domain.'
             leftSection={<IconGlobe size='1rem' />}
             value={options.overrides_returnDomain ?? ''}
@@ -216,7 +217,7 @@ export default function GeneratorButton({
           />
 
           <Text c='dimmed' size='sm'>
-            <b>Other Options</b>
+            <b>{t('Other Options')}</b>
           </Text>
 
           <Switch

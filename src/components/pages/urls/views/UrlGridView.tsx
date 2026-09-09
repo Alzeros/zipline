@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import type { Url } from '@/lib/db/models/url';
 import { Center, Group, Paper, SimpleGrid, Skeleton, Stack, Text, Title } from '@mantine/core';
@@ -61,10 +62,10 @@ export default function UrlGridView() {
             <Stack>
               <Group>
                 <IconLink size='2rem' />
-                <Title order={2}>No URLs found</Title>
+                <Title order={2}>{t('No URLs found')}</Title>
               </Group>
               <Text size='sm' c='dimmed'>
-                Shorten a URL to see them here
+                {t('Shorten a URL to see them here')}
               </Text>
             </Stack>
           </Center>

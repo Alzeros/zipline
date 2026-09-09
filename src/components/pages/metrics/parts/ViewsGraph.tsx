@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { MetricsPoint } from '@/lib/metrics';
 import { ChartTooltip, LineChart } from '@mantine/charts';
 import { Paper, Title } from '@mantine/core';
@@ -17,18 +18,18 @@ export default function ViewsGraph({ points }: { points: MetricsPoint[] }) {
 
   return (
     <Paper radius='md' withBorder p='sm'>
-      <Title order={3}>Views</Title>
+      <Title order={3}>{t('Views')}</Title>
       <LineChart
         data={data}
         series={[
           {
             name: 'files',
-            label: 'Files',
+            label: t('Files'),
             color: 'blue',
           },
           {
             name: 'urls',
-            label: 'URLs',
+            label: t('URLs'),
             color: 'green',
           },
         ]}
@@ -41,8 +42,8 @@ export default function ViewsGraph({ points }: { points: MetricsPoint[] }) {
               label={formatChartDate(label)}
               payload={payload}
               series={[
-                { name: 'files', label: 'Files' },
-                { name: 'urls', label: 'URLs' },
+                { name: 'files', label: t('Files') },
+                { name: 'urls', label: t('URLs') },
               ]}
               valueFormatter={(v) => v + ` view${v === 1 ? '' : 's'}`}
             />

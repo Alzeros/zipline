@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Anchor, Code, Modal, Text } from '@mantine/core';
 
 export default function SecureWarningModal({
@@ -10,7 +11,7 @@ export default function SecureWarningModal({
   onClose: () => void;
 }) {
   return (
-    <Modal opened={opened} onClose={onClose} title='HTTPS Configuration' size='lg'>
+    <Modal opened={opened} onClose={onClose} title={t('HTTPS Configuration')} size='lg'>
       <Text>
         {returnHttps ? (
           <>

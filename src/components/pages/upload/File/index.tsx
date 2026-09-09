@@ -229,7 +229,7 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
       <Collapse expanded={progress.percent === 100}>
         <Paper withBorder p='xs'>
           <Text ta='center' size='sm' c='yellow' fw={500}>
-            Finalizing upload(s)...
+            {t('Finalizing upload(s)...')}
           </Text>
         </Paper>
       </Collapse>

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useConfig } from '@/components/ConfigProvider';
 import RelativeDate from '@/components/RelativeDate';
 import { Url } from '@/lib/db/models/url';
@@ -54,16 +55,16 @@ export default function UrlCard({
                   leftSection={<IconCopy size='1rem' />}
                   onClick={() => copyUrl(url, config, clipboard)}
                 >
-                  Copy short link
+                  {t('Copy short link')}
                 </Menu.Item>
                 <Menu.Item
                   leftSection={<IconCopy size='1rem' />}
                   onClick={() => clipboard.copy(url.destination.trim())}
                 >
-                  Copy destination
+                  {t('Copy destination')}
                 </Menu.Item>
                 <Menu.Item leftSection={<IconQrcode size='1rem' />} onClick={() => setQrOpen(url)}>
-                  Show QR code
+                  {t('Show QR code')}
                 </Menu.Item>
                 <Menu.Item leftSection={<IconPencil size='1rem' />} onClick={() => setSelectedUrl(url)}>
                   Edit
@@ -73,7 +74,7 @@ export default function UrlCard({
                   color='red'
                   onClick={() => deleteUrl(warnDeletion, url)}
                 >
-                  Delete
+                  {t('Delete')}
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
@@ -83,19 +84,19 @@ export default function UrlCard({
         <Card.Section inheritPadding py='xs'>
           <Stack gap={1}>
             <Text size='xs' c='dimmed'>
-              <b>Views:</b> {url.views.toLocaleString()}
+              <b>{t('Views:')}</b> {url.views.toLocaleString()}
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Enabled:</b> {url.enabled ? 'Yes' : 'No'}
+              <b>{t('Enabled:')}</b> {url.enabled ? 'Yes' : 'No'}
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Created:</b> <RelativeDate date={url.createdAt} />
+              <b>{t('Created:')}</b> <RelativeDate date={url.createdAt} />
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Updated:</b> <RelativeDate date={url.updatedAt} />
+              <b>{t('Updated:')}</b> <RelativeDate date={url.updatedAt} />
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Destination:</b>{' '}
+              <b>{t('Destination:')}</b>{' '}
               <Tooltip label={`Open "${trimUrl(50, url.destination.trim())}" in a new tab`}>
                 <Anchor href={url.destination} target='_blank' rel='noopener noreferrer'>
                   {trimUrl(30, url.destination.trim())}
@@ -104,7 +105,7 @@ export default function UrlCard({
             </Text>
             {url.vanity && (
               <Text size='xs' c='dimmed'>
-                <b>Code:</b>{' '}
+                <b>{t('Code:')}</b>{' '}
                 <Anchor target='_blank' href={formatRootUrl(config.urls.route, url.code)}>
                   {url.code}
                 </Anchor>

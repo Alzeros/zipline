@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { readToDataURL } from '@/lib/base64';
 import { fetchApi } from '@/lib/fetchApi';
@@ -167,7 +168,7 @@ export default function SettingsAvatar() {
             leftSection={<IconDeviceFloppy size='1rem' />}
             onClick={saveAvatar}
           >
-            Save
+            {t('Save')}
           </Button>
         </Group>
       </Stack>

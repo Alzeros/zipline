@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { readToDataURL } from '@/lib/base64';
 import { LimitedUser } from '@/lib/db/models/user';
@@ -102,13 +103,13 @@ export default function DashboardUsers() {
           <Stack gap='sm'>
             <TextInput
               label='Username'
-              placeholder='Enter a username...'
+              placeholder={t('Enter a username...')}
               autoComplete='username'
               {...form.getInputProps('username')}
             />
             <PasswordInput
-              label='Password'
-              placeholder='Enter a password...'
+              label={t('Password')}
+              placeholder={t('Enter a password...')}
               autoComplete='new-password'
               {...form.getInputProps('password')}
             />
@@ -136,7 +137,7 @@ export default function DashboardUsers() {
                 { value: 'USER', label: 'User' },
                 {
                   value: 'ADMIN',
-                  label: 'Administrator',
+                  label: t('Administrator'),
                   disabled: !canInteract(currentUser?.role, 'ADMIN'),
                 },
               ]}
@@ -144,14 +145,14 @@ export default function DashboardUsers() {
             />
 
             <Button type='submit' variant='outline' leftSection={<IconUserPlus size='1rem' />}>
-              Create
+              {t('Create')}
             </Button>
           </Stack>
         </form>
       </Modal>
 
       <Group>
-        <Title>Users</Title>
+        <Title>{t('Users')}</Title>
 
         <Button
           variant='outline'
@@ -159,7 +160,7 @@ export default function DashboardUsers() {
           leftSection={<IconUserPlus size='1rem' />}
           onClick={() => setOpen(true)}
         >
-          Create
+          {t('Create')}
         </Button>
 
         <GridTableSwitcher type='users' />

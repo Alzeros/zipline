@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import useUser from '@/lib/client/hooks/useUser';
@@ -109,7 +110,7 @@ export function Component() {
         form.setFieldError('username', 'Username is taken');
       } else {
         notifications.show({
-          title: 'Failed to register',
+          title: t('Failed to register'),
           message: error.error,
           color: 'red',
           icon: <IconX size='1rem' />,
@@ -117,7 +118,7 @@ export function Component() {
       }
     } else {
       notifications.show({
-        title: 'Complete!',
+        title: t('Complete!'),
         message: `Your "${data?.user?.username}" account has been created.`,
         color: 'green',
         icon: <IconPlus size='1rem' />,
@@ -137,7 +138,7 @@ export function Component() {
   if (!config || configError) {
     return (
       <GenericError
-        title='Error loading configuration'
+        title={t('Error loading configuration')}
         message='Could not load server configuration...'
         details={configError}
       />
@@ -148,7 +149,7 @@ export function Component() {
     if (inviteError) {
       showNotification({
         id: 'invalid-invite',
-        message: 'Invalid or expired invite. Please try again later.',
+        message: t('Invalid or expired invite. Please try again later.'),
         color: 'red',
       });
 
@@ -219,7 +220,7 @@ export function Component() {
           <Stack my='sm'>
             <TextInput
               size='md'
-              placeholder='Enter your username...'
+              placeholder={t('Enter your username...')}
               autoComplete='username'
               styles={{
                 input: {
@@ -231,7 +232,7 @@ export function Component() {
 
             <PasswordInput
               size='md'
-              placeholder='Enter your password...'
+              placeholder={t('Enter your password...')}
               autoComplete='new-password'
               styles={{
                 input: {
@@ -247,7 +248,7 @@ export function Component() {
                   <Text size='xs'>
                     I agree to the{' '}
                     <Link to='/auth/tos' target='_blank'>
-                      Terms of Service
+                      {t('Terms of Service')}
                     </Link>
                   </Text>
                 }

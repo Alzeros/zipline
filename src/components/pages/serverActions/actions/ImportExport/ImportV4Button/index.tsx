@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { useUserStore } from '@/lib/client/store/user';
 import { fetchApi } from '@/lib/fetchApi';
@@ -99,7 +100,7 @@ export default function ImportV4Button() {
     }
 
     modals.openConfirmModal({
-      title: 'Are you sure?',
+      title: t('Are you sure?'),
       children:
         'This process will NOT overwrite existing data but will append to it. In case of conflicts, the imported data will be skipped and logged.',
       labels: {
@@ -172,7 +173,7 @@ export default function ImportV4Button() {
                 <b>Folders: </b>
                 {data.imported.folders} imported.
                 <br />
-                <b>Files: </b>
+                <b>{t('Files:')}</b>
                 {data.imported.files} imported.
                 <br />
                 <b>Tags: </b>
@@ -220,7 +221,7 @@ export default function ImportV4Button() {
             }}
             color='red'
             variant='filled'
-            aria-label='Clear'
+            aria-label={t('Clear')}
             mb='xs'
             leftSection={<IconX size='1rem' />}
             fullWidth

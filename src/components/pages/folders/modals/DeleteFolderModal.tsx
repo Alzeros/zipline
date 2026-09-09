@@ -140,7 +140,7 @@ export default function DeleteFolderModal({
                   value='cascade'
                   label={
                     <Text size='sm' c='red'>
-                      Delete subfolders (files moved to root)
+                      {t('Delete subfolders (files moved to root)')}
                     </Text>
                   }
                 />
@@ -148,7 +148,7 @@ export default function DeleteFolderModal({
                   value='cascade-files'
                   label={
                     <Text size='sm' c='red'>
-                      Delete subfolders and their files (cascade delete)
+                      {t('Delete subfolders and their files (cascade delete)')}
                     </Text>
                   }
                 />

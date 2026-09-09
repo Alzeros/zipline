@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import {
@@ -98,7 +99,7 @@ export default function ImportV3Button() {
 
   const handleImport = async () => {
     modals.openConfirmModal({
-      title: 'Are you sure?',
+      title: t('Are you sure?'),
       children:
         'This process will NOT overwrite existing data but will append to it. In case of conflicts, the imported data will be skipped and logged. If using a version 3 export, the entire importing process should be completed immediately after setting up Zipline.',
       labels: {
@@ -165,7 +166,7 @@ export default function ImportV3Button() {
                     <b>URLs: </b> {Object.keys(data?.urls ?? {}).length}
                   </div>
                   <div>
-                    <b>Files: </b> {Object.keys(data?.files ?? {}).length}{' '}
+                    <b>{t('Files:')}</b> {Object.keys(data?.files ?? {}).length}{' '}
                   </div>
                 </Stack>
               </>
@@ -189,7 +190,7 @@ export default function ImportV3Button() {
 
           if (Object.keys(data?.files ?? {}).length > 0) {
             modals.open({
-              title: 'Are you sure?',
+              title: t('Are you sure?'),
               children: (
                 <>
                   <p>
@@ -269,7 +270,7 @@ export default function ImportV3Button() {
             }}
             color='red'
             variant='filled'
-            aria-label='Clear'
+            aria-label={t('Clear')}
             mb='xs'
             leftSection={<IconX size='1rem' />}
             fullWidth

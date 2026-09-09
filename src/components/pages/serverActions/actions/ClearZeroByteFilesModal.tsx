@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import { Button, Group, Modal, Text } from '@mantine/core';
@@ -31,7 +32,7 @@ export default function ClearZeroByteFilesModal({
   };
 
   return (
-    <Modal title='Are you sure?' opened={opened} onClose={onClose}>
+    <Modal title={t('Are you sure?')} opened={opened} onClose={onClose}>
       <Text>This will delete {data?.files?.length ?? 0} files from the database and datasource.</Text>
 
       <Group justify='flex-end' mt='md'>

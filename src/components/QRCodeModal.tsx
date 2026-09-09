@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { getDomain } from '@/lib/client/webDomain';
 import { Button, Group, Image, Modal, Select, Text, Tooltip } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
@@ -41,13 +42,13 @@ export default function QRCodeModal({
         }),
       ]);
       showNotification({
-        message: 'QR code image copied to clipboard',
+        message: t('QR code image copied to clipboard'),
         color: 'green',
         icon: <IconClipboardCheck size='1rem' />,
       });
     } catch (error) {
       showNotification({
-        title: 'Failed to copy QR code image',
+        title: t('Failed to copy QR code image'),
         message: error instanceof Error ? error.message : String(error),
         color: 'red',
         icon: <IconClipboardX size='1rem' />,
@@ -68,12 +69,12 @@ export default function QRCodeModal({
   };
 
   return (
-    <Modal title='QR Code' opened={opened} onClose={onClose} size='sm' centered>
+    <Modal title={t('QR Code')} opened={opened} onClose={onClose} size='sm' centered>
       {dataUrl ? (
         <Image src={dataUrl} alt='QR Code' />
       ) : (
         <Text c='red' ta='center'>
-          Failed to generate QR code.
+          {t('Failed to generate QR code.')}
         </Text>
       )}
 
@@ -105,7 +106,7 @@ export default function QRCodeModal({
               leftSection={<IconCopy size='1rem' />}
               disabled={UNSUPPORTED_COPY.includes(type)}
             >
-              Copy Image
+              {t('Copy Image')}
             </Button>
           </Tooltip>
           <Button onClick={downloadImage} leftSection={<IconDownload size='1rem' />}>

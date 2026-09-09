@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Paper, ScrollArea, SimpleGrid, Skeleton, Table, Text } from '@mantine/core';
 
 export function StatsCardsSkeleton() {
@@ -37,9 +38,9 @@ export function StatsTablesSkeleton() {
               <Table.Thead>
                 <Table.Tr>
                   <Table.Th>User</Table.Th>
-                  <Table.Th>Files</Table.Th>
-                  <Table.Th>Storage Used</Table.Th>
-                  <Table.Th>Views</Table.Th>
+                  <Table.Th>{t('Files')}</Table.Th>
+                  <Table.Th>{t('Storage Used')}</Table.Th>
+                  <Table.Th>{t('Views')}</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>
@@ -62,8 +63,8 @@ export function StatsTablesSkeleton() {
               <Table.Thead>
                 <Table.Tr>
                   <Table.Th>User</Table.Th>
-                  <Table.Th>URLs</Table.Th>
-                  <Table.Th>Views</Table.Th>
+                  <Table.Th>{t('URLs')}</Table.Th>
+                  <Table.Th>{t('Views')}</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>
@@ -84,8 +85,8 @@ export function StatsTablesSkeleton() {
             <Table highlightOnHover stickyHeader>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>Type</Table.Th>
-                  <Table.Th>Files</Table.Th>
+                  <Table.Th>{t('Type')}</Table.Th>
+                  <Table.Th>{t('Files')}</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>

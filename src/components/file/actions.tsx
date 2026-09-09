@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { mutateFolder } from '@/components/pages/folders/actions';
 import { Response } from '@/lib/api/response';
 import { copyLink } from '@/lib/client/copyLink';
@@ -50,14 +51,14 @@ export async function handleDeleteFile(file: File, setOpen: (open: boolean) => v
 
   if (error) {
     notifications.show({
-      title: 'Error',
+      title: t('Error'),
       message: error.error,
       color: 'red',
       icon: <IconTrashXFilled size='1rem' />,
     });
   } else {
     notifications.show({
-      title: 'File deleted',
+      title: t('File deleted'),
       message: `${file.name} has been deleted`,
       color: 'green',
       icon: <IconTrashFilled size='1rem' />,
@@ -80,7 +81,7 @@ export async function favoriteFile(file: File) {
 
   if (error) {
     notifications.show({
-      title: 'Error',
+      title: t('Error'),
       message: error.error,
       color: 'red',
       icon: <IconStar size='1rem' />,
@@ -108,14 +109,14 @@ export async function createFolderAndAdd(file: File, folderName: string | null) 
   );
   if (error) {
     notifications.show({
-      title: 'Error while creating folder',
+      title: t('Error while creating folder'),
       message: error.error,
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
-      title: 'Folder created',
+      title: t('Folder created'),
       message: `${data!.name} has been created with ${file.name}`,
       color: 'green',
       icon: <IconFolderPlus size='1rem' />,
@@ -134,14 +135,14 @@ export async function removeFromFolder(file: File) {
 
   if (error) {
     notifications.show({
-      title: 'Error while removing from folder',
+      title: t('Error while removing from folder'),
       message: error.error,
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
-      title: 'File removed from folder',
+      title: t('File removed from folder'),
       message: `${file.name} has been removed from ${data?.folder.name}`,
       color: 'green',
       icon: <IconFolderMinus size='1rem' />,
@@ -165,14 +166,14 @@ export async function addToFolder(file: File, folderId: string | null) {
 
   if (error) {
     notifications.show({
-      title: 'Error while adding to folder',
+      title: t('Error while adding to folder'),
       message: error.error,
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
-      title: 'File added to folder',
+      title: t('File added to folder'),
       message: `${file.name} has been added to ${data!.name}`,
       color: 'green',
       icon: <IconFolderPlus size='1rem' />,
@@ -197,14 +198,14 @@ export async function addMultipleToFolder(files: File[], folderId: string | null
 
   if (error) {
     notifications.show({
-      title: 'Error while adding files to folder',
+      title: t('Error while adding files to folder'),
       message: error.error,
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
-      title: 'Files added to folder',
+      title: t('Files added to folder'),
       message: `${data!.count} file(s) have been added to ${data!.name}`,
       color: 'green',
       icon: <IconFolderPlus size='1rem' />,

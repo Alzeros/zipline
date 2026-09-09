@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { bytes } from '@/lib/bytes';
 import { MetricsPoint } from '@/lib/metrics';
 import { ChartTooltip, LineChart } from '@mantine/charts';
@@ -18,7 +19,7 @@ export default function StorageGraph({ points }: { points: MetricsPoint[] }) {
   return (
     <Paper radius='md' withBorder p='sm' mt='md'>
       <Title order={3} mb='sm'>
-        Storage Used
+        {t('Storage Used')}
       </Title>
 
       <LineChart
@@ -26,7 +27,7 @@ export default function StorageGraph({ points }: { points: MetricsPoint[] }) {
         series={[
           {
             name: 'storage',
-            label: 'Storage Used',
+            label: t('Storage Used'),
           },
         ]}
         valueFormatter={(v) => bytes(Number(v))}
@@ -39,7 +40,7 @@ export default function StorageGraph({ points }: { points: MetricsPoint[] }) {
               label={formatChartDate(label)}
               payload={payload}
               valueFormatter={(v) => bytes(Number(v))}
-              series={[{ name: 'storage', label: 'Storage Used' }]}
+              series={[{ name: 'storage', label: t('Storage Used') }]}
             />
           ),
         }}

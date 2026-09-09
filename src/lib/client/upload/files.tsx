@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { notifications } from '@mantine/notifications';
 import { IconFileUpload, IconFileXFilled } from '@tabler/icons-react';
@@ -180,7 +181,7 @@ export async function uploadFiles(
   } catch (error) {
     notifications.update({
       id: 'upload',
-      title: 'Error uploading files',
+      title: t('Error uploading files'),
       message: error instanceof Error ? error.message : 'An unknown error occurred',
       color: 'red',
       icon: <IconFileXFilled size='1rem' />,

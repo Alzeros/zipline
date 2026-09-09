@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import Asciinema from '@/components/render/Asciinema';
 import Pdf from '@/components/render/Pdf';
 import Render from '@/components/render/Render';
@@ -248,7 +249,7 @@ export default function DashboardFileType({
                   <Loader />
                 </Center>
                 <Text ta='center' mt='xs' c='dimmed'>
-                  Loading file...
+                  {t('Loading file...')}
                 </Text>
               </>
             ),

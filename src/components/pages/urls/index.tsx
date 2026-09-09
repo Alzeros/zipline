@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import DomainSelect from '@/components/DomainSelect';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { Response } from '@/lib/api/response';
@@ -93,7 +94,7 @@ export default function DashboardURLs() {
 
     if (error) {
       notifications.show({
-        title: 'Failed to shorten URL',
+        title: t('Failed to shorten URL'),
         message: error.error,
         color: 'red',
         icon: <IconLinkOff size='1rem' />,
@@ -107,7 +108,7 @@ export default function DashboardURLs() {
 
         clipboard.copy(data?.url);
         notifications.show({
-          title: 'Copied URL to clipboard',
+          title: t('Copied URL to clipboard'),
           message: (
             <Anchor component={Link} to={data?.url ?? ''} target='_blank'>
               {data?.url}
@@ -119,7 +120,7 @@ export default function DashboardURLs() {
       };
 
       modals.open({
-        title: 'Shortened URL',
+        title: t('Shortened URL'),
         size: 'auto',
         children: (
           <Group justify='space-between'>
@@ -134,13 +135,13 @@ export default function DashboardURLs() {
             </Group>
             <Group justify='right'>
               {data?.enabled && (
-                <Tooltip label='Open link in a new tab'>
+                <Tooltip label={t('Open link in a new tab')}>
                   <ActionIcon onClick={() => open()} variant='filled'>
                     <IconExternalLink size='1rem' />
                   </ActionIcon>
                 </Tooltip>
               )}
-              <Tooltip label='Copy link to clipboard'>
+              <Tooltip label={t('Copy link to clipboard')}>
                 <ActionIcon onClick={() => copy()} variant='filled'>
                   <IconClipboardCopy size='1rem' />
                 </ActionIcon>
@@ -157,7 +158,7 @@ export default function DashboardURLs() {
 
   return (
     <>
-      <Modal centered opened={open} onClose={() => setOpen(false)} title='Shorten URL'>
+      <Modal centered opened={open} onClose={() => setOpen(false)} title={t('Shorten URL')}>
         <form onSubmit={form.onSubmit(onSubmit)}>
           <Stack gap='sm'>
             <TextInput
@@ -168,45 +169,45 @@ export default function DashboardURLs() {
             />
             <TextInput
               label='Vanity'
-              description='Optional field, leave blank to generate a random code'
+              description={t('Optional field, leave blank to generate a random code')}
               placeholder='example'
               leftSection={<IconTextCaption size='1rem' />}
               {...form.getInputProps('vanity')}
             />
 
             <NumberInput
-              label='Max views'
-              description='Optional field, leave blank to disable a view limit.'
+              label={t('Max views')}
+              description={t('Optional field, leave blank to disable a view limit.')}
               min={0}
               leftSection={<IconEyeFilled size='1rem' />}
               {...form.getInputProps('maxViews')}
             />
 
-            <DomainSelect label='Override Domain' {...form.getInputProps('domain')} />
+            <DomainSelect label={t('Override Domain')} {...form.getInputProps('domain')} />
 
             <Switch
               label='Enabled'
-              description='Allow or prevent this URL from being visited'
+              description={t('Allow or prevent this URL from being visited')}
               {...form.getInputProps('enabled', { type: 'checkbox' })}
             />
 
             <PasswordInput
-              label='Password'
-              description='Protect your link with a password'
+              label={t('Password')}
+              description={t('Protect your link with a password')}
               autoComplete='off'
               leftSection={<IconKey size='1rem' />}
               {...form.getInputProps('password')}
             />
 
             <Button type='submit' variant='outline' leftSection={<IconLink size='1rem' />}>
-              Create
+              {t('Create')}
             </Button>
           </Stack>
         </form>
       </Modal>
 
       <Group>
-        <Title>URLs</Title>
+        <Title>{t('URLs')}</Title>
 
         <Button
           variant='outline'
@@ -214,7 +215,7 @@ export default function DashboardURLs() {
           leftSection={<IconLinkPlus size='1rem' />}
           onClick={() => setOpen(true)}
         >
-          Create
+          {t('Create')}
         </Button>
 
         <GridTableSwitcher type='urls' />

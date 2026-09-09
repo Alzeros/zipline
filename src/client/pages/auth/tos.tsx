@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import Markdown from '@/components/render/Markdown';
 import { Response } from '@/lib/api/response';
 import { Container, LoadingOverlay } from '@mantine/core';
@@ -24,7 +25,7 @@ export function Component() {
   if (error) {
     return (
       <GenericError
-        title='Error loading TOS'
+        title={t('Error loading TOS')}
         message='Could not load Terms of Service file...'
         details={error}
       />

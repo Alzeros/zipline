@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import type { Response } from '@/lib/api/response';
 import { Button, ColorInput, Group, LoadingOverlay, Stack, Switch, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
@@ -106,7 +107,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         </Stack>
         <Group mt='md'>
           <Button type='submit' loading={isLoading} leftSection={<IconDeviceFloppy size='1rem' />}>
-            Save
+            {t('Save')}
           </Button>
           <Button onClick={() => window.location.reload()} leftSection={<IconRefresh size='1rem' />}>
             Refresh

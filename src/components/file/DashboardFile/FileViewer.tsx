@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
 import TagPill from '@/components/pages/files/tags/TagPill';
 import { Response } from '@/lib/api/response';
@@ -172,14 +173,14 @@ export default function FileViewer({
 
     if (error) {
       showNotification({
-        title: 'Failed to save tags',
+        title: t('Failed to save tags'),
         message: error.error,
         color: 'red',
         icon: <IconTagsOff size='1rem' />,
       });
     } else {
       showNotification({
-        title: 'Saved tags',
+        title: t('Saved tags'),
         message: `Saved ${data!.tags!.length} tags for file ${data!.name}`,
         color: 'green',
         icon: <IconTags size='1rem' />,
@@ -298,39 +299,39 @@ export default function FileViewer({
       >
         {file && (
           <Stack gap='md'>
-            <FileStat Icon={IconFileInfo} title='Type' value={file.type} />
-            <FileStat Icon={IconDeviceSdCard} title='Size' value={bytes(file.size)} />
+            <FileStat Icon={IconFileInfo} title={t('Type')} value={file.type} />
+            <FileStat Icon={IconDeviceSdCard} title={t('Size')} value={bytes(file.size)} />
             <FileStat
               Icon={IconUpload}
-              title='Created at'
+              title={t('Created at')}
               value={new Date(file.createdAt).toLocaleString()}
             />
             <FileStat
               Icon={IconRefresh}
-              title='Updated at'
+              title={t('Updated at')}
               value={new Date(file.updatedAt).toLocaleString()}
             />
             {file.deletesAt && !reduce && (
               <FileStat
                 Icon={IconBombFilled}
-                title='Deletes at'
+                title={t('Deletes at')}
                 value={new Date(file.deletesAt).toLocaleString()}
               />
             )}
             <FileStat
               Icon={IconEyeFilled}
-              title='Views'
+              title={t('Views')}
               value={file.maxViews ? `${file.views} / ${file.maxViews}` : file.views}
             />
             {file.originalName && (
-              <FileStat Icon={IconTextRecognition} title='Original Name' value={file.originalName} />
+              <FileStat Icon={IconTextRecognition} title={t('Original Name')} value={file.originalName} />
             )}
-            {file.anonymous && <FileStat Icon={IconUserQuestion} title='Anonymous' value='Yes' />}
+            {file.anonymous && <FileStat Icon={IconUserQuestion} title={t('Anonymous')} value='Yes' />}
             {!reduce && (
               <>
                 <Box>
                   <Title order={4} mb='xs'>
-                    Tags
+                    {t('Tags')}
                   </Title>
                   <Combobox zIndex={90000} store={tagsCombobox} onOptionSubmit={handleValueSelect}>
                     <Combobox.DropdownTarget>
@@ -343,7 +344,7 @@ export default function FileViewer({
                           {values.length > 0 ? (
                             values
                           ) : (
-                            <Input.Placeholder>Pick one or more tags</Input.Placeholder>
+                            <Input.Placeholder>{t('Pick one or more tags')}</Input.Placeholder>
                           )}
 
                           <Combobox.EventsTarget>
@@ -385,7 +386,9 @@ export default function FileViewer({
                             </Combobox.Option>
                           ))
                         ) : (
-                          <Combobox.Empty>No tags found, create one outside of this menu.</Combobox.Empty>
+                          <Combobox.Empty>
+                            {t('No tags found, create one outside of this menu.')}
+                          </Combobox.Empty>
                         )}
                       </Combobox.Options>
                     </Combobox.Dropdown>
@@ -429,7 +432,7 @@ export default function FileViewer({
                             folderCombobox.closeDropdown();
                             setSearch('');
                           }}
-                          placeholder='Add to folder...'
+                          placeholder={t('Add to folder...')}
                           rightSectionPointerEvents='none'
                         />
                       </Combobox.Target>
@@ -437,7 +440,7 @@ export default function FileViewer({
                       <Combobox.Dropdown>
                         {folders?.length === 0 && (
                           <Combobox.Empty>
-                            You have no folders. Start typing to create a new folder for this file.
+                            {t('You have no folders. Start typing to create a new folder for this file.')}
                           </Combobox.Empty>
                         )}
 

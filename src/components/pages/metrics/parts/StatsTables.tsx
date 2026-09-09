@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { bytes } from '@/lib/bytes';
 import { Metric } from '@/lib/db/models/metric';
 import { Paper, ScrollArea, SimpleGrid, Table } from '@mantine/core';
@@ -19,9 +20,9 @@ export default function StatsTables({ latest }: { latest: Metric | null }) {
               <Table.Thead>
                 <Table.Tr>
                   <Table.Th>User</Table.Th>
-                  <Table.Th>Files</Table.Th>
-                  <Table.Th>Storage Used</Table.Th>
-                  <Table.Th>Views</Table.Th>
+                  <Table.Th>{t('Files')}</Table.Th>
+                  <Table.Th>{t('Storage Used')}</Table.Th>
+                  <Table.Th>{t('Views')}</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>
@@ -46,8 +47,8 @@ export default function StatsTables({ latest }: { latest: Metric | null }) {
               <Table.Thead>
                 <Table.Tr>
                   <Table.Th>User</Table.Th>
-                  <Table.Th>URLs</Table.Th>
-                  <Table.Th>Views</Table.Th>
+                  <Table.Th>{t('URLs')}</Table.Th>
+                  <Table.Th>{t('Views')}</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>
@@ -70,8 +71,8 @@ export default function StatsTables({ latest }: { latest: Metric | null }) {
             <Table highlightOnHover stickyHeader>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>Type</Table.Th>
-                  <Table.Th>Files</Table.Th>
+                  <Table.Th>{t('Type')}</Table.Th>
+                  <Table.Th>{t('Files')}</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>

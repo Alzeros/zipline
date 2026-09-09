@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useTitle } from '@/lib/client/hooks/useTitle';
 import { Button, Center, Stack, Text, Title } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
@@ -11,7 +12,7 @@ export default function FourOhFour() {
       <Stack>
         <Title order={1}>404</Title>
         <Text c='dimmed' mt='-md'>
-          Page not found
+          {t('Page not found')}
         </Text>
 
         <Button
@@ -21,7 +22,7 @@ export default function FourOhFour() {
           fullWidth
           leftSection={<IconArrowLeft size='1rem' />}
         >
-          Go home
+          {t('Go home')}
         </Button>
       </Stack>
     </Center>

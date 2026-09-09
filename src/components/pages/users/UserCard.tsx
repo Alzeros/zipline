@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { LimitedUser } from '@/lib/db/models/user';
 import { ActionIcon, Avatar, Card, Group, Menu, Stack, Text } from '@mantine/core';
 import { useUserStore } from '@/lib/client/store/user';
@@ -64,7 +65,7 @@ export default function UserCard({ user }: { user: LimitedUser }) {
                     color='red'
                     onClick={() => deleteUser(user)}
                   >
-                    Delete
+                    {t('Delete')}
                   </Menu.Item>
                 </Menu.Dropdown>
               </Menu>
@@ -81,10 +82,10 @@ export default function UserCard({ user }: { user: LimitedUser }) {
               <b>Role:</b> {roleName(user.role)}
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Created:</b> <RelativeDate date={user.createdAt} />
+              <b>{t('Created:')}</b> <RelativeDate date={user.createdAt} />
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Updated:</b> <RelativeDate date={user.updatedAt} />
+              <b>{t('Updated:')}</b> <RelativeDate date={user.updatedAt} />
             </Text>
           </Stack>
         </Card.Section>

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { fetchApi } from '@/lib/fetchApi';
 import useObjectState from '@/lib/client/hooks/useObjectState';
@@ -103,7 +104,7 @@ export default function PasskeyButton() {
 
   const removePasskey = async (passkey: UserPasskey) => {
     modals.openConfirmModal({
-      title: 'Are you sure?',
+      title: t('Are you sure?'),
       children: `Your browser and device may still show "${passkey.name}" as an option to log in. If you want to remove it, you'll have to do so manually through your device's settings.`,
       labels: {
         confirm: `Remove "${passkey.name}"`,
@@ -204,7 +205,7 @@ export default function PasskeyButton() {
                 color='blue'
                 onClick={handleSavePasskey}
               >
-                Save
+                {t('Save')}
               </Button>
             </>
           )}

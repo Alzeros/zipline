@@ -65,7 +65,7 @@ export default function TableEditModal({ opened, onClose }: { opened: boolean; o
   return (
     <Modal opened={opened} onClose={onClose} title={t('Table Options')} centered>
       <Text mb='md' size='sm' c='dimmed'>
-        Select and drag fields below to make them appear/disappear/reorder in the file table view.
+        {t('Select and drag fields below to make them appear/disappear/reorder in the file table view.')}
       </Text>
 
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { Response } from '@/lib/api/response';
 import { Url } from '@/lib/db/models/url';
@@ -234,7 +235,7 @@ export default function UrlTableView() {
             },
             {
               accessor: 'createdAt',
-              title: 'Created',
+              title: t('Created'),
               sortable: true,
               render: (url) => <RelativeDate date={url.createdAt} />,
             },
@@ -249,7 +250,7 @@ export default function UrlTableView() {
               textAlign: 'right',
               render: (url) => (
                 <Group gap='sm' justify='right' wrap='nowrap'>
-                  <Tooltip label='Copy URL'>
+                  <Tooltip label={t('Copy URL')}>
                     <ActionIcon
                       onClick={(e) => {
                         e.stopPropagation();
@@ -259,7 +260,7 @@ export default function UrlTableView() {
                       <IconCopy size='1rem' />
                     </ActionIcon>
                   </Tooltip>
-                  <Tooltip label='Show QR Code'>
+                  <Tooltip label={t('Show QR Code')}>
                     <ActionIcon
                       onClick={(e) => {
                         e.stopPropagation();
@@ -269,7 +270,7 @@ export default function UrlTableView() {
                       <IconQrcode size='1rem' />
                     </ActionIcon>
                   </Tooltip>
-                  <Tooltip label='Edit URL'>
+                  <Tooltip label={t('Edit URL')}>
                     <ActionIcon
                       onClick={(e) => {
                         e.stopPropagation();
@@ -279,7 +280,7 @@ export default function UrlTableView() {
                       <IconPencil size='1rem' />
                     </ActionIcon>
                   </Tooltip>
-                  <Tooltip label='Delete URL'>
+                  <Tooltip label={t('Delete URL')}>
                     <ActionIcon
                       color='red'
                       onClick={(e) => {

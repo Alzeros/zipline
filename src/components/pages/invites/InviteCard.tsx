@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { Invite } from '@/lib/db/models/invite';
 import { useSettingsStore } from '@/lib/client/store/settings';
@@ -40,17 +41,17 @@ export default function InviteCard({
                   leftSection={<IconCopy size='1rem' />}
                   onClick={() => copyInviteUrl(invite, clipboard)}
                 >
-                  Copy URL
+                  {t('Copy URL')}
                 </Menu.Item>
                 <Menu.Item leftSection={<IconQrcode size='1rem' />} onClick={() => setQrOpen(invite)}>
-                  Show QR Code
+                  {t('Show QR Code')}
                 </Menu.Item>
                 <Menu.Item
                   leftSection={<IconTrashFilled size='1rem' />}
                   color='red'
                   onClick={() => deleteInvite(warnDeletion, invite)}
                 >
-                  Delete
+                  {t('Delete')}
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
@@ -63,7 +64,7 @@ export default function InviteCard({
               <b>Created By:</b> {invite.inviter!.username}
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Created:</b> <RelativeDate date={invite.createdAt} />
+              <b>{t('Created:')}</b> <RelativeDate date={invite.createdAt} />
             </Text>
             {invite.expiresAt && (
               <Text size='xs' c='dimmed'>

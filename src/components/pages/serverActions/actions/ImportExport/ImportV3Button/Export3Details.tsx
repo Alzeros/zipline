@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import HighlightCode from '@/components/render/code/HighlightCode';
 import { bytes } from '@/lib/bytes';
 import { findFilesByUser, findUser } from '@/lib/import/version3/find';
@@ -165,7 +166,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
         </Accordion.Item>
 
         <Accordion.Item value='users'>
-          <Accordion.Control icon={<IconUsers size='1rem' />}>Users</Accordion.Control>
+          <Accordion.Control icon={<IconUsers size='1rem' />}>{t('Users')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {Object.keys(export3.users).length ? (
@@ -180,7 +181,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                         <Table.Th>Avatar</Table.Th>
                         <Table.Th>Oauth</Table.Th>
                         <Table.Th>2fa (totp)</Table.Th>
-                        <Table.Th>Files</Table.Th>
+                        <Table.Th>{t('Files')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{userRows}</Table.Tbody>
@@ -196,7 +197,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
         </Accordion.Item>
 
         <Accordion.Item value='files'>
-          <Accordion.Control icon={<IconFiles size='1rem' />}>Files</Accordion.Control>
+          <Accordion.Control icon={<IconFiles size='1rem' />}>{t('Files')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {Object.keys(export3.files).length ? (
@@ -204,13 +205,13 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>Name</Table.Th>
-                        <Table.Th>Original Name</Table.Th>
-                        <Table.Th>Type</Table.Th>
-                        <Table.Th>Size</Table.Th>
+                        <Table.Th>{t('Name')}</Table.Th>
+                        <Table.Th>{t('Original Name')}</Table.Th>
+                        <Table.Th>{t('Type')}</Table.Th>
+                        <Table.Th>{t('Size')}</Table.Th>
                         <Table.Th>Owner</Table.Th>
-                        <Table.Th>Views</Table.Th>
-                        <Table.Th>Created At</Table.Th>
+                        <Table.Th>{t('Views')}</Table.Th>
+                        <Table.Th>{t('Created At')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{fileRows}</Table.Tbody>
@@ -218,7 +219,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No files found</b>
+                  <b>{t('No files found')}</b>
                 </Center>
               )}
             </Paper>
@@ -226,7 +227,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
         </Accordion.Item>
 
         <Accordion.Item value='folders'>
-          <Accordion.Control icon={<IconFolders size='1rem' />}>Folders</Accordion.Control>
+          <Accordion.Control icon={<IconFolders size='1rem' />}>{t('Folders')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {Object.keys(export3.folders).length ? (
@@ -234,11 +235,11 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>Name</Table.Th>
+                        <Table.Th>{t('Name')}</Table.Th>
                         <Table.Th>Owner</Table.Th>
-                        <Table.Th>Public</Table.Th>
-                        <Table.Th>Created At</Table.Th>
-                        <Table.Th>Files</Table.Th>
+                        <Table.Th>{t('Public')}</Table.Th>
+                        <Table.Th>{t('Created At')}</Table.Th>
+                        <Table.Th>{t('Files')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{folderRows}</Table.Tbody>
@@ -264,9 +265,9 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                       <Table.Tr>
                         <Table.Th>Code</Table.Th>
                         <Table.Th>Owner</Table.Th>
-                        <Table.Th>Destination</Table.Th>
+                        <Table.Th>{t('Destination')}</Table.Th>
                         <Table.Th>Vanity</Table.Th>
-                        <Table.Th>Created At</Table.Th>
+                        <Table.Th>{t('Created At')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{urlRows}</Table.Tbody>
@@ -282,7 +283,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
         </Accordion.Item>
 
         <Accordion.Item value='invites'>
-          <Accordion.Control icon={<IconTags size='1rem' />}>Invites</Accordion.Control>
+          <Accordion.Control icon={<IconTags size='1rem' />}>{t('Invites')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {Object.keys(export3.invites).length ? (
@@ -292,7 +293,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                       <Table.Tr>
                         <Table.Th>Code</Table.Th>
                         <Table.Th>Created By</Table.Th>
-                        <Table.Th>Created At</Table.Th>
+                        <Table.Th>{t('Created At')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{invitesRows.length}</Table.Tbody>

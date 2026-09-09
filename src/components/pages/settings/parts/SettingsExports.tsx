@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { Response } from '@/lib/api/response';
 import { bytes } from '@/lib/bytes';
@@ -77,8 +78,8 @@ export default function SettingsExports() {
                 <Table.Tr>
                   <Table.Th>ID</Table.Th>
                   <Table.Th>Started</Table.Th>
-                  <Table.Th>Files</Table.Th>
-                  <Table.Th>Size</Table.Th>
+                  <Table.Th>{t('Files')}</Table.Th>
+                  <Table.Th>{t('Size')}</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>

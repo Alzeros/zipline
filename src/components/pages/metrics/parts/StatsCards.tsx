@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { bytes } from '@/lib/bytes';
 import { MetricsPoint } from '@/lib/metrics';
 import { Group, Paper, rgba, SimpleGrid, Text } from '@mantine/core';
@@ -84,18 +85,18 @@ export default function StatsCards({ points }: { points: MetricsPoint[] }) {
       }}
       mb='sm'
     >
-      <StatCard title='Files' first={recent.files} last={last.files} Icon={IconFiles} />
-      <StatCard title='URLs' first={recent.urls} last={last.urls} Icon={IconLink} />
+      <StatCard title={t('Files')} first={recent.files} last={last.files} Icon={IconFiles} />
+      <StatCard title={t('URLs')} first={recent.urls} last={last.urls} Icon={IconLink} />
       <StatCard
-        title='Storage Used'
+        title={t('Storage Used')}
         first={recent.storage}
         last={last.storage}
         formatter={bytes}
         Icon={IconDatabase}
       />
-      <StatCard title='Users' first={recent.users} last={last.users} Icon={IconUsers} />
-      <StatCard title='File Views' first={recent.fileViews} last={last.fileViews} Icon={IconEyeFilled} />
-      <StatCard title='URL Views' first={recent.urlViews} last={last.urlViews} Icon={IconEyeFilled} />
+      <StatCard title={t('Users')} first={recent.users} last={last.users} Icon={IconUsers} />
+      <StatCard title={t('File Views')} first={recent.fileViews} last={last.fileViews} Icon={IconEyeFilled} />
+      <StatCard title={t('URL Views')} first={recent.urlViews} last={last.urlViews} Icon={IconEyeFilled} />
     </SimpleGrid>
   );
 }

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import type { Response } from '@/lib/api/response';
 import {
   Anchor,
@@ -198,7 +199,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         </Stack>
 
         <Button type='submit' mt='md' loading={isLoading} leftSection={<IconDeviceFloppy size='1rem' />}>
-          Save
+          {t('Save')}
         </Button>
       </form>
     </>

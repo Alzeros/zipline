@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
 import { useFolders } from '@/lib/client/hooks/useFolders';
 import { useSettingsStore } from '@/lib/client/store/settings';
@@ -40,13 +41,13 @@ const stop = (fn: () => void) => (event: React.MouseEvent) => {
 function openCreateFolderModal(file: File) {
   modals.openConfirmModal({
     modalId: 'file-context-create-folder',
-    title: 'Create folder',
+    title: t('Create folder'),
     centered: true,
     children: (
       <InputBase
         id='file-context-new-folder'
-        label='Folder name'
-        placeholder='My folder'
+        label={t('Folder name')}
+        placeholder={t('My folder')}
         data-autofocus
         onKeyDown={(event) => {
           if (event.key !== 'Enter') return;
@@ -196,7 +197,7 @@ export default function FileContextMenu({
             </Menu.Item>
           )}
           <Menu.Item leftSection={<IconExternalLink size='1rem' />} onClick={stop(run(() => viewFile(file)))}>
-            Open in new tab
+            {t('Open in new tab')}
           </Menu.Item>
 
           <Menu.Divider />
@@ -205,13 +206,13 @@ export default function FileContextMenu({
             leftSection={<IconCopy size='1rem' />}
             onClick={stop(run(() => copyFile(file, clipboard)))}
           >
-            Copy link
+            {t('Copy link')}
           </Menu.Item>
           <Menu.Item
             leftSection={<IconClipboardTypography size='1rem' />}
             onClick={stop(run(() => copyFile(file, clipboard, true)))}
           >
-            Copy raw link
+            {t('Copy raw link')}
           </Menu.Item>
           <Menu.Item leftSection={<IconDownload size='1rem' />} onClick={stop(run(() => downloadFile(file)))}>
             Download
@@ -239,13 +240,13 @@ export default function FileContextMenu({
                   leftSection={<IconFolderMinus size='1rem' color='var(--mantine-color-red-5)' />}
                   onClick={stop(run(() => removeFromFolder(file)))}
                 >
-                  Remove from folder
+                  {t('Remove from folder')}
                 </Menu.Item>
               ) : (
                 <Menu.Sub openDelay={100} closeDelay={200}>
                   <Menu.Sub.Target>
                     <Menu.Sub.Item leftSection={<IconFolderSymlink size='1rem' />}>
-                      Move to folder
+                      {t('Move to folder')}
                     </Menu.Sub.Item>
                   </Menu.Sub.Target>
                   <Menu.Sub.Dropdown>
@@ -258,7 +259,7 @@ export default function FileContextMenu({
                         <Combobox.Target>
                           <InputBase
                             size='xs'
-                            placeholder='Search folders...'
+                            placeholder={t('Search folders...')}
                             value={folderSearch}
                             onChange={(event) => {
                               folderCombobox.openDropdown();
@@ -288,7 +289,7 @@ export default function FileContextMenu({
                             {!filteredFolders.length && !folderSearch.trim() && (
                               <Combobox.Empty px='xs' py='sm'>
                                 <Text size='xs' c='dimmed'>
-                                  No folders yet
+                                  {t('No folders yet')}
                                 </Text>
                               </Combobox.Empty>
                             )}
@@ -308,7 +309,7 @@ export default function FileContextMenu({
                 leftSection={<IconPencil size='1rem' />}
                 onClick={stop(run(() => setEditOpen(true)))}
               >
-                Edit details
+                {t('Edit details')}
               </Menu.Item>
 
               <Menu.Divider />
@@ -318,7 +319,7 @@ export default function FileContextMenu({
                 leftSection={<IconTrashFilled size='1rem' />}
                 onClick={stop(run(() => deleteFile(warnDeletion, file, () => {})))}
               >
-                Delete
+                {t('Delete')}
               </Menu.Item>
             </>
           )}

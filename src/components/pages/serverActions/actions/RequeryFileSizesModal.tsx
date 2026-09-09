@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import { Button, Group, Modal, Stack, Switch } from '@mantine/core';
@@ -32,7 +33,7 @@ export default function RequeryFileSizesModal({ opened, onClose }: { opened: boo
   };
 
   return (
-    <Modal title='Are you sure?' opened={opened} onClose={onClose}>
+    <Modal title={t('Are you sure?')} opened={opened} onClose={onClose}>
       <Stack mb='md'>
         <span>
           This will requery the size of every file stored within the database. Additionally you can use the

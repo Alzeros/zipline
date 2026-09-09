@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import useVersion from '@/lib/client/hooks/useVersion';
 import {
   Anchor,
@@ -69,7 +70,7 @@ type VersionData = NonNullable<ReturnType<typeof useVersion>['version']>;
 export function VersionInfo({ version }: { version: VersionData }) {
   return (
     <>
-      {version.isLatest && <Text>Running the latest version of Zipline.</Text>}
+      {version.isLatest && <Text>{t('Running the latest version of Zipline.')}</Text>}
       {version.isUpstream && (
         <Text>
           You are running an <b>unstable</b> version of Zipline. Upstream versions are not fully tested and
@@ -85,7 +86,7 @@ export function VersionInfo({ version }: { version: VersionData }) {
 
       <Indicator processing position='middle-end' inline offset={-15} color='red' disabled={version.isLatest}>
         <Title order={3} my='sm'>
-          Current Version
+          {t('Current Version')}
         </Title>
       </Indicator>
 
@@ -102,7 +103,7 @@ export function VersionInfo({ version }: { version: VersionData }) {
             href: `https://github.com/diced/zipline/commit/${version.version.sha}`,
           },
           {
-            label: 'Upstream?',
+            label: t('Upstream?'),
             value: version.isUpstream ? 'Yes' : 'No',
             color: version.isUpstream ? 'orange' : 'green',
           },
@@ -112,10 +113,10 @@ export function VersionInfo({ version }: { version: VersionData }) {
       {!version.isLatest && version.isUpstream && version.latest.commit && (
         <>
           <Title order={3} mt='sm'>
-            Latest Commit Available
+            {t('Latest Commit Available')}
           </Title>
           <Text c='dimmed' size='sm' mb='sm'>
-            This is only visible when running an upstream version.
+            {t('This is only visible when running an upstream version.')}
           </Text>
 
           <DataDisplay
@@ -126,7 +127,7 @@ export function VersionInfo({ version }: { version: VersionData }) {
                 href: `https://github.com/diced/zipline/commit/${version.latest.commit.sha}`,
               },
               {
-                label: 'Available to update',
+                label: t('Available to update'),
                 value: version.latest.commit.pull ? 'Yes' : 'No',
                 color: version.latest.commit.pull ? 'green' : 'red',
               },
@@ -163,11 +164,11 @@ export default function VersionBadge() {
 
   return (
     <>
-      <Modal title='Zipline Version' opened={opened} onClose={close} size='lg'>
+      <Modal title={t('Zipline Version')} opened={opened} onClose={close} size='lg'>
         <VersionInfo version={version} />
       </Modal>
 
-      <Tooltip label='Click to view more version information'>
+      <Tooltip label={t('Click to view more version information')}>
         <Badge
           onClick={open}
           style={{ cursor: 'pointer', textTransform: 'unset' }}

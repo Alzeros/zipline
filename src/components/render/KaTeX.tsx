@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
 import 'katex/dist/katex.min.css';
@@ -20,7 +21,7 @@ export default function KaTeX({ tex }: { tex: string }) {
 
   if (error) {
     return (
-      <Alert color='red' title='KaTeX error'>
+      <Alert color='red' title={t('KaTeX error')}>
         {error.toString()}
       </Alert>
     );

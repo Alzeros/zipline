@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { UploadOptionsStore } from '@/lib/client/store/uploadOptions';
 import { ErrorBody } from '@/lib/response';
@@ -112,7 +113,7 @@ export function showUploadModal(
     clipboard.copy(files[i].url);
 
     notifications.show({
-      title: 'Copied URL to clipboard',
+      title: t('Copied URL to clipboard'),
       message: (
         <Anchor component={Link} to={files[i].url} target='_blank'>
           {files[i].url}
@@ -144,12 +145,12 @@ export function showUploadModal(
                 </Anchor>
               </Group>
               <Group justify='right'>
-                <Tooltip label='Open link in a new tab'>
+                <Tooltip label={t('Open link in a new tab')}>
                   <ActionIcon onClick={() => open(i)} variant='filled' color={actionIconColor}>
                     <IconExternalLink size='1rem' />
                   </ActionIcon>
                 </Tooltip>
-                <Tooltip label='Copy link to clipboard'>
+                <Tooltip label={t('Copy link to clipboard')}>
                   <ActionIcon onClick={() => copy(i)} variant='filled' color={actionIconColor}>
                     <IconClipboardCopy size='1rem' />
                   </ActionIcon>
@@ -168,13 +169,13 @@ export function showUploadModal(
         )}
         {showCopyAll && files.length > 1 && (
           <Group justify='right'>
-            <Tooltip label='Copy all links to clipboard (seperated by a new line)'>
+            <Tooltip label={t('Copy all links to clipboard (seperated by a new line)')}>
               <Button
                 onClick={() => {
                   clipboard.copy(files.map((file) => file.url).join('\n'));
                   notifications.show({
-                    title: 'Copied URLs to clipboard',
-                    message: 'Copied all URLs to clipboard seperated by a new line.',
+                    title: t('Copied URLs to clipboard'),
+                    message: t('Copied all URLs to clipboard seperated by a new line.'),
                     color: 'blue',
                     icon: <IconClipboardCopy size='1rem' />,
                   });

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { type loader } from '@/client/pages/dashboard/admin/users/[id]/files';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { useViewStore } from '@/lib/client/store/view';
@@ -29,13 +30,13 @@ export default function ViewUserFiles() {
           </ActionIcon>
         </Tooltip>
 
-        <Tooltip label='Table Options'>
+        <Tooltip label={t('Table Options')}>
           <ActionIcon variant='outline' onClick={() => setModals({ table: !modals.table })}>
             <IconTableOptions size='1rem' />
           </ActionIcon>
         </Tooltip>
 
-        <Tooltip label='Search by ID'>
+        <Tooltip label={t('Search by ID')}>
           <ActionIcon variant='outline' onClick={() => setModals({ idSearch: !modals.idSearch })}>
             <IconGridPatternFilled size='1rem' />
           </ActionIcon>

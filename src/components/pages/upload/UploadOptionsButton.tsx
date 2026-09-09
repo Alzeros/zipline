@@ -91,10 +91,10 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
       { value: '6h', label: '6 hours' },
       { value: '8h', label: '8 hours' },
       { value: '12h', label: '12 hours' },
-      { value: '1d', label: '1 day' },
+      { value: '1d', label: t('1 day') },
       { value: '3d', label: '3 days' },
       { value: '5d', label: '5 days' },
-      { value: '7d', label: '7 days' },
+      { value: '7d', label: t('7 days') },
       { value: '1w', label: '1 week' },
       { value: '1.5w', label: '1.5 weeks' },
       { value: '2w', label: '2 weeks' },
@@ -108,7 +108,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
       { value: '1y', label: '1 year' },
       {
         value: '_',
-        label: 'Need more freedom? Set an exact date and time through the API.',
+        label: t('Need more freedom? Set an exact date and time through the API.'),
         disabled: true,
       },
     ];
@@ -152,7 +152,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
     <>
       <Modal centered opened={opened} onClose={() => setOpen(false)} title={t('Upload Options')}>
         <Text size='sm' c='dimmed'>
-          These options will be applied to all files you upload and are saved in your browser.
+          {t('These options will be applied to all files you upload and are saved in your browser.')}
         </Text>
 
         <Stack gap='xs' my='sm'>

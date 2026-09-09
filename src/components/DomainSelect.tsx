@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useMemo } from 'react';
 import { useConfig } from './ConfigProvider';
 import { Select, TextInput } from '@mantine/core';
@@ -18,7 +19,7 @@ export default function DomainSelect({
   }, [config]);
 
   const selectData = [
-    { value: '', label: 'Default domain' },
+    { value: '', label: t('Default domain') },
     ...domains.map((domain) => ({
       value: domain,
       label: domain,

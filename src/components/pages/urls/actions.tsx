@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { copyLink } from '@/lib/client/copyLink';
 import type { SafeConfig } from '@/lib/config/safe';
@@ -33,14 +34,14 @@ async function handleDeleteUrl(url: Url) {
 
   if (error) {
     notifications.show({
-      title: 'Failed to delete url',
+      title: t('Failed to delete url'),
       message: error.error,
       color: 'red',
       icon: <IconLinkOff size='1rem' />,
     });
   } else {
     notifications.show({
-      title: 'Url deleted',
+      title: t('Url deleted'),
       message: `Url ${data?.code ?? data?.vanity} has been deleted`,
       color: 'green',
       icon: <IconCheck size='1rem' />,

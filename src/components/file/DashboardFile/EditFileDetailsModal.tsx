@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { File } from '@/lib/db/models/file';
 import { fetchApi } from '@/lib/fetchApi';
 import useObjectState from '@/lib/client/hooks/useObjectState';
@@ -61,15 +62,15 @@ export default function EditFileDetailsModal({
 
     if (error) {
       showNotification({
-        title: 'Failed to remove password...',
+        title: t('Failed to remove password...'),
         message: error.error,
         color: 'red',
         icon: <IconPencilOff size='1rem' />,
       });
     } else {
       showNotification({
-        title: 'Password removed!',
-        message: 'The password has been removed from the file.',
+        title: t('Password removed!'),
+        message: t('The password has been removed from the file.'),
         color: 'green',
         icon: <IconPencil size='1rem' />,
       });
@@ -99,15 +100,15 @@ export default function EditFileDetailsModal({
 
     if (error) {
       showNotification({
-        title: 'Failed to save changes...',
+        title: t('Failed to save changes...'),
         message: error.error,
         color: 'red',
         icon: <IconPencilOff size='1rem' />,
       });
     } else {
       showNotification({
-        title: 'Changes saved!',
-        message: 'The changes to the file have been saved.',
+        title: t('Changes saved!'),
+        message: t('The changes to the file have been saved.'),
         color: 'green',
         icon: <IconPencil size='1rem' />,
       });
@@ -123,14 +124,14 @@ export default function EditFileDetailsModal({
     <Modal zIndex={400} title={`Editing "${file.name}"`} onClose={onClose} opened={open}>
       <Stack gap='xs' my='sm'>
         <TextInput
-          label='Name'
-          description='Rename the file.'
+          label={t('Name')}
+          description={t('Rename the file.')}
           value={formData.name}
           onChange={(event) => setFormData('name', event.currentTarget.value.trim())}
         />
 
         <NumberInput
-          label='Max Views'
+          label={t('Max Views')}
           placeholder='Unlimited'
           description='The maximum number of views this file can have before it is deleted. Leave blank to allow as many views as you want.'
           min={0}
@@ -140,7 +141,7 @@ export default function EditFileDetailsModal({
         />
 
         <TextInput
-          label='Original Name'
+          label={t('Original Name')}
           description='Add an original name. When downloading this file, instead of using the generated file name (if chosen), it will download with this "original name" instead.'
           value={formData.originalName ?? ''}
           onChange={(event) =>
@@ -152,11 +153,11 @@ export default function EditFileDetailsModal({
         />
 
         <TextInput
-          label='Type'
+          label={t('Type')}
           description={
             <>
-              Change a file&apos;s mimetype. <b>DO NOT CHANGE THIS VALUE</b> unless you know what you are
-              doing, this can mess with how Zipline renders specific file types.
+              Change a file&apos;s mimetype. <b>{t('DO NOT CHANGE THIS VALUE')}</b> unless you know what you
+              are doing, this can mess with how Zipline renders specific file types.
             </>
           }
           value={formData.type ?? ''}
@@ -178,12 +179,12 @@ export default function EditFileDetailsModal({
             leftSection={<IconTrashFilled size='1rem' />}
             onClick={handleRemovePassword}
           >
-            Remove Password
+            {t('Remove Password')}
           </Button>
         ) : (
           <PasswordInput
-            label='Password'
-            description='Set a password for this file. Leave blank to disable password protection.'
+            label={t('Password')}
+            description={t('Set a password for this file. Leave blank to disable password protection.')}
             value={formData.password ?? ''}
             autoComplete='off'
             onChange={(event) =>
@@ -199,7 +200,7 @@ export default function EditFileDetailsModal({
         <Divider />
 
         <Button onClick={handleSave} leftSection={<IconPencil size='1rem' />}>
-          Save changes
+          {t('Save changes')}
         </Button>
       </Stack>
     </Modal>

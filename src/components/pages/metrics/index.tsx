@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Box, Button, Group, Modal, Paper, SimpleGrid, Text, Title, Tooltip } from '@mantine/core';
 import { DatePicker } from '@mantine/dates';
 import { IconCalendarSearch, IconCalendarTime } from '@tabler/icons-react';
@@ -41,7 +42,7 @@ export default function DashboardMetrics() {
 
   return (
     <>
-      <Modal title='Change range' opened={open} onClose={() => setOpen(false)} size='auto'>
+      <Modal title={t('Change range')} opened={open} onClose={() => setOpen(false)} size='auto'>
         <Paper withBorder style={{ minHeight: 300 }}>
           <DatePicker
             type='range'
@@ -52,33 +53,33 @@ export default function DashboardMetrics() {
             presets={[
               {
                 value: [today.subtract(2, 'day').format('YYYY-MM-DD'), today.format('YYYY-MM-DD')],
-                label: 'Last two days',
+                label: t('Last two days'),
               },
               {
                 value: [today.subtract(7, 'day').format('YYYY-MM-DD'), today.format('YYYY-MM-DD')],
-                label: 'Last 7 days',
+                label: t('Last 7 days'),
               },
               {
                 value: [today.startOf('month').format('YYYY-MM-DD'), today.format('YYYY-MM-DD')],
-                label: 'This month',
+                label: t('This month'),
               },
               {
                 value: [
                   today.subtract(1, 'month').startOf('month').format('YYYY-MM-DD'),
                   today.subtract(1, 'month').endOf('month').format('YYYY-MM-DD'),
                 ],
-                label: 'Last month',
+                label: t('Last month'),
               },
               {
                 value: [today.startOf('year').format('YYYY-MM-DD'), today.format('YYYY-MM-DD')],
-                label: 'This year',
+                label: t('This year'),
               },
               {
                 value: [
                   today.subtract(1, 'year').startOf('year').format('YYYY-MM-DD'),
                   today.subtract(1, 'year').endOf('year').format('YYYY-MM-DD'),
                 ],
-                label: 'Last year',
+                label: t('Last year'),
               },
             ]}
           />
@@ -86,20 +87,20 @@ export default function DashboardMetrics() {
 
         <Group mt='lg'>
           <Button fullWidth onClick={() => setOpen(false)}>
-            Close
+            {t('Close')}
           </Button>
         </Group>
       </Modal>
 
       <Group>
-        <Title>Metrics</Title>
+        <Title>{t('Metrics')}</Title>
         <Button
           size='compact-sm'
           variant='outline'
           leftSection={<IconCalendarSearch size='1rem' />}
           onClick={() => setOpen(true)}
         >
-          Change Date Range
+          {t('Change Date Range')}
         </Button>
         {!allTime ? (
           <Text size='sm' c='dimmed'>
@@ -108,7 +109,7 @@ export default function DashboardMetrics() {
           </Text>
         ) : (
           <Text size='sm' c='dimmed'>
-            All Time
+            {t('All Time')}
           </Text>
         )}
         <Tooltip
@@ -121,7 +122,7 @@ export default function DashboardMetrics() {
             onClick={() => showAllTime()}
             disabled={allTime}
           >
-            Show All Time
+            {t('Show All Time')}
           </Button>
         </Tooltip>
       </Group>

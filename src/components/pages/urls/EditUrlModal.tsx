@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Url } from '@/lib/db/models/url';
 import { fetchApi } from '@/lib/fetchApi';
 import useObjectState from '@/lib/client/hooks/useObjectState';
@@ -43,15 +44,15 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
 
     if (error) {
       showNotification({
-        title: 'Failed to remove password...',
+        title: t('Failed to remove password...'),
         message: error.error,
         color: 'red',
         icon: <IconPencilOff size='1rem' />,
       });
     } else {
       showNotification({
-        title: 'Password removed!',
-        message: 'The password has been removed from the URL.',
+        title: t('Password removed!'),
+        message: t('The password has been removed from the URL.'),
         color: 'green',
         icon: <IconPencil size='1rem' />,
       });
@@ -88,15 +89,15 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
 
     if (error) {
       showNotification({
-        title: 'Failed to save changes...',
+        title: t('Failed to save changes...'),
         message: error.error,
         color: 'red',
         icon: <IconPencilOff size='1rem' />,
       });
     } else {
       showNotification({
-        title: 'Changes saved!',
-        message: 'The changes have been saved successfully.',
+        title: t('Changes saved!'),
+        message: t('The changes have been saved successfully.'),
         color: 'green',
         icon: <IconPencil size='1rem' />,
       });
@@ -111,7 +112,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
     <Modal title={`Editing "${url?.vanity ?? url?.code ?? 'unknown'}"`} opened={!!url} onClose={onClose}>
       <Stack gap='xs' my='sm'>
         <NumberInput
-          label='Max Views'
+          label={t('Max Views')}
           placeholder='Unlimited'
           description='The maximum number of clicks this URL can have before it is automatically deleted. Leave blank to allow as many views as you want.'
           value={urlData.maxViews || ''}
@@ -123,7 +124,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
         <TextInput
           label='Vanity'
           placeholder='Optional'
-          description='A custom alias for your URL. Leave blank to use the randomly generated code.'
+          description={t('A custom alias for your URL. Leave blank to use the randomly generated code.')}
           value={urlData.vanity || ''}
           onChange={(event) =>
             setUrlData(
@@ -134,7 +135,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
         />
 
         <TextInput
-          label='Destination'
+          label={t('Destination')}
           placeholder='https://example.com'
           value={urlData.destination || ''}
           onChange={(event) =>
@@ -147,7 +148,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
 
         <Switch
           label='Enabled'
-          description='Prevent or allow this URL from being visited.'
+          description={t('Prevent or allow this URL from being visited.')}
           checked={urlData.enabled}
           onChange={(event) => setUrlData('enabled', event.currentTarget.checked)}
         />
@@ -161,12 +162,12 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
             leftSection={<IconTrashFilled size='1rem' />}
             onClick={handleRemovePassword}
           >
-            Remove password
+            {t('Remove password')}
           </Button>
         ) : (
           <PasswordInput
-            label='Password'
-            description='Set a password for this URL. Leave blank to disable password protection.'
+            label={t('Password')}
+            description={t('Set a password for this URL. Leave blank to disable password protection.')}
             value={urlData.password ?? ''}
             autoComplete='off'
             onChange={(event) =>
@@ -182,7 +183,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
         <Divider />
 
         <Button onClick={handleSave} leftSection={<IconPencil size='1rem' />}>
-          Save changes
+          {t('Save changes')}
         </Button>
       </Stack>
     </Modal>

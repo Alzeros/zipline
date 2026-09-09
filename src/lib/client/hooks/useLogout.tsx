@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useUserStore } from '@/lib/client/store/user';
 import { showNotification } from '@mantine/notifications';
 import { IconLogout } from '@tabler/icons-react';
@@ -10,7 +11,7 @@ export function useLogout() {
 
   const logout = async () => {
     showNotification({
-      message: 'Logging out...',
+      message: t('Logging out...'),
       icon: <IconLogout size='1rem' />,
       autoClose: 700,
     });

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import type { Response } from '@/lib/api/response';
 import { Button, JsonInput, LoadingOverlay, Stack, Switch, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
@@ -135,7 +136,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         />
 
         <TextInput
-          label='Terms of Service'
+          label={t('Terms of Service')}
           description='Path to a Markdown (.md) file to use for the terms of service.'
           placeholder='/zipline/TOS.md'
           {...form.getInputProps('websiteTos')}
@@ -163,7 +164,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         />
       </Stack>
       <Button type='submit' mt='md' loading={isLoading} leftSection={<IconDeviceFloppy size='1rem' />}>
-        Save
+        {t('Save')}
       </Button>
     </form>
   );

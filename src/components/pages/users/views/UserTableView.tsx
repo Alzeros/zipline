@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { useUserStore } from '@/lib/client/store/user';
 import { LimitedUser } from '@/lib/db/models/user';
@@ -64,7 +65,7 @@ export default function UserTableView() {
             },
             {
               accessor: 'createdAt',
-              title: 'Created',
+              title: t('Created'),
               sortable: true,
               render: (user) => <RelativeDate date={user.createdAt} />,
             },

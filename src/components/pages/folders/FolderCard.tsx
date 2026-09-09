@@ -138,20 +138,20 @@ export default function FolderCard({
         <Card.Section inheritPadding py='xs' onClick={() => onNavigate?.(folder.id)}>
           <Stack gap={1}>
             <Text size='xs' c='dimmed'>
-              <b>Created:</b> <RelativeDate date={folder.createdAt} />
+              <b>{t('Created:')}</b> <RelativeDate date={folder.createdAt} />
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Updated:</b> <RelativeDate date={folder.updatedAt} />
+              <b>{t('Updated:')}</b> <RelativeDate date={folder.updatedAt} />
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Public:</b> {folder.public ? 'Yes' : 'No'}
+              <b>{t('Public:')}</b> {folder.public ? 'Yes' : 'No'}
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Files:</b> {filesCount}
+              <b>{t('Files:')}</b> {filesCount}
             </Text>
             {childrenCount > 0 && (
               <Text size='xs' c='dimmed'>
-                <b>Subfolders:</b> {childrenCount}
+                <b>{t('Subfolders:')}</b> {childrenCount}
               </Text>
             )}
           </Stack>
