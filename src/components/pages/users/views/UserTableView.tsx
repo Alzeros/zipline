@@ -45,6 +45,7 @@ export default function UserTableView() {
 
       <Box my='sm'>
         <DataTable
+          noRecordsText={t('No records')}
           withTableBorder
           minHeight={200}
           records={sorted ?? []}

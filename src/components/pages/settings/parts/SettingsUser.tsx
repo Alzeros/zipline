@@ -140,7 +140,7 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
           onClick={() => setTokenShown(true)}
           leftSection={<IconKey size='1rem' />}
         >
-          <ScrollArea scrollbarSize={5}>{tokenShown ? token : '[click to reveal]'}</ScrollArea>
+          <ScrollArea scrollbarSize={5}>{tokenShown ? token : t('[click to reveal]')}</ScrollArea>
         </TextInput>
 
         <TextInput

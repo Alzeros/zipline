@@ -58,114 +58,114 @@ const InvalidSettingsSection = () => <Text>{t('Invalid settings section')}</Text
 const SETTINGS_COMPONENTS = {
   core: {
     component: Core,
-    name: t('Core'),
+    name: 'Core',
     key: 'core',
-    desc: t('General server settings'),
+    desc: 'General server settings',
     Icon: IconDatabase,
   },
   chunks: {
     component: Chunks,
-    name: t('Chunks'),
+    name: 'Chunks',
     key: 'chunks',
-    desc: t('Partial uploading'),
+    desc: 'Partial uploading',
     Icon: IconLayoutGrid,
   },
   discord: {
     component: Discord,
-    name: t('Discord'),
+    name: 'Discord',
     key: 'discord',
-    desc: t('Discord webhook integration'),
+    desc: 'Discord webhook integration',
     Icon: IconBrandDiscordFilled,
   },
   domains: {
     component: Domains,
-    name: t('Domains'),
+    name: 'Domains',
     key: 'domains',
-    desc: t('Add custom domains'),
+    desc: 'Add custom domains',
     Icon: IconWorldPlus,
   },
   features: {
     component: Features,
-    name: t('Features'),
+    name: 'Features',
     key: 'features',
-    desc: t('Configure various features'),
+    desc: 'Configure various features',
     Icon: IconAdjustmentsHorizontalFilled,
   },
   files: {
     component: Files,
-    name: t('Files'),
+    name: 'Files',
     key: 'files',
-    desc: t('File uploading settings'),
+    desc: 'File uploading settings',
     Icon: IconFiles,
   },
   httpWebhook: {
     component: HttpWebhook,
-    name: t('HTTP Webhook'),
+    name: 'HTTP Webhook',
     key: 'httpWebhook',
-    desc: t('Send POST requests to a URL on certain events'),
+    desc: 'Send POST requests to a URL on certain events',
     Icon: IconHttpPost,
   },
   invites: {
     component: Invites,
-    name: t('Invites'),
+    name: 'Invites',
     key: 'invites',
-    desc: t('Invite settings'),
+    desc: 'Invite settings',
     Icon: IconTagsFilled,
   },
   mfa: {
     component: Mfa,
-    name: t('Multi-Factor Authentication'),
+    name: 'Multi-Factor Authentication',
     key: 'mfa',
-    desc: t('Enable or disable passkeys and TOTP authentication'),
+    desc: 'Enable or disable passkeys and TOTP authentication',
     Icon: IconAuth2fa,
   },
   oauth: {
     component: Oauth,
-    name: t('OAuth'),
+    name: 'OAuth',
     key: 'oauth',
-    desc: t('Configure OAuth providers for authentication'),
+    desc: 'Configure OAuth providers for authentication',
     Icon: IconKeyFilled,
   },
   pwa: {
     component: PWA,
-    name: t('PWA'),
+    name: 'PWA',
     key: 'pwa',
-    desc: t('Progressive Web App settings'),
+    desc: 'Progressive Web App settings',
     Icon: IconAppWindowFilled,
   },
   ratelimit: {
     component: Ratelimit,
-    name: t('Rate Limit'),
+    name: 'Rate Limit',
     key: 'ratelimit',
-    desc: t('Configure API rate limits'),
+    desc: 'Configure API rate limits',
     Icon: IconClockPause,
   },
   tasks: {
     component: Tasks,
-    name: t('Tasks'),
+    name: 'Tasks',
     key: 'tasks',
-    desc: t('Background task intervals'),
+    desc: 'Background task intervals',
     Icon: IconSubtask,
   },
   urls: {
     component: Urls,
-    name: t('URL Shortening'),
+    name: 'URL Shortening',
     key: 'urls',
-    desc: t('Configure URL shortening settings'),
+    desc: 'Configure URL shortening settings',
     Icon: IconLink,
   },
   website: {
     component: Website,
-    name: t('Website'),
+    name: 'Website',
     key: 'website',
-    desc: t('Website related settings like title and description'),
+    desc: 'Website related settings like title and description',
     Icon: IconClickFilled,
   },
 
   // placeholder
   settings: {
     component: null,
-    name: t('Server Settings'),
+    name: 'Server Settings',
     key: '',
     desc: '',
     Icon: null,
@@ -268,7 +268,7 @@ export default function DashboardServerSettings() {
   const setting = SETTINGS_COMPONENTS[part as keyof typeof SETTINGS_COMPONENTS];
   const SettingsComponent = setting.component ?? InvalidSettingsSection;
 
-  useTitle(setting.name);
+  useTitle(t(setting.name));
 
   return (
     <>
@@ -278,7 +278,7 @@ export default function DashboardServerSettings() {
             <IconArrowBack size='1rem' />
           </ActionIcon>
         )}
-        <Title order={1}>{setting.name}</Title>
+        <Title order={1}>{t(setting.name)}</Title>
       </Group>
 
       {(data?.tampered?.length ?? 0) > 0 && (

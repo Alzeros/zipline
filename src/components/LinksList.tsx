@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { ActionIcon, Anchor, Group, Paper, Stack, Text, Title, UnstyledButton } from '@mantine/core';
 import { TablerIcon } from '@tabler/icons-react';
 import { MouseEventHandler } from 'react';
@@ -37,8 +38,10 @@ export function LinksList({ links }: { links: LinksListItem[] }) {
               </ActionIcon>
 
               <div>
-                <Title order={4}>{label}</Title>
-                <Text c='dimmed'>{description}</Text>
+                {/* label/description 由调用方以英文原文传入，作为翻译 key 在此处翻译，
+                    避免在模块级常量中调用 t()（那时 i18next 尚未初始化） */}
+                <Title order={4}>{t(label)}</Title>
+                <Text c='dimmed'>{t(description)}</Text>
               </div>
             </Group>
           </Paper>
