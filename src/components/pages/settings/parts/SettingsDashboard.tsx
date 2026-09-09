@@ -43,7 +43,9 @@ export default function SettingsDashboard() {
         <Stack>
           <Switch
             label={t('Disable Media Preview')}
-            description='Disable previews of files in the dashboard. This may help to save data and speed up the dashboard if you have a lot of media files, but it will also disable the file viewer and show a generic file icon instead of a preview for supported files.'
+            description={t(
+              'Disable previews of files in the dashboard. This may help to save data and speed up the dashboard if you have a lot of media files, but it will also disable the file viewer and show a generic file icon instead of a preview for supported files.',
+            )}
             checked={settings.disableMediaPreview}
             onChange={(event) => update('disableMediaPreview', event.currentTarget.checked)}
           />
