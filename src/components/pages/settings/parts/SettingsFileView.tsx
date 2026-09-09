@@ -129,7 +129,9 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
           <SimpleGrid cols={{ base: 1, md: 2 }} spacing='sm' mb='xs'>
             <Switch
               label={t('Disable text files')}
-              description='Disable viewing text files through view-routes. This has no effect on other file types and will work even if view-routes are disabled.'
+              description={t(
+                'Disable viewing text files through view-routes. This has no effect on other file types and will work even if view-routes are disabled.',
+              )}
               {...form.getInputProps('disableTextFiles', { type: 'checkbox' })}
             />
 
@@ -148,7 +150,7 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
 
             <Switch
               label={t('Show tags')}
-              description="Show the file's tags in the view-route"
+              description={t("Show the file's tags in the view-route")}
               disabled={!form.values.enabled}
               {...form.getInputProps('showTags', { type: 'checkbox' })}
             />
@@ -163,7 +165,9 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
 
           <Textarea
             label={t('View Content')}
-            description='Change the content within view-routes. Most HTML is valid, while the use of JavaScript is unavailable.'
+            description={t(
+              'Change the content within view-routes. Most HTML is valid, while the use of JavaScript is unavailable.',
+            )}
             disabled={!form.values.enabled}
             mb='xs'
             minRows={5}
@@ -193,7 +197,9 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
 
           <Switch
             label={t('Enable Embed')}
-            description='Enable the following embed properties. These properties take advantage of OpenGraph tags. View routes will need to be enabled for this to work.'
+            description={t(
+              'Enable the following embed properties. These properties take advantage of OpenGraph tags. View routes will need to be enabled for this to work.',
+            )}
             disabled={!form.values.enabled}
             my='xs'
             {...form.getInputProps('embed', { type: 'checkbox' })}
@@ -207,7 +213,9 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
 
           <Switch
             label={t('Media-only link preview')}
-            description='When embeds are off, still add OpenGraph image/video tags so Discord and similar apps unfurl the media only (no custom title, description, or site name). The URL you paste stays in the message as plain text.'
+            description={t(
+              'When embeds are off, still add OpenGraph image/video tags so Discord and similar apps unfurl the media only (no custom title, description, or site name). The URL you paste stays in the message as plain text.',
+            )}
             disabled={!form.values.enabled || form.values.embed}
             my='xs'
             {...form.getInputProps('embedMediaOnly', { type: 'checkbox' })}

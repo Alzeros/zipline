@@ -92,7 +92,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
         <Switch
           label={t('Delete on Max Views')}
-          description='Automatically deletes files/urls after they reach the maximum view count. Requires a server restart.'
+          description={t(
+            'Automatically deletes files/urls after they reach the maximum view count. Requires a server restart.',
+          )}
           {...form.getInputProps('featuresDeleteOnMaxViews', { type: 'checkbox' })}
         />
 
@@ -124,14 +126,18 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
           />
           <Switch
             label={t('Instantaneous Thumbnails')}
-            description='Generates thumbnails immediately after a file is uploaded, instead of waiting for the task to run.'
+            description={t(
+              'Generates thumbnails immediately after a file is uploaded, instead of waiting for the task to run.',
+            )}
             {...form.getInputProps('featuresThumbnailsInstantaneous', { type: 'checkbox' })}
           />
         </SimpleGrid>
 
         <NumberInput
           label={t('Thumbnails Number Threads')}
-          description='Number of threads to use for thumbnail generation, usually the number of CPU threads. Requires a server restart.'
+          description={t(
+            'Number of threads to use for thumbnail generation, usually the number of CPU threads. Requires a server restart.',
+          )}
           placeholder={t('Enter a number...')}
           min={1}
           max={16}

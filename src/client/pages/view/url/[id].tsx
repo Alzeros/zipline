@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useSsrData } from '@/components/ZiplineSSRProvider';
 import { Anchor, Button, Modal, PasswordInput } from '@mantine/core';
 import { useEffect, useState } from 'react';
@@ -40,7 +41,7 @@ export default function ViewUrlId() {
         }}
       >
         <PasswordInput
-          description='This link is password protected, enter password to view it'
+          description={t('This link is password protected, enter password to view it')}
           required
           mb='sm'
           value={passwordValue}

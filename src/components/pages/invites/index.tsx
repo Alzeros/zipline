@@ -66,7 +66,9 @@ export default function DashboardInvites() {
           <Stack gap='sm'>
             <Select
               label={t('Expires at')}
-              description='Select an expiration for this invite, or choose "never" if you want the invite to never expire.'
+              description={t(
+                'Select an expiration for this invite, or choose "never" if you want the invite to never expire.',
+              )}
               placeholder={t('Select an expiration...')}
               data={[
                 { value: 'never', label: t('Never') },

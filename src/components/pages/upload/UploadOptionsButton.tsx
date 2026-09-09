@@ -224,7 +224,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
                 ) : null}
               </>
             }
-            description='The file name format to use when upload this file, the "File name" field will override this value.'
+            description={t(
+              'The file name format to use when upload this file, the "File name" field will override this value.',
+            )}
             leftSection={<IconWriting size='1rem' />}
             value={options.format}
             onChange={(value) => setOption('format', (value as any) || 'default')}
@@ -287,7 +289,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
                 ) : null}
               </>
             }
-            description='The compression level to use on images (only). The above format will be used to compress images. Leave blank to disable compression.'
+            description={t(
+              'The compression level to use on images (only). The above format will be used to compress images. Leave blank to disable compression.',
+            )}
             leftSection={<IconPercentage size='1rem' />}
             max={100}
             min={0}
@@ -306,7 +310,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
                 ) : null}
               </>
             }
-            description='The maximum number of views the files can have before they are deleted. Leave blank to allow as many views as you want.'
+            description={t(
+              'The maximum number of views the files can have before they are deleted. Leave blank to allow as many views as you want.',
+            )}
             leftSection={<IconEyeFilled size='1rem' />}
             min={0}
             value={options.maxViews || ''}
@@ -332,7 +338,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
             <Combobox.Target>
               <InputBase
                 label={<>{t('Add to a Folder')}</>}
-                description='Add this file to a folder. Use the "/ (Root)" option to not add the file to a folder. This value is not saved to your browser, and is cleared after uploading.'
+                description={t(
+                  'Add this file to a folder. Use the "/ (Root)" option to not add the file to a folder. This value is not saved to your browser, and is cleared after uploading.',
+                )}
                 rightSection={<Combobox.Chevron />}
                 leftSection={<IconFolderPlus size='1rem' />}
                 value={folderSearch}
@@ -398,7 +406,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
 
           <TextInput
             label={t('Override File Name')}
-            description='Override the file name with this value. Leave blank to use the "Name Format" option. This value is ignored if you are uploading more than one file. This value is not saved to your browser, and is cleared after uploading.'
+            description={t(
+              'Override the file name with this value. Leave blank to use the "Name Format" option. This value is ignored if you are uploading more than one file. This value is not saved to your browser, and is cleared after uploading.',
+            )}
             leftSection={<IconFileInfo size='1rem' />}
             value={ephemeral.filename ?? ''}
             onChange={(event) =>
@@ -412,7 +422,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
 
           <PasswordInput
             label={t('Password')}
-            description='Set a password for these files. Leave blank to disable password protection. This value is not saved to your browser, and is cleared after uploading.'
+            description={t(
+              'Set a password for these files. Leave blank to disable password protection. This value is not saved to your browser, and is cleared after uploading.',
+            )}
             leftSection={<IconKey size='1rem' />}
             value={ephemeral.password ?? ''}
             autoComplete='off'
@@ -458,7 +470,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
                   ) : null}
                 </>
               }
-              description='Remove the file extension from the returned URL. The file can still be accessed with its extension. THis option will only work if the server is configured to allow extensionless URLs.'
+              description={t(
+                'Remove the file extension from the returned URL. The file can still be accessed with its extension. THis option will only work if the server is configured to allow extensionless URLs.',
+              )}
               checked={options.extensionless ?? false}
               onChange={(event) => setOption('extensionless', event.currentTarget.checked ?? false)}
               disabled={!config.files.extensionlessUrls}

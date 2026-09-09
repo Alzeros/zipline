@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import DashboardFileType from '@/components/file/DashboardFileType';
 import TagPill from '@/components/pages/files/tags/TagPill';
 import { useSsrData } from '@/components/ZiplineSSRProvider';
@@ -71,7 +72,7 @@ export default function ViewFileId() {
         }}
       >
         <PasswordInput
-          description='This file is password protected, enter password to view it'
+          description={t('This file is password protected, enter password to view it')}
           required
           mb='sm'
           value={passwordValue}
@@ -201,7 +202,7 @@ export default function ViewFileId() {
                   <IconExternalLink size='1rem' />
                 </ActionIcon>
               </Tooltip>
-              <Tooltip label='Download file'>
+              <Tooltip label={t('Download file')}>
                 <ActionIcon
                   size='md'
                   variant='outline'

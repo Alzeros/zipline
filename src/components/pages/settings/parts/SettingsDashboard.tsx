@@ -59,13 +59,17 @@ export default function SettingsDashboard() {
           />
           <Switch
             label={t('Warn on deletion')}
-            description='Show a warning when deleting stuff. When this is disabled, files, urls, etc will be deleted with no prior warning! Folders, users, and bulk-transactions are exempt from this rule and will always warn you before deleting anything.'
+            description={t(
+              'Show a warning when deleting stuff. When this is disabled, files, urls, etc will be deleted with no prior warning! Folders, users, and bulk-transactions are exempt from this rule and will always warn you before deleting anything.',
+            )}
             checked={settings.warnDeletion}
             onChange={(event) => update('warnDeletion', event.currentTarget.checked)}
           />
           <Switch
             label={t('File navigation buttons')}
-            description='Show previous/next on the right and left of the file viewer to easily navigate between files.'
+            description={t(
+              'Show previous/next on the right and left of the file viewer to easily navigate between files.',
+            )}
             checked={settings.fileNavButtons}
             onChange={(event) => update('fileNavButtons', event.currentTarget.checked)}
           />
@@ -104,14 +108,18 @@ export default function SettingsDashboard() {
 
         <DomainSelect
           label={t('Default Domain')}
-          description='Set the default domain used for copied links anywhere in the dashboard. Leave blank or select "Default domain" to use the current domain that serves the dashboard.'
+          description={t(
+            'Set the default domain used for copied links anywhere in the dashboard. Leave blank or select "Default domain" to use the current domain that serves the dashboard.',
+          )}
           value={settings.domain}
           onChange={(value) => update('domain', (value as string) ?? '')}
         />
 
         <Select
           label='Theme'
-          description='The theme to use for the dashboard. This is only a visual change on your browser and does not change the theme for other users.'
+          description={t(
+            'The theme to use for the dashboard. This is only a visual change on your browser and does not change the theme for other users.',
+          )}
           data={[
             { value: 'system', label: 'System' },
             ...sortedThemes.map((theme) => ({ value: theme.id, label: theme.name })),

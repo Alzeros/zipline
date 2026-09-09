@@ -99,7 +99,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
         <JsonInput
           label={t('External Links')}
-          description='The external links to show in the footer. This must be valid JSON in the format of an array of objects with "name" and "url" properties. For example: [{"name": "GitHub", "url": "https://github.com/diced/zipline"}]'
+          description={t(
+            'The external links to show in the footer. This must be valid JSON in the format of an array of objects with "name" and "url" properties. For example: [{"name": "GitHub", "url": "https://github.com/diced/zipline"}]',
+          )}
           formatOnBlur
           minRows={1}
           maxRows={7}

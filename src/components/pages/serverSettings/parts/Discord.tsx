@@ -173,7 +173,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             <TextInput
               mt='md'
               label={t('Webhook URL')}
-              description='The Discord webhook URL to send notifications to. If this is left blank, the main webhook url will be used'
+              description={t(
+                'The Discord webhook URL to send notifications to. If this is left blank, the main webhook url will be used',
+              )}
               placeholder='https://discord.com/api/webhooks/...'
               {...formOnUpload.getInputProps('discordOnUploadWebhookUrl')}
             />
@@ -181,7 +183,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>
               <TextInput
                 label={t('Username')}
-                description='The username to send notifications as. If this is left blank, the main username will be used'
+                description={t(
+                  'The username to send notifications as. If this is left blank, the main username will be used',
+                )}
                 {...formOnUpload.getInputProps('discordOnUploadUsername')}
               />
 
@@ -198,7 +202,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             <Textarea
               mt='md'
               label='Content'
-              description='The content of the notification. This can be blank, but at least one of the content or embed fields must be filled out'
+              description={t(
+                'The content of the notification. This can be blank, but at least one of the content or embed fields must be filled out',
+              )}
               minRows={1}
               maxRows={7}
               {...formOnUpload.getInputProps('discordOnUploadContent')}
@@ -242,7 +248,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
                   <Switch
                     label='Thumbnail'
-                    description="Show the thumbnail (it will show the file if it's an image) in the embed"
+                    description={t(
+                      "Show the thumbnail (it will show the file if it's an image) in the embed",
+                    )}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedThumbnail', { type: 'checkbox' })}
                   />
 
@@ -280,7 +288,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             <TextInput
               mt='md'
               label={t('Webhook URL')}
-              description='The Discord webhook URL to send notifications to. If this is left blank, the main webhook url will be used'
+              description={t(
+                'The Discord webhook URL to send notifications to. If this is left blank, the main webhook url will be used',
+              )}
               placeholder='https://discord.com/api/webhooks/...'
               {...formOnShorten.getInputProps('discordOnShortenWebhookUrl')}
             />
@@ -288,7 +298,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>
               <TextInput
                 label={t('Username')}
-                description='The username to send notifications as. If this is left blank, the main username will be used'
+                description={t(
+                  'The username to send notifications as. If this is left blank, the main username will be used',
+                )}
                 {...formOnShorten.getInputProps('discordOnShortenUsername')}
               />
 
@@ -305,7 +317,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             <Textarea
               mt='md'
               label='Content'
-              description='The content of the notification. This can be blank, but at least one of the content or embed fields must be filled out'
+              description={t(
+                'The content of the notification. This can be blank, but at least one of the content or embed fields must be filled out',
+              )}
               minRows={1}
               maxRows={7}
               {...formOnShorten.getInputProps('discordOnShortenContent')}

@@ -85,7 +85,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
           <NumberInput
             label={t('Max Requests')}
-            description='The maximum number of requests allowed within the window. If no window is set, this is the maximum number of requests until it reaches the limit.'
+            description={t(
+              'The maximum number of requests allowed within the window. If no window is set, this is the maximum number of requests until it reaches the limit.',
+            )}
             placeholder='10'
             min={1}
             {...form.getInputProps('ratelimitMax')}

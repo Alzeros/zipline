@@ -29,7 +29,9 @@ export default function DomainSelect({
   if (domains.length === 0)
     return (
       <TextInput
-        description='Override the domain with this value. This will change the domain returned in your uploads. Leave blank to use the default domain.'
+        description={t(
+          'Override the domain with this value. This will change the domain returned in your uploads. Leave blank to use the default domain.',
+        )}
         leftSection={<IconGlobe size='1rem' />}
         placeholder='example.com'
         {...(onChange
@@ -44,7 +46,9 @@ export default function DomainSelect({
   return (
     <Select
       data={selectData}
-      description='Override the domain with this value. This will change the domain returned in your uploads. Leave blank to use the default domain.'
+      description={t(
+        'Override the domain with this value. This will change the domain returned in your uploads. Leave blank to use the default domain.',
+      )}
       leftSection={<IconGlobe size='1rem' />}
       {...(onChange
         ? {

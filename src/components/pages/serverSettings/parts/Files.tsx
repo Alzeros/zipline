@@ -84,14 +84,18 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
         <TextInput
           label={t('Disabled Types')}
-          description='Mimetypes to disable, separated by commas. It is recommended to have the Assume Mimetypes setting enabled if you are disabling mimetypes, as this will also block files with the corresponding extensions.'
+          description={t(
+            'Mimetypes to disable, separated by commas. It is recommended to have the Assume Mimetypes setting enabled if you are disabling mimetypes, as this will also block files with the corresponding extensions.',
+          )}
           placeholder='text/html, application/javascript'
           {...form.getInputProps('filesDisabledTypes')}
         />
 
         <TextInput
           label={t('Default MIME for Disabled Types')}
-          description='The default MIME type to use for disabled types. Leave blank to completely block disabled types.'
+          description={t(
+            'The default MIME type to use for disabled types. Leave blank to completely block disabled types.',
+          )}
           placeholder='application/octet-stream'
           {...form.getInputProps('filesDisabledTypesDefault')}
         />
@@ -104,7 +108,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
         <Switch
           label={t('Extensionless URLs')}
-          description='Allow file links without the extension (e.g. /u/uuid instead of /u/uuid.png). Upload responses still include the extension.'
+          description={t(
+            'Allow file links without the extension (e.g. /u/uuid instead of /u/uuid.png). Upload responses still include the extension.',
+          )}
           {...form.getInputProps('filesExtensionlessUrls', { type: 'checkbox' })}
         />
 

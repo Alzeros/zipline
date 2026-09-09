@@ -133,7 +133,9 @@ export default function EditFileDetailsModal({
         <NumberInput
           label={t('Max Views')}
           placeholder='Unlimited'
-          description='The maximum number of views this file can have before it is deleted. Leave blank to allow as many views as you want.'
+          description={t(
+            'The maximum number of views this file can have before it is deleted. Leave blank to allow as many views as you want.',
+          )}
           min={0}
           value={formData.maxViews || ''}
           onChange={(value) => setFormData('maxViews', value === '' ? null : Number(value))}
@@ -142,7 +144,9 @@ export default function EditFileDetailsModal({
 
         <TextInput
           label={t('Original Name')}
-          description='Add an original name. When downloading this file, instead of using the generated file name (if chosen), it will download with this "original name" instead.'
+          description={t(
+            'Add an original name. When downloading this file, instead of using the generated file name (if chosen), it will download with this "original name" instead.',
+          )}
           value={formData.originalName ?? ''}
           onChange={(event) =>
             setFormData(

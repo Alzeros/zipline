@@ -114,7 +114,9 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
         <NumberInput
           label={t('Max Views')}
           placeholder='Unlimited'
-          description='The maximum number of clicks this URL can have before it is automatically deleted. Leave blank to allow as many views as you want.'
+          description={t(
+            'The maximum number of clicks this URL can have before it is automatically deleted. Leave blank to allow as many views as you want.',
+          )}
           value={urlData.maxViews || ''}
           onChange={(value) => setUrlData('maxViews', value === '' ? null : Number(value))}
           min={0}

@@ -44,7 +44,9 @@ export default function GenerateThumbnailsModal({
 
         <Switch
           label={t('Re-run')}
-          description='Re-run the thumbnail generation for all files regardless of whether they have a thumbnail set.'
+          description={t(
+            'Re-run the thumbnail generation for all files regardless of whether they have a thumbnail set.',
+          )}
           checked={rerun}
           onChange={() => setRerun((val) => !val)}
           color='red'

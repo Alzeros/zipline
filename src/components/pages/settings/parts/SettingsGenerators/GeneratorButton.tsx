@@ -163,7 +163,9 @@ export default function GeneratorButton({
               { value: 'gfycat', label: t('Gfycat-style name') },
             ]}
             label={t('Name format')}
-            description='The file name format to use when uploading files, the "File name" field will override this value.'
+            description={t(
+              'The file name format to use when uploading files, the "File name" field will override this value.',
+            )}
             leftSection={<IconWriting size='1rem' />}
             value={options.format}
             onChange={(value) => setOption({ format: (value || 'default') as GeneratorOptions['format'] })}
@@ -194,7 +196,9 @@ export default function GeneratorButton({
 
           <NumberInput
             label={t('Max Views')}
-            description='The maximum number of views files/urls can have before they are deleted. Leave blank to allow as many views as you want.'
+            description={t(
+              'The maximum number of views files/urls can have before they are deleted. Leave blank to allow as many views as you want.',
+            )}
             leftSection={<IconEyeFilled size='1rem' />}
             min={0}
             value={options.maxViews || ''}
@@ -204,7 +208,9 @@ export default function GeneratorButton({
           <Select
             data={domainOptions}
             label={t('Override Domain')}
-            description='Override the domain with this value. This will change the domain returned in your uploads. Leave blank to use the default domain.'
+            description={t(
+              'Override the domain with this value. This will change the domain returned in your uploads. Leave blank to use the default domain.',
+            )}
             leftSection={<IconGlobe size='1rem' />}
             value={options.overrides_returnDomain ?? ''}
             onChange={(value) => setOption({ overrides_returnDomain: value || null })}
@@ -235,7 +241,9 @@ export default function GeneratorButton({
           {settingsData?.files?.extensionlessUrls && (
             <Switch
               label={t('Extensionless URL')}
-              description='Remove the file extension from the returned URL. The file can still be accessed with its extension. This option will only work if the server is configured to allow extensionless URLs.'
+              description={t(
+                'Remove the file extension from the returned URL. The file can still be accessed with its extension. This option will only work if the server is configured to allow extensionless URLs.',
+              )}
               checked={options.extensionless ?? false}
               onChange={(event) => setOption({ extensionless: event.currentTarget.checked ?? false })}
               disabled={!onlyFile}
@@ -245,7 +253,9 @@ export default function GeneratorButton({
           {name === 'ShareX' && (
             <Switch
               label={t('Xshare Compatibility')}
-              description='If you choose to use the Xshare app on Android, enable this option for compatibility. The generated config will not work with ShareX.'
+              description={t(
+                'If you choose to use the Xshare app on Android, enable this option for compatibility. The generated config will not work with ShareX.',
+              )}
               checked={options.sharex_xshareCompatibility ?? false}
               onChange={(event) => setOption({ sharex_xshareCompatibility: event.currentTarget.checked })}
               disabled={!onlyFile}

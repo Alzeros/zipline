@@ -55,7 +55,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
         <Switch
           label={t('Trust Proxies')}
-          description='Trust the X-Forwarded-* headers set by proxies. Only enable this if you are behind a trusted proxy (nginx, caddy, etc.). Requires a server restart.'
+          description={t(
+            'Trust the X-Forwarded-* headers set by proxies. Only enable this if you are behind a trusted proxy (nginx, caddy, etc.). Requires a server restart.',
+          )}
           {...form.getInputProps('coreTrustProxy', { type: 'checkbox' })}
         />
 
@@ -70,7 +72,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
         <TextInput
           label={t('Temporary Directory')}
-          description='The directory to store temporary files. If the path is invalid, certain functions may break. Requires a server restart.'
+          description={t(
+            'The directory to store temporary files. If the path is invalid, certain functions may break. Requires a server restart.',
+          )}
           placeholder='/tmp/zipline'
           {...form.getInputProps('coreTempDirectory')}
         />

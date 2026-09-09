@@ -85,7 +85,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
           <TextInput
             label={t('Metrics Interval')}
-            description='How often to collect metrics data. Setting this to a lower value will give you more up-to-date metrics, but may increase CPU usage.'
+            description={t(
+              'How often to collect metrics data. Setting this to a lower value will give you more up-to-date metrics, but may increase CPU usage.',
+            )}
             placeholder='30m'
             {...form.getInputProps('tasksMetricsInterval')}
           />
