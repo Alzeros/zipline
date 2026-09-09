@@ -119,7 +119,9 @@ export default function SettingsSessions() {
 
         <Skeleton visible={isLoading} animate mt='sm'>
           <Text c='dimmed'>
-            You are currently logged into {isLoading ? '...' : (data?.other?.length ?? '...')} other devices
+            {t('You are currently logged into {{count}} other devices', {
+              count: isLoading ? ('...' as unknown as number) : (data?.other?.length ?? 0),
+            })}
           </Text>
         </Skeleton>
 
