@@ -1,0 +1,14 @@
+{
+  "Welcome back, {{username}}": "Welcome back, {{username}}",
+  "You have {{count}} files uploaded.": "You have {{count}} files uploaded.",
+  "You have used {{used}} out of {{total}} of storage": "You have used {{used}} out of {{total}} of storage",
+  "You have uploaded {{count}} files out of {{total}} files allowed.": "You have uploaded {{count}} files out of {{total}} files allowed.",
+  "You have created {{count}} links out of {{total}} links allowed.": "You have created {{count}} links out of {{total}} links allowed.",
+  "{{size}} limit per file": "{{size}} limit per file",
+  "Upload {{count}} files ({{size}})": "Upload {{count}} files ({{size}})",
+  "{{from}} - {{to}} / {{total}} files": "{{from}} - {{to}} / {{total}} files",
+  "Folder name has been updated successfully to {{name}}": "Folder name has been updated successfully to {{name}}",
+  "Note: maximum allowed expiration is {{max}}.": "Note: maximum allowed expiration is {{max}}.",
+  "You are currently logged into {{count}} other devices": "You are currently logged into {{count}} other devices",
+  "Search by {{field}}": "Search by {{field}}"
+}
