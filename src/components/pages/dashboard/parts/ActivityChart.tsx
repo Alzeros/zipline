@@ -30,8 +30,8 @@ function formatDayLabel(value: unknown) {
   if (!d) return '';
 
   const today = dayjs().startOf('day');
-  if (d.isSame(today, 'day')) return 'Today';
-  if (d.isSame(today.subtract(1, 'day'), 'day')) return 'Yesterday';
+  if (d.isSame(today, 'day')) return t('Today');
+  if (d.isSame(today.subtract(1, 'day'), 'day')) return t('Yesterday');
   return d.format('MMM D');
 }
 

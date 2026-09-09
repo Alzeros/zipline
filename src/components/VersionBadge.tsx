@@ -99,7 +99,7 @@ export function VersionInfo({ version }: { version: VersionData }) {
             href: `https://github.com/diced/zipline/releases/${version.version.tag}`,
           },
           {
-            label: 'Commit',
+            label: t('Commit'),
             value: version.version.sha!.slice(0, 7)!,
             href: `https://github.com/diced/zipline/commit/${version.version.sha}`,
           },
@@ -123,7 +123,7 @@ export function VersionInfo({ version }: { version: VersionData }) {
           <DataDisplay
             items={[
               {
-                label: 'Commit',
+                label: t('Commit'),
                 value: version.latest.commit.sha!.slice(0, 7)!,
                 href: `https://github.com/diced/zipline/commit/${version.latest.commit.sha}`,
               },

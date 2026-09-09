@@ -918,5 +918,9 @@
   "This file is password protected, enter password to view it": "此文件已加密，请输入密码查看",
   "This link is password protected, enter password to view it": "此链接已加密，请输入密码查看",
   "Search by {{field}}": "按{{field}}搜索",
-  "Max Uses": "最大使用次数"
+  "Max Uses": "最大使用次数",
+  "Today": "今天",
+  "Commit": "提交",
+  "Generate scripts for upload tools. The Flameshot and Shell Script generators are supported on only": "为上传工具生成配置脚本。Flameshot 与 Shell 脚本生成器仅支持",
+  "Yesterday": "昨天"
 }
