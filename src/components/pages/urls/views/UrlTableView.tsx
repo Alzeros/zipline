@@ -17,7 +17,7 @@ import QRCodeModal from '@/components/QRCodeModal';
 
 const NAMES = {
   code: 'Code',
-  vanity: t('Vanity'),
+  vanity: 'Vanity',
   destination: 'Destination',
 };
 
@@ -46,8 +46,8 @@ function SearchFilter({
 
   return (
     <TextInput
-      label={NAMES[field]}
-      placeholder={`Search by ${NAMES[field].toLowerCase()}`}
+      label={t(NAMES[field])}
+      placeholder={t('Search by {{field}}', { field: t(NAMES[field]) })}
       value={searchQuery[field]}
       onChange={onChange}
       variant='filled'

@@ -916,5 +916,6 @@
   "Trust the X-Forwarded-* headers set by proxies. Only enable this if you are behind a trusted proxy (nginx, caddy, etc.). Requires a server restart.": "信任代理设置的 X-Forwarded-* 请求头。仅当处于可信代理（nginx、caddy 等）之后才应启用，需重启服务器。",
   "When embeds are off, still add OpenGraph image/video tags so Discord and similar apps unfurl the media only (no custom title, description, or site name). The URL you paste stays in the message as plain text.": "关闭嵌入卡片时，仍添加 OpenGraph 图片/视频标签，使 Discord 等应用只展开媒体本身（不含自定义标题、描述与站点名）。你粘贴的链接在消息中仍保持为纯文本。",
   "This file is password protected, enter password to view it": "此文件已加密，请输入密码查看",
-  "This link is password protected, enter password to view it": "此链接已加密，请输入密码查看"
+  "This link is password protected, enter password to view it": "此链接已加密，请输入密码查看",
+  "Search by {{field}}": "按{{field}}搜索"
 }
