@@ -51,15 +51,17 @@ export default function UserTableView() {
           columns={[
             {
               accessor: 'avatar',
+              title: t('Avatar'),
               render: (user) => (
                 <Avatar radius='sm' src={user.avatar}>
                   {user.username[0].toUpperCase()}
                 </Avatar>
               ),
             },
-            { accessor: 'username', sortable: true },
+            { accessor: 'username', title: t('Username'), sortable: true },
             {
               accessor: 'role',
+              title: t('Role'),
               sortable: true,
               render: (user) => roleName(user.role),
             },
@@ -77,6 +79,7 @@ export default function UserTableView() {
             },
             {
               accessor: 'actions',
+              title: t('Actions'),
               textAlign: 'right',
               render: (user) => (
                 <Group gap='sm' justify='right' wrap='nowrap'>

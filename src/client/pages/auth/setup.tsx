@@ -184,7 +184,7 @@ export function Component() {
               <Title order={2}>{t('Create your super-admin account')}</Title>
 
               <TextInput
-                label='Username'
+                label={t('Username')}
                 placeholder={t('Enter a username...')}
                 autoComplete='username'
                 {...form.getInputProps('username')}

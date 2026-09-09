@@ -100,7 +100,7 @@ export default function SettingsOAuth() {
 
   return (
     <Paper withBorder p='sm'>
-      <Title order={2}>OAuth</Title>
+      <Title order={2}>{i18nT('OAuth')}</Title>
       <Text size='sm' c='dimmed' mt={3}>
         {i18nT('Manage your connected OAuth providers.')}
       </Text>

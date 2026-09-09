@@ -82,7 +82,7 @@ export default function SettingsSessions() {
 
   return (
     <>
-      <Modal title='Sessions' opened={open} onClose={() => setOpen(false)} size='lg'>
+      <Modal title={t('Sessions')} opened={open} onClose={() => setOpen(false)} size='lg'>
         <Paper withBorder>
           {data?.other?.length ? (
             <Table>
@@ -115,7 +115,7 @@ export default function SettingsSessions() {
       </Modal>
 
       <Paper withBorder p='sm'>
-        <Title order={2}>Sessions</Title>
+        <Title order={2}>{t('Sessions')}</Title>
 
         <Skeleton visible={isLoading} animate mt='sm'>
           <Text c='dimmed'>

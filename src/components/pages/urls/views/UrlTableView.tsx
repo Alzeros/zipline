@@ -208,6 +208,7 @@ export default function UrlTableView() {
             },
             {
               accessor: 'destination',
+              title: t('Destination'),
               sortable: true,
               render: (url) => (
                 <Anchor href={url.destination} target='_blank' rel='noreferrer'>
@@ -226,10 +227,12 @@ export default function UrlTableView() {
             },
             {
               accessor: 'views',
+              title: t('Views'),
               sortable: true,
             },
             {
               accessor: 'maxViews',
+              title: t('Max Views'),
               sortable: true,
               render: (url) => (url.maxViews ? url.maxViews : ''),
             },
@@ -247,6 +250,7 @@ export default function UrlTableView() {
             },
             {
               accessor: 'actions',
+              title: t('Actions'),
               textAlign: 'right',
               render: (url) => (
                 <Group gap='sm' justify='right' wrap='nowrap'>

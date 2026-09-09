@@ -103,7 +103,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
       <Text size='sm' c='dimmed' mb='md'>
         For OAuth to work, the &quot;OAuth Registration&quot; setting must be enabled in the{' '}
         <Anchor component={Link} to='/dashboard/admin/settings/features'>
-          Features
+          {t('Features')}
         </Anchor>{' '}
         section. If you have issues, try restarting Zipline after saving.
       </Text>
@@ -125,7 +125,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
           <Paper withBorder p='sm'>
             <Anchor href='https://discord.com/developers/applications' target='_blank'>
               <Title order={4} mb='sm'>
-                Discord
+                {t('Discord')}
               </Title>
             </Anchor>
 

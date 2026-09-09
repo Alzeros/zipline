@@ -357,8 +357,8 @@ export default function FileTable({
     },
     {
       accessor: 'favorite',
+      title: t('Favorite'),
       sortable: true,
-      title: t('Favorite?'),
       render: (file: File) => (file.favorite ? <Text c='yellow'>{t('Yes')}</Text> : 'No'),
     },
     {
@@ -375,8 +375,8 @@ export default function FileTable({
     },
     {
       accessor: 'anonymous',
+      title: t('Anonymous'),
       sortable: true,
-      title: t('Anonymous?'),
       render: (file: File) => (file.anonymous ? <Text c='green'>{t('Yes')}</Text> : 'No'),
     },
   ];

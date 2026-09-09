@@ -250,9 +250,9 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                       <Table.Tr>
                         <Table.Th></Table.Th>
                         <Table.Th>ID</Table.Th>
-                        <Table.Th>Username</Table.Th>
+                        <Table.Th>{t('Username')}</Table.Th>
                         <Table.Th>{t('Password')}</Table.Th>
-                        <Table.Th>Role</Table.Th>
+                        <Table.Th>{t('Role')}</Table.Th>
                         <Table.Th>{t('OAuth Providers')}</Table.Th>
                         <Table.Th>Quota</Table.Th>
                         <Table.Th>Passkeys</Table.Th>
@@ -279,7 +279,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>User</Table.Th>
+                        <Table.Th>{t('User')}</Table.Th>
                         <Table.Th>Provider</Table.Th>
                         <Table.Th>{t('OAuth Username')}</Table.Th>
                         <Table.Th>{t('OAuth ID')}</Table.Th>
@@ -334,7 +334,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>User</Table.Th>
+                        <Table.Th>{t('User')}</Table.Th>
                         <Table.Th>{t('Name')}</Table.Th>
                         <Table.Th>{t('Files')}</Table.Th>
                       </Table.Tr>

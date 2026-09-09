@@ -40,7 +40,7 @@ export default function SettingsUser() {
   if (!user) {
     return (
       <Paper withBorder p='sm'>
-        <Title order={2}>User</Title>
+        <Title order={2}>{t('User')}</Title>
         <Text c='dimmed' size='sm' mt='sm'>
           Loading…
         </Text>
@@ -116,7 +116,7 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
 
   return (
     <Paper withBorder p='sm'>
-      <Title order={2}>User</Title>
+      <Title order={2}>{t('User')}</Title>
       <Text c='dimmed' size='sm' mb='sm'>
         {user.id}
       </Text>
@@ -136,7 +136,7 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
           }
           // @ts-ignore this works trust
           component='span'
-          label='Token'
+          label={t('Token')}
           onClick={() => setTokenShown(true)}
           leftSection={<IconKey size='1rem' />}
         >
@@ -144,7 +144,7 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
         </TextInput>
 
         <TextInput
-          label='Username'
+          label={t('Username')}
           {...form.getInputProps('username')}
           leftSection={<IconUser size='1rem' />}
         />

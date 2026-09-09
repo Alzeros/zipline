@@ -97,6 +97,7 @@ export default function InviteTableView() {
             },
             {
               accessor: 'actions',
+              title: t('Actions'),
               textAlign: 'right',
               render: (invite) => (
                 <Group gap='sm' justify='right' wrap='nowrap'>

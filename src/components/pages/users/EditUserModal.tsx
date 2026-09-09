@@ -178,7 +178,7 @@ export default function EditUserModal({
         <form onSubmit={form.onSubmit(onSubmit)}>
           <Stack gap='sm'>
             <TextInput
-              label='Username'
+              label={t('Username')}
               placeholder={t('Enter a username...')}
               autoComplete='username'
               {...form.getInputProps('username')}
@@ -192,7 +192,7 @@ export default function EditUserModal({
             />
 
             <FileInput
-              label='Avatar'
+              label={t('Avatar')}
               placeholder={t('Select an avatar...')}
               rightSection={
                 <Tooltip label={t('Clear avatar')}>
@@ -209,7 +209,7 @@ export default function EditUserModal({
             />
 
             <Select
-              label='Role'
+              label={t('Role')}
               defaultValue={user.role}
               data={[
                 { value: 'USER', label: 'User' },

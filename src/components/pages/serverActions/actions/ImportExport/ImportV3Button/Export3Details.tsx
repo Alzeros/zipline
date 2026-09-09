@@ -174,11 +174,11 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>Username</Table.Th>
+                        <Table.Th>{t('Username')}</Table.Th>
                         <Table.Th>{t('Password?')}</Table.Th>
                         <Table.Th>Admin</Table.Th>
                         <Table.Th>{t('Super Admin')}</Table.Th>
-                        <Table.Th>Avatar</Table.Th>
+                        <Table.Th>{t('Avatar')}</Table.Th>
                         <Table.Th>Oauth</Table.Th>
                         <Table.Th>2fa (totp)</Table.Th>
                         <Table.Th>{t('Files')}</Table.Th>

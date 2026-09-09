@@ -19,7 +19,7 @@ export default function StatsTables({ latest }: { latest: Metric | null }) {
             <Table highlightOnHover stickyHeader>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>User</Table.Th>
+                  <Table.Th>{t('User')}</Table.Th>
                   <Table.Th>{t('Files')}</Table.Th>
                   <Table.Th>{t('Storage Used')}</Table.Th>
                   <Table.Th>{t('Views')}</Table.Th>
@@ -46,7 +46,7 @@ export default function StatsTables({ latest }: { latest: Metric | null }) {
             <Table highlightOnHover stickyHeader>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>User</Table.Th>
+                  <Table.Th>{t('User')}</Table.Th>
                   <Table.Th>{t('URLs')}</Table.Th>
                   <Table.Th>{t('Views')}</Table.Th>
                 </Table.Tr>

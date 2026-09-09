@@ -147,7 +147,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
         <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>
           <TextInput
-            label='Username'
+            label={t('Username')}
             description={t('The username to send notifications as')}
             {...formMain.getInputProps('discordUsername')}
           />
@@ -180,7 +180,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
             <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>
               <TextInput
-                label='Username'
+                label={t('Username')}
                 description='The username to send notifications as. If this is left blank, the main username will be used'
                 {...formOnUpload.getInputProps('discordOnUploadUsername')}
               />
@@ -287,7 +287,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
             <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>
               <TextInput
-                label='Username'
+                label={t('Username')}
                 description='The username to send notifications as. If this is left blank, the main username will be used'
                 {...formOnShorten.getInputProps('discordOnShortenUsername')}
               />

@@ -107,7 +107,7 @@ export default function SettingsAvatar() {
 
   return (
     <Paper withBorder p='sm'>
-      <Title order={2}>Avatar</Title>
+      <Title order={2}>{t('Avatar')}</Title>
 
       <Stack gap='sm'>
         <FileInput

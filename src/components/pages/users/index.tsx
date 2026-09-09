@@ -102,7 +102,7 @@ export default function DashboardUsers() {
         <form onSubmit={form.onSubmit(onSubmit)}>
           <Stack gap='sm'>
             <TextInput
-              label='Username'
+              label={t('Username')}
               placeholder={t('Enter a username...')}
               autoComplete='username'
               {...form.getInputProps('username')}
@@ -114,7 +114,7 @@ export default function DashboardUsers() {
               {...form.getInputProps('password')}
             />
             <FileInput
-              label='Avatar'
+              label={t('Avatar')}
               placeholder={t('Select an avatar...')}
               rightSection={
                 <Tooltip label={t('Clear avatar')}>
@@ -131,7 +131,7 @@ export default function DashboardUsers() {
             />
 
             <Select
-              label='Role'
+              label={t('Role')}
               defaultValue={'USER'}
               data={[
                 { value: 'USER', label: 'User' },
