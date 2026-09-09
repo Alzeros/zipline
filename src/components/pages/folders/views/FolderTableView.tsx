@@ -62,19 +62,25 @@ function FolderDotsMenu({
           <Menu.Item
             leftSection={<IconFolderOpen size='1rem' />}
             onClick={withoutPropagation(() => onNavigate(folder.id!))}
-          >{t('Open Folder')}</Menu.Item>
+          >
+            {t('Open Folder')}
+          </Menu.Item>
         )}
         <Menu.Item
           leftSection={<IconFolderSymlink size='1rem' />}
           onClick={withoutPropagation(() => setMoveOpen(folder))}
-        >{t('Move Folder')}</Menu.Item>
+        >
+          {t('Move Folder')}
+        </Menu.Item>
         <Menu.Item
           leftSection={<IconFileZip size='1rem' />}
           component='a'
           href={`/api/user/folders/${folder.id}/export`}
           target='_blank'
           onClick={withoutPropagation(() => {})}
-        >{t('Export as ZIP')}</Menu.Item>
+        >
+          {t('Export as ZIP')}
+        </Menu.Item>
         <Menu.Item
           leftSection={folder.public ? <IconLock size='1rem' /> : <IconLockOpen size='1rem' />}
           onClick={withoutPropagation(() => editFolderVisibility(folder, !folder.public))}
@@ -90,12 +96,16 @@ function FolderDotsMenu({
         <Menu.Item
           leftSection={<IconPencil size='1rem' />}
           onClick={withoutPropagation(() => setEditNameOpen(folder))}
-        >{t('Edit Name')}</Menu.Item>
+        >
+          {t('Edit Name')}
+        </Menu.Item>
         <Menu.Item
           leftSection={<IconTrashFilled size='1rem' />}
           color='red'
           onClick={withoutPropagation(() => setDeleteOpen(folder))}
-        >{t('Delete')}</Menu.Item>
+        >
+          {t('Delete')}
+        </Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );

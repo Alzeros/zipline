@@ -12,16 +12,24 @@ import { DashboardFilesModals, DashboardFilesModalsUpdate } from '.';
 
 const badgeMap: Record<IncompleteFileStatus, ReactNode> = {
   PENDING: (
-    <Badge variant='light' color='gray'>{t('Pending')}</Badge>
+    <Badge variant='light' color='gray'>
+      {t('Pending')}
+    </Badge>
   ),
   PROCESSING: (
-    <Badge variant='light' color='yellow'>{t('Processing')}</Badge>
+    <Badge variant='light' color='yellow'>
+      {t('Processing')}
+    </Badge>
   ),
   COMPLETE: (
-    <Badge variant='light' color='green'>{t('Complete')}</Badge>
+    <Badge variant='light' color='green'>
+      {t('Complete')}
+    </Badge>
   ),
   FAILED: (
-    <Badge variant='light' color='red'>{t('Failed')}</Badge>
+    <Badge variant='light' color='red'>
+      {t('Failed')}
+    </Badge>
   ),
 };
 
@@ -96,13 +104,17 @@ export default function PendingFilesModal({
                 variant='light'
                 onClick={() => handleDelete(incompleteFile)}
                 leftSection={<IconTrashFilled size='1rem' />}
-              >{t('Clear')}</Button>
+              >
+                {t('Clear')}
+              </Button>
             </Group>
           </Card>
         ))}
 
         {incompleteFiles?.length === 0 && (
-          <Paper withBorder px='sm' py='xs'>{t('No pending files')}</Paper>
+          <Paper withBorder px='sm' py='xs'>
+            {t('No pending files')}
+          </Paper>
         )}
       </Stack>
     </Modal>

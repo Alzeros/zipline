@@ -74,7 +74,9 @@ export default function DropzoneFile({
               fullWidth
               onClick={onDelete}
               leftSection={<IconTrashFilled size='1rem' />}
-            >{t('Remove')}</Button>
+            >
+              {t('Remove')}
+            </Button>
           </Stack>
         </Stack>
       </HoverCard.Dropdown>

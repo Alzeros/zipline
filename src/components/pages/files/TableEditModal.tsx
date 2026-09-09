@@ -81,7 +81,9 @@ export default function TableEditModal({ opened, onClose }: { opened: boolean; o
         </SortableContext>
       </DndContext>
 
-      <Button fullWidth color='red' onClick={() => reset()} variant='light' mt='md'>{t('Reset to Default')}</Button>
+      <Button fullWidth color='red' onClick={() => reset()} variant='light' mt='md'>
+        {t('Reset to Default')}
+      </Button>
     </Modal>
   );
 }

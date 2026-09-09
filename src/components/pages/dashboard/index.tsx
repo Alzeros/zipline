@@ -31,9 +31,7 @@ export default function DashboardHome() {
 
   return (
     <>
-      <Title>
-        {t('Welcome back, {{username}}', { username: user?.username ?? '' })}
-      </Title>
+      <Title>{t('Welcome back, {{username}}', { username: user?.username ?? '' })}</Title>
 
       <Skeleton visible={statsLoading} animate>
         <Text size='sm' c='dimmed'>
@@ -60,7 +58,9 @@ export default function DashboardHome() {
               component={Link}
               to='/dashboard/files'
               leftSection={<IconFiles size='1rem' />}
-            >{t('View all files')}</Button>
+            >
+              {t('View all files')}
+            </Button>
           </Group>
 
           <Recents />
@@ -105,11 +105,15 @@ export default function DashboardHome() {
             component={Link}
             to='/dashboard/metrics'
             leftSection={<IconGraphFilled size='1rem' />}
-          >{t('View instance metrics')}</Button>
+          >
+            {t('View instance metrics')}
+          </Button>
         )}
       </Group>
 
-      <Text size='sm' c='dimmed' mb='xs'>{t('These statistics are based on your uploads only.')}</Text>
+      <Text size='sm' c='dimmed' mb='xs'>
+        {t('These statistics are based on your uploads only.')}
+      </Text>
 
       {statsLoading ? (
         <SimpleGrid cols={{ base: 1, md: 2, lg: 4 }} spacing={{ base: 'sm', md: 'md' }}>
@@ -122,7 +126,11 @@ export default function DashboardHome() {
           <Stat Icon={IconFiles} title={t('Files uploaded')} value={stats!.filesUploaded} />
           <Stat Icon={IconStarFilled} title={t('Favorite files')} value={stats!.favoriteFiles} />
           <Stat Icon={IconDeviceSdCard} title={t('Storage used')} value={bytes(stats!.storageUsed)} />
-          <Stat Icon={IconDeviceSdCard} title={t('Average storage used')} value={bytes(stats!.avgStorageUsed)} />
+          <Stat
+            Icon={IconDeviceSdCard}
+            title={t('Average storage used')}
+            value={bytes(stats!.avgStorageUsed)}
+          />
           <Stat Icon={IconEyeFilled} title={t('File views')} value={stats!.views} />
           <Stat Icon={IconEyeFilled} title={t('Average file views')} value={Math.round(stats!.avgViews)} />
 
@@ -177,7 +185,9 @@ export default function DashboardHome() {
         Object.keys(stats!.sortTypeCount).length !== 0 &&
         homeShowTypes && (
           <>
-            <Title order={3} mt='lg' mb='xs'>{t('File types')}</Title>
+            <Title order={3} mt='lg' mb='xs'>
+              {t('File types')}
+            </Title>
             <Paper withBorder my='md'>
               <ScrollArea.Autosize mah={400} type='auto'>
                 <Table highlightOnHover>

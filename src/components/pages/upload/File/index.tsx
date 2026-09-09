@@ -159,7 +159,9 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
             component={Link}
             to='/dashboard/files'
             leftSection={<IconFiles size='1rem' />}
-          >{t('Go to files')}</Button>
+          >
+            {t('Go to files')}
+          </Button>
         )}
       </Group>
 
@@ -189,7 +191,9 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
           </Dropzone.Idle>
 
           <div>
-            <Text size='xl' inline>{t('Drag images here or click to select files')}</Text>
+            <Text size='xl' inline>
+              {t('Drag images here or click to select files')}
+            </Text>
             <Text size='sm' inline mt='xs'>
               {t('Or press')} <Kbd size='xs'>{isMac ? '⌘' : 'Ctrl'}</Kbd> + <Kbd size='xs'>V</Kbd>{' '}
               {t('to paste images from clipboard')}
@@ -252,14 +256,21 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
             variant='light'
             disabled={dropLoading}
             onClick={() => setVisibleCount((prev) => Math.min(files.length, prev + initialVisible))}
-          >{t('Show more')}</Button>
-          <Tooltip label={t('This may cause performance issues if there are a lot of files')} hidden={dropLoading}>
+          >
+            {t('Show more')}
+          </Button>
+          <Tooltip
+            label={t('This may cause performance issues if there are a lot of files')}
+            hidden={dropLoading}
+          >
             <Button
               size='compact-sm'
               variant='subtle'
               disabled={dropLoading}
               onClick={() => setVisibleCount(files.length)}
-            >{t('Show all')}</Button>
+            >
+              {t('Show all')}
+            </Button>
           </Tooltip>
         </Group>
       )}
@@ -274,7 +285,9 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
             setFiles([]);
             setVisibleCount(initialVisible);
           }}
-        >{t('Clear all')}</Button>
+        >
+          {t('Clear all')}
+        </Button>
         <UploadOptionsButton folder={folder} numFiles={files.length} />
         <Button
           variant='outline'

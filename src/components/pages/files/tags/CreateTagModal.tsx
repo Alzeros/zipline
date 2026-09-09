@@ -83,7 +83,9 @@ export default function CreateTagModal({ open, onClose }: { open: boolean; onClo
             {...form.getInputProps('color')}
           />
 
-          <Button type='submit' variant='outline'>{t('Create tag')}</Button>
+          <Button type='submit' variant='outline'>
+            {t('Create tag')}
+          </Button>
         </Stack>
       </form>
     </Modal>

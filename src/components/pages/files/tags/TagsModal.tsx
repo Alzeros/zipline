@@ -95,7 +95,9 @@ export default function TagsModals({
             ))}
 
           {tags?.length === 0 && (
-            <Paper withBorder px='sm' py='xs'>{t('No tags. Create one by clicking the plus icon.')}</Paper>
+            <Paper withBorder px='sm' py='xs'>
+              {t('No tags. Create one by clicking the plus icon.')}
+            </Paper>
           )}
         </Stack>
       </Modal>

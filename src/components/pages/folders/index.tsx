@@ -159,7 +159,9 @@ export default function DashboardFolders() {
               {...form.getInputProps('isPublic', { type: 'checkbox' })}
             />
 
-            <Button type='submit' variant='outline' leftSection={<IconFolderPlus size='1rem' />}>{t('Create')}</Button>
+            <Button type='submit' variant='outline' leftSection={<IconFolderPlus size='1rem' />}>
+              {t('Create')}
+            </Button>
           </Stack>
         </form>
       </Modal>

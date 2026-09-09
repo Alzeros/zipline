@@ -411,7 +411,9 @@ export default function FileTable({
       <Box>
         <Collapse expanded={selectedFiles.length > 0}>
           <Paper withBorder p='sm' my='sm'>
-            <Text size='sm' c='dimmed' mb='xs'>{t('Selections are saved across page changes. Currently selected')}<b>{selectedFiles.length}</b> file
+            <Text size='sm' c='dimmed' mb='xs'>
+              {t('Selections are saved across page changes. Currently selected')}
+              <b>{selectedFiles.length}</b> file
               {selectedFiles.length > 1 ? 's' : ''}.
             </Text>
 
@@ -427,7 +429,9 @@ export default function FileTable({
                       setSelectedFiles,
                     )
                   }
-                >{t('Delete files')}</Button>
+                >
+                  {t('Delete files')}
+                </Button>
 
                 <Button
                   variant='outline'
@@ -447,7 +451,9 @@ export default function FileTable({
                   variant='outline'
                   leftSection={<IconCopy size='1rem' />}
                   onClick={() => bulkCopyLinks(selectedFiles.map((x) => x.url!))}
-                >{t('Copy file links')}</Button>
+                >
+                  {t('Copy file links')}
+                </Button>
 
                 {!id && (
                   <Combobox
@@ -495,7 +501,9 @@ export default function FileTable({
                 }}
                 justify='right'
                 ml='auto'
-              >{t('Clear selection')}</Button>
+              >
+                {t('Clear selection')}
+              </Button>
             </Group>
           </Paper>
         </Collapse>

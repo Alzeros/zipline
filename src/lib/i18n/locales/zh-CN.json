@@ -190,5 +190,10 @@
   "You have no recent files. The last three files you uploaded will appear here.": "暂无最近文件。你最新上传的三个文件会显示在这里。",
   "{{size}} limit per file": "单个文件上限 {{size}}",
   "Upload {{count}} files ({{size}})": "上传 {{count}} 个文件（{{size}}）",
-  "{{from}} - {{to}} / {{total}} files": "{{from}} - {{to}} / 共 {{total}} 个文件"
+  "{{from}} - {{to}} / {{total}} files": "{{from}} - {{to}} / 共 {{total}} 个文件",
+  "Your uploads and logins over the last": "统计周期",
+  "1 day": "1 天",
+  "7 days": "7 天",
+  "14 days": "14 天",
+  "30 days": "30 天"
 }

@@ -82,7 +82,9 @@ export default function MoveFolderModal({
   return (
     <Modal key={folder.id} centered opened={opened} onClose={onClose} title={`Move "${folder.name}"`}>
       <Stack gap='sm'>
-        <Text size='sm' c='dimmed'>{t('Select a destination folder for this folder.')}</Text>
+        <Text size='sm' c='dimmed'>
+          {t('Select a destination folder for this folder.')}
+        </Text>
 
         <Combobox
           store={combobox}
@@ -136,7 +138,9 @@ export default function MoveFolderModal({
           loading={loading}
           leftSection={<IconFolderSymlink size='1rem' />}
           variant='outline'
-        >{t('Move Folder')}</Button>
+        >
+          {t('Move Folder')}
+        </Button>
       </Stack>
     </Modal>
   );

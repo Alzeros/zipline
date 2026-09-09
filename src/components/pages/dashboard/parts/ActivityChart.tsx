@@ -72,19 +72,21 @@ export default function ActivityChart() {
     <Paper radius='md' withBorder p='md' mt='lg'>
       <Group justify='space-between' align='flex-start' mb='lg' wrap='nowrap'>
         <Box>
-          <Title order={3} fw={600}>{t('Activity')}</Title>
+          <Title order={3} fw={600}>
+            {t('Activity')}
+          </Title>
           <Group gap='xs' style={{ alignItems: 'center' }}>
             <Text size='sm' c='dimmed' mt={4}>
-              Your uploads and logins over the last{' '}
+              {t('Your uploads and logins over the last')}{' '}
             </Text>
             <Select
               value={String(days)}
               onChange={(v) => setDays(Number(v))}
               data={[
-                { value: '1', label: '1 day' },
-                { value: '7', label: '7 days' },
-                { value: '14', label: '14 days' },
-                { value: '30', label: '30 days' },
+                { value: '1', label: t('1 day') },
+                { value: '7', label: t('7 days') },
+                { value: '14', label: t('14 days') },
+                { value: '30', label: t('30 days') },
               ]}
               size='0.4rem'
               variant='filled'
@@ -119,7 +121,9 @@ export default function ActivityChart() {
           <Group gap='xs'>
             <IconUpload size='1rem' style={{ opacity: 0.85 }} color='var(--mantine-primary-color-filled)' />
             <Box>
-              <Text size='xs' c='dimmed' lh={1.2}>{t('Uploads')}</Text>
+              <Text size='xs' c='dimmed' lh={1.2}>
+                {t('Uploads')}
+              </Text>
               <Text size='sm' fw={600} lh={1.3}>
                 {data.totals.uploads}
               </Text>
@@ -128,7 +132,9 @@ export default function ActivityChart() {
           <Group gap='xs'>
             <IconLogin2 size='1rem' style={{ opacity: 0.65 }} color='var(--mantine-color-gray-5)' />
             <Box>
-              <Text size='xs' c='dimmed' lh={1.2}>{t('Logins')}</Text>
+              <Text size='xs' c='dimmed' lh={1.2}>
+                {t('Logins')}
+              </Text>
               <Text size='sm' fw={600} lh={1.3}>
                 {data.totals.logins}
               </Text>
@@ -141,7 +147,9 @@ export default function ActivityChart() {
         <Paper withBorder h={CHART_HEIGHT} radius='md' p='md' ta='center'>
           <Group align='center' justify='center' h='100%'>
             <IconChartAreaLine size='1.75rem' style={{ opacity: 0.35 }} />
-            <Text size='sm' c='dimmed'>{t('No uploads or logins in this period yet')}</Text>
+            <Text size='sm' c='dimmed'>
+              {t('No uploads or logins in this period yet')}
+            </Text>
           </Group>
         </Paper>
       ) : (

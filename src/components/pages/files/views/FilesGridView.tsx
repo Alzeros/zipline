@@ -96,7 +96,9 @@ export default function Files({ id, folderId }: { id?: string; folderId?: string
                     leftSection={<IconFileUpload size='1rem' />}
                     component={Link}
                     to='/dashboard/upload/file'
-                  >{t('Upload a file')}</Button>
+                  >
+                    {t('Upload a file')}
+                  </Button>
                 )}
               </Stack>
             </Center>

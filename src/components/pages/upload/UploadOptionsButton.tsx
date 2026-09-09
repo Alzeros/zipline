@@ -172,8 +172,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
               <>
                 The file will automatically delete itself after this time.{' '}
                 {config.files.defaultExpiration ? (
-                  <>{t('The default expiration time is')}<b>{config.files.defaultExpiration}</b> (you can override
-                    this with the below option).
+                  <>
+                    {t('The default expiration time is')}
+                    <b>{config.files.defaultExpiration}</b> (you can override this with the below option).
                   </>
                 ) : (
                   <>
@@ -254,8 +255,10 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
               </>
             }
             description={
-              <>{t('The image compression format to use')}<b>only when a compression percent is specified</b>. Leave
-                at &quot;default&quot; to use the server default compression format.
+              <>
+                {t('The image compression format to use')}
+                <b>only when a compression percent is specified</b>. Leave at &quot;default&quot; to use the
+                server default compression format.
               </>
             }
             leftSection={<IconFileInfo size='1rem' />}
@@ -468,13 +471,17 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
             leftSection={<IconTrashFilled size='1rem' />}
             onClick={clearSettings}
             disabled={changes() === 0}
-          >{t('Clear')}</Button>
+          >
+            {t('Clear')}
+          </Button>
 
           <Button
             variant='outline'
             leftSection={<IconArrowsMinimize size='1rem' />}
             onClick={() => setOpen(false)}
-          >{t('Close')}</Button>
+          >
+            {t('Close')}
+          </Button>
         </Group>
       </Modal>
 
@@ -483,7 +490,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
         rightSection={changes() !== 0 ? <Badge variant='outline'>{changes()}</Badge> : null}
         onClick={() => setOpen(true)}
         leftSection={<IconSettings size='1rem' />}
-      >{t('Options')}</Button>
+      >
+        {t('Options')}
+      </Button>
     </>
   );
 }

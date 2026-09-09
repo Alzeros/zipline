@@ -79,19 +79,25 @@ export default function FolderCard({
                   <Menu.Item
                     leftSection={<IconFolderOpen size='1rem' />}
                     onClick={() => onNavigate(folder.id)}
-                  >{t('Open Folder')}</Menu.Item>
+                  >
+                    {t('Open Folder')}
+                  </Menu.Item>
                 )}
                 <Menu.Item
                   leftSection={<IconFolderSymlink size='1rem' />}
                   onClick={withoutPropagation(() => setMoveOpen(true))}
-                >{t('Move Folder')}</Menu.Item>
+                >
+                  {t('Move Folder')}
+                </Menu.Item>
                 <Menu.Item
                   leftSection={<IconFileZip size='1rem' />}
                   component='a'
                   href={`/api/user/folders/${folder.id}/export`}
                   target='_blank'
                   onClick={withoutPropagation(() => {})}
-                >{t('Export as ZIP')}</Menu.Item>
+                >
+                  {t('Export as ZIP')}
+                </Menu.Item>
                 <Menu.Item
                   leftSection={folder.public ? <IconLock size='1rem' /> : <IconLockOpen size='1rem' />}
                   onClick={withoutPropagation(() => editFolderVisibility(folder, !folder.public))}
@@ -107,17 +113,23 @@ export default function FolderCard({
                 <Menu.Item
                   leftSection={<IconPencil size='1rem' />}
                   onClick={withoutPropagation(() => setEditOpen(true))}
-                >{t('Edit Name')}</Menu.Item>
+                >
+                  {t('Edit Name')}
+                </Menu.Item>
                 <Menu.Item
                   leftSection={<IconCopy size='1rem' />}
                   disabled={!folder.public}
                   onClick={withoutPropagation(() => copyFolderUrl(folder, clipboard))}
-                >{t('Copy URL')}</Menu.Item>
+                >
+                  {t('Copy URL')}
+                </Menu.Item>
                 <Menu.Item
                   leftSection={<IconTrashFilled size='1rem' />}
                   color='red'
                   onClick={withoutPropagation(() => setDeleteOpen(true))}
-                >{t('Delete')}</Menu.Item>
+                >
+                  {t('Delete')}
+                </Menu.Item>
               </Menu.Dropdown>
             </Menu>
           </Group>
