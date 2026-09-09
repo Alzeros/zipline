@@ -56,6 +56,7 @@ export default function InviteTableView() {
           columns={[
             {
               accessor: 'code',
+              title: t('Code'),
               sortable: true,
               render: (invite) => (
                 <Anchor href={`/invite/${invite.code}`} target='_blank'>
@@ -88,11 +89,13 @@ export default function InviteTableView() {
             },
             {
               accessor: 'maxUses',
+              title: t('Max Uses'),
               sortable: true,
               render: (invite) => (invite.maxUses ? invite.maxUses.toLocaleString() : 'Unlimited'),
             },
             {
               accessor: 'uses',
+              title: t('Uses'),
               sortable: true,
             },
             {

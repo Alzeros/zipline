@@ -162,6 +162,7 @@ export default function UrlTableView() {
           columns={[
             {
               accessor: 'code',
+              title: t('Code'),
               sortable: true,
               filter: (
                 <SearchFilter
@@ -183,6 +184,7 @@ export default function UrlTableView() {
             },
             {
               accessor: 'vanity',
+              title: t('Vanity'),
               sortable: true,
               filter: (
                 <SearchFilter
