@@ -11,7 +11,7 @@ export function Version() {
     <Paper withBorder p='md' radius='md'>
       <Group gap='xs' mb='sm'>
         <IconVersions size='1.2rem' />
-        <Title order={3}>Version</Title>
+        <Title order={3}>{t('Version')}</Title>
       </Group>
 
       {isLoading ? (

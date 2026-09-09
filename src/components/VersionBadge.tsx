@@ -94,7 +94,7 @@ export function VersionInfo({ version }: { version: VersionData }) {
       <DataDisplay
         items={[
           {
-            label: 'Version',
+            label: t('Version'),
             value: version.version.tag!,
             href: `https://github.com/diced/zipline/releases/${version.version.tag}`,
           },

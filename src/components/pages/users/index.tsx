@@ -134,7 +134,7 @@ export default function DashboardUsers() {
               label={t('Role')}
               defaultValue={'USER'}
               data={[
-                { value: 'USER', label: 'User' },
+                { value: 'USER', label: t('User') },
                 {
                   value: 'ADMIN',
                   label: t('Administrator'),

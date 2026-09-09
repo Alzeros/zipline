@@ -18,7 +18,7 @@ export function Storage() {
       <Group justify='space-between' mb='sm'>
         <Group gap='xs'>
           <IconDatabase size='1.2rem' />
-          <Title order={3}>Storage</Title>
+          <Title order={3}>{t('Storage')}</Title>
         </Group>
 
         <Tooltip label={t('Refresh storage stats')}>

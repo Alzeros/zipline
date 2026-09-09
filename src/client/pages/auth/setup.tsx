@@ -127,7 +127,7 @@ export function Component() {
             <Title>{t('Welcome to Zipline!')}</Title>
             <SimpleGrid spacing='md' cols={{ base: 1, sm: 1 }}>
               <Paper withBorder p='sm' my='sm' h='100%'>
-                <Title order={2}>Documentation</Title>
+                <Title order={2}>{t('Documentation')}</Title>
                 <Text>
                   {t('Here are a couple of useful documentation links to get you started with Zipline:')}
                 </Text>

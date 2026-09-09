@@ -107,7 +107,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
           placeholder={JSON.stringify(
             [
               { name: 'GitHub', url: 'https://github.com/diced/zipline' },
-              { name: 'Documentation', url: 'https://zipline.diced.sh' },
+              { name: t('Documentation'), url: 'https://zipline.diced.sh' },
             ],
             null,
             2,

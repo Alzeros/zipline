@@ -51,7 +51,9 @@ export default function SettingsDashboard() {
           />
           <Switch
             label={t('Mute video and audio previews')}
-            description='When enabled, video and audio in the file viewer autoplay muted. Turning this off tries to play sound immediately. Browsers may block unmuted autoplay until you interact with the page.'
+            description={t(
+              'When enabled, video and audio in the file viewer autoplay muted. Turning this off tries to play sound immediately. Browsers may block unmuted autoplay until you interact with the page.',
+            )}
             checked={settings.mediaAutoMuted}
             onChange={(event) => update('mediaAutoMuted', event.currentTarget.checked)}
           />

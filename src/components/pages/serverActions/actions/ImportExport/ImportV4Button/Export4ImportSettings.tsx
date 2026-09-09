@@ -39,7 +39,7 @@ export default function Export4ImportSettings({
             <Table.Thead>
               <Table.Tr>
                 <Table.Th w={300}>Key</Table.Th>
-                <Table.Th>Value</Table.Th>
+                <Table.Th>{t('Value')}</Table.Th>
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>

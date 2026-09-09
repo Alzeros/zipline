@@ -76,8 +76,8 @@ export default function SettingsExports() {
             <Table highlightOnHover stickyHeader>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>ID</Table.Th>
-                  <Table.Th>Started</Table.Th>
+                  <Table.Th>{t('ID')}</Table.Th>
+                  <Table.Th>{t('Started')}</Table.Th>
                   <Table.Th>{t('Files')}</Table.Th>
                   <Table.Th>{t('Size')}</Table.Th>
                 </Table.Tr>

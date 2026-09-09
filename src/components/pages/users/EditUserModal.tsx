@@ -212,7 +212,7 @@ export default function EditUserModal({
               label={t('Role')}
               defaultValue={user.role}
               data={[
-                { value: 'USER', label: 'User' },
+                { value: 'USER', label: t('User') },
                 {
                   value: 'ADMIN',
                   label: t('Administrator'),
@@ -223,7 +223,7 @@ export default function EditUserModal({
             />
 
             <Divider />
-            <Title order={5}>Quota</Title>
+            <Title order={5}>{t('Quota')}</Title>
 
             <Select
               label={t('File Quota Type')}

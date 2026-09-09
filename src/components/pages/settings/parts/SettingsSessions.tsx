@@ -88,8 +88,8 @@ export default function SettingsSessions() {
             <Table>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>Client</Table.Th>
-                  <Table.Th>Device</Table.Th>
+                  <Table.Th>{t('Client')}</Table.Th>
+                  <Table.Th>{t('Device')}</Table.Th>
                   <Table.Th>{t('Logged in at')}</Table.Th>
                   <Table.Th></Table.Th>
                 </Table.Tr>

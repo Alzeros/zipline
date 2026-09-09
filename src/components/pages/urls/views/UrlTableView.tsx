@@ -17,7 +17,7 @@ import QRCodeModal from '@/components/QRCodeModal';
 
 const NAMES = {
   code: 'Code',
-  vanity: 'Vanity',
+  vanity: t('Vanity'),
   destination: 'Destination',
 };
 
@@ -244,7 +244,7 @@ export default function UrlTableView() {
             },
             {
               accessor: 'enabled',
-              title: 'Enabled',
+              title: t('Enabled'),
               sortable: true,
               render: (url) => <Checkbox checked={url.enabled} />,
             },

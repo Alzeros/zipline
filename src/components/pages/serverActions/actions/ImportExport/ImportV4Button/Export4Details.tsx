@@ -202,7 +202,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th w={300}>Key</Table.Th>
-                        <Table.Th>Value</Table.Th>
+                        <Table.Th>{t('Value')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{osRows}</Table.Tbody>
@@ -224,7 +224,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th w={300}>Key</Table.Th>
-                        <Table.Th>Value</Table.Th>
+                        <Table.Th>{t('Value')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{envRows}</Table.Tbody>
@@ -249,13 +249,13 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th></Table.Th>
-                        <Table.Th>ID</Table.Th>
+                        <Table.Th>{t('ID')}</Table.Th>
                         <Table.Th>{t('Username')}</Table.Th>
                         <Table.Th>{t('Password')}</Table.Th>
                         <Table.Th>{t('Role')}</Table.Th>
                         <Table.Th>{t('OAuth Providers')}</Table.Th>
-                        <Table.Th>Quota</Table.Th>
-                        <Table.Th>Passkeys</Table.Th>
+                        <Table.Th>{t('Quota')}</Table.Th>
+                        <Table.Th>{t('Passkeys')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{userRows}</Table.Tbody>
@@ -280,7 +280,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th>{t('User')}</Table.Th>
-                        <Table.Th>Provider</Table.Th>
+                        <Table.Th>{t('Provider')}</Table.Th>
                         <Table.Th>{t('OAuth Username')}</Table.Th>
                         <Table.Th>{t('OAuth ID')}</Table.Th>
                       </Table.Tr>
@@ -310,7 +310,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                         <Table.Th>{t('Created At')}</Table.Th>
                         <Table.Th>{t('Password')}</Table.Th>
                         <Table.Th>{t('Size')}</Table.Th>
-                        <Table.Th>Owner</Table.Th>
+                        <Table.Th>{t('Owner')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{fileRows}</Table.Tbody>
@@ -361,7 +361,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th>{t('Name')}</Table.Th>
-                        <Table.Th>Owner</Table.Th>
+                        <Table.Th>{t('Owner')}</Table.Th>
                         <Table.Th>{t('Public')}</Table.Th>
                         <Table.Th>{t('Created At')}</Table.Th>
                         <Table.Th>{t('Files')}</Table.Th>
@@ -388,13 +388,13 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>Code</Table.Th>
-                        <Table.Th>Owner</Table.Th>
+                        <Table.Th>{t('Code')}</Table.Th>
+                        <Table.Th>{t('Owner')}</Table.Th>
                         <Table.Th>{t('Destination')}</Table.Th>
-                        <Table.Th>Vanity</Table.Th>
+                        <Table.Th>{t('Vanity')}</Table.Th>
                         <Table.Th>{t('Password')}</Table.Th>
                         <Table.Th>{t('Created At')}</Table.Th>
-                        <Table.Th>Enabled</Table.Th>
+                        <Table.Th>{t('Enabled')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{urlRows}</Table.Tbody>
@@ -418,10 +418,10 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>Code</Table.Th>
+                        <Table.Th>{t('Code')}</Table.Th>
                         <Table.Th>{t('Created By')}</Table.Th>
                         <Table.Th>{t('Created At')}</Table.Th>
-                        <Table.Th>Uses</Table.Th>
+                        <Table.Th>{t('Uses')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{invitesRows}</Table.Tbody>

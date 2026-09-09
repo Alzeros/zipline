@@ -82,7 +82,7 @@ function Form({ data }: { data: Response['/api/server/settings'] }) {
           <Table highlightOnHover>
             <Table.Thead>
               <Table.Tr>
-                <Table.Th>Domain</Table.Th>
+                <Table.Th>{t('Domain')}</Table.Th>
                 <Table.Th w={30}></Table.Th>
               </Table.Tr>
             </Table.Thead>

@@ -122,7 +122,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
         />
 
         <TextInput
-          label='Vanity'
+          label={t('Vanity')}
           placeholder='Optional'
           description={t('A custom alias for your URL. Leave blank to use the randomly generated code.')}
           value={urlData.vanity || ''}
@@ -147,7 +147,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
         />
 
         <Switch
-          label='Enabled'
+          label={t('Enabled')}
           description={t('Prevent or allow this URL from being visited.')}
           checked={urlData.enabled}
           onChange={(event) => setUrlData('enabled', event.currentTarget.checked)}

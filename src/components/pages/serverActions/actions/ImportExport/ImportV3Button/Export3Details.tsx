@@ -154,7 +154,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th w={300}>Key</Table.Th>
-                        <Table.Th>Value</Table.Th>
+                        <Table.Th>{t('Value')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{envRows}</Table.Tbody>
@@ -176,10 +176,10 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                       <Table.Tr>
                         <Table.Th>{t('Username')}</Table.Th>
                         <Table.Th>{t('Password?')}</Table.Th>
-                        <Table.Th>Admin</Table.Th>
+                        <Table.Th>{t('Admin')}</Table.Th>
                         <Table.Th>{t('Super Admin')}</Table.Th>
                         <Table.Th>{t('Avatar')}</Table.Th>
-                        <Table.Th>Oauth</Table.Th>
+                        <Table.Th>{t('Oauth')}</Table.Th>
                         <Table.Th>2fa (totp)</Table.Th>
                         <Table.Th>{t('Files')}</Table.Th>
                       </Table.Tr>
@@ -209,7 +209,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                         <Table.Th>{t('Original Name')}</Table.Th>
                         <Table.Th>{t('Type')}</Table.Th>
                         <Table.Th>{t('Size')}</Table.Th>
-                        <Table.Th>Owner</Table.Th>
+                        <Table.Th>{t('Owner')}</Table.Th>
                         <Table.Th>{t('Views')}</Table.Th>
                         <Table.Th>{t('Created At')}</Table.Th>
                       </Table.Tr>
@@ -236,7 +236,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th>{t('Name')}</Table.Th>
-                        <Table.Th>Owner</Table.Th>
+                        <Table.Th>{t('Owner')}</Table.Th>
                         <Table.Th>{t('Public')}</Table.Th>
                         <Table.Th>{t('Created At')}</Table.Th>
                         <Table.Th>{t('Files')}</Table.Th>
@@ -263,10 +263,10 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>Code</Table.Th>
-                        <Table.Th>Owner</Table.Th>
+                        <Table.Th>{t('Code')}</Table.Th>
+                        <Table.Th>{t('Owner')}</Table.Th>
                         <Table.Th>{t('Destination')}</Table.Th>
-                        <Table.Th>Vanity</Table.Th>
+                        <Table.Th>{t('Vanity')}</Table.Th>
                         <Table.Th>{t('Created At')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
@@ -291,7 +291,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th>Code</Table.Th>
+                        <Table.Th>{t('Code')}</Table.Th>
                         <Table.Th>{t('Created By')}</Table.Th>
                         <Table.Th>{t('Created At')}</Table.Th>
                       </Table.Tr>

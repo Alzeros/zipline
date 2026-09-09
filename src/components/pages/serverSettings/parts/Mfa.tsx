@@ -40,7 +40,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
     <form onSubmit={form.onSubmit(onSubmit)}>
       <Stack gap='lg'>
         <Switch
-          label='Passkeys'
+          label={t('Passkeys')}
           description='Enable the use of passwordless login with the use of WebAuthn passkeys like your phone, security keys, etc.'
           {...form.getInputProps('mfaPasskeysEnabled', { type: 'checkbox' })}
         />

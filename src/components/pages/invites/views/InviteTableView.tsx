@@ -82,7 +82,7 @@ export default function InviteTableView() {
             },
             {
               accessor: 'expiresAt',
-              title: 'Expires',
+              title: t('Expires'),
               sortable: true,
               render: (invite) => (invite.expiresAt ? <RelativeDate date={invite.expiresAt} /> : 'Never'),
             },

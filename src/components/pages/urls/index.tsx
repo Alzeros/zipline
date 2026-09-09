@@ -168,7 +168,7 @@ export default function DashboardURLs() {
               {...form.getInputProps('url')}
             />
             <TextInput
-              label='Vanity'
+              label={t('Vanity')}
               description={t('Optional field, leave blank to generate a random code')}
               placeholder='example'
               leftSection={<IconTextCaption size='1rem' />}
@@ -186,7 +186,7 @@ export default function DashboardURLs() {
             <DomainSelect label={t('Override Domain')} {...form.getInputProps('domain')} />
 
             <Switch
-              label='Enabled'
+              label={t('Enabled')}
               description={t('Allow or prevent this URL from being visited')}
               {...form.getInputProps('enabled', { type: 'checkbox' })}
             />
