@@ -71,7 +71,7 @@ export default function UserTableView() {
             },
             {
               accessor: 'updatedAt',
-              title: 'Last updated',
+              title: t('Last updated'),
               sortable: true,
               render: (user) => <RelativeDate date={user.updatedAt} />,
             },
@@ -90,7 +90,7 @@ export default function UserTableView() {
                     </ActionIcon>
                   </Tooltip>
 
-                  <Tooltip label='Edit user'>
+                  <Tooltip label={t('Edit user')}>
                     <ActionIcon
                       onClick={(e) => {
                         e.stopPropagation();
@@ -102,7 +102,7 @@ export default function UserTableView() {
                     </ActionIcon>
                   </Tooltip>
 
-                  <Tooltip label='Delete user'>
+                  <Tooltip label={t('Delete user')}>
                     <ActionIcon
                       color='red'
                       onClick={(e) => {

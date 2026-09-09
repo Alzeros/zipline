@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { User } from '@/lib/db/models/user';
 import { fetchApi } from '@/lib/fetchApi';
@@ -68,7 +69,7 @@ export default function TwoFAButton() {
 
       notifications.show({
         title: '2FA Enabled',
-        message: 'You have successfully enabled 2FA on your account.',
+        message: t('You have successfully enabled 2FA on your account.'),
         color: 'green',
         icon: <IconShieldLockFilled size='1rem' />,
       });
@@ -97,7 +98,7 @@ export default function TwoFAButton() {
 
       notifications.show({
         title: '2FA Disabled',
-        message: 'You have successfully disabled 2FA on your account.',
+        message: t('You have successfully disabled 2FA on your account.'),
         color: 'green',
         icon: <IconShieldLockFilled size='1rem' />,
       });
@@ -124,13 +125,13 @@ export default function TwoFAButton() {
         <Stack gap='sm'>
           {user?.totpEnabled ? (
             <Text size='sm' c='dimmed'>
-              Enter the 6-digit code from your authenticator app below to confirm disabling 2FA.
+              {t('Enter the 6-digit code from your authenticator app below to confirm disabling 2FA.')}
             </Text>
           ) : (
             <>
               <Text size='sm' c='dimmed'>
-                <b>Step 1</b> Open/download an authenticator that supports QR code scanning or manual code
-                entry. Popular options include{' '}
+                <b>{t('Step 1')}</b> Open/download an authenticator that supports QR code scanning or manual
+                code entry. Popular options include{' '}
                 <Anchor component={Link} to='https://2fas.com/' target='_blank'>
                   2FAs
                 </Anchor>
@@ -140,7 +141,7 @@ export default function TwoFAButton() {
                   to='https://support.google.com/accounts/answer/1066447'
                   target='_blank'
                 >
-                  Google Authenticator
+                  {t('Google Authenticator')}
                 </Anchor>
                 ,{' '}
                 <Anchor
@@ -148,7 +149,7 @@ export default function TwoFAButton() {
                   to='https://www.microsoft.com/en-us/security/mobile-authenticator-app'
                   target='_blank'
                 >
-                  Microsoft Authenticator
+                  {t('Microsoft Authenticator')}
                 </Anchor>
                 , and{' '}
                 <Anchor
@@ -156,13 +157,14 @@ export default function TwoFAButton() {
                   to='https://support.apple.com/guide/iphone/automatically-fill-in-verification-codes-ipha6173c19f/ios'
                   target='_blank'
                 >
-                  Apple Passwords
+                  {t('Apple Passwords')}
                 </Anchor>
                 .
               </Text>
 
               <Text size='sm' c='dimmed'>
-                <b>Step 2</b> Scan the QR code below with your authenticator app to enable 2FA.
+                <b>{t('Step 2')}</b>
+                {t('Scan the QR code below with your authenticator app to enable 2FA.')}
               </Text>
 
               <Box pos='relative'>
@@ -183,7 +185,8 @@ export default function TwoFAButton() {
               </Text>
 
               <Text size='sm' c='dimmed'>
-                <b>Step 3</b> Enter the 6-digit code from your authenticator app below to confirm 2FA setup.
+                <b>{t('Step 3')}</b>
+                {t('Enter the 6-digit code from your authenticator app below to confirm 2FA setup.')}
               </Text>
             </>
           )}

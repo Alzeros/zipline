@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Group, Paper, Text, Title } from '@mantine/core';
 import PasskeyButton from './PasskeyButton';
 import TwoFAButton from './TwoFAButton';
@@ -8,9 +9,9 @@ export default function SettingsMfa() {
 
   return (
     <Paper withBorder p='sm'>
-      <Title order={2}>Multi-Factor Authentication</Title>
+      <Title order={2}>{t('Multi-Factor Authentication')}</Title>
       <Text size='sm' c='dimmed' mt={3}>
-        Setup 2FA or passkeys to add an extra layer of security to your account.
+        {t('Setup 2FA or passkeys to add an extra layer of security to your account.')}
       </Text>
 
       <Group mt='xs'>

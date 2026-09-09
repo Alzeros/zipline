@@ -89,7 +89,7 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
         form.setFieldError('currentPassword', error.error);
       } else {
         notifications.show({
-          title: 'Error while updating user',
+          title: t('Error while updating user'),
           message: error.error,
           color: 'red',
           icon: <IconUserCancel size='1rem' />,
@@ -108,7 +108,7 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
     mutate('/api/user/token');
     setUser(data.user);
     notifications.show({
-      message: 'User updated',
+      message: t('User updated'),
       color: 'green',
       icon: <IconCheck size='1rem' />,
     });
@@ -126,7 +126,7 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
           rightSection={
             <CopyButton value={token} timeout={1000}>
               {({ copied, copy }) => (
-                <Tooltip label='Click to copy token'>
+                <Tooltip label={t('Click to copy token')}>
                   <ActionIcon onClick={copy} variant='subtle' color='gray'>
                     {copied ? <IconCheck color='green' size='1rem' /> : <IconCopy size='1rem' />}
                   </ActionIcon>
@@ -150,15 +150,15 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
         />
         <PasswordInput
           label={t('Password')}
-          description='Leave blank to keep the same password'
+          description={t('Leave blank to keep the same password')}
           autoComplete='new-password'
           {...form.getInputProps('password')}
           leftSection={<IconAsteriskSimple size='1rem' />}
         />
         {form.values.password && (
           <PasswordInput
-            label='Current password'
-            description='Required to change your password.'
+            label={t('Current password')}
+            description={t('Required to change your password.')}
             autoComplete='current-password'
             {...form.getInputProps('currentPassword')}
             leftSection={<IconAsteriskSimple size='1rem' />}

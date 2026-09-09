@@ -40,14 +40,14 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
     <form onSubmit={form.onSubmit(onSubmit)}>
       <Stack gap='lg'>
         <Switch
-          label='Enable Invites'
-          description='Enable the use of invite links to register new users.'
+          label={t('Enable Invites')}
+          description={t('Enable the use of invite links to register new users.')}
           {...form.getInputProps('invitesEnabled', { type: 'checkbox' })}
         />
 
         <NumberInput
           label='Length'
-          description='The length of the invite code.'
+          description={t('The length of the invite code.')}
           placeholder='6'
           min={1}
           max={64}

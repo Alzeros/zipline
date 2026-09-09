@@ -172,7 +172,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
 
       <Accordion defaultValue='version' variant='contained'>
         <Accordion.Item value='version'>
-          <Accordion.Control icon={<IconVersions size='1rem' />}>Version Details</Accordion.Control>
+          <Accordion.Control icon={<IconVersions size='1rem' />}>{t('Version Details')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
               <TextDetail name='Export Version'>{export4.versions.export}</TextDetail>
@@ -183,7 +183,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
         </Accordion.Item>
 
         <Accordion.Item value='request'>
-          <Accordion.Control icon={<IconTarget size='1rem' />}>Request Details</Accordion.Control>
+          <Accordion.Control icon={<IconTarget size='1rem' />}>{t('Request Details')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
               <TextDetail name='User'>
@@ -210,7 +210,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                 </Paper>
 
                 <Button my='xs' onClick={toggleOs} size='compact-sm'>
-                  Hide OS Details
+                  {t('Hide OS Details')}
                 </Button>
               </Collapse>
 
@@ -232,7 +232,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                 </Paper>
 
                 <Button my='xs' onClick={toggleEnv} size='compact-sm'>
-                  Hide Environment
+                  {t('Hide Environment')}
                 </Button>
               </Collapse>
             </Stack>
@@ -253,7 +253,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                         <Table.Th>Username</Table.Th>
                         <Table.Th>{t('Password')}</Table.Th>
                         <Table.Th>Role</Table.Th>
-                        <Table.Th>OAuth Providers</Table.Th>
+                        <Table.Th>{t('OAuth Providers')}</Table.Th>
                         <Table.Th>Quota</Table.Th>
                         <Table.Th>Passkeys</Table.Th>
                       </Table.Tr>
@@ -263,7 +263,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                 </ScrollArea>
               ) : (
                 <Center m='sm'>
-                  <b>No users found (how?)</b>
+                  <b>{t('No users found (how?)')}</b>
                 </Center>
               )}
             </Paper>
@@ -271,7 +271,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
         </Accordion.Item>
 
         <Accordion.Item value='user_oauth_providers'>
-          <Accordion.Control icon={<IconUsers size='1rem' />}>User OAuth Providers</Accordion.Control>
+          <Accordion.Control icon={<IconUsers size='1rem' />}>{t('User OAuth Providers')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {Object.keys(export4.data.userOauthProviders).length ? (
@@ -281,8 +281,8 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                       <Table.Tr>
                         <Table.Th>User</Table.Th>
                         <Table.Th>Provider</Table.Th>
-                        <Table.Th>OAuth Username</Table.Th>
-                        <Table.Th>OAuth ID</Table.Th>
+                        <Table.Th>{t('OAuth Username')}</Table.Th>
+                        <Table.Th>{t('OAuth ID')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>{userOauthProvidersRows}</Table.Tbody>
@@ -290,7 +290,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No user oauth providers found</b>
+                  <b>{t('No user oauth providers found')}</b>
                 </Center>
               )}
             </Paper>
@@ -326,7 +326,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
         </Accordion.Item>
 
         <Accordion.Item value='tags'>
-          <Accordion.Control icon={<IconTag size='1rem' />}>User Tags</Accordion.Control>
+          <Accordion.Control icon={<IconTag size='1rem' />}>{t('User Tags')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {export4.data.userTags.length ? (
@@ -344,7 +344,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No user tags found</b>
+                  <b>{t('No user tags found')}</b>
                 </Center>
               )}
             </Paper>
@@ -372,7 +372,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No folders found</b>
+                  <b>{t('No folders found')}</b>
                 </Center>
               )}
             </Paper>
@@ -402,7 +402,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No urls found</b>
+                  <b>{t('No urls found')}</b>
                 </Center>
               )}
             </Paper>
@@ -419,7 +419,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th>Code</Table.Th>
-                        <Table.Th>Created By</Table.Th>
+                        <Table.Th>{t('Created By')}</Table.Th>
                         <Table.Th>{t('Created At')}</Table.Th>
                         <Table.Th>Uses</Table.Th>
                       </Table.Tr>
@@ -429,7 +429,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No invites found</b>
+                  <b>{t('No invites found')}</b>
                 </Center>
               )}
             </Paper>
@@ -443,7 +443,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
               <TextDetail name='Total Metrics Entries'>{export4.data.metrics.length}</TextDetail>
 
               <Text fw={700} c='dimmed' mb={-10}>
-                Latest Metrics Entry:
+                {t('Latest Metrics Entry:')}
               </Text>
               <HighlightCode
                 language='json'

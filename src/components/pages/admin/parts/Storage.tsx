@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { bytes } from '@/lib/bytes';
 import { Button, Group, Paper, Progress, Skeleton, Stack, Text, Title, Tooltip } from '@mantine/core';
@@ -20,7 +21,7 @@ export function Storage() {
           <Title order={3}>Storage</Title>
         </Group>
 
-        <Tooltip label='Refresh storage stats'>
+        <Tooltip label={t('Refresh storage stats')}>
           <Button variant='subtle' size='compact-sm' onClick={() => mutate()} loading={isLoading}>
             <IconRefresh size='1rem' />
           </Button>
@@ -35,7 +36,7 @@ export function Storage() {
         </Stack>
       ) : error ? (
         <Text size='sm' c='red'>
-          Failed to load storage
+          {t('Failed to load storage')}
         </Text>
       ) : status ? (
         <Stack gap='sm'>

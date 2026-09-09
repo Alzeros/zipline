@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Anchor, Code, Group, Paper, Text, Title, Image as MantineImage } from '@mantine/core';
 import { IconPrompt } from '@tabler/icons-react';
 import GeneratorButton from './GeneratorButton';
@@ -6,10 +7,10 @@ import { Link } from 'react-router-dom';
 export default function SettingsGenerators() {
   return (
     <Paper withBorder p='sm'>
-      <Title order={2}>Generate Uploaders</Title>
+      <Title order={2}>{t('Generate Uploaders')}</Title>
       <Text size='sm' c='dimmed' mt={3}>
         Generate scripts for upload tools. The Flameshot and Shell Script generators are supported on only
-        Linux and macOS.
+        {t('Linux and macOS.')}
       </Text>
 
       <Group mt='xs'>
@@ -58,8 +59,9 @@ export default function SettingsGenerators() {
           }
           desc={
             <>
-              This generator requires <Anchor href='https://isharemac.app/'>ishare</Anchor> to be installed on
-              macOS. This uploader is intended for use on macOS only.
+              {t('This generator requires')}
+              <Anchor href='https://isharemac.app/'>ishare</Anchor> to be installed on macOS. This uploader is
+              intended for use on macOS only.
             </>
           }
         />
@@ -68,7 +70,8 @@ export default function SettingsGenerators() {
           icon={<IconPrompt size={24} />}
           desc={
             <>
-              To use this script, you need <Code>bash</Code>,{' '}
+              {t('To use this script, you need')}
+              <Code>bash</Code>,{' '}
               <Anchor component={Link} to='https://curl.se/'>
                 <Code>curl</Code>
               </Anchor>

@@ -48,26 +48,28 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
       <Stack gap='lg'>
         <Switch
           mt='md'
-          label='Return HTTPS URLs'
-          description='Return URLs with HTTPS protocol.'
+          label={t('Return HTTPS URLs')}
+          description={t('Return URLs with HTTPS protocol.')}
           {...form.getInputProps('coreReturnHttpsUrls', { type: 'checkbox' })}
         />
 
         <Switch
-          label='Trust Proxies'
+          label={t('Trust Proxies')}
           description='Trust the X-Forwarded-* headers set by proxies. Only enable this if you are behind a trusted proxy (nginx, caddy, etc.). Requires a server restart.'
           {...form.getInputProps('coreTrustProxy', { type: 'checkbox' })}
         />
 
         <TextInput
-          label='Default Domain'
-          description='The domain to use when generating URLs. This value should not include the protocol.'
+          label={t('Default Domain')}
+          description={t(
+            'The domain to use when generating URLs. This value should not include the protocol.',
+          )}
           placeholder='example.com'
           {...form.getInputProps('coreDefaultDomain')}
         />
 
         <TextInput
-          label='Temporary Directory'
+          label={t('Temporary Directory')}
           description='The directory to store temporary files. If the path is invalid, certain functions may break. Requires a server restart.'
           placeholder='/tmp/zipline'
           {...form.getInputProps('coreTempDirectory')}

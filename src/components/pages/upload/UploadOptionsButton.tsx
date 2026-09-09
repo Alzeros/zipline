@@ -185,7 +185,9 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
                 )}
                 {settingsData?.files?.maxExpiration ? (
                   <div style={{ marginTop: 6, color: 'var(--mantine-color-dimmed)' }}>
-                    Note: maximum allowed expiration is <b>{settingsData.files.maxExpiration}</b>.
+                    {t('Note: maximum allowed expiration is {{max}}.', {
+                      max: settingsData.files.maxExpiration,
+                    })}
                   </div>
                 ) : null}
               </>

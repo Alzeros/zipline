@@ -44,7 +44,7 @@ export default function SettingsFileView() {
   if (!user) {
     return (
       <Paper withBorder p='sm'>
-        <Title order={2}>Viewing Files</Title>
+        <Title order={2}>{t('Viewing Files')}</Title>
         <Text c='dimmed' mt='xs'>
           Loading…
         </Text>
@@ -97,7 +97,7 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
 
     if (!data && error) {
       notifications.show({
-        title: 'Error while updating view settings',
+        title: t('Error while updating view settings'),
         message: error.error,
         color: 'red',
         icon: <IconFileX size='1rem' />,
@@ -109,7 +109,7 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
     mutate('/api/user');
     setUser(data.user);
     notifications.show({
-      message: 'View settings updated',
+      message: t('View settings updated'),
       color: 'green',
       icon: <IconCheck size='1rem' />,
     });
@@ -117,7 +117,7 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
 
   return (
     <Paper withBorder p='sm'>
-      <Title order={2}>Viewing Files</Title>
+      <Title order={2}>{t('Viewing Files')}</Title>
       <Text c='dimmed' mt='xs'>
         All text fields support using{' '}
         <Anchor target='_blank' href='https://zipline.diced.sh/docs/guides/variables/'>
@@ -128,41 +128,41 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
         <form onSubmit={form.onSubmit(onSubmit)}>
           <SimpleGrid cols={{ base: 1, md: 2 }} spacing='sm' mb='xs'>
             <Switch
-              label='Disable text files'
+              label={t('Disable text files')}
               description='Disable viewing text files through view-routes. This has no effect on other file types and will work even if view-routes are disabled.'
               {...form.getInputProps('disableTextFiles', { type: 'checkbox' })}
             />
 
             <Switch
-              label='Enable View Routes'
-              description='Enable viewing files through customizable view-routes'
+              label={t('Enable View Routes')}
+              description={t('Enable viewing files through customizable view-routes')}
               {...form.getInputProps('enabled', { type: 'checkbox' })}
             />
 
             <Switch
-              label='Show mimetype'
-              description='Show the mimetype of the file in the view-route'
+              label={t('Show mimetype')}
+              description={t('Show the mimetype of the file in the view-route')}
               disabled={!form.values.enabled}
               {...form.getInputProps('showMimetype', { type: 'checkbox' })}
             />
 
             <Switch
-              label='Show tags'
+              label={t('Show tags')}
               description="Show the file's tags in the view-route"
               disabled={!form.values.enabled}
               {...form.getInputProps('showTags', { type: 'checkbox' })}
             />
 
             <Switch
-              label='Show folder'
-              description='Show the name/link of the folder if possible in the view-route'
+              label={t('Show folder')}
+              description={t('Show the name/link of the folder if possible in the view-route')}
               disabled={!form.values.enabled}
               {...form.getInputProps('showFolder', { type: 'checkbox' })}
             />
           </SimpleGrid>
 
           <Textarea
-            label='View Content'
+            label={t('View Content')}
             description='Change the content within view-routes. Most HTML is valid, while the use of JavaScript is unavailable.'
             disabled={!form.values.enabled}
             mb='xs'
@@ -172,8 +172,8 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
           />
 
           <Select
-            label='View Content Alignment'
-            description='Change the alignment of the content within view-routes'
+            label={t('View Content Alignment')}
+            description={t('Change the alignment of the content within view-routes')}
             data={[
               { value: 'left', label: 'Left' },
               { value: 'center', label: 'Center' },
@@ -192,7 +192,7 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
           <Divider my='sm' />
 
           <Switch
-            label='Enable Embed'
+            label={t('Enable Embed')}
             description='Enable the following embed properties. These properties take advantage of OpenGraph tags. View routes will need to be enabled for this to work.'
             disabled={!form.values.enabled}
             my='xs'
@@ -206,7 +206,7 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
           />
 
           <Switch
-            label='Media-only link preview'
+            label={t('Media-only link preview')}
             description='When embeds are off, still add OpenGraph image/video tags so Discord and similar apps unfurl the media only (no custom title, description, or site name). The URL you paste stays in the message as plain text.'
             disabled={!form.values.enabled || form.values.embed}
             my='xs'
@@ -215,22 +215,22 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
 
           <SimpleGrid cols={{ base: 1, md: 2 }} spacing='sm'>
             <TextInput
-              label='Embed Title'
+              label={t('Embed Title')}
               disabled={!form.values.embed || !form.values.enabled}
               {...form.getInputProps('embedTitle')}
             />
             <TextInput
-              label='Embed Description'
+              label={t('Embed Description')}
               disabled={!form.values.embed || !form.values.enabled}
               {...form.getInputProps('embedDescription')}
             />
             <TextInput
-              label='Embed Site Name'
+              label={t('Embed Site Name')}
               disabled={!form.values.embed || !form.values.enabled}
               {...form.getInputProps('embedSiteName')}
             />
             <ColorInput
-              label='Embed Color'
+              label={t('Embed Color')}
               disabled={!form.values.embed || !form.values.enabled}
               {...form.getInputProps('embedColor')}
             />

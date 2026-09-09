@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Export3, V3_COMPATIBLE_SETTINGS } from '@/lib/import/version3/validateExport';
 import { Box, Checkbox, Group, Text } from '@mantine/core';
 
@@ -14,7 +15,7 @@ export default function Export3ImportSettings({
 
   return (
     <Box my='lg'>
-      <Text size='md'>Import settings?</Text>
+      <Text size='md'>{t('Import settings?')}</Text>
       <Text size='sm' c='dimmed'>
         This option allows you to import compatible settings from your instance into this v4 instance.
       </Text>

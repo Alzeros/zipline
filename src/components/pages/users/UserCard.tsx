@@ -76,10 +76,10 @@ export default function UserCard({ user }: { user: LimitedUser }) {
         <Card.Section inheritPadding py='xs'>
           <Stack gap={1}>
             <Text size='xs' c='dimmed'>
-              <b>Id:</b> {user.id}
+              <b>{t('Id:')}</b> {user.id}
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Role:</b> {roleName(user.role)}
+              <b>{t('Role:')}</b> {roleName(user.role)}
             </Text>
             <Text size='xs' c='dimmed'>
               <b>{t('Created:')}</b> <RelativeDate date={user.createdAt} />

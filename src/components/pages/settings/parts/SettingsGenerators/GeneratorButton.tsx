@@ -114,7 +114,7 @@ export default function GeneratorButton({
 
   const domains = Array.isArray(settingsData?.domains) ? settingsData?.domains.map((d) => String(d)) : [];
   const domainOptions = [
-    { value: '', label: 'Default Domain' },
+    { value: '', label: t('Default Domain') },
     ...domains.map((domain) => ({
       value: domain,
       label: domain,
@@ -133,11 +133,11 @@ export default function GeneratorButton({
         <Stack gap='xs' my='sm'>
           <Select
             data={[
-              { label: 'Upload File', value: 'file' },
+              { label: t('Upload File'), value: 'file' },
               { label: t('Shorten URL'), value: 'url', disabled: name === 'ishare' },
             ]}
-            description='Select which type of destination you want to generate'
-            label='Destination Type'
+            description={t('Select which type of destination you want to generate')}
+            label={t('Destination Type')}
             value={generatorType}
             onChange={(value) => setGeneratorType(value ?? 'file')}
             defaultValue='file'
@@ -162,7 +162,7 @@ export default function GeneratorButton({
               { value: 'name', label: t('Use file name') },
               { value: 'gfycat', label: t('Gfycat-style name') },
             ]}
-            label='Name format'
+            label={t('Name format')}
             description='The file name format to use when uploading files, the "File name" field will override this value.'
             leftSection={<IconWriting size='1rem' />}
             value={options.format}
@@ -181,7 +181,9 @@ export default function GeneratorButton({
 
           <NumberInput
             label='Compression'
-            description='The compression level to use on images (only). Leave blank to disable compression.'
+            description={t(
+              'The compression level to use on images (only). Leave blank to disable compression.',
+            )}
             leftSection={<IconPercentage size='1rem' />}
             max={100}
             min={0}
@@ -221,7 +223,7 @@ export default function GeneratorButton({
           </Text>
 
           <Switch
-            label='Add Original Name'
+            label={t('Add Original Name')}
             description={
               'Add the original file name, so that the file can be downloaded with the original name. This will still use the "Name Format" option for it\'s file name.'
             }
@@ -232,7 +234,7 @@ export default function GeneratorButton({
 
           {settingsData?.files?.extensionlessUrls && (
             <Switch
-              label='Extensionless URL'
+              label={t('Extensionless URL')}
               description='Remove the file extension from the returned URL. The file can still be accessed with its extension. This option will only work if the server is configured to allow extensionless URLs.'
               checked={options.extensionless ?? false}
               onChange={(event) => setOption({ extensionless: event.currentTarget.checked ?? false })}
@@ -242,7 +244,7 @@ export default function GeneratorButton({
 
           {name === 'ShareX' && (
             <Switch
-              label='Xshare Compatibility'
+              label={t('Xshare Compatibility')}
               description='If you choose to use the Xshare app on Android, enable this option for compatibility. The generated config will not work with ShareX.'
               checked={options.sharex_xshareCompatibility ?? false}
               onChange={(event) => setOption({ sharex_xshareCompatibility: event.currentTarget.checked })}
@@ -253,7 +255,7 @@ export default function GeneratorButton({
           {isUnixLike && (
             <>
               <Switch
-                label='Enable Wayland Compatibility'
+                label={t('Enable Wayland Compatibility')}
                 description={
                   <>
                     Use <Code>wl-copy</Code> instead of <Code>xclip</Code> for copying to clipboard.
@@ -271,7 +273,7 @@ export default function GeneratorButton({
               />
 
               <Switch
-                label='Enable macOS Compatibility'
+                label={t('Enable macOS Compatibility')}
                 description={
                   <>
                     Use <Code>pbcopy</Code> instead of <Code>xclip</Code> for copying to clipboard.
@@ -290,7 +292,7 @@ export default function GeneratorButton({
               />
 
               <Switch
-                label='Using a DE other than Gnome, KDE or Sway?'
+                label={t('Using a DE other than Gnome, KDE or Sway?')}
                 description={
                   <>
                     If using a compositor such as{' '}
@@ -312,7 +314,7 @@ export default function GeneratorButton({
                     Use <Code>echo</Code> instead of copying to clipboard
                   </>
                 }
-                description='Just output the url to the terminal instead of copying it to the clipboard.'
+                description={t('Just output the url to the terminal instead of copying it to the clipboard.')}
                 checked={options.unix_useEcho ?? false}
                 onChange={(event) =>
                   setOption({
@@ -328,7 +330,7 @@ export default function GeneratorButton({
           {isUnixLike && (
             <Text c='dimmed' size='sm'>
               If you are having trouble getting Flameshot to work on Wayland, consult the{' '}
-              <Anchor href='https://zipline.diced.sh/docs/guides/wayland'>Wayland guide</Anchor>.
+              <Anchor href='https://zipline.diced.sh/docs/guides/wayland'>{t('Wayland guide')}</Anchor>.
             </Text>
           )}
 

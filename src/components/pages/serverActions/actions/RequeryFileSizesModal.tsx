@@ -41,16 +41,16 @@ export default function RequeryFileSizesModal({ opened, onClose }: { opened: boo
         </span>
 
         <Switch
-          label='Force Update'
-          description='Force update the size of every file, even if it already has a size set.'
+          label={t('Force Update')}
+          description={t('Force update the size of every file, even if it already has a size set.')}
           checked={forceUpdate}
           onChange={() => setForceUpdate((val) => !val)}
           color='red'
         />
 
         <Switch
-          label='Force Delete'
-          description='Delete files that are not found in the database, or have a size of 0.'
+          label={t('Force Delete')}
+          description={t('Delete files that are not found in the database, or have a size of 0.')}
           checked={forceDelete}
           onChange={() => setForceDelete((val) => !val)}
           color='red'

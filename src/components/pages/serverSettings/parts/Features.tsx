@@ -61,56 +61,56 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
     <form onSubmit={form.onSubmit(onSubmit)}>
       <Stack gap='lg'>
         <Switch
-          label='Image Compression'
-          description='Allows the ability for users to compress images.'
+          label={t('Image Compression')}
+          description={t('Allows the ability for users to compress images.')}
           {...form.getInputProps('featuresImageCompression', { type: 'checkbox' })}
         />
 
         <Switch
           label='/robots.txt'
-          description='Enables a /robots.txt to stop search crawlers. Requires a server restart.'
+          description={t('Enables a /robots.txt to stop search crawlers. Requires a server restart.')}
           {...form.getInputProps('featuresRobotsTxt', { type: 'checkbox' })}
         />
 
         <Switch
           label='Healthcheck'
-          description='Enables a healthcheck route for uptime monitoring. Requires a server restart.'
+          description={t('Enables a healthcheck route for uptime monitoring. Requires a server restart.')}
           {...form.getInputProps('featuresHealthcheck', { type: 'checkbox' })}
         />
 
         <Switch
-          label='User Registration'
-          description='Allows users to register an account on the server.'
+          label={t('User Registration')}
+          description={t('Allows users to register an account on the server.')}
           {...form.getInputProps('featuresUserRegistration', { type: 'checkbox' })}
         />
 
         <Switch
-          label='OAuth Registration'
-          description='Allows users to register an account using OAuth providers.'
+          label={t('OAuth Registration')}
+          description={t('Allows users to register an account using OAuth providers.')}
           {...form.getInputProps('featuresOauthRegistration', { type: 'checkbox' })}
         />
 
         <Switch
-          label='Delete on Max Views'
+          label={t('Delete on Max Views')}
           description='Automatically deletes files/urls after they reach the maximum view count. Requires a server restart.'
           {...form.getInputProps('featuresDeleteOnMaxViews', { type: 'checkbox' })}
         />
 
         <Switch
-          label='Enable Metrics'
-          description='Enables metrics for the server. Requires a server restart.'
+          label={t('Enable Metrics')}
+          description={t('Enables metrics for the server. Requires a server restart.')}
           {...form.getInputProps('featuresMetricsEnabled', { type: 'checkbox' })}
         />
 
         <Switch
-          label='Admin Only Metrics'
-          description='Requires an administrator to view metrics.'
+          label={t('Admin Only Metrics')}
+          description={t('Requires an administrator to view metrics.')}
           {...form.getInputProps('featuresMetricsAdminOnly', { type: 'checkbox' })}
         />
 
         <Switch
-          label='Show User Specific Metrics'
-          description='Shows metrics specific to each user, for all users.'
+          label={t('Show User Specific Metrics')}
+          description={t('Shows metrics specific to each user, for all users.')}
           {...form.getInputProps('featuresMetricsShowUserSpecific', { type: 'checkbox' })}
         />
 
@@ -118,29 +118,29 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
           <Switch
-            label='Enable Thumbnails'
-            description='Enables thumbnail generation for images. Requires a server restart.'
+            label={t('Enable Thumbnails')}
+            description={t('Enables thumbnail generation for images. Requires a server restart.')}
             {...form.getInputProps('featuresThumbnailsEnabled', { type: 'checkbox' })}
           />
           <Switch
-            label='Instantaneous Thumbnails'
+            label={t('Instantaneous Thumbnails')}
             description='Generates thumbnails immediately after a file is uploaded, instead of waiting for the task to run.'
             {...form.getInputProps('featuresThumbnailsInstantaneous', { type: 'checkbox' })}
           />
         </SimpleGrid>
 
         <NumberInput
-          label='Thumbnails Number Threads'
+          label={t('Thumbnails Number Threads')}
           description='Number of threads to use for thumbnail generation, usually the number of CPU threads. Requires a server restart.'
-          placeholder='Enter a number...'
+          placeholder={t('Enter a number...')}
           min={1}
           max={16}
           {...form.getInputProps('featuresThumbnailsNumberThreads')}
         />
 
         <Select
-          label='Thumbnails Format'
-          description='The output format for thumbnails. Requires a server restart.'
+          label={t('Thumbnails Format')}
+          description={t('The output format for thumbnails. Requires a server restart.')}
           data={[
             { value: 'jpg', label: '.jpg' },
             { value: 'png', label: '.png' },
@@ -149,11 +149,11 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
           {...form.getInputProps('featuresThumbnailsFormat')}
         />
 
-        <Divider label='Version Checking' />
+        <Divider label={t('Version Checking')} />
 
         <Switch
-          label='Version Checking'
-          description='Query GitHub for updates and display the status on the sidebar to all users.'
+          label={t('Version Checking')}
+          description={t('Query GitHub for updates and display the status on the sidebar to all users.')}
           {...form.getInputProps('featuresVersionChecking', { type: 'checkbox' })}
         />
       </Stack>

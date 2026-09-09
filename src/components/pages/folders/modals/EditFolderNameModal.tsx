@@ -47,7 +47,7 @@ export default function EditFolderNameModal({
       mutateFolder();
       showNotification({
         title: t('Folder name updated'),
-        message: 'Folder name has been updated successfully to ' + data?.name,
+        message: t('Folder name has been updated successfully to {{name}}', { name: data?.name ?? '' }),
       });
       onClose();
     }

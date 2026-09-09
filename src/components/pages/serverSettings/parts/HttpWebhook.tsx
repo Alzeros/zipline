@@ -49,15 +49,15 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
     <form onSubmit={form.onSubmit(onSubmit)}>
       <Stack gap='lg'>
         <TextInput
-          label='On Upload'
-          description='The URL to send a POST request to when a file is uploaded.'
+          label={t('On Upload')}
+          description={t('The URL to send a POST request to when a file is uploaded.')}
           placeholder='https://example.com/upload'
           {...form.getInputProps('httpWebhookOnUpload')}
         />
 
         <TextInput
-          label='On Shorten'
-          description='The URL to send a POST request to when a URL is shortened.'
+          label={t('On Shorten')}
+          description={t('The URL to send a POST request to when a URL is shortened.')}
           placeholder='https://example.com/shorten'
           {...form.getInputProps('httpWebhookOnShorten')}
         />

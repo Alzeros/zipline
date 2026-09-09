@@ -65,7 +65,7 @@ export default function InviteTableView() {
             },
             {
               accessor: 'inviter.username',
-              title: 'Created by',
+              title: t('Created by'),
               sortable: true,
             },
             {
@@ -100,7 +100,7 @@ export default function InviteTableView() {
               textAlign: 'right',
               render: (invite) => (
                 <Group gap='sm' justify='right' wrap='nowrap'>
-                  <Tooltip label='Copy invite link'>
+                  <Tooltip label={t('Copy invite link')}>
                     <ActionIcon
                       onClick={(e) => {
                         e.stopPropagation();
@@ -120,7 +120,7 @@ export default function InviteTableView() {
                       <IconQrcode size='1rem' />
                     </ActionIcon>
                   </Tooltip>
-                  <Tooltip label='Delete invite'>
+                  <Tooltip label={t('Delete invite')}>
                     <ActionIcon
                       color='red'
                       onClick={(e) => {

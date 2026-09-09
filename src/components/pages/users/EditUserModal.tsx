@@ -149,14 +149,14 @@ export default function EditUserModal({
 
     if (error) {
       notifications.show({
-        title: 'Failed to edit user',
+        title: t('Failed to edit user'),
         message: error.error,
         color: 'red',
         icon: <IconUserCancel size='1rem' />,
       });
     } else {
       notifications.show({
-        title: 'User edited',
+        title: t('User edited'),
         message: `User ${data?.username} has been edited`,
         color: 'blue',
         icon: <IconUserEdit size='1rem' />,
@@ -171,7 +171,7 @@ export default function EditUserModal({
   return (
     <Modal centered title={`Edit ${user?.username ?? ''}`} onClose={onClose} opened={opened}>
       <Text size='sm' mt={-5} my='sm' c='dimmed'>
-        Any fields that are blank will be omitted, and will not be updated.
+        {t('Any fields that are blank will be omitted, and will not be updated.')}
       </Text>
 
       {user ? (
@@ -193,9 +193,9 @@ export default function EditUserModal({
 
             <FileInput
               label='Avatar'
-              placeholder='Select an avatar...'
+              placeholder={t('Select an avatar...')}
               rightSection={
-                <Tooltip label='Clear avatar'>
+                <Tooltip label={t('Clear avatar')}>
                   <ActionIcon
                     variant='transparent'
                     disabled={!form.values.avatar}
@@ -226,12 +226,12 @@ export default function EditUserModal({
             <Title order={5}>Quota</Title>
 
             <Select
-              label='File Quota Type'
-              description='Whether to set a quota on files by total bytes or the total number of files.'
+              label={t('File Quota Type')}
+              description={t('Whether to set a quota on files by total bytes or the total number of files.')}
               data={[
-                { value: 'BY_BYTES', label: 'By Bytes' },
-                { value: 'BY_FILES', label: 'By File Count' },
-                { value: 'NONE', label: 'No Files Quota' },
+                { value: 'BY_BYTES', label: t('By Bytes') },
+                { value: 'BY_FILES', label: t('By File Count') },
+                { value: 'NONE', label: t('No Files Quota') },
               ]}
               {...form.getInputProps('fileType')}
             />
@@ -240,9 +240,9 @@ export default function EditUserModal({
               <>
                 {form.values.fileType === 'BY_FILES' && (
                   <NumberInput
-                    label='Max Files'
-                    description='The maximum number of files the user can upload.'
-                    placeholder='Enter a number...'
+                    label={t('Max Files')}
+                    description={t('The maximum number of files the user can upload.')}
+                    placeholder={t('Enter a number...')}
                     mx='lg'
                     min={0}
                     {...form.getInputProps('maxFiles')}
@@ -251,9 +251,9 @@ export default function EditUserModal({
 
                 {form.values.fileType === 'BY_BYTES' && (
                   <TextInput
-                    label='Max Bytes'
-                    description='The maximum number of bytes the user can upload.'
-                    placeholder='Enter a human readable byte-format...'
+                    label={t('Max Bytes')}
+                    description={t('The maximum number of bytes the user can upload.')}
+                    placeholder={t('Enter a human readable byte-format...')}
                     mx='lg'
                     {...form.getInputProps('maxBytes')}
                   />
@@ -262,15 +262,15 @@ export default function EditUserModal({
             )}
 
             <NumberInput
-              label='Max URLs'
-              placeholder='Enter a number...'
-              description='The maximum number of URLs the user can create. Leave as 0 for unlimited.'
+              label={t('Max URLs')}
+              placeholder={t('Enter a number...')}
+              description={t('The maximum number of URLs the user can create. Leave as 0 for unlimited.')}
               {...form.getInputProps('maxUrls')}
             />
             <Divider />
 
             <Button type='submit' variant='outline' color='blue' leftSection={<IconUserEdit size='1rem' />}>
-              Update user
+              {t('Update user')}
             </Button>
           </Stack>
         </form>

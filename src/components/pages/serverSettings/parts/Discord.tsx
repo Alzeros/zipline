@@ -139,8 +139,8 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
     <>
       <form onSubmit={formMain.onSubmit(onSubmitMain)}>
         <TextInput
-          label='Webhook URL'
-          description='The Discord webhook URL to send notifications to'
+          label={t('Webhook URL')}
+          description={t('The Discord webhook URL to send notifications to')}
           placeholder='https://discord.com/api/webhooks/...'
           {...formMain.getInputProps('discordWebhookUrl')}
         />
@@ -148,13 +148,13 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>
           <TextInput
             label='Username'
-            description='The username to send notifications as'
+            description={t('The username to send notifications as')}
             {...formMain.getInputProps('discordUsername')}
           />
 
           <TextInput
-            label='Avatar URL'
-            description='The avatar for the webhook'
+            label={t('Avatar URL')}
+            description={t('The avatar for the webhook')}
             placeholder='https://example.com/avatar.png'
             {...formMain.getInputProps('discordAvatarUrl')}
           />
@@ -167,12 +167,12 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
       <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>
         <Paper withBorder p='sm'>
-          <Title order={3}>On Upload</Title>
+          <Title order={3}>{t('On Upload')}</Title>
 
           <form onSubmit={formOnUpload.onSubmit(onSubmitNotif('upload'))}>
             <TextInput
               mt='md'
-              label='Webhook URL'
+              label={t('Webhook URL')}
               description='The Discord webhook URL to send notifications to. If this is left blank, the main webhook url will be used'
               placeholder='https://discord.com/api/webhooks/...'
               {...formOnUpload.getInputProps('discordOnUploadWebhookUrl')}
@@ -186,8 +186,10 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
               />
 
               <TextInput
-                label='Avatar URL'
-                description='The avatar for the webhook. If this is left blank, the main avatar will be used'
+                label={t('Avatar URL')}
+                description={t(
+                  'The avatar for the webhook. If this is left blank, the main avatar will be used',
+                )}
                 placeholder='https://example.com/avatar.png'
                 {...formOnUpload.getInputProps('discordOnUploadAvatarUrl')}
               />
@@ -205,7 +207,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             <Switch
               mt='md'
               label='Embed'
-              description='Send the notification as an embed. This will allow for more customization below.'
+              description={t(
+                'Send the notification as an embed. This will allow for more customization below.',
+              )}
               {...formOnUpload.getInputProps('discordOnUploadEmbed', { type: 'checkbox' })}
             />
 
@@ -214,25 +218,25 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
                 <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
                   <TextInput
                     label='Title'
-                    description='The title of the embed'
+                    description={t('The title of the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedTitle')}
                   />
 
                   <TextInput
                     label='Description'
-                    description='The description of the embed'
+                    description={t('The description of the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedDescription')}
                   />
 
                   <TextInput
                     label='Footer'
-                    description='The footer of the embed'
+                    description={t('The footer of the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedFooter')}
                   />
 
                   <ColorInput
                     label={t('Color')}
-                    description='The color of the embed'
+                    description={t('The color of the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedColor')}
                   />
 
@@ -243,20 +247,20 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
                   />
 
                   <Switch
-                    label='Image/Video'
-                    description='Show the image or video in the embed'
+                    label={t('Image/Video')}
+                    description={t('Show the image or video in the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedImageOrVideo', { type: 'checkbox' })}
                   />
 
                   <Switch
                     label='Timestamp'
-                    description='Show the timestamp in the embed'
+                    description={t('Show the timestamp in the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedTimestamp', { type: 'checkbox' })}
                   />
 
                   <Switch
                     label='URL'
-                    description='Makes the title clickable and links to the URL of the file'
+                    description={t('Makes the title clickable and links to the URL of the file')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedUrl', { type: 'checkbox' })}
                   />
                 </SimpleGrid>
@@ -270,12 +274,12 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         </Paper>
 
         <Paper withBorder p='sm'>
-          <Title order={3}>On Shorten</Title>
+          <Title order={3}>{t('On Shorten')}</Title>
 
           <form onSubmit={formOnShorten.onSubmit(onSubmitNotif('shorten'))}>
             <TextInput
               mt='md'
-              label='Webhook URL'
+              label={t('Webhook URL')}
               description='The Discord webhook URL to send notifications to. If this is left blank, the main webhook url will be used'
               placeholder='https://discord.com/api/webhooks/...'
               {...formOnShorten.getInputProps('discordOnShortenWebhookUrl')}
@@ -289,8 +293,10 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
               />
 
               <TextInput
-                label='Avatar URL'
-                description='The avatar for the webhook. If this is left blank, the main avatar will be used'
+                label={t('Avatar URL')}
+                description={t(
+                  'The avatar for the webhook. If this is left blank, the main avatar will be used',
+                )}
                 placeholder='https://example.com/avatar.png'
                 {...formOnShorten.getInputProps('discordOnShortenAvatarUrl')}
               />
@@ -308,7 +314,9 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             <Switch
               mt='md'
               label='Embed'
-              description='Send the notification as an embed. This will allow for more customization below.'
+              description={t(
+                'Send the notification as an embed. This will allow for more customization below.',
+              )}
               {...formOnShorten.getInputProps('discordOnShortenEmbed', { type: 'checkbox' })}
             />
 
@@ -317,37 +325,37 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
                 <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
                   <TextInput
                     label='Title'
-                    description='The title of the embed'
+                    description={t('The title of the embed')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedTitle')}
                   />
 
                   <TextInput
                     label='Description'
-                    description='The description of the embed'
+                    description={t('The description of the embed')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedDescription')}
                   />
 
                   <TextInput
                     label='Footer'
-                    description='The footer of the embed'
+                    description={t('The footer of the embed')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedFooter')}
                   />
 
                   <ColorInput
                     label={t('Color')}
-                    description='The color of the embed'
+                    description={t('The color of the embed')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedColor')}
                   />
 
                   <Switch
                     label='Timestamp'
-                    description='Show the timestamp in the embed'
+                    description={t('Show the timestamp in the embed')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedTimestamp', { type: 'checkbox' })}
                   />
 
                   <Switch
                     label='URL'
-                    description='Makes the title clickable and links to the URL of the file'
+                    description={t('Makes the title clickable and links to the URL of the file')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedUrl', { type: 'checkbox' })}
                   />
                 </SimpleGrid>

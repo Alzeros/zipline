@@ -47,7 +47,7 @@ export default function ImportV3Button() {
     if (!validated.success) {
       console.error('Failed to validate import data', validated);
       showNotification({
-        title: 'There were errors with the import',
+        title: t('There were errors with the import'),
         message:
           "Zipline couldn't validate the import data. Are you sure it's a valid export from Zipline v3? For more details about the error, check the browser console.",
         color: 'red',
@@ -82,7 +82,7 @@ export default function ImportV3Button() {
 
     if (error) {
       showNotification({
-        title: 'Failed to import settings',
+        title: t('Failed to import settings'),
         message: error.issues
           ? error.issues.map((x: { message: string }) => x.message).join('\n')
           : error.error,
@@ -90,7 +90,7 @@ export default function ImportV3Button() {
       });
     } else {
       showNotification({
-        message: 'Settings imported',
+        message: t('Settings imported'),
         color: 'green',
         icon: <IconDeviceFloppy size='1rem' />,
       });
@@ -108,7 +108,7 @@ export default function ImportV3Button() {
       },
       onConfirm: async () => {
         showNotification({
-          title: 'Importing Data',
+          title: t('Importing Data'),
           message:
             'The export file will be uploaded. This may take a few moments. The process is running in the background and is logged, so you can close this browser tab.',
           color: 'blue',
@@ -138,7 +138,7 @@ export default function ImportV3Button() {
 
         if (error) {
           updateNotification({
-            title: 'Failed to import data',
+            title: t('Failed to import data'),
             message:
               error.error ??
               'An error occurred while importing data. Check the Zipline logs for more details.',
@@ -150,20 +150,20 @@ export default function ImportV3Button() {
           return;
         } else {
           updateNotification({
-            title: 'Data Imported',
+            title: t('Data Imported'),
             loading: false,
             message: (
               <>
                 The data has been successfully imported. If there were any conflicts, they have been logged.{' '}
                 <Stack gap={2}>
                   <div>
-                    <b>Users: </b> {Object.keys(data?.users ?? {}).length}
+                    <b>{t('Users:')}</b> {Object.keys(data?.users ?? {}).length}
                   </div>
                   <div>
-                    <b>Folders: </b> {Object.keys(data?.folders ?? {}).length}
+                    <b>{t('Folders:')}</b> {Object.keys(data?.folders ?? {}).length}
                   </div>
                   <div>
-                    <b>URLs: </b> {Object.keys(data?.urls ?? {}).length}
+                    <b>{t('URLs:')}</b> {Object.keys(data?.urls ?? {}).length}
                   </div>
                   <div>
                     <b>{t('Files:')}</b> {Object.keys(data?.files ?? {}).length}{' '}
@@ -179,7 +179,7 @@ export default function ImportV3Button() {
 
           if (Object.keys(data?.users ?? {}).length === 0) {
             showNotification({
-              title: 'No users imported',
+              title: t('No users imported'),
               message:
                 'No users were imported, likely because the export contains usernames that already exist in this Zipline instance. Check the Zipline logs for more details. Files, folders, and URLs may also not have been imported.',
               color: 'orange',
@@ -208,7 +208,9 @@ export default function ImportV3Button() {
                     icon={<IconExclamationMark size='1rem' />}
                     title='Important'
                   >
-                    After importing, you should either delete the export file or store it securely, as it
+                    {t(
+                      'After importing, you should either delete the export file or store it securely, as it',
+                    )}
                     contains sensitive information such as passwords and OAuth tokens.
                   </Alert>
 
@@ -218,9 +220,11 @@ export default function ImportV3Button() {
                       color='green'
                       variant='outline'
                       icon={<IconExclamationMark size='1rem' />}
-                      title='Settings Imported'
+                      title={t('Settings Imported')}
                     >
-                      Imported settings have been applied, it is advised to reload the page to ensure the
+                      {t(
+                        'Imported settings have been applied, it is advised to reload the page to ensure the',
+                      )}
                       settings are applied correctly.
                     </Alert>
                   )}
@@ -261,7 +265,7 @@ export default function ImportV3Button() {
 
   return (
     <>
-      <Modal opened={open} onClose={() => setOpen(false)} title='Import V3 Data' size='xl'>
+      <Modal opened={open} onClose={() => setOpen(false)} title={t('Import V3 Data')} size='xl'>
         {export3 ? (
           <Button
             onClick={() => {
@@ -275,7 +279,7 @@ export default function ImportV3Button() {
             leftSection={<IconX size='1rem' />}
             fullWidth
           >
-            Clear Import
+            {t('Clear Import')}
           </Button>
         ) : (
           <FileButton onChange={setFile} accept='application/json'>
@@ -288,7 +292,7 @@ export default function ImportV3Button() {
                   leftSection={<IconUpload size='1rem' />}
                   fullWidth
                 >
-                  Upload Export (JSON)
+                  {t('Upload Export (JSON)')}
                 </Button>
               </>
             )}
@@ -309,7 +313,7 @@ export default function ImportV3Button() {
 
         {export3 && (
           <Button onClick={handleImport} fullWidth leftSection={<IconDatabaseImport size='1rem' />} mt='xs'>
-            Import Data
+            {t('Import Data')}
           </Button>
         )}
       </Modal>

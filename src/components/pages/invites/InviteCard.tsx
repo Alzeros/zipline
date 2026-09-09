@@ -61,21 +61,21 @@ export default function InviteCard({
         <Card.Section inheritPadding py='xs'>
           <Stack gap={1}>
             <Text size='xs' c='dimmed'>
-              <b>Created By:</b> {invite.inviter!.username}
+              <b>{t('Created By:')}</b> {invite.inviter!.username}
             </Text>
             <Text size='xs' c='dimmed'>
               <b>{t('Created:')}</b> <RelativeDate date={invite.createdAt} />
             </Text>
             {invite.expiresAt && (
               <Text size='xs' c='dimmed'>
-                <b>Expires:</b> <RelativeDate date={invite.expiresAt} />
+                <b>{t('Expires:')}</b> <RelativeDate date={invite.expiresAt} />
               </Text>
             )}
             <Text size='xs' c='dimmed'>
-              <b>Max Uses:</b> {invite.maxUses ?? 'Unlimited'}
+              <b>{t('Max Uses:')}</b> {invite.maxUses ?? 'Unlimited'}
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>Uses:</b> {invite.uses.toLocaleString()}
+              <b>{t('Uses:')}</b> {invite.uses.toLocaleString()}
             </Text>
           </Stack>
         </Card.Section>

@@ -77,14 +77,14 @@ export default function DashboardUsers() {
 
     if (error) {
       notifications.show({
-        title: 'Failed to create user',
+        title: t('Failed to create user'),
         message: error.error,
         color: 'red',
         icon: <IconUserCancel size='1rem' />,
       });
     } else {
       notifications.show({
-        title: 'User created',
+        title: t('User created'),
         message: `User ${data?.username} has been created`,
         color: 'blue',
         icon: <IconUserPlus size='1rem' />,
@@ -98,7 +98,7 @@ export default function DashboardUsers() {
 
   return (
     <>
-      <Modal centered opened={open} onClose={() => setOpen(false)} title='Create a new user'>
+      <Modal centered opened={open} onClose={() => setOpen(false)} title={t('Create a new user')}>
         <form onSubmit={form.onSubmit(onSubmit)}>
           <Stack gap='sm'>
             <TextInput
@@ -115,9 +115,9 @@ export default function DashboardUsers() {
             />
             <FileInput
               label='Avatar'
-              placeholder='Select an avatar...'
+              placeholder={t('Select an avatar...')}
               rightSection={
-                <Tooltip label='Clear avatar'>
+                <Tooltip label={t('Clear avatar')}>
                   <ActionIcon
                     variant='transparent'
                     disabled={!form.values.avatar}

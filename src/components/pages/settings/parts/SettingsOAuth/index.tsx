@@ -1,3 +1,4 @@
+import { t as i18nT } from 'i18next';
 import { useConfig } from '@/components/ConfigProvider';
 import { Response } from '@/lib/api/response';
 import { useUserStore } from '@/lib/client/store/user';
@@ -43,14 +44,14 @@ function OAuthButton({ provider, linked }: { provider: OAuthProviderType; linked
 
     if (error) {
       notifications.show({
-        title: 'Failed to unlink account',
+        title: i18nT('Failed to unlink account'),
         message: error.error,
         color: 'red',
         icon: <IconUserExclamation size='1rem' />,
       });
     } else {
       notifications.show({
-        title: 'Account unlinked',
+        title: i18nT('Account unlinked'),
         message: `Your ${names[provider]} account has been unlinked.`,
         color: 'green',
         icon: <IconCheck size='1rem' />,
@@ -101,7 +102,7 @@ export default function SettingsOAuth() {
     <Paper withBorder p='sm'>
       <Title order={2}>OAuth</Title>
       <Text size='sm' c='dimmed' mt={3}>
-        Manage your connected OAuth providers.
+        {i18nT('Manage your connected OAuth providers.')}
       </Text>
 
       <SimpleGrid mt='xs' cols={{ base: 1, md: 2 }} spacing='lg'>

@@ -73,14 +73,15 @@ export function VersionInfo({ version }: { version: VersionData }) {
       {version.isLatest && <Text>{t('Running the latest version of Zipline.')}</Text>}
       {version.isUpstream && (
         <Text>
-          You are running an <b>unstable</b> version of Zipline. Upstream versions are not fully tested and
-          may contain bugs.
+          {t(
+            'You are running an unstable version of Zipline. Upstream versions are not fully tested and may contain bugs.',
+          )}
         </Text>
       )}
       {!version.isLatest && !version.isUpstream && version.isRelease && (
         <Text>
-          You are running an <b>outdated</b> version of Zipline. It is recommended to update to the{' '}
-          <Anchor href={version.latest.url}>latest version</Anchor>.
+          {t('You are running an outdated version of Zipline. It is recommended to update to the')}{' '}
+          <Anchor href={version.latest.url}>{t('latest version')}</Anchor>。
         </Text>
       )}
 

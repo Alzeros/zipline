@@ -47,7 +47,7 @@ export default function DashboardInvites() {
       });
     } else {
       notifications.show({
-        title: 'Invite created',
+        title: t('Invite created'),
         message: `Invite ${data?.code} has been created.`,
         color: 'green',
         icon: <IconPlus size='1rem' />,
@@ -61,13 +61,13 @@ export default function DashboardInvites() {
 
   return (
     <>
-      <Modal centered opened={open} onClose={() => setOpen(false)} title='Create an invite'>
+      <Modal centered opened={open} onClose={() => setOpen(false)} title={t('Create an invite')}>
         <form onSubmit={form.onSubmit(onSubmit)}>
           <Stack gap='sm'>
             <Select
-              label='Expires at'
+              label={t('Expires at')}
               description='Select an expiration for this invite, or choose "never" if you want the invite to never expire.'
-              placeholder='Select an expiration...'
+              placeholder={t('Select an expiration...')}
               data={[
                 { value: 'never', label: t('Never') },
                 { value: '30min', label: '30 minutes' },
@@ -90,9 +90,11 @@ export default function DashboardInvites() {
               {...form.getInputProps('expiresAt')}
             />
             <NumberInput
-              label='Max uses'
-              description='Set a maximum number of uses for this invite, or leave blank for unlimited uses.'
-              placeholder='Enter a number...'
+              label={t('Max uses')}
+              description={t(
+                'Set a maximum number of uses for this invite, or leave blank for unlimited uses.',
+              )}
+              placeholder={t('Enter a number...')}
               min={1}
               {...form.getInputProps('maxUses')}
             />

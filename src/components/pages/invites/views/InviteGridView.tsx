@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { Invite } from '@/lib/db/models/invite';
 import { Center, Group, Paper, SimpleGrid, Skeleton, Stack, Text, Title } from '@mantine/core';
@@ -57,10 +58,10 @@ export default function InviteGridView() {
             <Stack>
               <Group>
                 <IconLink size='2rem' />
-                <Title order={2}>No invites found</Title>
+                <Title order={2}>{t('No invites found')}</Title>
               </Group>
               <Text size='sm' c='dimmed'>
-                Create an invite to see them here.
+                {t('Create an invite to see them here.')}
               </Text>
             </Stack>
           </Center>

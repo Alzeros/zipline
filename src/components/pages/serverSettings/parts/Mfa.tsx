@@ -46,15 +46,15 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         />
 
         <TextInput
-          label='Relying Party ID'
-          description='The Relying Party ID (RP ID) to use for WebAuthn passkeys.'
+          label={t('Relying Party ID')}
+          description={t('The Relying Party ID (RP ID) to use for WebAuthn passkeys.')}
           placeholder='example.com'
           {...form.getInputProps('mfaPasskeysRpID')}
         />
 
         <TextInput
           label='Origin'
-          description='The Origin to use for WebAuthn passkeys.'
+          description={t('The Origin to use for WebAuthn passkeys.')}
           placeholder='https://example.com'
           {...form.getInputProps('mfaPasskeysOrigin')}
         />
@@ -62,13 +62,13 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         <Divider />
 
         <Switch
-          label='Enable TOTP'
-          description='Enable Time-based One-Time Passwords with the use of an authenticator app.'
+          label={t('Enable TOTP')}
+          description={t('Enable Time-based One-Time Passwords with the use of an authenticator app.')}
           {...form.getInputProps('mfaTotpEnabled', { type: 'checkbox' })}
         />
         <TextInput
           label='Issuer'
-          description='The issuer to use for the TOTP token.'
+          description={t('The issuer to use for the TOTP token.')}
           placeholder='Zipline'
           {...form.getInputProps('mfaTotpIssuer')}
         />

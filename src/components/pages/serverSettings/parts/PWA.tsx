@@ -59,48 +59,48 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
   return (
     <>
       <Text size='sm' c='dimmed' mb='md'>
-        Refresh the page after enabling PWA to see any changes.
+        {t('Refresh the page after enabling PWA to see any changes.')}
       </Text>
 
       <form onSubmit={form.onSubmit(onSubmit)}>
         <Stack gap='lg'>
           <Switch
-            label='PWA Enabled'
-            description='Allow users to install the Zipline PWA on their devices.'
+            label={t('PWA Enabled')}
+            description={t('Allow users to install the Zipline PWA on their devices.')}
             {...form.getInputProps('pwaEnabled', { type: 'checkbox' })}
           />
 
           <TextInput
             label='Title'
-            description='The title for the PWA'
+            description={t('The title for the PWA')}
             placeholder='Zipline'
             {...form.getInputProps('pwaTitle')}
           />
 
           <TextInput
-            label='Short Name'
-            description='The short name for the PWA'
+            label={t('Short Name')}
+            description={t('The short name for the PWA')}
             placeholder='Zipline'
             {...form.getInputProps('pwaShortName')}
           />
 
           <TextInput
             label='Description'
-            description='The description for the PWA'
+            description={t('The description for the PWA')}
             placeholder='Zipline'
             {...form.getInputProps('pwaDescription')}
           />
 
           <ColorInput
-            label='Theme Color'
-            description='The theme color for the PWA'
+            label={t('Theme Color')}
+            description={t('The theme color for the PWA')}
             placeholder='#000000'
             {...form.getInputProps('pwaThemeColor')}
           />
 
           <ColorInput
-            label='Background Color'
-            description='The background color for the PWA'
+            label={t('Background Color')}
+            description={t('The background color for the PWA')}
             placeholder='#ffffff'
             {...form.getInputProps('pwaBackgroundColor')}
           />

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import { showNotification } from '@mantine/notifications';
@@ -32,7 +33,7 @@ export function settingsOnSubmit(navigate: NavigateFunction, form: ReturnType<ty
 
     if (error) {
       showNotification({
-        title: 'Failed to save settings',
+        title: t('Failed to save settings'),
         message: error.issues
           ? error.issues.map((x: { message: string }) => x.message).join('\n')
           : error.error,
@@ -50,7 +51,7 @@ export function settingsOnSubmit(navigate: NavigateFunction, form: ReturnType<ty
       return error;
     } else {
       showNotification({
-        message: 'Settings saved',
+        message: t('Settings saved'),
         color: 'green',
         icon: <IconDeviceFloppy size='1rem' />,
       });

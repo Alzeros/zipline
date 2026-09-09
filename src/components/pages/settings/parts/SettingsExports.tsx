@@ -16,7 +16,7 @@ export default function SettingsExports() {
 
   const handleNewExport = async () => {
     modals.openConfirmModal({
-      title: 'New export?',
+      title: t('New export?'),
       children:
         'Are you sure you want to start a new export? If you have a lot of files, this may take a while.',
       onConfirm: async () => {
@@ -25,8 +25,8 @@ export default function SettingsExports() {
         });
 
         showNotification({
-          title: 'Export started',
-          message: 'Export has been started, you can check its status in the table below',
+          title: t('Export started'),
+          message: t('Export has been started, you can check its status in the table below'),
           color: 'blue',
           loading: true,
         });
@@ -45,7 +45,7 @@ export default function SettingsExports() {
     });
 
     showNotification({
-      message: 'Export has been deleted',
+      message: t('Export has been deleted'),
       color: 'red',
     });
 
@@ -54,7 +54,7 @@ export default function SettingsExports() {
 
   return (
     <Paper withBorder p='sm'>
-      <Title order={2}>Export Files</Title>
+      <Title order={2}>{t('Export Files')}</Title>
 
       <Button
         mt='sm'
@@ -63,12 +63,12 @@ export default function SettingsExports() {
         onClick={handleNewExport}
         leftSection={<IconPlus size='1rem' />}
       >
-        New Export
+        {t('New Export')}
       </Button>
 
       {data?.length === 0 ? (
         <Paper p='sm' mt='sm' withBorder>
-          No exports found. Click the button above to start a new export.
+          {t('No exports found. Click the button above to start a new export.')}
         </Paper>
       ) : (
         <ScrollArea.Autosize mah={500} type='auto'>

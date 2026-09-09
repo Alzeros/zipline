@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import DomainSelect from '@/components/DomainSelect';
 import { useThemes } from '@/components/ThemeProvider';
 import { useSettingsStore } from '@/lib/client/store/settings';
@@ -32,72 +33,73 @@ export default function SettingsDashboard() {
 
   return (
     <Paper withBorder p='sm' h='100%'>
-      <Title order={2}>Dashboard Settings</Title>
+      <Title order={2}>{t('Dashboard Settings')}</Title>
       <Text size='sm' c='dimmed' mt={3}>
-        These settings are saved automatically in your <b>browser.</b>
+        {t('These settings are saved automatically in your')}
+        <b>browser.</b>
       </Text>
 
       <Stack gap='sm' my='xs'>
         <Stack>
           <Switch
-            label='Disable Media Preview'
+            label={t('Disable Media Preview')}
             description='Disable previews of files in the dashboard. This may help to save data and speed up the dashboard if you have a lot of media files, but it will also disable the file viewer and show a generic file icon instead of a preview for supported files.'
             checked={settings.disableMediaPreview}
             onChange={(event) => update('disableMediaPreview', event.currentTarget.checked)}
           />
           <Switch
-            label='Mute video and audio previews'
+            label={t('Mute video and audio previews')}
             description='When enabled, video and audio in the file viewer autoplay muted. Turning this off tries to play sound immediately. Browsers may block unmuted autoplay until you interact with the page.'
             checked={settings.mediaAutoMuted}
             onChange={(event) => update('mediaAutoMuted', event.currentTarget.checked)}
           />
           <Switch
-            label='Warn on deletion'
+            label={t('Warn on deletion')}
             description='Show a warning when deleting stuff. When this is disabled, files, urls, etc will be deleted with no prior warning! Folders, users, and bulk-transactions are exempt from this rule and will always warn you before deleting anything.'
             checked={settings.warnDeletion}
             onChange={(event) => update('warnDeletion', event.currentTarget.checked)}
           />
           <Switch
-            label='File navigation buttons'
+            label={t('File navigation buttons')}
             description='Show previous/next on the right and left of the file viewer to easily navigate between files.'
             checked={settings.fileNavButtons}
             onChange={(event) => update('fileNavButtons', event.currentTarget.checked)}
           />
           <Switch
-            label='Show recents'
-            description='Show recent uploads and logins on the home page.'
+            label={t('Show recents')}
+            description={t('Show recent uploads and logins on the home page.')}
             checked={settings.homeShowRecents}
             onChange={(event) => update('homeShowRecents', event.currentTarget.checked)}
           />
 
           <Switch
-            label='Show activity'
-            description='Show your recent activity as a graph on the home page.'
+            label={t('Show activity')}
+            description={t('Show your recent activity as a graph on the home page.')}
             checked={settings.homeShowActivity}
             onChange={(event) => update('homeShowActivity', event.currentTarget.checked)}
           />
 
           <Switch
-            label='Show file types'
-            description='Show the file types table on the home page.'
+            label={t('Show file types')}
+            description={t('Show the file types table on the home page.')}
             checked={settings.homeShowTypes}
             onChange={(event) => update('homeShowTypes', event.currentTarget.checked)}
           />
         </Stack>
 
         <Select
-          label='File viewer'
-          description='Choose which file viewer opens when you click a file.'
+          label={t('File viewer')}
+          description={t('Choose which file viewer opens when you click a file.')}
           data={[
-            { value: 'fullscreen', label: 'Fullscreen (beta)' },
-            { value: 'default', label: 'Default (modal)' },
+            { value: 'fullscreen', label: t('Fullscreen (beta)') },
+            { value: 'default', label: t('Default (modal)') },
           ]}
           value={settings.fileViewer}
           onChange={(value) => update('fileViewer', (value as 'default' | 'fullscreen') ?? 'fullscreen')}
         />
 
         <DomainSelect
-          label='Default Domain'
+          label={t('Default Domain')}
           description='Set the default domain used for copied links anywhere in the dashboard. Leave blank or select "Default domain" to use the current domain that serves the dashboard.'
           value={settings.domain}
           onChange={(value) => update('domain', (value as string) ?? '')}
@@ -119,8 +121,8 @@ export default function SettingsDashboard() {
         {settings.theme === 'system' && (
           <Group grow>
             <Select
-              label='Dark Theme'
-              description='The theme to use for the dashboard when your system is in dark mode.'
+              label={t('Dark Theme')}
+              description={t('The theme to use for the dashboard when your system is in dark mode.')}
               data={themes
                 .filter((theme) => theme.colorScheme === 'dark')
                 .map((theme) => ({ value: theme.id, label: theme.name }))}
@@ -131,8 +133,8 @@ export default function SettingsDashboard() {
             />
 
             <Select
-              label='Light Theme'
-              description='The theme to use for the dashboard when your system is in light mode.'
+              label={t('Light Theme')}
+              description={t('The theme to use for the dashboard when your system is in light mode.')}
               data={themes
                 .filter((theme) => theme.colorScheme === 'light')
                 .map((theme) => ({ value: theme.id, label: theme.name }))}

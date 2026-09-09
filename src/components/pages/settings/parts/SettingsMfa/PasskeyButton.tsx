@@ -78,7 +78,7 @@ export default function PasskeyButton() {
       });
 
       notifications.show({
-        title: 'Error while saving passkey',
+        title: t('Error while saving passkey'),
         message: error.error,
         color: 'red',
         icon: <IconKeyOff size='1rem' />,
@@ -92,8 +92,8 @@ export default function PasskeyButton() {
       });
 
       notifications.show({
-        title: 'Passkey saved!',
-        message: 'Your passkey has been saved successfully.',
+        title: t('Passkey saved!'),
+        message: t('Your passkey has been saved successfully.'),
         color: 'green',
         icon: <IconKey size='1rem' />,
       });
@@ -120,15 +120,15 @@ export default function PasskeyButton() {
 
         if (error) {
           notifications.show({
-            title: 'Error while removing passkey',
+            title: t('Error while removing passkey'),
             message: error.error,
             color: 'red',
             icon: <IconKeyOff size='1rem' />,
           });
         } else {
           notifications.show({
-            title: 'Passkey removed!',
-            message: 'Your passkey has been removed successfully.',
+            title: t('Passkey removed!'),
+            message: t('Your passkey has been removed successfully.'),
             color: 'green',
             icon: <IconKey size='1rem' />,
           });
@@ -141,7 +141,7 @@ export default function PasskeyButton() {
 
   return (
     <>
-      <Modal title='Manage passkeys' opened={pkData.open} onClose={() => setPkData('open', false)}>
+      <Modal title={t('Manage passkeys')} opened={pkData.open} onClose={() => setPkData('open', false)}>
         <Stack gap='sm'>
           <>
             {user?.passkeys?.map((passkey, i) => (
@@ -153,7 +153,8 @@ export default function PasskeyButton() {
                   </ActionIcon>
                 </Group>
                 <Text size='sm'>
-                  Passkey created <RelativeDate date={passkey.createdAt} />
+                  {t('Passkey created')}
+                  <RelativeDate date={passkey.createdAt} />
                   {passkey.lastUsed && (
                     <>
                       , last used <RelativeDate date={passkey.lastUsed} />.
@@ -162,8 +163,9 @@ export default function PasskeyButton() {
                 </Text>
                 {!(passkey?.reg as Record<string, any>).webauthn && (
                   <Text size='xs' mt='xs' c='red'>
-                    Warning: This passkey was created with an older version of Zipline and <b>WILL NOT</b>{' '}
-                    work with this version. Please delete and recreate this passkey to ensure compatibility.
+                    {t('Warning: This passkey was created with an older version of Zipline and')}
+                    <b>{t('WILL NOT')}</b> work with this version. Please delete and recreate this passkey to
+                    ensure compatibility.
                   </Text>
                 )}
               </Paper>
@@ -191,10 +193,10 @@ export default function PasskeyButton() {
 
           {pkData.nameShown && (
             <>
-              <Text size='sm'>Assign a name to this passkey so you can remember it later.</Text>
+              <Text size='sm'>{t('Assign a name to this passkey so you can remember it later.')}</Text>
 
               <TextInput
-                placeholder='Passkey name'
+                placeholder={t('Passkey name')}
                 value={pkData.name}
                 onChange={(e) => setPkData('name', e.currentTarget.value)}
               />
@@ -213,7 +215,7 @@ export default function PasskeyButton() {
       </Modal>
 
       <Button size='sm' leftSection={<IconKey size='1rem' />} onClick={() => setPkData('open', true)}>
-        Manage passkeys
+        {t('Manage passkeys')}
       </Button>
     </>
   );

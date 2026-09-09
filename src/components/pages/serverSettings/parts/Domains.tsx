@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import type { Response } from '@/lib/api/response';
 import { ActionIcon, LoadingOverlay, Paper, Table, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
@@ -65,7 +66,7 @@ function Form({ data }: { data: Response['/api/server/settings'] }) {
 
       <form onSubmit={addDomain}>
         <TextInput
-          description='Enter a domain name'
+          description={t('Enter a domain name')}
           placeholder='example.com'
           rightSection={
             <ActionIcon type='submit' variant='transparent' disabled={submitting}>
@@ -105,7 +106,7 @@ function Form({ data }: { data: Response['/api/server/settings'] }) {
         </Paper>
       ) : (
         <Text mt='md' c='dimmed'>
-          No domains added yet.
+          {t('No domains added yet.')}
         </Text>
       )}
     </>

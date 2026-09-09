@@ -58,7 +58,7 @@ export default function SettingsAvatar() {
 
     if (!data && error) {
       notifications.show({
-        title: 'Error while updating avatar',
+        title: t('Error while updating avatar'),
         message: error.error,
         color: 'red',
         icon: <IconPhotoCancel size='1rem' />,
@@ -68,7 +68,7 @@ export default function SettingsAvatar() {
     }
 
     notifications.show({
-      message: 'Avatar updated',
+      message: t('Avatar updated'),
       color: 'green',
       icon: <IconPhoto size='1rem' />,
     });
@@ -85,7 +85,7 @@ export default function SettingsAvatar() {
 
     if (!data && error) {
       notifications.show({
-        title: 'Error while updating avatar',
+        title: t('Error while updating avatar'),
         message: error.error,
         color: 'red',
         icon: <IconPhotoCancel size='1rem' />,
@@ -95,7 +95,7 @@ export default function SettingsAvatar() {
     }
 
     notifications.show({
-      message: 'Avatar updated',
+      message: t('Avatar updated'),
       color: 'green',
       icon: <IconPhoto size='1rem' />,
     });
@@ -112,7 +112,7 @@ export default function SettingsAvatar() {
       <Stack gap='sm'>
         <FileInput
           accept='image/*'
-          placeholder='Upload new avatar...'
+          placeholder={t('Upload new avatar...')}
           value={avatar}
           onChange={onAvatarChange}
           leftSection={<IconPhotoUp size='1rem' />}
@@ -158,7 +158,7 @@ export default function SettingsAvatar() {
           )}
           {currentAvatar && (
             <Button leftSection={<IconX size='1rem' />} color='red' onClick={clearAvatar}>
-              Remove Avatar
+              {t('Remove Avatar')}
             </Button>
           )}
 

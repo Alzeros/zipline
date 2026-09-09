@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Export4 } from '@/lib/import/version4/validateExport';
 import { Box, Button, Checkbox, Collapse, Group, Paper, Table, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -21,11 +22,11 @@ export default function Export4ImportSettings({
 
   return (
     <Box my='lg'>
-      <Text size='md'>Import settings?</Text>
+      <Text size='md'>{t('Import settings?')}</Text>
       <Text size='sm' c='dimmed'>
-        Import all settings from your previous instance into this v4 instance.
+        {t('Import all settings from your previous instance into this v4 instance.')}
         <br />
-        After importing, it is recommended to restart Zipline for all settings to take full effect.
+        {t('After importing, it is recommended to restart Zipline for all settings to take full effect.')}
       </Text>
 
       <Button my='xs' onClick={toggleSettings} size='compact-xs'>

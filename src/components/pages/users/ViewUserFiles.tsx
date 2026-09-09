@@ -24,7 +24,7 @@ export default function ViewUserFiles() {
     <>
       <Group>
         <Title>{user.username}&apos;s files</Title>
-        <Tooltip label='Back to users'>
+        <Tooltip label={t('Back to users')}>
           <ActionIcon variant='outline' component={Link} to='/dashboard/admin/users'>
             <IconArrowBackUp size='1rem' />
           </ActionIcon>

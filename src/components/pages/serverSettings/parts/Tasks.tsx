@@ -40,48 +40,51 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
   return (
     <>
       <Text size='sm' c='dimmed' mb='md'>
-        All options require a restart to take effect. Setting a value of <Code>0</Code> will disable the task.
+        {t('All options require a restart to take effect. Setting a value of')}
+        <Code>0</Code> will disable the task.
       </Text>
 
       <form onSubmit={form.onSubmit(onSubmit)}>
         <Stack gap='lg'>
           <TextInput
-            label='Delete Files Interval'
-            description='How often to check and delete expired files.'
+            label={t('Delete Files Interval')}
+            description={t('How often to check and delete expired files.')}
             placeholder='30m'
             {...form.getInputProps('tasksDeleteInterval')}
           />
 
           <TextInput
-            label='Clear Invites Interval'
-            description='How often to check and clear expired/used invites.'
+            label={t('Clear Invites Interval')}
+            description={t('How often to check and clear expired/used invites.')}
             placeholder='30m'
             {...form.getInputProps('tasksClearInvitesInterval')}
           />
 
           <TextInput
-            label='Max Views Interval'
-            description='How often to check and delete files that have reached max views.'
+            label={t('Max Views Interval')}
+            description={t('How often to check and delete files that have reached max views.')}
             placeholder='30m'
             {...form.getInputProps('tasksMaxViewsInterval')}
           />
 
           <TextInput
-            label='Thumbnails Interval'
-            description='How often to check and generate thumbnails for video files.'
+            label={t('Thumbnails Interval')}
+            description={t('How often to check and generate thumbnails for video files.')}
             placeholder='30m'
             {...form.getInputProps('tasksThumbnailsInterval')}
           />
 
           <TextInput
-            label='Clean Thumbnails Interval'
-            description='How often to check and delete orphaned thumbnails from the filesystem or database.'
+            label={t('Clean Thumbnails Interval')}
+            description={t(
+              'How often to check and delete orphaned thumbnails from the filesystem or database.',
+            )}
             placeholder='1d'
             {...form.getInputProps('tasksCleanThumbnailsInterval')}
           />
 
           <TextInput
-            label='Metrics Interval'
+            label={t('Metrics Interval')}
             description='How often to collect metrics data. Setting this to a lower value will give you more up-to-date metrics, but may increase CPU usage.'
             placeholder='30m'
             {...form.getInputProps('tasksMetricsInterval')}

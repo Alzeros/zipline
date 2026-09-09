@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import { useLogout } from '@/lib/client/hooks/useLogout';
@@ -17,7 +18,7 @@ export default function SettingsSessions() {
 
   const handleLogOutOfAllDevices = async () => {
     modals.openConfirmModal({
-      title: 'Log out of all devices?',
+      title: t('Log out of all devices?'),
       children:
         'Are you sure you want to log out of all devices? This will log you out of all devices except the current one.',
       onConfirm: async () => {
@@ -27,7 +28,7 @@ export default function SettingsSessions() {
 
         if (!error) {
           showNotification({
-            message: 'Logged out of all devices',
+            message: t('Logged out of all devices'),
             color: 'blue',
             icon: <IconLogout size='1rem' />,
           });
@@ -43,7 +44,7 @@ export default function SettingsSessions() {
 
   const handleLogOutOfDevice = async (sessionId: string) => {
     modals.openConfirmModal({
-      title: 'Log out of device?',
+      title: t('Log out of device?'),
       children: 'Are you sure you want to log out of this device?',
       onConfirm: async () => {
         const { error } = await fetchApi('/api/user/sessions', 'DELETE', {
@@ -52,7 +53,7 @@ export default function SettingsSessions() {
 
         if (!error) {
           showNotification({
-            message: 'Logged out of device',
+            message: t('Logged out of device'),
             color: 'blue',
             icon: <IconLogout size='1rem' />,
           });
@@ -89,7 +90,7 @@ export default function SettingsSessions() {
                 <Table.Tr>
                   <Table.Th>Client</Table.Th>
                   <Table.Th>Device</Table.Th>
-                  <Table.Th>Logged in at</Table.Th>
+                  <Table.Th>{t('Logged in at')}</Table.Th>
                   <Table.Th></Table.Th>
                 </Table.Tr>
               </Table.Thead>
@@ -97,7 +98,7 @@ export default function SettingsSessions() {
             </Table>
           ) : (
             <Text c='dimmed' p='md'>
-              No other sessions found
+              {t('No other sessions found')}
             </Text>
           )}
         </Paper>
@@ -109,7 +110,7 @@ export default function SettingsSessions() {
           onClick={handleLogOutOfAllDevices}
           disabled={!data?.other?.length}
         >
-          Log out of all devices
+          {t('Log out of all devices')}
         </Button>
       </Modal>
 
@@ -134,11 +135,11 @@ export default function SettingsSessions() {
             disabled={isLoading || !data?.other?.length}
             leftSection={<IconUsers size='1rem' />}
           >
-            View sessions
+            {t('View sessions')}
           </Button>
 
           <Button color='yellow' onClick={logout} leftSection={<IconLogout size='1rem' />}>
-            Log out of this browser
+            {t('Log out of this browser')}
           </Button>
         </SimpleGrid>
       </Paper>

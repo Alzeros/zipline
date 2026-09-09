@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { LimitedUser } from '@/lib/db/models/user';
 import { fetchApi } from '@/lib/fetchApi';
@@ -40,14 +41,14 @@ async function handleDeleteUser(user: LimitedUser, deleteFiles: boolean = false)
 
   if (error) {
     notifications.show({
-      title: 'Failed to delete user',
+      title: t('Failed to delete user'),
       message: error.error,
       color: 'red',
       icon: <IconUserCancel size='1rem' />,
     });
   } else {
     notifications.show({
-      title: 'User deleted',
+      title: t('User deleted'),
       message: `User ${data?.username} has been deleted`,
       color: 'blue',
       icon: <IconUserMinus size='1rem' />,

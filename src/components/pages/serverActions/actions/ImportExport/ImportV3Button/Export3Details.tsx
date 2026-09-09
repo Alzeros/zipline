@@ -116,7 +116,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
 
       <Accordion defaultValue='version' variant='contained'>
         <Accordion.Item value='version'>
-          <Accordion.Control icon={<IconVersions size='1rem' />}>Version Details</Accordion.Control>
+          <Accordion.Control icon={<IconVersions size='1rem' />}>{t('Version Details')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
               <TextDetail name='Export Version'>{export3.versions.export}</TextDetail>
@@ -127,7 +127,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
         </Accordion.Item>
 
         <Accordion.Item value='request'>
-          <Accordion.Control icon={<IconTarget size='1rem' />}>Request Details</Accordion.Control>
+          <Accordion.Control icon={<IconTarget size='1rem' />}>{t('Request Details')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
               <TextDetail name='User'>
@@ -175,9 +175,9 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th>Username</Table.Th>
-                        <Table.Th>Password?</Table.Th>
+                        <Table.Th>{t('Password?')}</Table.Th>
                         <Table.Th>Admin</Table.Th>
-                        <Table.Th>Super Admin</Table.Th>
+                        <Table.Th>{t('Super Admin')}</Table.Th>
                         <Table.Th>Avatar</Table.Th>
                         <Table.Th>Oauth</Table.Th>
                         <Table.Th>2fa (totp)</Table.Th>
@@ -189,7 +189,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No users found (how?)</b>
+                  <b>{t('No users found (how?)')}</b>
                 </Center>
               )}
             </Paper>
@@ -247,7 +247,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No folders found</b>
+                  <b>{t('No folders found')}</b>
                 </Center>
               )}
             </Paper>
@@ -275,7 +275,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No urls found</b>
+                  <b>{t('No urls found')}</b>
                 </Center>
               )}
             </Paper>
@@ -292,7 +292,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                     <Table.Thead>
                       <Table.Tr>
                         <Table.Th>Code</Table.Th>
-                        <Table.Th>Created By</Table.Th>
+                        <Table.Th>{t('Created By')}</Table.Th>
                         <Table.Th>{t('Created At')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
@@ -301,7 +301,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                 </Table.ScrollContainer>
               ) : (
                 <Center m='sm'>
-                  <b>No invites found</b>
+                  <b>{t('No invites found')}</b>
                 </Center>
               )}
             </Paper>

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { copyLink } from '@/lib/client/copyLink';
 import { Invite } from '@/lib/db/models/invite';
@@ -30,14 +31,14 @@ async function handleDeleteInvite(invite: Invite) {
 
   if (error) {
     notifications.show({
-      title: 'Failed to delete invite',
+      title: t('Failed to delete invite'),
       message: error.error,
       color: 'red',
       icon: <IconTagOff size='1rem' />,
     });
   } else {
     notifications.show({
-      title: 'Invite deleted',
+      title: t('Invite deleted'),
       message: `Invite ${data?.code} has been deleted.`,
       color: 'green',
       icon: <IconCheck size='1rem' />,

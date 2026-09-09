@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { VersionInfo } from '@/components/VersionBadge';
 import useVersion from '@/lib/client/hooks/useVersion';
 import { Group, Paper, Skeleton, Stack, Text, Title } from '@mantine/core';
@@ -23,7 +24,7 @@ export function Version() {
         <VersionInfo version={version} />
       ) : (
         <Text size='xs' c='dimmed'>
-          Version information could not be loaded.
+          {t('Version information could not be loaded.')}
         </Text>
       )}
     </Paper>

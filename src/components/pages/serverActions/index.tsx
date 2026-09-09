@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { LinksList } from '@/components/LinksList';
 import { useUserStore } from '@/lib/client/store/user';
 import { Group, Text, Title } from '@mantine/core';
@@ -27,40 +28,40 @@ type ServerAction = {
 const ACTIONS = [
   {
     id: 'import-export',
-    label: 'Import/Export Data',
-    description: 'Allows you to import or export server data and configurations.',
+    label: t('Import/Export Data'),
+    description: t('Allows you to import or export server data and configurations.'),
     icon: IconDatabasePlus,
     Modal: ImportExportModal,
     superAdminOnly: true,
   },
   {
     id: 'clear-temporary-files',
-    label: 'Clear Temporary Files',
-    description: 'Removes all temporary files from the temporary directory.',
+    label: t('Clear Temporary Files'),
+    description: t('Removes all temporary files from the temporary directory.'),
     icon: IconTrashFilled,
     Modal: ClearTemporaryFilesModal,
     superAdminOnly: false,
   },
   {
     id: 'clear-zero-byte-files',
-    label: 'Clear Zero Byte Files',
-    description: 'Deletes all files with zero bytes from the database and/or storage.',
+    label: t('Clear Zero Byte Files'),
+    description: t('Deletes all files with zero bytes from the database and/or storage.'),
     icon: IconTrashFilled,
     Modal: ClearZeroByteFilesModal,
     superAdminOnly: false,
   },
   {
     id: 'requery-file-sizes',
-    label: 'Requery File Sizes',
-    description: 'Recalculates and updates the sizes of all files in the database.',
+    label: t('Requery File Sizes'),
+    description: t('Recalculates and updates the sizes of all files in the database.'),
     icon: IconPlayerPlayFilled,
     Modal: RequeryFileSizesModal,
     superAdminOnly: false,
   },
   {
     id: 'generate-thumbnails',
-    label: 'Generate Thumbnails',
-    description: 'Creates thumbnails for all image and video files that lack them.',
+    label: t('Generate Thumbnails'),
+    description: t('Creates thumbnails for all image and video files that lack them.'),
     icon: IconVideoPlusFilled,
     Modal: GenerateThumbnailsModal,
     superAdminOnly: false,
@@ -88,10 +89,10 @@ export default function DashboardServerActions() {
       ))}
 
       <Group gap='sm'>
-        <Title order={1}>Server Actions</Title>
+        <Title order={1}>{t('Server Actions')}</Title>
       </Group>
       <Text c='dimmed' mb='xs'>
-        Useful tools and scripts for server management.
+        {t('Useful tools and scripts for server management.')}
       </Text>
       <LinksList links={links} />
     </>

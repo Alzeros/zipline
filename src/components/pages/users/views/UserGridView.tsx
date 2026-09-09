@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { LimitedUser } from '@/lib/db/models/user';
 import { Center, Group, Paper, SimpleGrid, Skeleton, Stack, Text, Title } from '@mantine/core';
 import { IconFilesOff } from '@tabler/icons-react';
@@ -45,10 +46,10 @@ export default function UserGridView() {
             <Stack>
               <Group>
                 <IconFilesOff size='2rem' />
-                <Title order={2}>No users found</Title>
+                <Title order={2}>{t('No users found')}</Title>
               </Group>
               <Text size='sm' c='dimmed'>
-                Create a user to see them here
+                {t('Create a user to see them here')}
               </Text>
             </Stack>
           </Center>

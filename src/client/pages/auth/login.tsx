@@ -164,8 +164,11 @@ export default function Login() {
       {isHttps && !config.returnHttps && (
         <Box pos='absolute' top={10} left='50%' style={{ transform: 'translateX(-50%)' }}>
           <Text size='sm' c='red' ta='center'>
-            You are accessing this instance through a <b>secure</b> context but the server is not configured
-            to use HTTPS. Click <Anchor onClick={() => setSecureModal(true)}> here</Anchor> to learn more.
+            {t(
+              'You are accessing this instance through a secure context but the server is not configured to use HTTPS.',
+            )}{' '}
+            {t('Click')} <Anchor onClick={() => setSecureModal(true)}> {t('here')}</Anchor>{' '}
+            {t('to learn more.')}
           </Text>
         </Box>
       )}
@@ -173,9 +176,11 @@ export default function Login() {
       {!isHttps && config.returnHttps && (
         <Box pos='absolute' top={10} left='50%' style={{ transform: 'translateX(-50%)' }}>
           <Text size='sm' c='red' ta='center'>
-            You are accessing this instance through an <b>insecure</b> context but the server is configured to
-            use HTTPS. This may cause issues when logging in. Click{' '}
-            <Anchor onClick={() => setSecureModal(true)}> here</Anchor> to learn more.
+            {t(
+              'You are accessing this instance through an insecure context but the server is configured to use HTTPS. This may cause issues when logging in.',
+            )}{' '}
+            {t('Click')} <Anchor onClick={() => setSecureModal(true)}> {t('here')}</Anchor>{' '}
+            {t('to learn more.')}
           </Text>
         </Box>
       )}

@@ -66,25 +66,25 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
   return (
     <>
       <Text size='sm' c='dimmed' mb='md'>
-        All options require a restart to take effect.
+        {t('All options require a restart to take effect.')}
       </Text>
 
       <form onSubmit={form.onSubmit(onSubmit)}>
         <Stack gap='lg'>
           <Switch
-            label='Enable Ratelimit'
-            description='Enable ratelimiting for the server.'
+            label={t('Enable Ratelimit')}
+            description={t('Enable ratelimiting for the server.')}
             {...form.getInputProps('ratelimitEnabled', { type: 'checkbox' })}
           />
 
           <Switch
-            label='Admin Bypass'
-            description='Allow admins to bypass the ratelimit.'
+            label={t('Admin Bypass')}
+            description={t('Allow admins to bypass the ratelimit.')}
             {...form.getInputProps('ratelimitAdminBypass', { type: 'checkbox' })}
           />
 
           <NumberInput
-            label='Max Requests'
+            label={t('Max Requests')}
             description='The maximum number of requests allowed within the window. If no window is set, this is the maximum number of requests until it reaches the limit.'
             placeholder='10'
             min={1}
@@ -93,15 +93,15 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
           <NumberInput
             label='Window'
-            description='The window in seconds to allow the max requests.'
+            description={t('The window in seconds to allow the max requests.')}
             placeholder='60'
             min={1}
             {...form.getInputProps('ratelimitWindow')}
           />
 
           <TextInput
-            label='Allow List'
-            description='A comma-separated list of IP addresses to bypass the ratelimit.'
+            label={t('Allow List')}
+            description={t('A comma-separated list of IP addresses to bypass the ratelimit.')}
             placeholder='192.168.1.1, 127.0.0.1, 0.0.0.0'
             {...form.getInputProps('ratelimitAllowList')}
           />

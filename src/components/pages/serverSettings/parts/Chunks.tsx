@@ -41,22 +41,22 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
     <form onSubmit={form.onSubmit(onSubmit)}>
       <Stack gap='lg'>
         <Switch
-          label='Enable Chunks'
-          description='Enable chunked uploads.'
+          label={t('Enable Chunks')}
+          description={t('Enable chunked uploads.')}
           {...form.getInputProps('chunksEnabled', { type: 'checkbox' })}
         />
 
         <TextInput
-          label='Max Chunk Size'
-          description='Maximum size of an upload before it is split into chunks.'
+          label={t('Max Chunk Size')}
+          description={t('Maximum size of an upload before it is split into chunks.')}
           placeholder='95mb'
           disabled={!form.values.chunksEnabled}
           {...form.getInputProps('chunksMax')}
         />
 
         <TextInput
-          label='Chunk Size'
-          description='Size of each chunk.'
+          label={t('Chunk Size')}
+          description={t('Size of each chunk.')}
           placeholder='25mb'
           disabled={!form.values.chunksEnabled}
           {...form.getInputProps('chunksSize')}

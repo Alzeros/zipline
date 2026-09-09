@@ -201,15 +201,17 @@ export default function DeleteFolderModal({
 
             {childrenAction === 'cascade' && (
               <Text size='sm' c='red' fw={500}>
-                Warning: This will permanently delete all subfolders within this folder. Files will be
-                unlinked from their folders and moved to the root.
+                {t(
+                  'Warning: This will permanently delete all subfolders within this folder. Files will be unlinked from their folders and moved to the root.',
+                )}
               </Text>
             )}
 
             {childrenAction === 'cascade-files' && (
               <Text size='sm' c='red' fw={500}>
-                Warning: This will permanently delete all subfolders within this folder, along with every file
-                contained in them. The files will be removed from storage and cannot be recovered.
+                {t(
+                  'Warning: This will permanently delete all subfolders within this folder, along with every file contained in them. The files will be removed from storage and cannot be recovered.',
+                )}
               </Text>
             )}
           </>

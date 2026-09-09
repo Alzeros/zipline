@@ -38,7 +38,7 @@ export default function ClearZeroByteFilesModal({
       <Group justify='flex-end' mt='md'>
         <Button onClick={onClose}>Cancel</Button>
         <Button color='red' onClick={handle}>
-          Yes, delete
+          {t('Yes, delete')}
         </Button>
       </Group>
     </Modal>

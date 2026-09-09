@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { LinksList } from '@/components/LinksList';
 import { Response } from '@/lib/api/response';
 import { useTitle } from '@/lib/client/hooks/useTitle';
@@ -52,7 +53,7 @@ const Tasks = lazy(() => import('./parts/Tasks'));
 const Urls = lazy(() => import('./parts/Urls'));
 const Website = lazy(() => import('./parts/Website'));
 
-const InvalidSettingsSection = () => <Text>Invalid settings section</Text>;
+const InvalidSettingsSection = () => <Text>{t('Invalid settings section')}</Text>;
 
 const SETTINGS_COMPONENTS = {
   core: {
@@ -292,13 +293,13 @@ export default function DashboardServerSettings() {
             >
               <Box miw={0}>
                 <Group gap='xs'>
-                  <Text fw={600}>Environment overrides</Text>
+                  <Text fw={600}>{t('Environment overrides')}</Text>
                   <Badge color='orange' variant='light' size='sm'>
                     {data!.tampered.length}
                   </Badge>
                 </Group>
                 <Text c='dimmed' size='sm'>
-                  Some settings are managed by environment variables and cannot be changed here.
+                  {t('Some settings are managed by environment variables and cannot be changed here.')}
                 </Text>
               </Box>
             </Accordion.Control>
