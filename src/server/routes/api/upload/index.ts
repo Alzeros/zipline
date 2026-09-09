@@ -8,7 +8,13 @@ import {
   resolveUploadMimetype,
 } from '@/lib/api/upload';
 import { bytes } from '@/lib/bytes';
-import { COMPRESS_TYPES, compressFile, CompressResult } from '@/lib/compress';
+import {
+  COMPRESS_TYPES,
+  compressFile,
+  CompressResult,
+  resolveImageCompression,
+  ResolvedCompression,
+} from '@/lib/compress';
 import { config } from '@/lib/config';
 import { hashPassword } from '@/lib/crypto';
 import { datasource } from '@/lib/datasource';
@@ -161,6 +167,7 @@ export default typedPlugin(
           extension: string;
           mimetype: string;
           originalName?: string;
+          resolvedCompression?: ResolvedCompression;
         }[] = [];
 
         for (let i = 0; i < files.length; i++) {
@@ -180,10 +187,15 @@ export default typedPlugin(
 
           if (config.files.assumeMimetypes) response.assumedMimetypes![i] = assumed;
 
-          const cmpExt =
-            mimetype.startsWith('image/') && options.imageCompression
-              ? `.${options.imageCompression.type === 'jpeg' ? 'jpg' : (options.imageCompression.type ?? 'jpg')}`
-              : null;
+          // 与下方实际压缩处共用同一判断，避免文件名后缀与内容格式不一致
+          const resolvedCompression = resolveImageCompression(mimetype, options.imageCompression, {
+            enabled: config.features.imageCompression,
+            defaultFormat: config.files.defaultCompressionFormat,
+          });
+
+          const cmpExt = resolvedCompression
+            ? `.${resolvedCompression.type === 'jpeg' ? 'jpg' : resolvedCompression.type}`
+            : null;
           let fileName: string;
           try {
             fileName = await getFilename(
@@ -216,19 +228,20 @@ export default typedPlugin(
             extension,
             mimetype,
             originalName,
+            resolvedCompression,
           });
         }
 
         // todo: maybe make configurable?
         const prepared = await mapConcurrent(filesBefore, 4, async (item, i) => {
-          const { file, fileName, extension, mimetype, originalName } = item;
+          const { file, fileName, extension, mimetype, originalName, resolvedCompression } = item;
 
           // compress the image if requested
           let compressed;
-          if (mimetype.startsWith('image/') && options.imageCompression) {
+          if (resolvedCompression) {
             compressed = await compressFile(file.filepath, {
-              quality: options.imageCompression.percent,
-              type: options.imageCompression.type,
+              quality: resolvedCompression.percent,
+              type: resolvedCompression.type,
             });
 
             if (compressed.failed) {
