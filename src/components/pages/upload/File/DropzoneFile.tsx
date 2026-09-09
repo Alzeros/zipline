@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import DashboardFileType from '@/components/file/DashboardFileType';
 import { bytes } from '@/lib/bytes';
 import {
@@ -73,9 +74,7 @@ export default function DropzoneFile({
               fullWidth
               onClick={onDelete}
               leftSection={<IconTrashFilled size='1rem' />}
-            >
-              Remove
-            </Button>
+            >{t('Remove')}</Button>
           </Stack>
         </Stack>
       </HoverCard.Dropdown>

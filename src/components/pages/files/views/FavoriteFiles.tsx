@@ -73,9 +73,7 @@ export default function FavoriteFiles() {
                       leftSection={<IconFileUpload size='1rem' />}
                       component={Link}
                       to='/dashboard/upload/file'
-                    >
-                      Upload a file
-                    </Button>
+                    >{t('Upload a file')}</Button>
                   </Stack>
                 </Center>
               </Paper>

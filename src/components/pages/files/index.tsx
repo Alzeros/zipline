@@ -69,30 +69,22 @@ export default function DashboardFiles() {
             <Menu.Item
               leftSection={<IconTags size='1rem' />}
               onClick={() => setModals({ tags: !modals.tags })}
-            >
-              Manage Tags
-            </Menu.Item>
+            >{t('Manage Tags')}</Menu.Item>
             <Menu.Item
               leftSection={<IconFileDots size='1rem' />}
               onClick={() => setModals({ pending: !modals.pending })}
-            >
-              View Pending Files
-            </Menu.Item>
+            >{t('View Pending Files')}</Menu.Item>
             {view === 'table' && (
               <>
                 <Menu.Label>{t('Table Options')}</Menu.Label>
                 <Menu.Item
                   leftSection={<IconGridPatternFilled size='1rem' />}
                   onClick={() => setModals({ idSearch: !modals.idSearch })}
-                >
-                  Search by ID
-                </Menu.Item>
+                >{t('Search by ID')}</Menu.Item>
                 <Menu.Item
                   leftSection={<IconTableOptions size='1rem' />}
                   onClick={() => setModals({ table: !modals.table })}
-                >
-                  Table Options
-                </Menu.Item>
+                >{t('Table Options')}</Menu.Item>
               </>
             )}
           </Menu.Dropdown>

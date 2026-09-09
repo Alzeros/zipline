@@ -280,6 +280,7 @@ export default function FileTable({
   const FIELDS = [
     {
       accessor: 'name',
+      title: t('Name'),
       sortable: true,
       filter: (
         <SearchFilter
@@ -293,6 +294,7 @@ export default function FileTable({
     },
     {
       accessor: 'originalName',
+      title: t('Original Name'),
       sortable: true,
       filter: (
         <SearchFilter
@@ -306,6 +308,7 @@ export default function FileTable({
     },
     {
       accessor: 'tags',
+      title: t('Tags'),
       sortable: false,
       width: 200,
       render: (file: File) => (
@@ -328,6 +331,7 @@ export default function FileTable({
     },
     {
       accessor: 'type',
+      title: t('Type'),
       sortable: true,
       filter: (
         <SearchFilter
@@ -339,9 +343,15 @@ export default function FileTable({
       ),
       filtering: searchField === 'type' && searchQuery.type.trim() !== '',
     },
-    { accessor: 'size', sortable: true, render: (file: File) => bytes(file.size) },
+    {
+      accessor: 'size',
+      title: t('Size'),
+      sortable: true,
+      render: (file: File) => bytes(file.size),
+    },
     {
       accessor: 'createdAt',
+      title: t('Created At'),
       sortable: true,
       render: (file: File) => <RelativeDate date={file.createdAt} />,
     },
@@ -353,11 +363,13 @@ export default function FileTable({
     },
     {
       accessor: 'views',
+      title: t('Views'),
       sortable: true,
       render: (file: File) => file.views,
     },
     {
       accessor: 'id',
+      title: t('Id'),
       hidden: searchField !== 'id' || searchQuery.id.trim() === '',
       filtering: searchField === 'id' && searchQuery.id.trim() !== '',
     },
@@ -399,8 +411,7 @@ export default function FileTable({
       <Box>
         <Collapse expanded={selectedFiles.length > 0}>
           <Paper withBorder p='sm' my='sm'>
-            <Text size='sm' c='dimmed' mb='xs'>
-              Selections are saved across page changes. Currently selected <b>{selectedFiles.length}</b> file
+            <Text size='sm' c='dimmed' mb='xs'>{t('Selections are saved across page changes. Currently selected')}<b>{selectedFiles.length}</b> file
               {selectedFiles.length > 1 ? 's' : ''}.
             </Text>
 
@@ -416,9 +427,7 @@ export default function FileTable({
                       setSelectedFiles,
                     )
                   }
-                >
-                  Delete files
-                </Button>
+                >{t('Delete files')}</Button>
 
                 <Button
                   variant='outline'
@@ -438,9 +447,7 @@ export default function FileTable({
                   variant='outline'
                   leftSection={<IconCopy size='1rem' />}
                   onClick={() => bulkCopyLinks(selectedFiles.map((x) => x.url!))}
-                >
-                  Copy file links
-                </Button>
+                >{t('Copy file links')}</Button>
 
                 {!id && (
                   <Combobox
@@ -488,9 +495,7 @@ export default function FileTable({
                 }}
                 justify='right'
                 ml='auto'
-              >
-                Clear selection
-              </Button>
+              >{t('Clear selection')}</Button>
             </Group>
           </Paper>
         </Collapse>
@@ -520,11 +525,12 @@ export default function FileTable({
           withTableBorder
           minHeight={200}
           records={data?.page ?? []}
-          noRecordsText='No files'
+          noRecordsText={t('No files')}
           columns={[
             ...columns,
             {
               accessor: 'actions',
+              title: t('Actions'),
               textAlign: 'right',
               render: (file) => (
                 <Group gap='sm' justify='right' wrap='nowrap'>
@@ -598,7 +604,9 @@ export default function FileTable({
           onCellClick={({ record }) => setCurrent(record.id)}
           selectedRecords={selectedFiles}
           onSelectedRecordsChange={setSelectedFiles}
-          paginationText={({ from, to, totalRecords }) => `${from} - ${to} / ${totalRecords} files`}
+          paginationText={({ from, to, totalRecords }) =>
+            t('{{from}} - {{to}} / {{total}} files', { from, to, total: totalRecords })
+          }
         />
       </Box>
     </>

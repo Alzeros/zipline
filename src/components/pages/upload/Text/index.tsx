@@ -101,19 +101,13 @@ export default function UploadText() {
           component={Link}
           to='/dashboard/files'
           leftSection={<IconFiles size='1rem' />}
-        >
-          Go to files
-        </Button>
+        >{t('Go to files')}</Button>
       </Group>
 
       <Tabs defaultValue='textareas' variant='pills' my='sm'>
         <Tabs.List my='sm'>
-          <Tabs.Tab value='textareas' leftSection={<IconCursorText size='1rem' />}>
-            Text
-          </Tabs.Tab>
-          <Tabs.Tab value='preview' leftSection={<IconEyeFilled size='1rem' />}>
-            Preview
-          </Tabs.Tab>
+          <Tabs.Tab value='textareas' leftSection={<IconCursorText size='1rem' />}>{t('Text')}</Tabs.Tab>
+          <Tabs.Tab value='preview' leftSection={<IconEyeFilled size='1rem' />}>{t('Preview')}</Tabs.Tab>
         </Tabs.List>
 
         <Tabs.Panel value='textareas'>
@@ -152,9 +146,7 @@ export default function UploadText() {
               variant='outline'
               size='compact-sm'
               leftSection={<IconPlus size='1rem' />}
-            >
-              Add text file
-            </Button>
+            >{t('Add text file')}</Button>
 
             {files.some((file) => file.text.length > 0) && (
               <Button
@@ -162,9 +154,7 @@ export default function UploadText() {
                 size='compact-sm'
                 leftSection={<IconTrashFilled size='1rem' />}
                 onClick={() => removeFile(true)}
-              >
-                Clear all
-              </Button>
+              >{t('Clear all')}</Button>
             )}
           </Group>
         </Tabs.Panel>

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { SimpleGrid, Skeleton, Text } from '@mantine/core';
 import { lazy, Suspense } from 'react';
@@ -30,7 +31,7 @@ export default function Recents() {
 
   return (
     <Text size='sm' c='dimmed'>
-      You have no recent files. The last three files you uploaded will appear here.
+      {t('You have no recent files. The last three files you uploaded will appear here.')}
     </Text>
   );
 }

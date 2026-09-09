@@ -150,7 +150,7 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
   return (
     <>
       <Group gap='sm'>
-        <Title order={1}>{title ?? 'Upload files'}</Title>
+        <Title order={1}>{title ?? t('Upload files')}</Title>
 
         {!folder && (
           <Button
@@ -159,9 +159,7 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
             component={Link}
             to='/dashboard/files'
             leftSection={<IconFiles size='1rem' />}
-          >
-            Go to files
-          </Button>
+          >{t('Go to files')}</Button>
         )}
       </Group>
 
@@ -191,18 +189,16 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
           </Dropzone.Idle>
 
           <div>
-            <Text size='xl' inline>
-              Drag images here or click to select files
-            </Text>
+            <Text size='xl' inline>{t('Drag images here or click to select files')}</Text>
             <Text size='sm' inline mt='xs'>
-              Or <Kbd size='xs'>{isMac ? '⌘' : 'Ctrl'}</Kbd> + <Kbd size='xs'>V</Kbd> to paste images from
-              clipboard
+              {t('Or press')} <Kbd size='xs'>{isMac ? '⌘' : 'Ctrl'}</Kbd> + <Kbd size='xs'>V</Kbd>{' '}
+              {t('to paste images from clipboard')}
             </Text>
             <Text size='sm' c='dimmed' inline mt={7}>
-              Attach as many files as you like, they will show up below to review before uploading.
+              {t('Attach as many files as you like, they will show up below to review before uploading.')}
             </Text>
             <Text size='sm' c='dimmed' mt={7}>
-              <b>{bytes(bytes(config.files.maxFileSize))}</b> limit per file
+              {t('{{size}} limit per file', { size: bytes(bytes(config.files.maxFileSize)) })}
             </Text>
           </div>
         </Group>
@@ -256,18 +252,14 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
             variant='light'
             disabled={dropLoading}
             onClick={() => setVisibleCount((prev) => Math.min(files.length, prev + initialVisible))}
-          >
-            Show more
-          </Button>
+          >{t('Show more')}</Button>
           <Tooltip label={t('This may cause performance issues if there are a lot of files')} hidden={dropLoading}>
             <Button
               size='compact-sm'
               variant='subtle'
               disabled={dropLoading}
               onClick={() => setVisibleCount(files.length)}
-            >
-              Show all
-            </Button>
+            >{t('Show all')}</Button>
           </Tooltip>
         </Group>
       )}
@@ -282,9 +274,7 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
             setFiles([]);
             setVisibleCount(initialVisible);
           }}
-        >
-          Clear all
-        </Button>
+        >{t('Clear all')}</Button>
         <UploadOptionsButton folder={folder} numFiles={files.length} />
         <Button
           variant='outline'
@@ -292,7 +282,7 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
           disabled={files.length === 0 || dropLoading}
           onClick={upload}
         >
-          Upload {files.length} file{files.length !== 1 && 's'} ({bytes(aggSize())})
+          {t('Upload {{count}} files ({{size}})', { count: files.length, size: bytes(aggSize()) })}
         </Button>
       </Group>
     </>

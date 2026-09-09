@@ -69,9 +69,7 @@ export default function EditFolderNameModal({
             {...form.getInputProps('name')}
           />
 
-          <Button type='submit' color='blue' fullWidth leftSection={<IconPencil size='1rem' />}>
-            Save
-          </Button>
+          <Button type='submit' color='blue' fullWidth leftSection={<IconPencil size='1rem' />}>{t('Save')}</Button>
         </Stack>
       </form>
     </Modal>

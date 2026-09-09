@@ -96,9 +96,7 @@ export default function Files({ id, folderId }: { id?: string; folderId?: string
                     leftSection={<IconFileUpload size='1rem' />}
                     component={Link}
                     to='/dashboard/upload/file'
-                  >
-                    Upload a file
-                  </Button>
+                  >{t('Upload a file')}</Button>
                 )}
               </Stack>
             </Center>
@@ -107,7 +105,7 @@ export default function Files({ id, folderId }: { id?: string; folderId?: string
       </SimpleGrid>
 
       <Group justify='space-between' align='center' mt='md'>
-        <Text size='sm'>{`${from} - ${to} / ${totalRecords} files`}</Text>
+        <Text size='sm'>{t('{{from}} - {{to}} / {{total}} files', { from, to, total: totalRecords })}</Text>
 
         <Group gap='sm'>
           <Select

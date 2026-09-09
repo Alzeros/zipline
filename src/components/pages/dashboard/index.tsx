@@ -32,12 +32,14 @@ export default function DashboardHome() {
   return (
     <>
       <Title>
-        Welcome back, <b>{user?.username}</b>
+        {t('Welcome back, {{username}}', { username: user?.username ?? '' })}
       </Title>
 
       <Skeleton visible={statsLoading} animate>
         <Text size='sm' c='dimmed'>
-          You have <b>{statsLoading ? '...' : stats?.filesUploaded}</b> files uploaded.
+          {t('You have {{count}} files uploaded.', {
+            count: statsLoading ? ('...' as unknown as number) : (stats?.filesUploaded ?? 0),
+          })}
         </Text>
       </Skeleton>
 
@@ -58,9 +60,7 @@ export default function DashboardHome() {
               component={Link}
               to='/dashboard/files'
               leftSection={<IconFiles size='1rem' />}
-            >
-              View all files
-            </Button>
+            >{t('View all files')}</Button>
           </Group>
 
           <Recents />
@@ -71,21 +71,27 @@ export default function DashboardHome() {
         <Text size='sm' c='dimmed'>
           {user.quota.filesQuota === 'BY_BYTES' ? (
             <>
-              You have used <b>{statsLoading ? '...' : bytes(stats!.storageUsed)}</b> out of{' '}
-              <b>{user.quota.maxBytes}</b> of storage
+              {t('You have used {{used}} out of {{total}} of storage', {
+                used: statsLoading ? '...' : bytes(stats!.storageUsed),
+                total: user.quota.maxBytes,
+              })}
             </>
           ) : (
             <>
-              You have uploaded <b>{statsLoading ? '...' : stats?.filesUploaded}</b> files out of{' '}
-              <b>{user.quota.maxFiles}</b> files allowed.
+              {t('You have uploaded {{count}} files out of {{total}} files allowed.', {
+                count: statsLoading ? '...' : (stats?.filesUploaded ?? 0),
+                total: user.quota.maxFiles,
+              })}
             </>
           )}
         </Text>
       ) : null}
       {user?.quota && user.quota.maxUrls ? (
         <Text size='sm' c='dimmed'>
-          You have created <b>{statsLoading ? '...' : stats?.urlsCreated}</b> links out of{' '}
-          <b>{user.quota.maxUrls}</b> links allowed.
+          {t('You have created {{count}} links out of {{total}} links allowed.', {
+            count: statsLoading ? '...' : (stats?.urlsCreated ?? 0),
+            total: user.quota.maxUrls,
+          })}
         </Text>
       ) : null}
 
@@ -99,15 +105,11 @@ export default function DashboardHome() {
             component={Link}
             to='/dashboard/metrics'
             leftSection={<IconGraphFilled size='1rem' />}
-          >
-            View instance metrics
-          </Button>
+          >{t('View instance metrics')}</Button>
         )}
       </Group>
 
-      <Text size='sm' c='dimmed' mb='xs'>
-        These statistics are based on your uploads only.
-      </Text>
+      <Text size='sm' c='dimmed' mb='xs'>{t('These statistics are based on your uploads only.')}</Text>
 
       {statsLoading ? (
         <SimpleGrid cols={{ base: 1, md: 2, lg: 4 }} spacing={{ base: 'sm', md: 'md' }}>
@@ -175,9 +177,7 @@ export default function DashboardHome() {
         Object.keys(stats!.sortTypeCount).length !== 0 &&
         homeShowTypes && (
           <>
-            <Title order={3} mt='lg' mb='xs'>
-              File types
-            </Title>
+            <Title order={3} mt='lg' mb='xs'>{t('File types')}</Title>
             <Paper withBorder my='md'>
               <ScrollArea.Autosize mah={400} type='auto'>
                 <Table highlightOnHover>

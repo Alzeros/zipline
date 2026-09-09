@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { Folder } from '@/lib/db/models/folder';
 import { ActionIcon, Anchor, Card, Group, Menu, Stack, Text } from '@mantine/core';
@@ -78,25 +79,19 @@ export default function FolderCard({
                   <Menu.Item
                     leftSection={<IconFolderOpen size='1rem' />}
                     onClick={() => onNavigate(folder.id)}
-                  >
-                    Open Folder
-                  </Menu.Item>
+                  >{t('Open Folder')}</Menu.Item>
                 )}
                 <Menu.Item
                   leftSection={<IconFolderSymlink size='1rem' />}
                   onClick={withoutPropagation(() => setMoveOpen(true))}
-                >
-                  Move Folder
-                </Menu.Item>
+                >{t('Move Folder')}</Menu.Item>
                 <Menu.Item
                   leftSection={<IconFileZip size='1rem' />}
                   component='a'
                   href={`/api/user/folders/${folder.id}/export`}
                   target='_blank'
                   onClick={withoutPropagation(() => {})}
-                >
-                  Export as ZIP
-                </Menu.Item>
+                >{t('Export as ZIP')}</Menu.Item>
                 <Menu.Item
                   leftSection={folder.public ? <IconLock size='1rem' /> : <IconLockOpen size='1rem' />}
                   onClick={withoutPropagation(() => editFolderVisibility(folder, !folder.public))}
@@ -112,23 +107,17 @@ export default function FolderCard({
                 <Menu.Item
                   leftSection={<IconPencil size='1rem' />}
                   onClick={withoutPropagation(() => setEditOpen(true))}
-                >
-                  Edit Name
-                </Menu.Item>
+                >{t('Edit Name')}</Menu.Item>
                 <Menu.Item
                   leftSection={<IconCopy size='1rem' />}
                   disabled={!folder.public}
                   onClick={withoutPropagation(() => copyFolderUrl(folder, clipboard))}
-                >
-                  Copy URL
-                </Menu.Item>
+                >{t('Copy URL')}</Menu.Item>
                 <Menu.Item
                   leftSection={<IconTrashFilled size='1rem' />}
                   color='red'
                   onClick={withoutPropagation(() => setDeleteOpen(true))}
-                >
-                  Delete
-                </Menu.Item>
+                >{t('Delete')}</Menu.Item>
               </Menu.Dropdown>
             </Menu>
           </Group>

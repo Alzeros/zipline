@@ -62,25 +62,19 @@ function FolderDotsMenu({
           <Menu.Item
             leftSection={<IconFolderOpen size='1rem' />}
             onClick={withoutPropagation(() => onNavigate(folder.id!))}
-          >
-            Open Folder
-          </Menu.Item>
+          >{t('Open Folder')}</Menu.Item>
         )}
         <Menu.Item
           leftSection={<IconFolderSymlink size='1rem' />}
           onClick={withoutPropagation(() => setMoveOpen(folder))}
-        >
-          Move Folder
-        </Menu.Item>
+        >{t('Move Folder')}</Menu.Item>
         <Menu.Item
           leftSection={<IconFileZip size='1rem' />}
           component='a'
           href={`/api/user/folders/${folder.id}/export`}
           target='_blank'
           onClick={withoutPropagation(() => {})}
-        >
-          Export as ZIP
-        </Menu.Item>
+        >{t('Export as ZIP')}</Menu.Item>
         <Menu.Item
           leftSection={folder.public ? <IconLock size='1rem' /> : <IconLockOpen size='1rem' />}
           onClick={withoutPropagation(() => editFolderVisibility(folder, !folder.public))}
@@ -96,16 +90,12 @@ function FolderDotsMenu({
         <Menu.Item
           leftSection={<IconPencil size='1rem' />}
           onClick={withoutPropagation(() => setEditNameOpen(folder))}
-        >
-          Edit Name
-        </Menu.Item>
+        >{t('Edit Name')}</Menu.Item>
         <Menu.Item
           leftSection={<IconTrashFilled size='1rem' />}
           color='red'
           onClick={withoutPropagation(() => setDeleteOpen(folder))}
-        >
-          Delete
-        </Menu.Item>
+        >{t('Delete')}</Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );
@@ -174,10 +164,11 @@ export default function FolderTableView({
           records={sorted ?? []}
           onRowClick={({ record }) => onNavigate(record.id)}
           rowStyle={() => ({ cursor: 'pointer' })}
-          noRecordsText='No subfolders'
+          noRecordsText={t('No subfolders')}
           columns={[
             {
               accessor: 'name',
+              title: t('Name'),
               sortable: true,
               render: (folder) => (
                 <Group gap='xs'>
@@ -193,6 +184,7 @@ export default function FolderTableView({
             },
             {
               accessor: 'public',
+              title: t('Public'),
               sortable: true,
               render: (folder) => <Checkbox checked={folder.public} readOnly />,
             },
@@ -216,6 +208,7 @@ export default function FolderTableView({
             },
             {
               accessor: 'actions',
+              title: t('Actions'),
               textAlign: 'right',
               render: (folder) => (
                 <Group gap='sm' justify='right' wrap='nowrap'>

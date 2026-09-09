@@ -148,7 +148,7 @@ export default function DashboardFolders() {
         centered
         opened={open}
         onClose={() => setOpen(false)}
-        title={currentFolderId ? 'Create a subfolder' : 'Create a folder'}
+        title={currentFolderId ? t('Create a subfolder') : t('Create a folder')}
       >
         <form onSubmit={form.onSubmit(onSubmit)}>
           <Stack gap='sm'>
@@ -159,9 +159,7 @@ export default function DashboardFolders() {
               {...form.getInputProps('isPublic', { type: 'checkbox' })}
             />
 
-            <Button type='submit' variant='outline' leftSection={<IconFolderPlus size='1rem' />}>
-              Create
-            </Button>
+            <Button type='submit' variant='outline' leftSection={<IconFolderPlus size='1rem' />}>{t('Create')}</Button>
           </Stack>
         </form>
       </Modal>
@@ -175,7 +173,7 @@ export default function DashboardFolders() {
           leftSection={<IconPlus size='1rem' />}
           onClick={() => setOpen(true)}
         >
-          Create{currentFolderId ? ' Subfolder' : ' Folder'}
+          {currentFolderId ? t('Create Subfolder') : t('Create Folder')}
         </Button>
 
         <GridTableSwitcher type='folders' />

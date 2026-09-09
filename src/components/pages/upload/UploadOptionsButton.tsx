@@ -172,8 +172,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
               <>
                 The file will automatically delete itself after this time.{' '}
                 {config.files.defaultExpiration ? (
-                  <>
-                    The default expiration time is <b>{config.files.defaultExpiration}</b> (you can override
+                  <>{t('The default expiration time is')}<b>{config.files.defaultExpiration}</b> (you can override
                     this with the below option).
                   </>
                 ) : (
@@ -255,8 +254,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
               </>
             }
             description={
-              <>
-                The image compression format to use <b>only when a compression percent is specified</b>. Leave
+              <>{t('The image compression format to use')}<b>only when a compression percent is specified</b>. Leave
                 at &quot;default&quot; to use the server default compression format.
               </>
             }
@@ -470,17 +468,13 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
             leftSection={<IconTrashFilled size='1rem' />}
             onClick={clearSettings}
             disabled={changes() === 0}
-          >
-            Clear
-          </Button>
+          >{t('Clear')}</Button>
 
           <Button
             variant='outline'
             leftSection={<IconArrowsMinimize size='1rem' />}
             onClick={() => setOpen(false)}
-          >
-            Close
-          </Button>
+          >{t('Close')}</Button>
         </Group>
       </Modal>
 
@@ -489,9 +483,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
         rightSection={changes() !== 0 ? <Badge variant='outline'>{changes()}</Badge> : null}
         onClick={() => setOpen(true)}
         leftSection={<IconSettings size='1rem' />}
-      >
-        Options
-      </Button>
+      >{t('Options')}</Button>
     </>
   );
 }

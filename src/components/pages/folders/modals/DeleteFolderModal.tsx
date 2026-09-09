@@ -120,9 +120,7 @@ export default function DeleteFolderModal({
   return (
     <Modal centered opened={opened} onClose={onClose} title={`Delete "${folder.name}"?`}>
       <Stack gap='sm'>
-        <Text size='sm' c='red' fw={500}>
-          This action cannot be undone.
-        </Text>
+        <Text size='sm' c='red' fw={500}>{t('This action cannot be undone.')}</Text>
 
         {hasContent && (
           <>
@@ -220,9 +218,7 @@ export default function DeleteFolderModal({
           loading={loading}
           leftSection={<IconTrashFilled size='1rem' />}
           color='red'
-        >
-          Delete Folder
-        </Button>
+        >{t('Delete Folder')}</Button>
       </Stack>
     </Modal>
   );
