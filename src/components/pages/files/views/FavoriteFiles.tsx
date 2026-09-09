@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import {
   Accordion,
   Button,
@@ -35,7 +36,7 @@ export default function FavoriteFiles() {
   return (
     <Accordion variant='separated' my='xs'>
       <Accordion.Item value='favorite'>
-        <Accordion.Control>Favorite Files</Accordion.Control>
+        <Accordion.Control>{t('Favorite Files')}</Accordion.Control>
 
         <Accordion.Panel>
           <SimpleGrid
@@ -64,7 +65,7 @@ export default function FavoriteFiles() {
                   <Stack>
                     <Group>
                       <IconFilesOff size='2rem' />
-                      <Title order={2}>No files found</Title>
+                      <Title order={2}>{t('No files found')}</Title>
                     </Group>
                     <Button
                       variant='outline'

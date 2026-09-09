@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { addMultipleToFolder, copyFile, deleteFile, downloadFile } from '@/components/file/actions';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
@@ -138,7 +139,7 @@ function TagsFilter({
       <Combobox.DropdownTarget>
         <PillsInput onBlur={() => triggerSave()} pointer onClick={() => combobox.toggleDropdown()} w={200}>
           <Pill.Group>
-            {values.length > 0 ? values : <Input.Placeholder>Pick one or more tags</Input.Placeholder>}
+            {values.length > 0 ? values : <Input.Placeholder>{t('Pick one or more tags')}</Input.Placeholder>}
 
             <Combobox.EventsTarget>
               <PillsInput.Field
@@ -347,8 +348,8 @@ export default function FileTable({
     {
       accessor: 'favorite',
       sortable: true,
-      title: 'Favorite?',
-      render: (file: File) => (file.favorite ? <Text c='yellow'>Yes</Text> : 'No'),
+      title: t('Favorite?'),
+      render: (file: File) => (file.favorite ? <Text c='yellow'>{t('Yes')}</Text> : 'No'),
     },
     {
       accessor: 'views',
@@ -363,8 +364,8 @@ export default function FileTable({
     {
       accessor: 'anonymous',
       sortable: true,
-      title: 'Anonymous?',
-      render: (file: File) => (file.anonymous ? <Text c='green'>Yes</Text> : 'No'),
+      title: t('Anonymous?'),
+      render: (file: File) => (file.anonymous ? <Text c='green'>{t('Yes')}</Text> : 'No'),
     },
   ];
 
@@ -468,7 +469,7 @@ export default function FileTable({
                           combobox.closeDropdown();
                           setFolderSearch('');
                         }}
-                        placeholder='Add to folder...'
+                        placeholder={t('Add to folder...')}
                         rightSectionPointerEvents='none'
                       />
                     </Combobox.Target>
@@ -498,7 +499,7 @@ export default function FileTable({
           <Collapse expanded={modals.idSearch}>
             <Paper withBorder p='sm' mt='sm'>
               <TextInput
-                placeholder='Search by ID'
+                placeholder={t('Search by ID')}
                 value={searchQuery.id}
                 onChange={(e) => {
                   setSearchField('id');
@@ -527,13 +528,13 @@ export default function FileTable({
               textAlign: 'right',
               render: (file) => (
                 <Group gap='sm' justify='right' wrap='nowrap'>
-                  <Tooltip label='More details'>
+                  <Tooltip label={t('More details')}>
                     <ActionIcon>
                       <IconFile size='1rem' />
                     </ActionIcon>
                   </Tooltip>
 
-                  <Tooltip label='View file in new tab'>
+                  <Tooltip label={t('View file in new tab')}>
                     <Link to={`/view/${file.name}`} target='_blank'>
                       <ActionIcon color='blue'>
                         <IconExternalLink size='1rem' />
@@ -541,7 +542,7 @@ export default function FileTable({
                     </Link>
                   </Tooltip>
 
-                  <Tooltip label='Copy file link to clipboard'>
+                  <Tooltip label={t('Copy file link to clipboard')}>
                     <ActionIcon
                       onClick={(e) => {
                         e.stopPropagation();
@@ -552,7 +553,7 @@ export default function FileTable({
                     </ActionIcon>
                   </Tooltip>
 
-                  <Tooltip label='Download file'>
+                  <Tooltip label={t('Download file')}>
                     <ActionIcon
                       color='gray'
                       onClick={(e) => {
@@ -564,7 +565,7 @@ export default function FileTable({
                     </ActionIcon>
                   </Tooltip>
 
-                  <Tooltip label='Delete file'>
+                  <Tooltip label={t('Delete file')}>
                     <ActionIcon
                       color='red'
                       onClick={(e) => {

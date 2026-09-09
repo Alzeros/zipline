@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useConfig } from '@/components/ConfigProvider';
 import { bytes } from '@/lib/bytes';
 import { useUploadOptionsStore } from '@/lib/client/store/uploadOptions';
@@ -79,7 +80,7 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
       const size = normalUploads.reduce((acc, file) => acc + file.size, 0);
       if (size > bytes(config.files.maxFileSize)) {
         notifications.show({
-          title: 'Upload may fail',
+          title: t('Upload may fail'),
           color: 'yellow',
           icon: <IconDeviceSdCard size='1rem' />,
           message: (
@@ -258,7 +259,7 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
           >
             Show more
           </Button>
-          <Tooltip label='This may cause performance issues if there are a lot of files' hidden={dropLoading}>
+          <Tooltip label={t('This may cause performance issues if there are a lot of files')} hidden={dropLoading}>
             <Button
               size='compact-sm'
               variant='subtle'

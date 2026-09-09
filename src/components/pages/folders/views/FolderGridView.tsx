@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { Folder } from '@/lib/db/models/folder';
 import { Center, Group, Paper, SimpleGrid, Skeleton, Stack, Text, Title } from '@mantine/core';
@@ -55,7 +56,7 @@ export default function FolderGridView({
             <Stack>
               <Group>
                 <IconFolder size='2rem' />
-                <Title order={2}>No Folders found</Title>
+                <Title order={2}>{t('No Folders found')}</Title>
               </Group>
               <Text size='sm' c='dimmed'>
                 {currentFolderId ? 'This folder is empty' : 'Create a folder to see it here'}

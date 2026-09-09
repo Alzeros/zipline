@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
 import { Response } from '@/lib/api/response';
 import { Folder } from '@/lib/db/models/folder';
@@ -61,13 +62,13 @@ export default function DeleteFolderModal({
 
     if (error) {
       notifications.show({
-        title: 'Failed to delete folder',
+        title: t('Failed to delete folder'),
         message: error.error,
         color: 'red',
       });
     } else {
       notifications.show({
-        title: 'Folder deleted',
+        title: t('Folder deleted'),
         message: `${folder.name} has been deleted`,
         color: 'green',
       });
@@ -86,8 +87,8 @@ export default function DeleteFolderModal({
       if (childrenAction === 'folder') {
         if (!targetFolderId) {
           notifications.show({
-            title: 'No folder selected',
-            message: 'Please select a folder to move contents to',
+            title: t('No folder selected'),
+            message: t('Please select a folder to move contents to'),
             color: 'red',
           });
           return;
@@ -133,8 +134,8 @@ export default function DeleteFolderModal({
 
             <Radio.Group value={childrenAction} onChange={(v) => setChildrenAction(v as ChildrenAction)}>
               <Stack gap='xs'>
-                <Radio value='root' label='Move contents to root folder' />
-                <Radio value='folder' label='Move contents to another folder' />
+                <Radio value='root' label={t('Move contents to root folder')} />
+                <Radio value='folder' label={t('Move contents to another folder')} />
                 <Radio
                   value='cascade'
                   label={
@@ -166,8 +167,8 @@ export default function DeleteFolderModal({
               >
                 <Combobox.Target>
                   <InputBase
-                    label='Target Folder'
-                    placeholder='Select a folder'
+                    label={t('Target Folder')}
+                    placeholder={t('Select a folder')}
                     rightSection={<Combobox.Chevron />}
                     value={search || getDisplayValue()}
                     onChange={(event) => {

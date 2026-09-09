@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useConfig } from '@/components/ConfigProvider';
 import Stat from '@/components/Stat';
 import type { Response } from '@/lib/api/response';
@@ -50,7 +51,7 @@ export default function DashboardHome() {
           }
         >
           <Group mt='md' mb='xs' style={{ alignItems: 'center' }}>
-            <Title order={2}>Recent files</Title>
+            <Title order={2}>{t('Recent files')}</Title>
             <Button
               variant='outline'
               size='compact-xs'
@@ -89,7 +90,7 @@ export default function DashboardHome() {
       ) : null}
 
       <Group mt='md' style={{ alignItems: 'center' }}>
-        <Title order={2}>Stats</Title>
+        <Title order={2}>{t('Stats')}</Title>
 
         {(!config.features?.metrics?.adminOnly || isAdministrator(user?.role)) && (
           <Button
@@ -116,15 +117,15 @@ export default function DashboardHome() {
         </SimpleGrid>
       ) : (
         <SimpleGrid cols={{ base: 1, md: 2, lg: 4 }} spacing={{ base: 'sm', md: 'md' }}>
-          <Stat Icon={IconFiles} title='Files uploaded' value={stats!.filesUploaded} />
-          <Stat Icon={IconStarFilled} title='Favorite files' value={stats!.favoriteFiles} />
-          <Stat Icon={IconDeviceSdCard} title='Storage used' value={bytes(stats!.storageUsed)} />
-          <Stat Icon={IconDeviceSdCard} title='Average storage used' value={bytes(stats!.avgStorageUsed)} />
-          <Stat Icon={IconEyeFilled} title='File views' value={stats!.views} />
-          <Stat Icon={IconEyeFilled} title='Average file views' value={Math.round(stats!.avgViews)} />
+          <Stat Icon={IconFiles} title={t('Files uploaded')} value={stats!.filesUploaded} />
+          <Stat Icon={IconStarFilled} title={t('Favorite files')} value={stats!.favoriteFiles} />
+          <Stat Icon={IconDeviceSdCard} title={t('Storage used')} value={bytes(stats!.storageUsed)} />
+          <Stat Icon={IconDeviceSdCard} title={t('Average storage used')} value={bytes(stats!.avgStorageUsed)} />
+          <Stat Icon={IconEyeFilled} title={t('File views')} value={stats!.views} />
+          <Stat Icon={IconEyeFilled} title={t('Average file views')} value={Math.round(stats!.avgViews)} />
 
-          <Stat Icon={IconLink} title='Links created' value={stats!.urlsCreated} />
-          <Stat Icon={IconLink} title='Total link views' value={Math.round(stats!.urlViews)} />
+          <Stat Icon={IconLink} title={t('Links created')} value={stats!.urlsCreated} />
+          <Stat Icon={IconLink} title={t('Total link views')} value={Math.round(stats!.urlViews)} />
         </SimpleGrid>
       )}
 
@@ -147,8 +148,8 @@ export default function DashboardHome() {
             <Table highlightOnHover>
               <Table.Thead>
                 <Table.Tr>
-                  <Table.Th>File Type</Table.Th>
-                  <Table.Th>Count</Table.Th>
+                  <Table.Th>{t('File Type')}</Table.Th>
+                  <Table.Th>{t('Count')}</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>
@@ -182,8 +183,8 @@ export default function DashboardHome() {
                 <Table highlightOnHover>
                   <Table.Thead>
                     <Table.Tr>
-                      <Table.Th>File Type</Table.Th>
-                      <Table.Th>Count</Table.Th>
+                      <Table.Th>{t('File Type')}</Table.Th>
+                      <Table.Th>{t('Count')}</Table.Th>
                     </Table.Tr>
                   </Table.Thead>
                   <Table.Tbody>

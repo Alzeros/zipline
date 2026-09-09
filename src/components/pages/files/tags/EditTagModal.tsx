@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { Tag } from '@/lib/db/models/tag';
 import { fetchApi } from '@/lib/fetchApi';
@@ -49,14 +50,14 @@ export default function EditTagModal({
 
     if (error) {
       showNotification({
-        title: 'Failed to edit tag',
+        title: t('Failed to edit tag'),
         message: error.error,
         color: 'red',
         icon: <IconTagOff size='1rem' />,
       });
     } else {
       showNotification({
-        title: 'Edited tag',
+        title: t('Edited tag'),
         message: `Edited tag ${data!.name}`,
         color: data!.color,
         icon: <IconTag size='1rem' />,
@@ -77,15 +78,15 @@ export default function EditTagModal({
   }, [tag]);
 
   return (
-    <Modal opened={open} onClose={onClose} title='Edit tag' zIndex={3000}>
+    <Modal opened={open} onClose={onClose} title={t('Edit tag')} zIndex={3000}>
       <form onSubmit={form.onSubmit(onSubmit)}>
         <Stack gap='sm'>
-          <TextInput label='Name' placeholder='Enter a name...' {...form.getInputProps('name')} />
+          <TextInput label={t('Name')} placeholder={t('Enter a name...')} {...form.getInputProps('name')} />
 
           <ColorInput
-            label='Color'
+            label={t('Color')}
             rightSection={
-              <Tooltip label='Choose a color based on the name' zIndex={3001}>
+              <Tooltip label={t('Choose a color based on the name')} zIndex={3001}>
                 <ActionIcon
                   variant='transparent'
                   color='white'

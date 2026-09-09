@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { Response } from '@/lib/api/response';
 import { Folder } from '@/lib/db/models/folder';
@@ -151,10 +152,10 @@ export default function DashboardFolders() {
       >
         <form onSubmit={form.onSubmit(onSubmit)}>
           <Stack gap='sm'>
-            <TextInput label='Name' placeholder='Enter a name...' {...form.getInputProps('name')} />
+            <TextInput label={t('Name')} placeholder={t('Enter a name...')} {...form.getInputProps('name')} />
             <Switch
-              label='Public'
-              description='Public folders are visible to everyone'
+              label={t('Public')}
+              description={t('Public folders are visible to everyone')}
               {...form.getInputProps('isPublic', { type: 'checkbox' })}
             />
 
@@ -166,7 +167,7 @@ export default function DashboardFolders() {
       </Modal>
 
       <Group>
-        <Title>Folders</Title>
+        <Title>{t('Folders')}</Title>
 
         <Button
           variant='outline'

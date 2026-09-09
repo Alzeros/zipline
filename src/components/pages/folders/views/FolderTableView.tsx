@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { Response } from '@/lib/api/response';
 import { Folder } from '@/lib/db/models/folder';
@@ -49,7 +50,7 @@ function FolderDotsMenu({
   return (
     <Menu shadow='md' width={200} opened={opened} onChange={setOpened}>
       <Menu.Target>
-        <Tooltip label='More actions'>
+        <Tooltip label={t('More actions')}>
           <ActionIcon onClick={withoutPropagation(() => setOpened((o) => !o))}>
             <IconDots size='1rem' />
           </ActionIcon>
@@ -197,19 +198,19 @@ export default function FolderTableView({
             },
             {
               accessor: 'allowUploads',
-              title: 'Uploads?',
+              title: t('Uploads?'),
               sortable: true,
               render: (folder) => <Checkbox checked={folder.allowUploads} readOnly />,
             },
             {
               accessor: 'createdAt',
-              title: 'Created',
+              title: t('Created'),
               sortable: true,
               render: (folder) => <RelativeDate date={folder.createdAt} />,
             },
             {
               accessor: 'updatedAt',
-              title: 'Last update at',
+              title: t('Last update at'),
               sortable: true,
               render: (folder) => <RelativeDate date={folder.updatedAt} />,
             },
@@ -226,7 +227,7 @@ export default function FolderTableView({
                     setEditNameOpen={setEditNameOpen}
                   />
 
-                  <Tooltip label='Copy folder link'>
+                  <Tooltip label={t('Copy folder link')}>
                     <ActionIcon
                       onClick={(e) => {
                         e.stopPropagation();
@@ -237,7 +238,7 @@ export default function FolderTableView({
                       <IconCopy size='1rem' />
                     </ActionIcon>
                   </Tooltip>
-                  <Tooltip label='Delete Folder'>
+                  <Tooltip label={t('Delete Folder')}>
                     <ActionIcon
                       color='red'
                       onClick={(e) => {

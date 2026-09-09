@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useConfig } from '@/components/ConfigProvider';
 import DomainSelect from '@/components/DomainSelect';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
@@ -77,7 +78,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
   const expirations = useMemo(() => {
     const opts = [
       { value: 'default', label: `Default (${config.files.defaultExpiration ?? 'never'})` },
-      { value: 'never', label: 'Never' },
+      { value: 'never', label: t('Never') },
       { value: '5min', label: '5 minutes' },
       { value: '10min', label: '10 minutes' },
       { value: '15min', label: '15 minutes' },
@@ -149,7 +150,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
 
   return (
     <>
-      <Modal centered opened={opened} onClose={() => setOpen(false)} title='Upload Options'>
+      <Modal centered opened={opened} onClose={() => setOpen(false)} title={t('Upload Options')}>
         <Text size='sm' c='dimmed'>
           These options will be applied to all files you upload and are saved in your browser.
         </Text>
@@ -205,11 +206,11 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
           <Select
             data={[
               { value: 'default', label: `Default (${config.files.defaultFormat})` },
-              { value: 'random', label: 'Random' },
-              { value: 'date', label: 'Date' },
-              { value: 'uuid', label: 'UUID' },
-              { value: 'name', label: 'Use file name' },
-              { value: 'gfycat', label: 'Gfycat-style name' },
+              { value: 'random', label: t('Random') },
+              { value: 'date', label: t('Date') },
+              { value: 'uuid', label: t('UUID') },
+              { value: 'name', label: t('Use file name') },
+              { value: 'gfycat', label: t('Gfycat-style name') },
             ]}
             label={
               <>
@@ -327,7 +328,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
           >
             <Combobox.Target>
               <InputBase
-                label={<>Add to a Folder</>}
+                label={<>{t('Add to a Folder')}</>}
                 description='Add this file to a folder. Use the "/ (Root)" option to not add the file to a folder. This value is not saved to your browser, and is cleared after uploading.'
                 rightSection={<Combobox.Chevron />}
                 leftSection={<IconFolderPlus size='1rem' />}
@@ -355,7 +356,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
                     setFolderSearch(selectedFolder?.path || '');
                   }
                 }}
-                placeholder='Add to folder...'
+                placeholder={t('Add to folder...')}
                 rightSectionPointerEvents='none'
               />
             </Combobox.Target>
@@ -393,7 +394,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
           />
 
           <TextInput
-            label='Override File Name'
+            label={t('Override File Name')}
             description='Override the file name with this value. Leave blank to use the "Name Format" option. This value is ignored if you are uploading more than one file. This value is not saved to your browser, and is cleared after uploading.'
             leftSection={<IconFileInfo size='1rem' />}
             value={ephemeral.filename ?? ''}
@@ -407,7 +408,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
           />
 
           <PasswordInput
-            label='Password'
+            label={t('Password')}
             description='Set a password for these files. Leave blank to disable password protection. This value is not saved to your browser, and is cleared after uploading.'
             leftSection={<IconKey size='1rem' />}
             value={ephemeral.password ?? ''}
@@ -421,7 +422,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
           />
 
           <Text c='dimmed' size='sm'>
-            <b>Other Options</b>
+            <b>{t('Other Options')}</b>
           </Text>
 
           <Switch

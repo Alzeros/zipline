@@ -45,8 +45,12 @@ import {
   IconTags,
   IconUpload,
   IconUsersGroup,
+  IconLanguage,
+  IconCheck,
 } from '@tabler/icons-react';
 import { useState } from 'react';
+import i18next, { t } from 'i18next';
+import { SUPPORTED_LOCALES, setLocale } from '@/lib/i18n';
 import { Link, NavigateFunction, Outlet, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import type { dashboardLoader } from '../client/routes';
 import ConfigProvider from './ConfigProvider';
@@ -188,7 +192,7 @@ const renderLinks = (
         return (
           <NavLink
             key={link.label}
-            label={link.label}
+            label={t(link.label)}
             leftSection={link.icon}
             variant='light'
             rightSection={<IconChevronRight size='0.7rem' />}
@@ -202,7 +206,7 @@ const renderLinks = (
         return (
           <NavLink
             key={link.label}
-            label={link.label}
+            label={t(link.label)}
             leftSection={link.icon}
             variant='light'
             rightSection={<IconChevronRight size='0.7rem' />}
@@ -354,14 +358,14 @@ export default function Layout() {
               <Menu.Dropdown>
                 <Menu.Label>
                   {user?.username}
-                  {isAdministrator(user?.role) ? ' (Administrator)' : ''}
+                  {isAdministrator(user?.role) ? ` (${t('Administrator')})` : ''}
                 </Menu.Label>
 
                 <Menu.Item leftSection={<IconClipboardCopy size='1rem' />} onClick={copyToken}>
-                  Copy token
+                  {t('Copy token')}
                 </Menu.Item>
                 <Menu.Item color='red' leftSection={<IconRefreshDot size='1rem' />} onClick={refreshToken}>
-                  Refresh token
+                  {t('Refresh token')}
                 </Menu.Item>
                 <Menu.Divider />
 
@@ -371,7 +375,7 @@ export default function Layout() {
                   to='/dashboard/settings'
                   prefetch='intent'
                 >
-                  Settings
+                  {t('Settings')}
                 </Menu.Item>
 
                 {user?.role === 'SUPERADMIN' && (
@@ -381,13 +385,34 @@ export default function Layout() {
                     to='/dashboard/admin/settings'
                     prefetch='intent'
                   >
-                    Server Settings
+                    {t('Server Settings')}
                   </Menu.Item>
                 )}
 
                 <Menu.Divider />
+                <Menu.Label>{t('Language')}</Menu.Label>
+                {SUPPORTED_LOCALES.map((locale) => (
+                  <Menu.Item
+                    key={locale.code}
+                    leftSection={<IconLanguage size='1rem' />}
+                    rightSection={
+                      i18next.resolvedLanguage === locale.code ? <IconCheck size='0.9rem' /> : null
+                    }
+                    onClick={() => {
+                      if (i18next.resolvedLanguage === locale.code) return;
+                      setLocale(locale.code);
+                      // 各处使用的是 i18next 的独立 t 函数而非 useTranslation hook，
+                      // 语言变更不会触发 React 重渲染，故整页重载以应用新语言
+                      window.location.reload();
+                    }}
+                  >
+                    {locale.label}
+                  </Menu.Item>
+                ))}
+
+                <Menu.Divider />
                 <Menu.Item color='red' leftSection={<IconLogout size='1rem' />} onClick={logout}>
-                  Logout
+                  {t('Logout')}
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>

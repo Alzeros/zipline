@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { useViewStore } from '@/lib/client/store/view';
 import { ActionIcon, Group, Menu, Title, Tooltip } from '@mantine/core';
@@ -46,9 +47,9 @@ export default function DashboardFiles() {
       <PendingFilesModal modals={modals} setModals={setModals} />
 
       <Group>
-        <Title>Files</Title>
+        <Title>{t('Files')}</Title>
 
-        <Tooltip label='Upload a file'>
+        <Tooltip label={t('Upload a file')}>
           <Link to='/dashboard/upload/file'>
             <ActionIcon variant='outline'>
               <IconFileUpload size='1rem' />
@@ -58,7 +59,7 @@ export default function DashboardFiles() {
 
         <Menu>
           <Menu.Target>
-            <Tooltip label='More actions'>
+            <Tooltip label={t('More actions')}>
               <ActionIcon variant='outline'>
                 <IconDots size='1rem' />
               </ActionIcon>
@@ -79,7 +80,7 @@ export default function DashboardFiles() {
             </Menu.Item>
             {view === 'table' && (
               <>
-                <Menu.Label>Table Options</Menu.Label>
+                <Menu.Label>{t('Table Options')}</Menu.Label>
                 <Menu.Item
                   leftSection={<IconGridPatternFilled size='1rem' />}
                   onClick={() => setModals({ idSearch: !modals.idSearch })}

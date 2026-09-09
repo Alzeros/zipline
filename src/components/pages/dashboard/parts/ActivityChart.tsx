@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import type { Response } from '@/lib/api/response';
 import { ChartTooltip, LineChart } from '@mantine/charts';
 import { Box, Group, Paper, Select, Skeleton, Text, Title } from '@mantine/core';
@@ -167,12 +168,12 @@ export default function ActivityChart() {
           series={[
             {
               name: 'uploads',
-              label: 'Uploads',
+              label: t('Uploads'),
               color: 'var(--mantine-primary-color-filled)',
             },
             {
               name: 'logins',
-              label: 'Logins',
+              label: t('Logins'),
               color: 'gray.5',
             },
           ]}
@@ -191,8 +192,8 @@ export default function ActivityChart() {
                 label={formatDayLabel(label) || '—'}
                 payload={payload}
                 series={[
-                  { name: 'uploads', label: 'Uploads', color: 'var(--mantine-primary-color-filled)' },
-                  { name: 'logins', label: 'Logins', color: 'gray.5' },
+                  { name: 'uploads', label: t('Uploads'), color: 'var(--mantine-primary-color-filled)' },
+                  { name: 'logins', label: t('Logins'), color: 'gray.5' },
                 ]}
               />
             ),

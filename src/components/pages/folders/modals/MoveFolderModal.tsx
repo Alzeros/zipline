@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
 import { Response } from '@/lib/api/response';
 import { Folder } from '@/lib/db/models/folder';
@@ -63,13 +64,13 @@ export default function MoveFolderModal({
 
     if (error) {
       notifications.show({
-        title: 'Failed to move folder',
+        title: t('Failed to move folder'),
         message: error.error,
         color: 'red',
       });
     } else {
       notifications.show({
-        title: 'Folder moved',
+        title: t('Folder moved'),
         message: `${folder.name} has been moved`,
         color: 'green',
       });
@@ -98,8 +99,8 @@ export default function MoveFolderModal({
         >
           <Combobox.Target>
             <InputBase
-              label='Destination'
-              placeholder='Select a folder'
+              label={t('Destination')}
+              placeholder={t('Select a folder')}
               rightSection={<Combobox.Chevron />}
               value={search || getDisplayValue()}
               onChange={(event) => {

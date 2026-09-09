@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { mutateFiles } from '@/components/file/actions';
 import { Response } from '@/lib/api/response';
 import { Tag } from '@/lib/db/models/tag';
@@ -29,14 +30,14 @@ export default function TagsModals({
 
     if (error) {
       showNotification({
-        title: 'Error',
+        title: t('Error'),
         message: `Failed to delete tag: ${error.error}`,
         color: 'red',
         icon: <IconTagOff size='1rem' />,
       });
     } else {
       showNotification({
-        title: 'Deleted tag',
+        title: t('Deleted tag'),
         message: `Deleted tag ${tag.name}`,
         color: 'green',
         icon: <IconTrashFilled size='1rem' />,
@@ -57,7 +58,7 @@ export default function TagsModals({
         onClose={() => setModals({ tags: false })}
         title={
           <Group>
-            <Title>Tags</Title>
+            <Title>{t('Tags')}</Title>
             <ActionIcon variant='outline' onClick={() => setCreateModalOpen(true)}>
               <IconPlus size='1rem' />
             </ActionIcon>
@@ -78,13 +79,13 @@ export default function TagsModals({
                 </Group>
 
                 <Group>
-                  <Tooltip label='Edit tag'>
+                  <Tooltip label={t('Edit tag')}>
                     <ActionIcon variant='outline' onClick={() => setSelectedTag(tag)}>
                       <IconPencil size='1rem' />
                     </ActionIcon>
                   </Tooltip>
 
-                  <Tooltip label='Delete tag'>
+                  <Tooltip label={t('Delete tag')}>
                     <ActionIcon variant='outline' color='red' onClick={() => handleDelete(tag)}>
                       <IconTrashFilled size='1rem' />
                     </ActionIcon>

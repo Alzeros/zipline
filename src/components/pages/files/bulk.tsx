@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { mutateFiles } from '@/components/file/actions';
 import { Response } from '@/lib/api/response';
 import { getDomain } from '@/lib/client/webDomain';
@@ -27,7 +28,7 @@ export async function bulkDelete(ids: string[], setSelectedFiles: (files: File[]
     confirmProps: { color: 'red' },
     onConfirm: async () => {
       notifications.show({
-        title: 'Deleting files',
+        title: t('Deleting files'),
         message: `Deleting ${ids.length} file${ids.length === 1 ? '' : 's'}`,
         color: 'blue',
         loading: true,
@@ -49,7 +50,7 @@ export async function bulkDelete(ids: string[], setSelectedFiles: (files: File[]
 
       if (error) {
         notifications.update({
-          title: 'Error while deleting files',
+          title: t('Error while deleting files'),
           message: error.error,
           color: 'red',
           icon: <IconFilesOff size='1rem' />,
@@ -59,7 +60,7 @@ export async function bulkDelete(ids: string[], setSelectedFiles: (files: File[]
         });
       } else if (data) {
         notifications.update({
-          title: 'Deleted files',
+          title: t('Deleted files'),
           message: `Deleted ${data.count} file${ids.length === 1 ? '' : 's'}`,
           color: 'green',
           icon: <IconTrashFilled size='1rem' />,
@@ -112,7 +113,7 @@ export async function bulkFavorite(ids: string[], favorite: boolean) {
 
       if (error) {
         notifications.update({
-          title: 'Error while modifying files',
+          title: t('Error while modifying files'),
           message: error.error,
           color: 'red',
           icon: <IconStarsOff size='1rem' />,
@@ -144,7 +145,7 @@ export async function bulkCopyLinks(urls: string[]) {
   await navigator.clipboard.writeText(links);
 
   notifications.show({
-    title: 'Copied links to clipboard',
+    title: t('Copied links to clipboard'),
     message: `Copied ${urls.length} link${urls.length === 1 ? '' : 's'} to clipboard`,
     color: 'green',
     icon: <IconClipboardListFilled size='1rem' />,

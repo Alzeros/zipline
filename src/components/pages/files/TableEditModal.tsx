@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { FieldSettings, NAMES, useFileTableSettingsStore } from '@/lib/client/store/fileTableSettings';
 import {
   closestCenter,
@@ -62,7 +63,7 @@ export default function TableEditModal({ opened, onClose }: { opened: boolean; o
   };
 
   return (
-    <Modal opened={opened} onClose={onClose} title='Table Options' centered>
+    <Modal opened={opened} onClose={onClose} title={t('Table Options')} centered>
       <Text mb='md' size='sm' c='dimmed'>
         Select and drag fields below to make them appear/disappear/reorder in the file table view.
       </Text>

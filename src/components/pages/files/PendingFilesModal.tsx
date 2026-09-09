@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import { IncompleteFile } from '@/lib/db/models/incompleteFile';
 import { fetchApi } from '@/lib/fetchApi';
@@ -54,14 +55,14 @@ export default function PendingFilesModal({
 
     if (error) {
       showNotification({
-        title: 'Error',
+        title: t('Error'),
         message: `Failed to delete pending file: ${error.error}`,
         color: 'red',
         icon: <IconFileDots size='1rem' />,
       });
     } else {
       showNotification({
-        message: 'Cleared Pending File!',
+        message: t('Cleared Pending File!'),
         color: 'green',
         icon: <IconTrashFilled size='1rem' />,
       });
@@ -71,7 +72,7 @@ export default function PendingFilesModal({
   };
 
   return (
-    <Modal opened={modals.pending} onClose={() => setModals({ pending: false })} title='Pending Files'>
+    <Modal opened={modals.pending} onClose={() => setModals({ pending: false })} title={t('Pending Files')}>
       <Stack gap='xs'>
         {incompleteFiles?.map((incompleteFile) => (
           <Card key={incompleteFile.id} withBorder>

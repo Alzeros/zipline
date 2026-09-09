@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Response } from '@/lib/api/response';
 import type { Folder } from '@/lib/db/models/folder';
 import { fetchApi } from '@/lib/fetchApi';
@@ -39,13 +40,13 @@ export default function EditFolderNameModal({
 
     if (error) {
       showNotification({
-        title: 'Error while updating folder name',
+        title: t('Error while updating folder name'),
         message: error.error,
       });
     } else {
       mutateFolder();
       showNotification({
-        title: 'Folder name updated',
+        title: t('Folder name updated'),
         message: 'Folder name has been updated successfully to ' + data?.name,
       });
       onClose();
@@ -59,12 +60,12 @@ export default function EditFolderNameModal({
   }, [folder, opened]);
 
   return (
-    <Modal opened={opened} onClose={onClose} title='Edit folder name'>
+    <Modal opened={opened} onClose={onClose} title={t('Edit folder name')}>
       <form onSubmit={form.onSubmit(onSubmit)}>
         <Stack>
           <TextInput
-            placeholder='Enter new folder name...'
-            label='New folder name'
+            placeholder={t('Enter new folder name...')}
+            label={t('New folder name')}
             {...form.getInputProps('name')}
           />
 

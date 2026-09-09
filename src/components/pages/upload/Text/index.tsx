@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useCodeMap } from '@/components/ConfigProvider';
 import Render from '@/components/render/Render';
 import { renderMode } from '@/components/render/renderMode';
@@ -92,7 +93,7 @@ export default function UploadText() {
   return (
     <>
       <Group gap='sm'>
-        <Title order={1}>Upload text</Title>
+        <Title order={1}>{t('Upload text')}</Title>
 
         <Button
           variant='outline'

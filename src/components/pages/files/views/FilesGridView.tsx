@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import DashboardFile from '@/components/file/DashboardFile';
 import { useFileNavStore } from '@/lib/client/store/fileNav';
 import {
@@ -86,7 +87,7 @@ export default function Files({ id, folderId }: { id?: string; folderId?: string
               <Stack>
                 <Group>
                   <IconFilesOff size='2rem' />
-                  <Title order={2}>No files found</Title>
+                  <Title order={2}>{t('No files found')}</Title>
                 </Group>
                 {!id && (
                   <Button
