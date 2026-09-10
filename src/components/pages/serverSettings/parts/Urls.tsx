@@ -37,14 +37,14 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
     <form onSubmit={form.onSubmit(onSubmit)}>
       <Stack gap='lg'>
         <TextInput
-          label='Route'
+          label={t('Route')}
           description={t('The route to use for short URLs. Requires a server restart.')}
           placeholder='/go'
           {...form.getInputProps('urlsRoute')}
         />
 
         <NumberInput
-          label='Length'
+          label={t('Length')}
           description={t('The length of the short URL (for randomly generated names).')}
           placeholder='6'
           min={1}

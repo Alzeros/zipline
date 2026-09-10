@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import { Tag } from '@/lib/db/models/tag';
 import { fetchApi } from '@/lib/fetchApi';
@@ -19,7 +20,7 @@ export default function CreateTagModal({ open, onClose }: { open: boolean; onClo
       color: '',
     },
     validate: {
-      name: (value) => (value.length < 1 ? 'Name is required' : null),
+      name: (value) => (value.length < 1 ? t('Name is required') : null),
     },
   });
 
@@ -27,7 +28,7 @@ export default function CreateTagModal({ open, onClose }: { open: boolean; onClo
     const color = values.color.trim() === '' ? colorHash(values.name) : values.color.trim();
 
     if (!color.startsWith('#')) {
-      return form.setFieldError('color', 'Color must start with #');
+      return form.setFieldError('color', t('Color must start with #'));
     }
 
     const { data, error } = await fetchApi<Extract<Response['/api/user/tags'], Tag>>(
@@ -42,14 +43,14 @@ export default function CreateTagModal({ open, onClose }: { open: boolean; onClo
     if (error) {
       showNotification({
         title: t('Failed to create tag'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconTagOff size='1rem' />,
       });
     } else {
       showNotification({
         title: t('Created tag'),
-        message: `Created tag ${data!.name}`,
+        message: t('Created tag {{name}}', { name: data!.name }),
         color: data!.color,
         icon: <IconTag size='1rem' />,
       });

@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { Response } from '@/lib/api/response';
 import { Folder } from '@/lib/db/models/folder';
@@ -64,7 +65,7 @@ export default function DashboardFolders() {
       isPublic: false,
     },
     validate: {
-      name: (value) => (value.length < 1 ? 'Name is required' : null),
+      name: (value) => (value.length < 1 ? t('Name is required') : null),
     },
   });
 
@@ -81,7 +82,7 @@ export default function DashboardFolders() {
 
     if (error) {
       notifications.show({
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
       });
     } else {
@@ -131,7 +132,7 @@ export default function DashboardFolders() {
 
   const breadcrumbs = buildBreadcrumbs();
 
-  useTitle(currentFolder ? `Folders ${SEPARATOR} ${currentFolder.name}` : 'Folders');
+  useTitle(currentFolder ? `Folders ${SEPARATOR} ${currentFolder.name}` : t('Folders'));
 
   useEffect(() => {
     if (!currentFolderId) return;
@@ -212,8 +213,9 @@ export default function DashboardFolders() {
               mb='sm'
               styles={{ message: { marginTop: 0 } }}
             >
-              This folder allows anonymous uploads. Share the link below to allow others to let others upload
-              files to this folder.
+              {t(
+                'This folder allows anonymous uploads. Share the link below to allow others to let others upload files to this folder.',
+              )}
               <br />
               <Anchor href={`/folder/${currentFolder.id}/upload`} target='_blank'>
                 {`${window?.location?.origin ?? ''}/folder/${currentFolder.id}/upload`}
@@ -221,7 +223,7 @@ export default function DashboardFolders() {
               <CopyButton value={`${window?.location?.origin ?? ''}/folder/${currentFolder.id}/upload`}>
                 {({ copied, copy }) => (
                   <Button mx='sm' size='compact-xs' color={copied ? 'teal' : 'blue'} onClick={copy}>
-                    {copied ? 'Copied url' : 'Copy url'}
+                    {copied ? t('Copied url') : t('Copy url')}
                   </Button>
                 )}
               </CopyButton>

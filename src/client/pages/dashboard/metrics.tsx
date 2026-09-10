@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import DashboardMetrics from '@/components/pages/metrics';
 import { useTitle } from '@/lib/client/hooks/useTitle';
 import { isAdministrator } from '@/lib/role';
@@ -5,7 +6,7 @@ import { redirect } from 'react-router-dom';
 
 export async function loader() {
   const configRes = await fetch('/api/server/public');
-  if (!configRes.ok) throw new Error('Failed to get public configuration');
+  if (!configRes.ok) throw new Error(t('Failed to get public configuration'));
 
   const config = await configRes.json();
   if (config.features.metrics?.adminOnly) {
@@ -20,7 +21,7 @@ export async function loader() {
 }
 
 export function Component() {
-  useTitle('Metrics');
+  useTitle(t('Metrics'));
 
   return <DashboardMetrics />;
 }

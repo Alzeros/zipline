@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { mutateFiles } from '@/components/file/actions';
 import { Response } from '@/lib/api/response';
 import { Tag } from '@/lib/db/models/tag';
@@ -31,14 +32,14 @@ export default function TagsModals({
     if (error) {
       showNotification({
         title: t('Error'),
-        message: `Failed to delete tag: ${error.error}`,
+        message: t('Failed to delete tag: {{error}}', { error: translateApiError(error) }),
         color: 'red',
         icon: <IconTagOff size='1rem' />,
       });
     } else {
       showNotification({
         title: t('Deleted tag'),
-        message: `Deleted tag ${tag.name}`,
+        message: t('Deleted tag {{name}}', { name: tag.name }),
         color: 'green',
         icon: <IconTrashFilled size='1rem' />,
       });

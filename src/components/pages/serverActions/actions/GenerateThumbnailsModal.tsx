@@ -38,8 +38,9 @@ export default function GenerateThumbnailsModal({
     <Modal title={t('Are you sure?')} opened={opened} onClose={onClose}>
       <Stack mb='md'>
         <span>
-          This will generate thumbnails for all files that do not have a thumbnail set. Additionally you can
-          use the options below.
+          {t(
+            'This will generate thumbnails for all files that do not have a thumbnail set. Additionally you can use the options below.',
+          )}
         </span>
 
         <Switch
@@ -56,7 +57,7 @@ export default function GenerateThumbnailsModal({
       <Group justify='flex-end'>
         <Button onClick={onClose}>Cancel</Button>
         <Button color='red' onClick={handle}>
-          Generate
+          {t('Generate')}
         </Button>
       </Group>
     </Modal>

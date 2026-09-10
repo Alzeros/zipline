@@ -31,8 +31,9 @@ export default function ClearTemporaryFilesModal({
   return (
     <Modal title={t('Are you sure?')} opened={opened} onClose={onClose}>
       <Text>
-        This will delete temporary files stored within the temporary directory (defined in the configuration).
-        {t('This should not cause harm unless there are files that are being processed still.')}
+        {t(
+          'This will delete temporary files stored within the temporary directory (defined in the configuration). This should not cause harm unless there are files that are being processed still.',
+        )}
       </Text>
 
       <Group justify='flex-end' mt='md'>

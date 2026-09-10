@@ -58,7 +58,7 @@ function openCreateFolderModal(file: File) {
         }}
       />
     ),
-    labels: { confirm: 'Create', cancel: 'Cancel' },
+    labels: { confirm: t('Create'), cancel: t('Cancel') },
     onConfirm: () => {
       const input = document.getElementById('file-context-new-folder') as HTMLInputElement | null;
       const name = input?.value?.trim();
@@ -193,7 +193,7 @@ export default function FileContextMenu({
 
           {onView && (
             <Menu.Item leftSection={<IconEye size='1rem' />} onClick={stop(run(onView))}>
-              Open
+              {t('Open')}
             </Menu.Item>
           )}
           <Menu.Item leftSection={<IconExternalLink size='1rem' />} onClick={stop(run(() => viewFile(file)))}>
@@ -215,7 +215,7 @@ export default function FileContextMenu({
             {t('Copy raw link')}
           </Menu.Item>
           <Menu.Item leftSection={<IconDownload size='1rem' />} onClick={stop(run(() => downloadFile(file)))}>
-            Download
+            {t('Download')}
           </Menu.Item>
 
           {!reduce && (
@@ -232,7 +232,7 @@ export default function FileContextMenu({
                 }
                 onClick={stop(run(() => favoriteFile(file)))}
               >
-                {file.favorite ? 'Unfavorite' : 'Favorite'}
+                {file.favorite ? t('Unfavorite') : t('Favorite')}
               </Menu.Item>
 
               {file.folderId ? (

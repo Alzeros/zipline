@@ -1,3 +1,7 @@
+// 必须是第一个 import：这些页面在模块级调用 t()，i18next 需先完成初始化，
+// 否则 t() 返回 undefined，页面上会渲染成空白。详见该文件内注释。
+import '../i18n-init-view';
+
 import { verifyAccessToken } from '@/lib/accessToken';
 import { config as zConfig } from '@/lib/config';
 import { Config } from '@/lib/config/validate';

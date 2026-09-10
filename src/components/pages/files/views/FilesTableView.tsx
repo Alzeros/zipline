@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { addMultipleToFolder, copyFile, deleteFile, downloadFile } from '@/components/file/actions';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
@@ -88,8 +89,8 @@ function SearchFilter({
 
   return (
     <TextInput
-      label={NAMES[field as keyof typeof NAMES]}
-      placeholder={`Search by ${NAMES[field as keyof typeof NAMES].toLowerCase()}`}
+      label={t(NAMES[field as keyof typeof NAMES])}
+      placeholder={t('Search by {{field}}', { field: t(NAMES[field as keyof typeof NAMES]) })}
       value={searchQuery[field]}
       onChange={onChange}
       size='sm'
@@ -359,7 +360,7 @@ export default function FileTable({
       accessor: 'favorite',
       title: t('Favorite'),
       sortable: true,
-      render: (file: File) => (file.favorite ? <Text c='yellow'>{t('Yes')}</Text> : 'No'),
+      render: (file: File) => (file.favorite ? <Text c='yellow'>{t('Yes')}</Text> : t('No')),
     },
     {
       accessor: 'views',
@@ -377,7 +378,7 @@ export default function FileTable({
       accessor: 'anonymous',
       title: t('Anonymous'),
       sortable: true,
-      render: (file: File) => (file.anonymous ? <Text c='green'>{t('Yes')}</Text> : 'No'),
+      render: (file: File) => (file.anonymous ? <Text c='green'>{t('Yes')}</Text> : t('No')),
     },
   ];
 
@@ -412,9 +413,13 @@ export default function FileTable({
         <Collapse expanded={selectedFiles.length > 0}>
           <Paper withBorder p='sm' my='sm'>
             <Text size='sm' c='dimmed' mb='xs'>
-              {t('Selections are saved across page changes. Currently selected')}
-              <b>{selectedFiles.length}</b> file
-              {selectedFiles.length > 1 ? 's' : ''}.
+              {/* 原文把句子拆成 t() + <b> + 'file' + 单复数三元，拆开后既丢了空格
+                  又留下裸英文；改为整句一个 Trans，计数交给 i18next 处理单复数 */}
+              <Trans
+                i18nKey='Selections are saved across page changes. Currently selected <0>{{count}}</0> files.'
+                values={{ count: selectedFiles.length }}
+                components={[<b key='0' />]}
+              />
             </Text>
 
             <Group>
@@ -444,7 +449,7 @@ export default function FileTable({
                     )
                   }
                 >
-                  {unfavoriteAll ? 'Unfavorite' : 'Favorite'} files
+                  {unfavoriteAll ? t('Unfavorite') : t('Favorite')} files
                 </Button>
 
                 <Button

@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import DomainSelect from '@/components/DomainSelect';
 import { useThemes } from '@/components/ThemeProvider';
 import { useSettingsStore } from '@/lib/client/store/settings';
@@ -35,8 +36,10 @@ export default function SettingsDashboard() {
     <Paper withBorder p='sm' h='100%'>
       <Title order={2}>{t('Dashboard Settings')}</Title>
       <Text size='sm' c='dimmed' mt={3}>
-        {t('These settings are saved automatically in your')}
-        <b>browser.</b>
+        <Trans
+          i18nKey='These settings are saved automatically in your <0>browser</0>.'
+          components={[<b key='0' />]}
+        />
       </Text>
 
       <Stack gap='sm' my='xs'>
@@ -116,13 +119,13 @@ export default function SettingsDashboard() {
         />
 
         <Select
-          label='Theme'
+          label={t('Theme')}
           description={t(
             'The theme to use for the dashboard. This is only a visual change on your browser and does not change the theme for other users.',
           )}
           data={[
-            { value: 'system', label: 'System' },
-            ...sortedThemes.map((theme) => ({ value: theme.id, label: theme.name })),
+            { value: 'system', label: t('System') },
+            ...sortedThemes.map((theme) => ({ value: theme.id, label: t(theme.name) })),
           ]}
           value={settings.theme}
           onChange={(value) => update('theme', value ?? 'builtin:dark_gray')}
@@ -137,7 +140,7 @@ export default function SettingsDashboard() {
               description={t('The theme to use for the dashboard when your system is in dark mode.')}
               data={themes
                 .filter((theme) => theme.colorScheme === 'dark')
-                .map((theme) => ({ value: theme.id, label: theme.name }))}
+                .map((theme) => ({ value: theme.id, label: t(theme.name) }))}
               value={settings.themeDark}
               onChange={(value) => update('themeDark', value ?? 'builtin:dark_gray')}
               disabled={settings.theme !== 'system'}
@@ -149,7 +152,7 @@ export default function SettingsDashboard() {
               description={t('The theme to use for the dashboard when your system is in light mode.')}
               data={themes
                 .filter((theme) => theme.colorScheme === 'light')
-                .map((theme) => ({ value: theme.id, label: theme.name }))}
+                .map((theme) => ({ value: theme.id, label: t(theme.name) }))}
               value={settings.themeLight}
               onChange={(value) => update('themeLight', value ?? 'builtin:light_gray')}
               disabled={settings.theme !== 'system'}

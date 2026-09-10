@@ -181,7 +181,7 @@ export default function FileViewer({
     } else {
       showNotification({
         title: t('Saved tags'),
-        message: `Saved ${data!.tags!.length} tags for file ${data!.name}`,
+        message: t('Saved {{count}} tags for file {{name}}', { count: data!.tags!.length, name: data!.name }),
         color: 'green',
         icon: <IconTags size='1rem' />,
       });
@@ -242,19 +242,19 @@ export default function FileViewer({
           <ActionButton
             Icon={IconPencil}
             onClick={() => setEditFileOpen(true)}
-            tooltip='Edit file details'
+            tooltip={t('Edit file details')}
             color='orange'
           />
           <ActionButton
             Icon={IconTrashFilled}
             onClick={() => deleteFile(warnDeletion, file, setOpen)}
-            tooltip='Delete file'
+            tooltip={t('Delete file')}
             color='red'
           />
           <ActionButton
             Icon={file.favorite ? IconStarFilled : IconStar}
             onClick={() => favoriteFile(file)}
-            tooltip={file.favorite ? 'Unfavorite file' : 'Favorite file'}
+            tooltip={file.favorite ? t('Unfavorite file') : t('Favorite file')}
             color={file.favorite ? 'gray' : 'yellow'}
           />
         </>
@@ -263,22 +263,22 @@ export default function FileViewer({
       <ActionButton
         Icon={IconInfoCircle}
         onClick={() => setInfoOpen((v) => !v)}
-        tooltip={infoOpen ? 'Hide details' : 'Show details'}
+        tooltip={infoOpen ? t('Hide details') : t('Show details')}
         color={infoOpen ? 'cyan' : 'gray'}
       />
       <ActionButton
         Icon={IconExternalLink}
         onClick={() => viewFile(file)}
-        tooltip='Open in new tab'
+        tooltip={t('Open in new tab')}
         color='blue'
       />
       <ActionButton
         Icon={IconClipboardTypography}
         onClick={() => copyFile(file, clipboard, true)}
-        tooltip='Copy raw file link'
+        tooltip={t('Copy raw file link')}
       />
-      <ActionButton Icon={IconCopy} onClick={() => copyFile(file, clipboard)} tooltip='Copy file link' />
-      <ActionButton Icon={IconDownload} onClick={() => downloadFile(file)} tooltip='Download' />
+      <ActionButton Icon={IconCopy} onClick={() => copyFile(file, clipboard)} tooltip={t('Copy file link')} />
+      <ActionButton Icon={IconDownload} onClick={() => downloadFile(file)} tooltip={t('Download')} />
     </ActionIcon.Group>
   ) : null;
 
@@ -292,7 +292,7 @@ export default function FileViewer({
         opened={infoOpen}
         onClose={() => setInfoOpen(false)}
         position='right'
-        title={<Title order={2}>Details</Title>}
+        title={<Title order={2}>{t('Details')}</Title>}
         radius='md'
         offset={20}
         overlayProps={{ blur: 6 }}
@@ -326,7 +326,7 @@ export default function FileViewer({
             {file.originalName && (
               <FileStat Icon={IconTextRecognition} title={t('Original Name')} value={file.originalName} />
             )}
-            {file.anonymous && <FileStat Icon={IconUserQuestion} title={t('Anonymous')} value='Yes' />}
+            {file.anonymous && <FileStat Icon={IconUserQuestion} title={t('Anonymous')} value={t('Yes')} />}
             {!reduce && (
               <>
                 <Box>
@@ -396,7 +396,7 @@ export default function FileViewer({
                 </Box>
                 <Box>
                   <Title order={4} mb='xs'>
-                    Folder
+                    {t('Folder')}
                   </Title>
                   {file.folderId ? (
                     <Button
@@ -405,9 +405,9 @@ export default function FileViewer({
                       onClick={() => removeFromFolder(file)}
                       fullWidth
                     >
-                      Remove from folder &quot;
-                      {folders?.find((f: { id: string }) => f.id === file.folderId)?.name ?? ''}
-                      &quot;
+                      {t('Remove from folder "{{name}}"', {
+                        name: folders?.find((f: { id: string }) => f.id === file.folderId)?.name ?? '',
+                      })}
                     </Button>
                   ) : (
                     <Combobox zIndex={90000} store={folderCombobox} onOptionSubmit={(v) => handleAdd(v)}>
@@ -451,7 +451,7 @@ export default function FileViewer({
                             !folders?.some((f: { name: string }) => f.name === search) &&
                             search.trim().length > 0 ? (
                               <Combobox.Option value='$create'>
-                                + Create folder &quot;{search}&quot;
+                                {t('+ Create folder "{{name}}"', { name: search })}
                               </Combobox.Option>
                             ) : null
                           }
@@ -497,7 +497,7 @@ export default function FileViewer({
               </Box>
               <Group gap='sm' wrap='nowrap' style={{ flexShrink: 0 }}>
                 {headerActionGroup}
-                <ActionButton Icon={IconX} tooltip='Close' onClick={() => setOpen(false)} />
+                <ActionButton Icon={IconX} tooltip={t('Close')} onClick={() => setOpen(false)} />
               </Group>
             </Group>
 
@@ -515,7 +515,7 @@ export default function FileViewer({
                 </Box>
                 <ActionButton
                   Icon={IconX}
-                  tooltip='Close'
+                  tooltip={t('Close')}
                   onClick={() => setOpen(false)}
                   style={{ flexShrink: 0 }}
                 />
@@ -583,7 +583,7 @@ export default function FileViewer({
                 <>
                   <ActionButton
                     Icon={IconChevronLeft}
-                    tooltip='Previous file'
+                    tooltip={t('Previous file')}
                     onClick={() => goPrev()}
                     disabled={!hasPrev}
                     hiddenFrom='sm'
@@ -598,7 +598,7 @@ export default function FileViewer({
 
                   <ActionButton
                     Icon={IconChevronRight}
-                    tooltip='Next file'
+                    tooltip={t('Next file')}
                     onClick={() => goNext()}
                     disabled={!hasNext}
                     hiddenFrom='sm'
@@ -613,7 +613,7 @@ export default function FileViewer({
 
                   <ActionButton
                     Icon={IconChevronLeft}
-                    tooltip='Previous file'
+                    tooltip={t('Previous file')}
                     onClick={() => goPrev()}
                     disabled={!hasPrev}
                     visibleFrom='sm'
@@ -628,7 +628,7 @@ export default function FileViewer({
 
                   <ActionButton
                     Icon={IconChevronRight}
-                    tooltip='Next file'
+                    tooltip={t('Next file')}
                     onClick={() => goNext()}
                     disabled={!hasNext}
                     visibleFrom='sm'

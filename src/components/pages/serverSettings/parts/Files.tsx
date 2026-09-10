@@ -115,14 +115,14 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         />
 
         <TextInput
-          label='Route'
+          label={t('Route')}
           description={t('The route to use for file uploads. Requires a server restart.')}
           placeholder='/u'
           {...form.getInputProps('filesRoute')}
         />
 
         <NumberInput
-          label='Length'
+          label={t('Length')}
           description={t('The length of the file name (for randomly generated names).')}
           min={1}
           max={64}

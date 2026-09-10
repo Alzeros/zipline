@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import { useConfig } from '@/components/ConfigProvider';
 import DomainSelect from '@/components/DomainSelect';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
@@ -77,35 +78,38 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
 
   const expirations = useMemo(() => {
     const opts = [
-      { value: 'default', label: `Default (${config.files.defaultExpiration ?? 'never'})` },
+      {
+        value: 'default',
+        label: t('Default ({{value}})', { value: config.files.defaultExpiration ?? t('never') }),
+      },
       { value: 'never', label: t('Never') },
-      { value: '5min', label: '5 minutes' },
-      { value: '10min', label: '10 minutes' },
-      { value: '15min', label: '15 minutes' },
-      { value: '30min', label: '30 minutes' },
-      { value: '1h', label: '1 hour' },
-      { value: '2h', label: '2 hours' },
-      { value: '3h', label: '3 hours' },
-      { value: '4h', label: '4 hours' },
-      { value: '5h', label: '5 hours' },
-      { value: '6h', label: '6 hours' },
-      { value: '8h', label: '8 hours' },
-      { value: '12h', label: '12 hours' },
+      { value: '5min', label: t('5 minutes') },
+      { value: '10min', label: t('10 minutes') },
+      { value: '15min', label: t('15 minutes') },
+      { value: '30min', label: t('30 minutes') },
+      { value: '1h', label: t('1 hour') },
+      { value: '2h', label: t('2 hours') },
+      { value: '3h', label: t('3 hours') },
+      { value: '4h', label: t('4 hours') },
+      { value: '5h', label: t('5 hours') },
+      { value: '6h', label: t('6 hours') },
+      { value: '8h', label: t('8 hours') },
+      { value: '12h', label: t('12 hours') },
       { value: '1d', label: t('1 day') },
-      { value: '3d', label: '3 days' },
-      { value: '5d', label: '5 days' },
+      { value: '3d', label: t('3 days') },
+      { value: '5d', label: t('5 days') },
       { value: '7d', label: t('7 days') },
-      { value: '1w', label: '1 week' },
-      { value: '1.5w', label: '1.5 weeks' },
-      { value: '2w', label: '2 weeks' },
-      { value: '3w', label: '3 weeks' },
-      { value: '30d', label: '1 month (30 days)' },
-      { value: '45.625d', label: '1.5 months (~45 days)' },
-      { value: '60d', label: '2 months (60 days)' },
-      { value: '90d', label: '3 months (90 days)' },
-      { value: '120d', label: '4 months (120 days)' },
-      { value: '0.5 year', label: '6 months (0.5 year)' },
-      { value: '1y', label: '1 year' },
+      { value: '1w', label: t('1 week') },
+      { value: '1.5w', label: t('1.5 weeks') },
+      { value: '2w', label: t('2 weeks') },
+      { value: '3w', label: t('3 weeks') },
+      { value: '30d', label: t('1 month (30 days)') },
+      { value: '45.625d', label: t('1.5 months (~45 days)') },
+      { value: '60d', label: t('2 months (60 days)') },
+      { value: '90d', label: t('3 months (90 days)') },
+      { value: '120d', label: t('4 months (120 days)') },
+      { value: '0.5 year', label: t('6 months (0.5 year)') },
+      { value: '1y', label: t('1 year') },
       {
         value: '_',
         label: t('Need more freedom? Set an exact date and time through the API.'),
@@ -160,28 +164,28 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
             data={expirations}
             label={
               <>
-                Deletes at{' '}
+                {t('Deletes at')}{' '}
                 {options.deletesAt !== 'default' ? (
                   <Badge variant='outline' size='xs'>
-                    saved
+                    {t('saved')}
                   </Badge>
                 ) : null}
               </>
             }
             description={
               <>
-                The file will automatically delete itself after this time.{' '}
+                {t('The file will automatically delete itself after this time.')}{' '}
                 {config.files.defaultExpiration ? (
-                  <>
-                    {t('The default expiration time is')}
-                    <b>{config.files.defaultExpiration}</b> (you can override this with the below option).
-                  </>
+                  <Trans
+                    i18nKey='The default expiration time is <0>{{expiration}}</0> (you can override this with the below option).'
+                    values={{ expiration: config.files.defaultExpiration }}
+                    components={[<b key='0' />]}
+                  />
                 ) : (
-                  <>
-                    {'You can set a default expiration time in the '}
-                    <Link to='/dashboard/admin/settings'>settings</Link>
-                    {'.'}
-                  </>
+                  <Trans
+                    i18nKey='You can set a default expiration time in the <0>settings</0>.'
+                    components={[<Link key='0' to='/dashboard/admin/settings' />]}
+                  />
                 )}
                 {settingsData?.files?.maxExpiration ? (
                   <div style={{ marginTop: 6, color: 'var(--mantine-color-dimmed)' }}>
@@ -207,7 +211,7 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
 
           <Select
             data={[
-              { value: 'default', label: `Default (${config.files.defaultFormat})` },
+              { value: 'default', label: t('Default ({{value}})', { value: config.files.defaultFormat }) },
               { value: 'random', label: t('Random') },
               { value: 'date', label: t('Date') },
               { value: 'uuid', label: t('UUID') },
@@ -216,10 +220,10 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
             ]}
             label={
               <>
-                Name Format{' '}
+                {t('Name Format')}{' '}
                 {options.format !== 'default' ? (
                   <Badge variant='outline' size='xs'>
-                    saved
+                    {t('saved')}
                   </Badge>
                 ) : null}
               </>
@@ -242,7 +246,12 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
 
           <Select
             data={[
-              { value: 'default', label: `Default (.${config.files.defaultCompressionFormat ?? 'jpg'})` },
+              {
+                value: 'default',
+                label: t('Default ({{value}})', {
+                  value: `.${config.files.defaultCompressionFormat ?? 'jpg'}`,
+                }),
+              },
               { value: 'jpg', label: '.jpg' },
               { value: 'png', label: '.png' },
               { value: 'webp', label: '.webp' },
@@ -250,20 +259,19 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
             ]}
             label={
               <>
-                Compression Format{' '}
+                {t('Compression Format')}{' '}
                 {options.imageCompressionFormat !== 'default' ? (
                   <Badge variant='outline' size='xs'>
-                    saved
+                    {t('saved')}
                   </Badge>
                 ) : null}
               </>
             }
             description={
-              <>
-                {t('The image compression format to use')}
-                <b>only when a compression percent is specified</b>. Leave at &quot;default&quot; to use the
-                server default compression format.
-              </>
+              <Trans
+                i18nKey='The image compression format to use <0>only when a compression percent is specified</0>. Leave at "default" to use the server default compression format.'
+                components={[<b key='0' />]}
+              />
             }
             leftSection={<IconFileInfo size='1rem' />}
             value={options.imageCompressionFormat || 'default'}
@@ -281,10 +289,10 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
           <NumberInput
             label={
               <>
-                Compression{' '}
+                {t('Compression')}{' '}
                 {options.imageCompressionPercent ? (
                   <Badge variant='outline' size='xs'>
-                    saved
+                    {t('saved')}
                   </Badge>
                 ) : null}
               </>
@@ -302,10 +310,10 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
           <NumberInput
             label={
               <>
-                Max Views{' '}
+                {t('Max Views')}{' '}
                 {options.maxViews ? (
                   <Badge variant='outline' size='xs'>
-                    saved
+                    {t('saved')}
                   </Badge>
                 ) : null}
               </>
@@ -384,10 +392,10 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
           <DomainSelect
             label={
               <>
-                Override Domain{' '}
+                {t('Override Domain')}{' '}
                 {options.overrides_returnDomain ? (
                   <Badge variant='outline' size='xs'>
-                    saved
+                    {t('saved')}
                   </Badge>
                 ) : null}
               </>
@@ -443,17 +451,17 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
           <Switch
             label={
               <>
-                Add Original Name{' '}
+                {t('Add Original Name')}{' '}
                 {options.addOriginalName ? (
                   <Badge variant='outline' size='xs'>
-                    saved
+                    {t('saved')}
                   </Badge>
                 ) : null}
               </>
             }
-            description={
-              'Add the original file name, so that the file can be downloaded with the original name. This will still use the "Name Format" option for its file name.'
-            }
+            description={t(
+              'Add the original file name, so that the file can be downloaded with the original name. This will still use the "Name Format" option for its file name.',
+            )}
             checked={options.addOriginalName ?? false}
             onChange={(event) => setOption('addOriginalName', event.currentTarget.checked ?? false)}
           />
@@ -462,10 +470,10 @@ export default function UploadOptionsButton({ folder, numFiles }: { folder?: str
             <Switch
               label={
                 <>
-                  Extensionless URL{' '}
+                  {t('Extensionless URL')}{' '}
                   {options.extensionless ? (
                     <Badge variant='outline' size='xs'>
-                      saved
+                      {t('saved')}
                     </Badge>
                   ) : null}
                 </>

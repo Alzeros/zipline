@@ -17,7 +17,7 @@ export default function Export3ImportSettings({
     <Box my='lg'>
       <Text size='md'>{t('Import settings?')}</Text>
       <Text size='sm' c='dimmed'>
-        This option allows you to import compatible settings from your instance into this v4 instance.
+        {t('This option allows you to import compatible settings from your instance into this v4 instance.')}
       </Text>
 
       <Checkbox.Card
@@ -28,7 +28,7 @@ export default function Export3ImportSettings({
       >
         <Group wrap='nowrap' align='flex-start'>
           <Checkbox.Indicator m='md' />
-          <Text my='sm'>Import {commonSettings.length} settings</Text>
+          <Text my='sm'>{t('Import {{count}} settings', { count: commonSettings.length })}</Text>
         </Group>
       </Checkbox.Card>
     </Box>

@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import { readToDataURL } from '@/lib/base64';
 import { fetchApi } from '@/lib/fetchApi';
@@ -59,7 +60,7 @@ export default function SettingsAvatar() {
     if (!data && error) {
       notifications.show({
         title: t('Error while updating avatar'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconPhotoCancel size='1rem' />,
       });
@@ -86,7 +87,7 @@ export default function SettingsAvatar() {
     if (!data && error) {
       notifications.show({
         title: t('Error while updating avatar'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconPhotoCancel size='1rem' />,
       });
@@ -120,7 +121,7 @@ export default function SettingsAvatar() {
 
         <Card withBorder shadow='sm'>
           <Text size='sm' c='dimmed'>
-            Preview of {avatar ? 'new' : 'current'} avatar
+            {avatar ? t('Preview of new avatar') : t('Preview of current avatar')}
           </Text>
 
           <Button
@@ -129,9 +130,9 @@ export default function SettingsAvatar() {
             color={colorScheme === 'dark' ? 'white' : 'black'}
             leftSection={
               avatarSrc ? (
-                <Avatar src={avatarSrc} radius='sm' size='sm' alt={user?.username ?? 'Proposed avatar'} />
+                <Avatar src={avatarSrc} radius='sm' size='sm' alt={user?.username ?? t('Proposed avatar')} />
               ) : currentAvatar ? (
-                <Avatar src={currentAvatar} radius='sm' size='sm' alt={user?.username ?? 'User avatar'} />
+                <Avatar src={currentAvatar} radius='sm' size='sm' alt={user?.username ?? t('User avatar')} />
               ) : (
                 <IconSettingsFilled size='1rem' />
               )
@@ -153,7 +154,7 @@ export default function SettingsAvatar() {
                 setAvatarSrc(null);
               }}
             >
-              Cancel
+              {t('Cancel')}
             </Button>
           )}
           {currentAvatar && (

@@ -1,8 +1,9 @@
+import { t } from 'i18next';
 import DashboardFolders from '@/components/pages/folders';
 import { useTitle } from '@/lib/client/hooks/useTitle';
 
 export function Component() {
-  useTitle('Folders');
+  useTitle(t('Folders'));
 
   return <DashboardFolders />;
 }

@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { Response } from '@/lib/api/response';
 import { Invite } from '@/lib/db/models/invite';
@@ -41,14 +42,14 @@ export default function DashboardInvites() {
 
     if (error) {
       notifications.show({
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconTagOff size='1rem' />,
       });
     } else {
       notifications.show({
         title: t('Invite created'),
-        message: `Invite ${data?.code} has been created.`,
+        message: t('Invite {{code}} has been created.', { code: data?.code }),
         color: 'green',
         icon: <IconPlus size='1rem' />,
       });
@@ -72,13 +73,13 @@ export default function DashboardInvites() {
               placeholder={t('Select an expiration...')}
               data={[
                 { value: 'never', label: t('Never') },
-                { value: '30min', label: '30 minutes' },
-                { value: '1h', label: '1 hour' },
-                { value: '6h', label: '6 hours' },
-                { value: '12h', label: '12 hours' },
+                { value: '30min', label: t('30 minutes') },
+                { value: '1h', label: t('1 hour') },
+                { value: '6h', label: t('6 hours') },
+                { value: '12h', label: t('12 hours') },
                 { value: '1d', label: t('1 day') },
-                { value: '3d', label: '3 days' },
-                { value: '5d', label: '5 days' },
+                { value: '3d', label: t('3 days') },
+                { value: '5d', label: t('5 days') },
                 { value: '7d', label: t('7 days') },
               ]}
               comboboxProps={{

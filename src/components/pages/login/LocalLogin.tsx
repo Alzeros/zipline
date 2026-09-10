@@ -43,7 +43,7 @@ export default function LocalLogin({
           loading={loading}
           variant={hasBackground ? 'outline' : 'filled'}
         >
-          Login
+          {t('Login')}
         </Button>
       </Stack>
     </form>

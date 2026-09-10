@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import { IncompleteFile } from '@/lib/db/models/incompleteFile';
 import { fetchApi } from '@/lib/fetchApi';
@@ -56,7 +57,7 @@ export default function PendingFilesModal({
     if (error) {
       showNotification({
         title: t('Error'),
-        message: `Failed to delete pending file: ${error.error}`,
+        message: t('Failed to delete pending file: {{error}}', { error: translateApiError(error) }),
         color: 'red',
         icon: <IconFileDots size='1rem' />,
       });

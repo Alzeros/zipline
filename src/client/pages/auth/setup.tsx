@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import { type Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import { useTitle } from '@/lib/client/hooks/useTitle';
@@ -37,7 +38,7 @@ function LinkToDoc({ href, title, children }: { href: string; title: string; chi
 export async function loader() {
   const res = await fetch('/api/server/public');
   if (!res.ok) {
-    throw new Response('Failed to fetch server settings', { status: res.status });
+    throw new Response(t('Failed to fetch server settings'), { status: res.status });
   }
 
   const data = await res.json();
@@ -47,7 +48,7 @@ export async function loader() {
 }
 
 export function Component() {
-  useTitle('Setup');
+  useTitle(t('Setup'));
 
   const navigate = useNavigate();
 
@@ -63,8 +64,8 @@ export function Component() {
       password: '',
     },
     validate: {
-      username: (value) => (value.length >= 1 ? null : 'Username is required'),
-      password: (value) => (value.length >= 1 ? null : 'Password is required'),
+      username: (value) => (value.length >= 1 ? null : t('Username is required')),
+      password: (value) => (value.length >= 1 ? null : t('Password is required')),
     },
     enhanceGetInputProps: ({ field }) => ({
       name: field,
@@ -133,7 +134,7 @@ export function Component() {
                 </Text>
 
                 <Stack mt='xs'>
-                  <LinkToDoc href='https://zipline.diced.sh/docs/config' title='Configuration'>
+                  <LinkToDoc href='https://zipline.diced.sh/docs/config' title={t('Configuration')}>
                     {t('Configuring Zipline to your needs')}
                   </LinkToDoc>
 
@@ -144,26 +145,29 @@ export function Component() {
               </Paper>
 
               <Paper withBorder p='sm' my='sm' h='100%'>
-                <Title order={2}>Configuration</Title>
+                <Title order={2}>{t('Configuration')}</Title>
 
                 <Text>
-                  Most of Zipline&apos;s configuration is now managed through the dashboard. Once you login as
-                  a super-admin, you can click on your username in the top right corner and select
-                  &quot;Server Settings&quot; to configure your instance. The only exception to this is a few
-                  sensitive environment variables that must be set in order for Zipline to run. To change
-                  this, depending on the setup, you can either edit the <Code>.env</Code> or{' '}
-                  <Code>docker-compose.yml</Code> file.
+                  <Trans
+                    i18nKey={
+                      'Most of Zipline\'s configuration is now managed through the dashboard. Once you login as a super-admin, you can click on your username in the top right corner and select "Server Settings" to configure your instance. The only exception to this is a few sensitive environment variables that must be set in order for Zipline to run. To change this, depending on the setup, you can either edit the <0>.env</0> or <1>docker-compose.yml</1> file.'
+                    }
+                    components={[<Code key='0' />, <Code key='1' />]}
+                  />
                 </Text>
 
                 <Text>
-                  To see all of the available environment variables, please refer to the documentation{' '}
-                  <Anchor
-                    href='https://zipline.diced.sh/docs/config'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    here.
-                  </Anchor>
+                  <Trans
+                    i18nKey='To see all of the available environment variables, please refer to the documentation <0>here.</0>'
+                    components={[
+                      <Anchor
+                        key='0'
+                        href='https://zipline.diced.sh/docs/config'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      />,
+                    ]}
+                  />
                 </Text>
               </Paper>
             </SimpleGrid>
@@ -176,7 +180,7 @@ export function Component() {
               variant='default'
               onClick={nextStep}
             >
-              Continue
+              {t('Continue')}
             </Button>
           </Stepper.Step>
           <Stepper.Step label={t('Create user')} description={t('Create a super-admin account')}>
@@ -205,7 +209,7 @@ export function Component() {
                 variant='default'
                 onClick={prevStep}
               >
-                Back
+                {t('Back')}
               </Button>
 
               <Button
@@ -215,7 +219,7 @@ export function Component() {
                 onClick={nextStep}
                 disabled={!form.isValid()}
               >
-                Continue
+                {t('Continue')}
               </Button>
             </Group>
           </Stepper.Step>
@@ -223,8 +227,9 @@ export function Component() {
             <Title order={2}>{t('Setup complete!')}</Title>
 
             <Text>
-              Clicking &quot;Finish&quot; below will create your super-admin account and log you in. You will
-              be redirected to the dashboard shortly after that.
+              {t(
+                'Clicking "Finish" below will create your super-admin account and log you in. You will be redirected to the dashboard shortly after that.',
+              )}
             </Text>
             <Group justify='space-between' my='lg'>
               <Button
@@ -234,7 +239,7 @@ export function Component() {
                 onClick={prevStep}
                 loading={loading}
               >
-                Back
+                {t('Back')}
               </Button>
 
               <Button
@@ -244,7 +249,7 @@ export function Component() {
                 loading={loading}
                 onClick={() => form.onSubmit(onSubmit)()}
               >
-                Finish
+                {t('Finish')}
               </Button>
             </Group>
           </Stepper.Completed>
@@ -254,4 +259,4 @@ export function Component() {
   );
 }
 
-Component.displayName = 'Setup';
+Component.displayName = t('Setup');

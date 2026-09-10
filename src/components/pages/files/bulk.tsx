@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { mutateFiles } from '@/components/file/actions';
 import { Response } from '@/lib/api/response';
 import { getDomain } from '@/lib/client/webDomain';
@@ -17,19 +18,19 @@ import {
 export async function bulkDelete(ids: string[], setSelectedFiles: (files: File[]) => void) {
   modals.openConfirmModal({
     centered: true,
-    title: `Delete ${ids.length} file${ids.length === 1 ? '' : 's'}?`,
-    children: `You are about to delete ${ids.length} file${
-      ids.length === 1 ? '' : 's'
-    }. This action cannot be undone.`,
+    title: t('Delete {{count}} files?', { count: ids.length }),
+    children: t('You are about to delete {{count}} files. This action cannot be undone.', {
+      count: ids.length,
+    }),
     labels: {
-      cancel: 'Cancel',
-      confirm: 'Delete',
+      cancel: t('Cancel'),
+      confirm: t('Delete'),
     },
     confirmProps: { color: 'red' },
     onConfirm: async () => {
       notifications.show({
         title: t('Deleting files'),
-        message: `Deleting ${ids.length} file${ids.length === 1 ? '' : 's'}`,
+        message: t('Deleting {{count}} files', { count: ids.length }),
         color: 'blue',
         loading: true,
         id: 'bulk-delete',
@@ -51,7 +52,7 @@ export async function bulkDelete(ids: string[], setSelectedFiles: (files: File[]
       if (error) {
         notifications.update({
           title: t('Error while deleting files'),
-          message: error.error,
+          message: translateApiError(error),
           color: 'red',
           icon: <IconFilesOff size='1rem' />,
           id: 'bulk-delete',
@@ -61,7 +62,7 @@ export async function bulkDelete(ids: string[], setSelectedFiles: (files: File[]
       } else if (data) {
         notifications.update({
           title: t('Deleted files'),
-          message: `Deleted ${data.count} file${ids.length === 1 ? '' : 's'}`,
+          message: t('Deleted {{count}} files', { count: data.count }),
           color: 'green',
           icon: <IconTrashFilled size='1rem' />,
           id: 'bulk-delete',
@@ -78,22 +79,41 @@ export async function bulkDelete(ids: string[], setSelectedFiles: (files: File[]
 }
 
 export async function bulkFavorite(ids: string[], favorite: boolean) {
-  const text = favorite ? 'favorite' : 'unfavorite';
-  const textcaps = favorite ? 'Favorite' : 'Unfavorite';
+  // 原实现用 `${textcaps}ing` / `${textcaps}d` 拼英文词形，无法本地化，
+  // 故改为收藏 / 取消收藏两套完整文案。
+  const copy = favorite
+    ? {
+        title: t('Favorite {{count}} files?', { count: ids.length }),
+        children: t('You are about to favorite {{count}} files.', { count: ids.length }),
+        confirm: t('Favorite'),
+        pendingTitle: t('Favoriting files'),
+        pendingMessage: t('Favoriting {{count}} files', { count: ids.length }),
+        doneTitle: t('Favorited files'),
+        doneMessage: (count: number) => t('Favorited {{count}} files', { count }),
+      }
+    : {
+        title: t('Unfavorite {{count}} files?', { count: ids.length }),
+        children: t('You are about to unfavorite {{count}} files.', { count: ids.length }),
+        confirm: t('Unfavorite'),
+        pendingTitle: t('Unfavoriting files'),
+        pendingMessage: t('Unfavoriting {{count}} files', { count: ids.length }),
+        doneTitle: t('Unfavorited files'),
+        doneMessage: (count: number) => t('Unfavorited {{count}} files', { count }),
+      };
 
   modals.openConfirmModal({
     centered: true,
-    title: `${textcaps} ${ids.length} file${ids.length === 1 ? '' : 's'}?`,
-    children: `You are about to ${text} ${ids.length} file${ids.length === 1 ? '' : 's'}.`,
+    title: copy.title,
+    children: copy.children,
     labels: {
-      cancel: 'Cancel',
-      confirm: `${textcaps}`,
+      cancel: t('Cancel'),
+      confirm: copy.confirm,
     },
     confirmProps: { color: 'yellow' },
     onConfirm: async () => {
       notifications.show({
-        title: `${textcaps}ing files`,
-        message: `${textcaps}ing ${ids.length} file${ids.length === 1 ? '' : 's'}`,
+        title: copy.pendingTitle,
+        message: copy.pendingMessage,
         color: 'yellow',
         loading: true,
         id: 'bulk-favorite',
@@ -114,7 +134,7 @@ export async function bulkFavorite(ids: string[], favorite: boolean) {
       if (error) {
         notifications.update({
           title: t('Error while modifying files'),
-          message: error.error,
+          message: translateApiError(error),
           color: 'red',
           icon: <IconStarsOff size='1rem' />,
           id: 'bulk-favorite',
@@ -123,8 +143,8 @@ export async function bulkFavorite(ids: string[], favorite: boolean) {
         });
       } else if (data) {
         notifications.update({
-          title: `${textcaps}d files`,
-          message: `${textcaps}d ${data.count} file${ids.length === 1 ? '' : 's'}`,
+          title: copy.doneTitle,
+          message: copy.doneMessage(data.count),
           color: 'yellow',
           icon: <IconStarsFilled size='1rem' />,
           id: 'bulk-favorite',
@@ -146,7 +166,7 @@ export async function bulkCopyLinks(urls: string[]) {
 
   notifications.show({
     title: t('Copied links to clipboard'),
-    message: `Copied ${urls.length} link${urls.length === 1 ? '' : 's'} to clipboard`,
+    message: t('Copied {{count}} links to clipboard', { count: urls.length }),
     color: 'green',
     icon: <IconClipboardListFilled size='1rem' />,
     autoClose: true,

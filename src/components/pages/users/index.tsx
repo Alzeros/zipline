@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { readToDataURL } from '@/lib/base64';
 import { LimitedUser } from '@/lib/db/models/user';
@@ -45,8 +46,8 @@ export default function DashboardUsers() {
       avatar: null,
     },
     validate: {
-      username: (value) => (value.length < 1 ? 'Username is required' : null),
-      password: (value) => (value.length < 1 ? 'Password is required' : null),
+      username: (value) => (value.length < 1 ? t('Username is required') : null),
+      password: (value) => (value.length < 1 ? t('Password is required') : null),
     },
     enhanceGetInputProps: ({ field }) => ({
       name: field,
@@ -56,7 +57,8 @@ export default function DashboardUsers() {
   const onSubmit = async (values: typeof form.values) => {
     let avatar64: string | null = null;
     if (values.avatar) {
-      if (!values.avatar.type.startsWith('image/')) return form.setFieldError('avatar', 'Invalid file type');
+      if (!values.avatar.type.startsWith('image/'))
+        return form.setFieldError('avatar', t('Invalid file type'));
 
       try {
         const res = await readToDataURL(values.avatar);
@@ -64,7 +66,7 @@ export default function DashboardUsers() {
       } catch (e) {
         console.error(e);
 
-        return form.setFieldError('avatar', 'Failed to read avatar file');
+        return form.setFieldError('avatar', t('Failed to read avatar file'));
       }
     }
 
@@ -78,14 +80,14 @@ export default function DashboardUsers() {
     if (error) {
       notifications.show({
         title: t('Failed to create user'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconUserCancel size='1rem' />,
       });
     } else {
       notifications.show({
         title: t('User created'),
-        message: `User ${data?.username} has been created`,
+        message: t('User {{username}} has been created', { username: data?.username }),
         color: 'blue',
         icon: <IconUserPlus size='1rem' />,
       });

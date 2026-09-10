@@ -1,4 +1,6 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
+import { Trans } from 'react-i18next';
 import { File } from '@/lib/db/models/file';
 import { fetchApi } from '@/lib/fetchApi';
 import useObjectState from '@/lib/client/hooks/useObjectState';
@@ -63,7 +65,7 @@ export default function EditFileDetailsModal({
     if (error) {
       showNotification({
         title: t('Failed to remove password...'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconPencilOff size='1rem' />,
       });
@@ -101,7 +103,7 @@ export default function EditFileDetailsModal({
     if (error) {
       showNotification({
         title: t('Failed to save changes...'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconPencilOff size='1rem' />,
       });
@@ -121,7 +123,7 @@ export default function EditFileDetailsModal({
   };
 
   return (
-    <Modal zIndex={400} title={`Editing "${file.name}"`} onClose={onClose} opened={open}>
+    <Modal zIndex={400} title={t('Editing "{{name}}"', { name: file.name })} onClose={onClose} opened={open}>
       <Stack gap='xs' my='sm'>
         <TextInput
           label={t('Name')}
@@ -132,7 +134,7 @@ export default function EditFileDetailsModal({
 
         <NumberInput
           label={t('Max Views')}
-          placeholder='Unlimited'
+          placeholder={t('Unlimited')}
           description={t(
             'The maximum number of views this file can have before it is deleted. Leave blank to allow as many views as you want.',
           )}
@@ -159,10 +161,10 @@ export default function EditFileDetailsModal({
         <TextInput
           label={t('Type')}
           description={
-            <>
-              Change a file&apos;s mimetype. <b>{t('DO NOT CHANGE THIS VALUE')}</b> unless you know what you
-              are doing, this can mess with how Zipline renders specific file types.
-            </>
+            <Trans
+              i18nKey="Change a file's mimetype. <0>DO NOT CHANGE THIS VALUE</0> unless you know what you are doing, this can mess with how Zipline renders specific file types."
+              components={[<b key='0' />]}
+            />
           }
           value={formData.type ?? ''}
           onChange={(event) =>

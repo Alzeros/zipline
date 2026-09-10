@@ -40,7 +40,7 @@ import GenericError from '../../error/GenericError';
 import { eitherTrue } from '@/lib/primitive';
 
 export default function Login() {
-  useTitle('Login');
+  useTitle(t('Login'));
 
   const query = new URLSearchParams(location.search);
   const navigate = useNavigate();
@@ -89,8 +89,8 @@ export default function Login() {
   const form = useForm({
     initialValues: { username: '', password: '' },
     validate: {
-      username: (v) => (v.length >= 1 ? null : 'Username is required'),
-      password: (v) => (v.length >= 1 ? null : 'Password is required'),
+      username: (v) => (v.length >= 1 ? null : t('Username is required')),
+      password: (v) => (v.length >= 1 ? null : t('Password is required')),
     },
   });
 
@@ -111,10 +111,10 @@ export default function Login() {
 
     if (error) {
       if (ApiError.check(error, 1044)) {
-        form.setFieldError('username', 'Invalid username');
-        form.setFieldError('password', 'Invalid password');
+        form.setFieldError('username', t('Invalid username'));
+        form.setFieldError('password', t('Invalid password'));
       } else {
-        setTotp('error', error.error || 'Login failed');
+        setTotp('error', error.error || t('Login failed'));
       }
       setTotp('disabled', false);
     } else if (data?.totp) {
@@ -137,7 +137,7 @@ export default function Login() {
 
   if (configLoading || !config) return <LoadingOverlay visible />;
   if (configError)
-    return <GenericError title={t('Error')} message='Config load failed' details={configError} />;
+    return <GenericError title={t('Error')} message={t('Config load failed')} details={configError} />;
 
   const hasBg = !!config.website.loginBackground;
 
@@ -232,7 +232,7 @@ export default function Login() {
               config.features.userRegistration,
             ) && (
               <>
-                <Divider label='or' />
+                <Divider label={t('or')} />
 
                 {config.mfa.passkeys && browserSupportsWebAuthn() && (
                   <PasskeyAuthButton onAuthSuccess={mutate} />
@@ -264,9 +264,9 @@ export default function Login() {
 
                 {config.features.userRegistration && (
                   <Text ta='center' mt='md'>
-                    Don&apos;t have an account?{' '}
+                    {t("Don't have an account?")}{' '}
                     <Anchor component={Link} to='/auth/register' c='blue' fw={500}>
-                      Register
+                      {t('Register')}
                     </Anchor>
                   </Text>
                 )}

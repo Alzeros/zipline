@@ -94,7 +94,9 @@ export async function uploadPartialFiles(
     }
 
     const fileLabel =
-      totalFiles > 1 ? `Uploading large file (${i + 1}/${totalFiles})` : 'Uploading large file';
+      totalFiles > 1
+        ? t('Uploading large file ({{current}}/{{total}})', { current: i + 1, total: totalFiles })
+        : t('Uploading large file');
 
     notifications.show({
       id: 'upload-partial',
@@ -123,7 +125,7 @@ export async function uploadPartialFiles(
       notifications.update({
         id: 'upload-partial',
         title: fileLabel,
-        message: `Chunk ${j + 1}/${nChunks}`,
+        message: t('Chunk {{current}}/{{total}}', { current: j + 1, total: nChunks }),
         loading: true,
         autoClose: false,
         color: 'blue',
@@ -152,7 +154,7 @@ export async function uploadPartialFiles(
             notifications.update({
               id: 'upload-partial',
               title: t('Error uploading file'),
-              message: `${file.name}: ${error?.error ?? 'An unknown error occurred'}`,
+              message: `${file.name}: ${error?.error ?? t('An unknown error occurred')}`,
               color: 'red',
               icon: <IconFileXFilled size='1rem' />,
               autoClose: false,
@@ -176,10 +178,16 @@ export async function uploadPartialFiles(
 
             notifications.update({
               id: 'upload-partial',
-              title: isLastFile ? 'Large file uploads complete' : 'Large file offloaded',
+              title: isLastFile ? t('Large file uploads complete') : t('Large file offloaded'),
               message: isLastFile
-                ? `Offloaded ${uploadedFiles.length} large file${uploadedFiles.length === 1 ? '' : 's'} for background processing`
-                : `${file.name} offloaded (${i + 1}/${totalFiles})`,
+                ? t('Offloaded {{count}} large files for background processing', {
+                    count: uploadedFiles.length,
+                  })
+                : t('{{name}} offloaded ({{current}}/{{total}})', {
+                    name: file.name,
+                    current: i + 1,
+                    total: totalFiles,
+                  }),
               color: 'green',
               icon: <IconFileUpload size='1rem' />,
               autoClose: isLastFile,

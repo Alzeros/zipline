@@ -39,7 +39,7 @@ function Form({ data }: { data: Response['/api/server/settings'] }) {
       const error = await submitSettings({ domains: nextDomains });
       if (!error) form.setFieldValue('domains', '');
     } catch (err: any) {
-      form.setFieldError('domains', err?.message ?? err?.error ?? 'Failed to update domains');
+      form.setFieldError('domains', err?.message ?? err?.error ?? t('Failed to update domains'));
     } finally {
       setSubmitting(false);
     }
@@ -51,7 +51,7 @@ function Form({ data }: { data: Response['/api/server/settings'] }) {
     const domain = form.values.domains.trim();
     if (!domain) return;
 
-    if (domains.includes(domain)) return form.setFieldError('domains', 'This domain already exists');
+    if (domains.includes(domain)) return form.setFieldError('domains', t('This domain already exists'));
 
     await updateDomains([...domains, domain]);
   };

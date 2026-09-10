@@ -30,7 +30,7 @@ export default function Export4ImportSettings({
       </Text>
 
       <Button my='xs' onClick={toggleSettings} size='compact-xs'>
-        {showSettings ? 'Hide' : 'Show'} Settings to be Imported
+        {showSettings ? t('Hide Settings to be Imported') : t('Show Settings to be Imported')}
       </Button>
 
       <Collapse expanded={showSettings}>
@@ -38,7 +38,7 @@ export default function Export4ImportSettings({
           <Table>
             <Table.Thead>
               <Table.Tr>
-                <Table.Th w={300}>Key</Table.Th>
+                <Table.Th w={300}>{t('Key')}</Table.Th>
                 <Table.Th>{t('Value')}</Table.Th>
               </Table.Tr>
             </Table.Thead>
@@ -58,7 +58,7 @@ export default function Export4ImportSettings({
         </Paper>
 
         <Button my='xs' onClick={toggleSettings} size='compact-xs'>
-          {showSettings ? 'Hide' : 'Show'} Settings to be Imported
+          {showSettings ? t('Hide Settings to be Imported') : t('Show Settings to be Imported')}
         </Button>
       </Collapse>
 

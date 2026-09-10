@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import { useUserStore } from '@/lib/client/store/user';
 import { fetchApi } from '@/lib/fetchApi';
@@ -38,11 +39,12 @@ export default function ImportV4Button() {
   const onJson = (data: unknown) => {
     const validated = validateExport(data);
     if (!validated.success) {
-      console.error('Failed to validate import data', validated);
+      console.error(t('Failed to validate import data'), validated);
       showNotification({
         title: t('There were errors with the import'),
-        message:
+        message: t(
           "Zipline couldn't validate the import data. Are you sure it's a valid export from Zipline v4? For more details about the error, check the browser console.",
+        ),
         color: 'red',
         icon: <IconDatabaseOff size='1rem' />,
         autoClose: 10000,
@@ -68,7 +70,7 @@ export default function ImportV4Button() {
         title: t('Failed to import settings'),
         message: error.issues
           ? error.issues.map((x: { message: string }) => x.message).join('\n')
-          : error.error,
+          : translateApiError(error),
         color: 'red',
       });
     } else {
@@ -92,8 +94,9 @@ export default function ImportV4Button() {
         modal: 'alert',
         title: t('Same Instance Detected'),
         innerProps: {
-          modalBody:
+          modalBody: t(
             'Detected that you are importing data from the same instance as the current running one. You must agree to the warning before proceeding with the import.',
+          ),
         },
       });
       return;
@@ -101,17 +104,19 @@ export default function ImportV4Button() {
 
     modals.openConfirmModal({
       title: t('Are you sure?'),
-      children:
+      children: t(
         'This process will NOT overwrite existing data but will append to it. In case of conflicts, the imported data will be skipped and logged.',
+      ),
       labels: {
-        confirm: 'Yes, import data.',
-        cancel: 'Cancel',
+        confirm: t('Yes, import data.'),
+        cancel: t('Cancel'),
       },
       onConfirm: async () => {
         showNotification({
           title: t('Importing data...'),
-          message:
-            'The export file will be uploaded. This amy take a few moments. The import is running in the background and is logged, so you can close this browser tab if you want.',
+          message: t(
+            'The export file will be uploaded. This may take a few moments. The import is running in the background and is logged, so you can close this browser tab if you want.',
+          ),
           color: 'blue',
           autoClose: 5000,
           id: 'importing-data',
@@ -138,7 +143,7 @@ export default function ImportV4Button() {
           updateNotification({
             title: t('Failed to import data...'),
             message:
-              error.error ?? 'An error occurred while importing data. Check the logs for more details.',
+              error.error ?? t('An error occurred while importing data. Check the logs for more details.'),
             color: 'red',
             icon: <IconDatabaseOff size='1rem' />,
             id: 'importing-data',
@@ -152,45 +157,33 @@ export default function ImportV4Button() {
             children: (
               <Text size='md'>
                 {t(
-                  'The import has been completed. To make sure files are properly viewable, make sure that you',
-                )}
-                have configured the datasource correctly to match your previous instance. For example, if you
-                were using local storage before, make sure to set it to the same directory (or same backed up
-                directory) as before. If you are using S3, make sure you are using the same bucket. <br />{' '}
-                <br />
+                  'The import has been completed. To make sure files are properly viewable, make sure that you have configured the datasource correctly to match your previous instance. For example, if you were using local storage before, make sure to set it to the same directory (or same backed up directory) as before. If you are using S3, make sure you are using the same bucket.',
+                )}{' '}
+                <br /> <br />
                 {t(
                   'Additionally, it is recommended to restart Zipline to ensure all settings take full effect.',
                 )}
                 <br /> <br />
-                <b>{t('Users:')}</b>
-                {data.imported.users} imported.
+                <b>{t('Users:')}</b> {t('{{count}} imported.', { count: data.imported.users })}
                 <br />
-                <b>{t('OAuth Providers:')}</b>
-                {data.imported.oauthProviders} imported.
+                <b>{t('OAuth Providers:')}</b>{' '}
+                {t('{{count}} imported.', { count: data.imported.oauthProviders })}
                 <br />
-                <b>{t('Quotas:')}</b>
-                {data.imported.quotas} imported.
+                <b>{t('Quotas:')}</b> {t('{{count}} imported.', { count: data.imported.quotas })}
                 <br />
-                <b>{t('Passkeys:')}</b>
-                {data.imported.passkeys} imported.
+                <b>{t('Passkeys:')}</b> {t('{{count}} imported.', { count: data.imported.passkeys })}
                 <br />
-                <b>{t('Folders:')}</b>
-                {data.imported.folders} imported.
+                <b>{t('Folders:')}</b> {t('{{count}} imported.', { count: data.imported.folders })}
                 <br />
-                <b>{t('Files:')}</b>
-                {data.imported.files} imported.
+                <b>{t('Files:')}</b> {t('{{count}} imported.', { count: data.imported.files })}
                 <br />
-                <b>{t('Tags:')}</b>
-                {data.imported.tags} imported.
+                <b>{t('Tags:')}</b> {t('{{count}} imported.', { count: data.imported.tags })}
                 <br />
-                <b>{t('URLs:')}</b>
-                {data.imported.urls} imported.
+                <b>{t('URLs:')}</b> {t('{{count}} imported.', { count: data.imported.urls })}
                 <br />
-                <b>{t('Invites:')}</b>
-                {data.imported.invites} imported.
+                <b>{t('Invites:')}</b> {t('{{count}} imported.', { count: data.imported.invites })}
                 <br />
-                <b>{t('Metrics:')}</b>
-                {data.imported.metrics} imported.
+                <b>{t('Metrics:')}</b> {t('{{count}} imported.', { count: data.imported.metrics })}
               </Text>
             ),
           });
@@ -275,7 +268,7 @@ export default function ImportV4Button() {
       </Modal>
 
       <Button size='xl' rightSection={<Pill>V4</Pill>} onClick={() => setOpen(true)}>
-        Import
+        {t('Import')}
       </Button>
     </>
   );

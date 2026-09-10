@@ -59,7 +59,7 @@ export default function FolderGridView({
                 <Title order={2}>{t('No Folders found')}</Title>
               </Group>
               <Text size='sm' c='dimmed'>
-                {currentFolderId ? 'This folder is empty' : 'Create a folder to see it here'}
+                {currentFolderId ? t('This folder is empty') : t('Create a folder to see it here')}
               </Text>
             </Stack>
           </Center>

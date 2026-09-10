@@ -17,8 +17,9 @@ export default function SettingsExports() {
   const handleNewExport = async () => {
     modals.openConfirmModal({
       title: t('New export?'),
-      children:
+      children: t(
         'Are you sure you want to start a new export? If you have a lot of files, this may take a while.',
+      ),
       onConfirm: async () => {
         await fetch('/api/user/export', {
           method: 'POST',
@@ -33,8 +34,8 @@ export default function SettingsExports() {
         mutate();
       },
       labels: {
-        cancel: 'Cancel',
-        confirm: 'Start export',
+        cancel: t('Cancel'),
+        confirm: t('Start export'),
       },
     });
   };
@@ -87,7 +88,11 @@ export default function SettingsExports() {
                   <Table.Tr key={exportDb.id}>
                     <Table.Td maw={140}>
                       <Tooltip
-                        label={`${exportDb.id} is ${exportDb.completed ? 'completed' : 'in progress'}`}
+                        label={
+                          exportDb.completed
+                            ? t('{{id}} is completed', { id: exportDb.id })
+                            : t('{{id}} is in progress', { id: exportDb.id })
+                        }
                       >
                         <Text
                           style={{ textOverflow: 'ellipsis', overflow: 'hidden' }}

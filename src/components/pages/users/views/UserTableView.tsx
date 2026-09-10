@@ -84,7 +84,7 @@ export default function UserTableView() {
               textAlign: 'right',
               render: (user) => (
                 <Group gap='sm' justify='right' wrap='nowrap'>
-                  <Tooltip label="View user's files">
+                  <Tooltip label={t("View user's files")}>
                     <ActionIcon
                       component={Link}
                       to={`/dashboard/admin/users/${user.id}/files`}

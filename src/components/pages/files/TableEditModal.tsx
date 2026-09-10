@@ -37,7 +37,7 @@ function SortableTableField({ item }: { item: FieldSettings }) {
 
         <Checkbox checked={item.visible} onChange={() => setVisible(item.field, !item.visible)} />
 
-        <Text>{NAMES[item.field]}</Text>
+        <Text>{t(NAMES[item.field])}</Text>
       </Group>
     </Paper>
   );

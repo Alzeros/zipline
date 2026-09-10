@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import type { Folder } from '@/lib/db/models/folder';
 import { fetchApi } from '@/lib/fetchApi';
@@ -41,7 +42,7 @@ export default function EditFolderNameModal({
     if (error) {
       showNotification({
         title: t('Error while updating folder name'),
-        message: error.error,
+        message: translateApiError(error),
       });
     } else {
       mutateFolder();

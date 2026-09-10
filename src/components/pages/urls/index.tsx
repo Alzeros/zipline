@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import DomainSelect from '@/components/DomainSelect';
 import GridTableSwitcher from '@/components/GridTableSwitcher';
 import { Response } from '@/lib/api/response';
@@ -63,12 +64,12 @@ export default function DashboardURLs() {
       domain: '',
     },
     validate: {
-      url: (value) => (value.length < 1 ? 'URL is required' : null),
+      url: (value) => (value.length < 1 ? t('URL is required') : null),
     },
   });
 
   const onSubmit = async (values: typeof form.values) => {
-    if (URL.canParse(values.url) === false) return form.setFieldError('url', 'Invalid URL');
+    if (URL.canParse(values.url) === false) return form.setFieldError('url', t('Invalid URL'));
 
     const { data, error } = await fetchApi<
       Extract<
@@ -95,7 +96,7 @@ export default function DashboardURLs() {
     if (error) {
       notifications.show({
         title: t('Failed to shorten URL'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconLinkOff size='1rem' />,
       });

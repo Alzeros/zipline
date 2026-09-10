@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
 import { Response } from '@/lib/api/response';
 import { Folder } from '@/lib/db/models/folder';
@@ -65,13 +66,13 @@ export default function MoveFolderModal({
     if (error) {
       notifications.show({
         title: t('Failed to move folder'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
       });
     } else {
       notifications.show({
         title: t('Folder moved'),
-        message: `${folder.name} has been moved`,
+        message: t('{{name}} has been moved', { name: folder.name }),
         color: 'green',
       });
       mutateFolder();
@@ -80,7 +81,13 @@ export default function MoveFolderModal({
   };
 
   return (
-    <Modal key={folder.id} centered opened={opened} onClose={onClose} title={`Move "${folder.name}"`}>
+    <Modal
+      key={folder.id}
+      centered
+      opened={opened}
+      onClose={onClose}
+      title={t('Move "{{name}}"', { name: folder.name })}
+    >
       <Stack gap='sm'>
         <Text size='sm' c='dimmed'>
           {t('Select a destination folder for this folder.')}

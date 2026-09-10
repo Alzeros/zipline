@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import type { Response } from '@/lib/api/response';
 import { Button, Code, LoadingOverlay, Stack, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
@@ -40,8 +41,10 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
   return (
     <>
       <Text size='sm' c='dimmed' mb='md'>
-        {t('All options require a restart to take effect. Setting a value of')}
-        <Code>0</Code> will disable the task.
+        <Trans
+          i18nKey='All options require a restart to take effect. Setting a value of <0>0</0> will disable the task.'
+          components={[<Code key='0' />]}
+        />
       </Text>
 
       <form onSubmit={form.onSubmit(onSubmit)}>

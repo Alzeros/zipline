@@ -69,7 +69,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
       <Table.Td>{file.original_name}</Table.Td>
       <Table.Td>{file.type}</Table.Td>
       <Table.Td>{bytes(file.size as number)}</Table.Td>
-      <Table.Td>{file.user ? findUser(export3, file.user)?.username : 'unknown'}</Table.Td>
+      <Table.Td>{file.user ? findUser(export3, file.user)?.username : t('unknown')}</Table.Td>
       <Table.Td>{file.views}</Table.Td>
       <Table.Td>{new Date(file.created_at).toLocaleString()}</Table.Td>
     </Table.Tr>
@@ -78,7 +78,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
   const folderRows = Object.entries(export3.folders).map(([id, folder]) => (
     <Table.Tr key={id}>
       <Table.Td>{folder.name}</Table.Td>
-      <Table.Td>{findUser(export3, folder?.user)?.username ?? 'unknown'}</Table.Td>
+      <Table.Td>{findUser(export3, folder?.user)?.username ?? t('unknown')}</Table.Td>
       <Table.Td>{folder.public ? <IconCheck size='1rem' /> : <IconX size='1rem' />}</Table.Td>
       <Table.Td>{new Date(folder.created_at).toLocaleString()}</Table.Td>
       <Table.Td>{findFilesByUser(export3, id).length}</Table.Td>
@@ -88,7 +88,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
   const urlRows = Object.entries(export3.urls).map(([id, url]) => (
     <Table.Tr key={id}>
       <Table.Td>{url.code}</Table.Td>
-      <Table.Td>{findUser(export3, url.user)?.username ?? 'unknown'}</Table.Td>
+      <Table.Td>{findUser(export3, url.user)?.username ?? t('unknown')}</Table.Td>
       <Table.Td>
         <Anchor href={url.destination} target='_blank' rel='noreferrer'>
           {url.destination}
@@ -102,7 +102,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
   const invitesRows = Object.entries(export3.invites).map(([id, invite]) => (
     <Table.Tr key={id}>
       <Table.Td>{invite.code}</Table.Td>
-      <Table.Td>{findUser(export3, invite.created_by_user ?? '')?.username ?? 'unknown'}</Table.Td>
+      <Table.Td>{findUser(export3, invite.created_by_user ?? '')?.username ?? t('unknown')}</Table.Td>
       <Table.Td>{new Date(invite.created_at).toLocaleString()}</Table.Td>
     </Table.Tr>
   ));
@@ -110,8 +110,9 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
   return (
     <>
       <Text c='dimmed' size='sm' my='xs'>
-        This data is not sent to the server. It is parsed and displayed in the browser. Data is only sent to
-        the server when you click the &quot;Import&quot; button.
+        {t(
+          'This data is not sent to the server. It is parsed and displayed in the browser. Data is only sent to the server when you click the "Import" button.',
+        )}
       </Text>
 
       <Accordion defaultValue='version' variant='contained'>
@@ -119,7 +120,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
           <Accordion.Control icon={<IconVersions size='1rem' />}>{t('Version Details')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
-              <TextDetail name='Export Version'>{export3.versions.export}</TextDetail>
+              <TextDetail name={t('Export Version')}>{export3.versions.export}</TextDetail>
               <TextDetail name='Node'>{export3.versions.node}</TextDetail>
               <TextDetail name='Zipline'>v{export3.versions.zipline}</TextDetail>
             </Stack>
@@ -130,14 +131,14 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
           <Accordion.Control icon={<IconTarget size='1rem' />}>{t('Request Details')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
-              <TextDetail name='User'>
-                {findUser(export3, export3.request.user)?.username ?? 'unknown'}
+              <TextDetail name={t('User')}>
+                {findUser(export3, export3.request.user)?.username ?? t('unknown')}
               </TextDetail>
 
-              <TextDetail name='At'>{new Date(export3.request.date).toLocaleString()}</TextDetail>
+              <TextDetail name={t('At')}>{new Date(export3.request.date).toLocaleString()}</TextDetail>
 
               <Button my='xs' onClick={toggleOs} size='compact-sm'>
-                {envOpened ? 'Hide' : 'Show'} OS Details
+                {envOpened ? t('Hide OS Details') : t('Show OS Details')}
               </Button>
 
               <Collapse expanded={osOpened}>
@@ -145,7 +146,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
               </Collapse>
 
               <Button my='xs' onClick={toggleEnv} size='compact-sm'>
-                {envOpened ? 'Hide' : 'Show'} Environment
+                {envOpened ? t('Hide Environment') : t('Show Environment')}
               </Button>
 
               <Collapse expanded={envOpened}>
@@ -153,7 +154,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th w={300}>Key</Table.Th>
+                        <Table.Th w={300}>{t('Key')}</Table.Th>
                         <Table.Th>{t('Value')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
@@ -180,7 +181,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
                         <Table.Th>{t('Super Admin')}</Table.Th>
                         <Table.Th>{t('Avatar')}</Table.Th>
                         <Table.Th>{t('Oauth')}</Table.Th>
-                        <Table.Th>2fa (totp)</Table.Th>
+                        <Table.Th>{t('2fa (totp)')}</Table.Th>
                         <Table.Th>{t('Files')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
@@ -255,7 +256,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
         </Accordion.Item>
 
         <Accordion.Item value='urls'>
-          <Accordion.Control icon={<IconLink size='1rem' />}>Urls</Accordion.Control>
+          <Accordion.Control icon={<IconLink size='1rem' />}>{t('Urls')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {Object.keys(export3.urls).length ? (
@@ -309,7 +310,7 @@ export default function Export3Details({ export3 }: { export3: Export3 }) {
         </Accordion.Item>
 
         <Accordion.Item value='other'>
-          <Accordion.Control icon={<IconQuestionMark size='1rem' />}>Other</Accordion.Control>
+          <Accordion.Control icon={<IconQuestionMark size='1rem' />}>{t('Other')}</Accordion.Control>
           <Accordion.Panel>
             <HighlightCode
               language='json'

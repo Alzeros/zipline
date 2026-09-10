@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { mutateFolder } from '@/components/pages/folders/actions';
 import { Response } from '@/lib/api/response';
 import { copyLink } from '@/lib/client/copyLink';
@@ -41,7 +42,9 @@ export function copyFile(file: File, clipboard: ReturnType<typeof useClipboard>,
 export async function deleteFile(warnDeletion: boolean, file: File, setOpen: (open: boolean) => void) {
   conditionalWarning(warnDeletion, {
     confirmLabel: `Delete ${file.name}`,
-    message: `Are you sure you want to delete ${file.name}? This action cannot be undone.`,
+    message: t('Are you sure you want to delete {{name}}? This action cannot be undone.', {
+      name: file.name,
+    }),
     onConfirm: () => handleDeleteFile(file, setOpen),
   });
 }
@@ -52,14 +55,14 @@ export async function handleDeleteFile(file: File, setOpen: (open: boolean) => v
   if (error) {
     notifications.show({
       title: t('Error'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconTrashXFilled size='1rem' />,
     });
   } else {
     notifications.show({
       title: t('File deleted'),
-      message: `${file.name} has been deleted`,
+      message: t('{{name}} has been deleted', { name: file.name }),
       color: 'green',
       icon: <IconTrashFilled size='1rem' />,
     });
@@ -82,14 +85,16 @@ export async function favoriteFile(file: File) {
   if (error) {
     notifications.show({
       title: t('Error'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconStar size='1rem' />,
     });
   } else {
     notifications.show({
       title: `File ${data!.favorite ? 'favorited' : 'unfavorited'}`,
-      message: `${file.name} has been ${data!.favorite ? 'favorited' : 'unfavorited'}`,
+      message: data!.favorite
+        ? t('{{name}} has been favorited', { name: file.name })
+        : t('{{name}} has been unfavorited', { name: file.name }),
       color: 'yellow',
       icon: <IconStarFilled size='1rem' />,
     });
@@ -110,14 +115,14 @@ export async function createFolderAndAdd(file: File, folderName: string | null) 
   if (error) {
     notifications.show({
       title: t('Error while creating folder'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
       title: t('Folder created'),
-      message: `${data!.name} has been created with ${file.name}`,
+      message: t('{{folder}} has been created with {{name}}', { folder: data!.name, name: file.name }),
       color: 'green',
       icon: <IconFolderPlus size='1rem' />,
     });
@@ -136,14 +141,14 @@ export async function removeFromFolder(file: File) {
   if (error) {
     notifications.show({
       title: t('Error while removing from folder'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
       title: t('File removed from folder'),
-      message: `${file.name} has been removed from ${data?.folder.name}`,
+      message: t('{{name}} has been removed from {{folder}}', { name: file.name, folder: data?.folder.name }),
       color: 'green',
       icon: <IconFolderMinus size='1rem' />,
     });
@@ -167,14 +172,14 @@ export async function addToFolder(file: File, folderId: string | null) {
   if (error) {
     notifications.show({
       title: t('Error while adding to folder'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
       title: t('File added to folder'),
-      message: `${file.name} has been added to ${data!.name}`,
+      message: t('{{name}} has been added to {{folder}}', { name: file.name, folder: data!.name }),
       color: 'green',
       icon: <IconFolderPlus size='1rem' />,
     });
@@ -199,14 +204,14 @@ export async function addMultipleToFolder(files: File[], folderId: string | null
   if (error) {
     notifications.show({
       title: t('Error while adding files to folder'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
       title: t('Files added to folder'),
-      message: `${data!.count} file(s) have been added to ${data!.name}`,
+      message: t('{{count}} files have been added to {{folder}}', { count: data!.count, folder: data!.name }),
       color: 'green',
       icon: <IconFolderPlus size='1rem' />,
     });

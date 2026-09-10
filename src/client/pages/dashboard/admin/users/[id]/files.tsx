@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import ViewUserFiles from '@/components/pages/users/ViewUserFiles';
 import { useTitle } from '@/lib/client/hooks/useTitle';
 import { Params, redirect, useLoaderData } from 'react-router-dom';
@@ -14,7 +15,7 @@ export async function loader({ params }: { params: Params<string> }) {
 
 export function Component() {
   const { user } = useLoaderData<typeof loader>();
-  useTitle(`${user ? user.username : 'User'}'s files`);
+  useTitle(t("{{username}}'s files", { username: user ? user.username : t('User') }));
 
   return <ViewUserFiles />;
 }

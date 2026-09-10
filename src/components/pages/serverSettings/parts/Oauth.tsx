@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import type { Response } from '@/lib/api/response';
 import {
   Anchor,
@@ -101,11 +102,10 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
   return (
     <>
       <Text size='sm' c='dimmed' mb='md'>
-        For OAuth to work, the &quot;OAuth Registration&quot; setting must be enabled in the{' '}
-        <Anchor component={Link} to='/dashboard/admin/settings/features'>
-          {t('Features')}
-        </Anchor>{' '}
-        section. If you have issues, try restarting Zipline after saving.
+        <Trans
+          i18nKey='For OAuth to work, the "OAuth Registration" setting must be enabled in the <0>Features</0> section. If you have issues, try restarting Zipline after saving.'
+          components={[<Anchor key='0' component={Link} to='/dashboard/admin/settings/features' />]}
+        />
       </Text>
 
       <form onSubmit={form.onSubmit(onSubmit)}>

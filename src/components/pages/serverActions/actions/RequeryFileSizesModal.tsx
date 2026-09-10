@@ -36,8 +36,9 @@ export default function RequeryFileSizesModal({ opened, onClose }: { opened: boo
     <Modal title={t('Are you sure?')} opened={opened} onClose={onClose}>
       <Stack mb='md'>
         <span>
-          This will requery the size of every file stored within the database. Additionally you can use the
-          options below.
+          {t(
+            'This will requery the size of every file stored within the database. Additionally you can use the options below.',
+          )}
         </span>
 
         <Switch
@@ -60,7 +61,7 @@ export default function RequeryFileSizesModal({ opened, onClose }: { opened: boo
       <Group justify='flex-end'>
         <Button onClick={onClose}>Cancel</Button>
         <Button color='red' onClick={handle}>
-          Requery
+          {t('Requery')}
         </Button>
       </Group>
     </Modal>

@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import type { User } from '@/lib/db/models/user';
 import { ApiError } from '@/lib/api/errors';
 import { Response } from '@/lib/api/response';
@@ -61,9 +62,9 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
       currentPassword: '',
     },
     validate: {
-      username: (value) => (value.length < 1 ? 'Username is required' : null),
+      username: (value) => (value.length < 1 ? t('Username is required') : null),
       currentPassword: (value, values) =>
-        values.password && !value ? 'Enter your current password to change it' : null,
+        values.password && !value ? t('Enter your current password to change it') : null,
     },
   });
 
@@ -84,13 +85,13 @@ function Form({ user, setUser, token }: { user: User; setUser: (u: User) => void
 
     if (!data && error) {
       if (ApiError.check(error, 1039)) {
-        form.setFieldError('username', error.error);
+        form.setFieldError('username', translateApiError(error));
       } else if (ApiError.check(error, 1066) || ApiError.check(error, 1067)) {
-        form.setFieldError('currentPassword', error.error);
+        form.setFieldError('currentPassword', translateApiError(error));
       } else {
         notifications.show({
           title: t('Error while updating user'),
-          message: error.error,
+          message: translateApiError(error),
           color: 'red',
           icon: <IconUserCancel size='1rem' />,
         });

@@ -94,7 +94,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
           />
 
           <NumberInput
-            label='Window'
+            label={t('Window')}
             description={t('The window in seconds to allow the max requests.')}
             placeholder='60'
             min={1}

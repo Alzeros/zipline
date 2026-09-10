@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { ActionIcon, Button, CopyButton, Paper, Text, useMantineTheme } from '@mantine/core';
 import { IconCheck, IconChevronDown, IconChevronUp, IconClipboardCopy } from '@tabler/icons-react';
 import type { HLJSApi } from 'highlight.js';
@@ -118,7 +119,7 @@ export default function HighlightCode({
             zIndex: 10,
           }}
         >
-          {expanded ? 'Show Less' : `Show More (${lines.length - 50} more lines)`}
+          {expanded ? t('Show Less') : t('Show More ({{count}} more lines)', { count: lines.length - 50 })}
         </Button>
       )}
     </Paper>

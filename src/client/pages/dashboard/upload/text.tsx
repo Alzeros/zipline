@@ -1,8 +1,9 @@
+import { t } from 'i18next';
 import UploadText from '@/components/pages/upload/Text';
 import { useTitle } from '@/lib/client/hooks/useTitle';
 
 export function Component() {
-  useTitle('Upload Text');
+  useTitle(t('Upload Text'));
 
   return <UploadText />;
 }

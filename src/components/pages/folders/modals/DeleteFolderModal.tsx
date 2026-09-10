@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import FolderComboboxOptions from '@/components/folders/FolderComboboxOptions';
 import { Response } from '@/lib/api/response';
 import { Folder } from '@/lib/db/models/folder';
@@ -63,13 +64,13 @@ export default function DeleteFolderModal({
     if (error) {
       notifications.show({
         title: t('Failed to delete folder'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
       });
     } else {
       notifications.show({
         title: t('Folder deleted'),
-        message: `${folder.name} has been deleted`,
+        message: t('{{name}} has been deleted', { name: folder.name }),
         color: 'green',
       });
       mutateFolder();
@@ -99,13 +100,20 @@ export default function DeleteFolderModal({
 
     if (hasContent && (childrenAction === 'cascade' || childrenAction === 'cascade-files')) {
       openWarningModal({
-        confirmLabel: `Delete '${folder.name}' and ${childrenAction === 'cascade-files' ? 'all subfolders and files' : 'all subfolders'}?`,
+        confirmLabel:
+          childrenAction === 'cascade-files'
+            ? t("Delete '{{name}}' and all subfolders and files?", { name: folder.name })
+            : t("Delete '{{name}}' and all subfolders?", { name: folder.name }),
         message: (
           <Stack gap='sm'>
             <Text c='red' fw={500}>
               {childrenAction === 'cascade-files'
-                ? 'All subfolders and every file within them will be permanently deleted from storage. This action cannot be undone.'
-                : 'All subfolders will be permanently deleted (files will be moved to the root). This action cannot be undone.'}
+                ? t(
+                    'All subfolders and every file within them will be permanently deleted from storage. This action cannot be undone.',
+                  )
+                : t(
+                    'All subfolders will be permanently deleted (files will be moved to the root). This action cannot be undone.',
+                  )}
             </Text>
           </Stack>
         ),
@@ -118,7 +126,7 @@ export default function DeleteFolderModal({
   };
 
   return (
-    <Modal centered opened={opened} onClose={onClose} title={`Delete "${folder.name}"?`}>
+    <Modal centered opened={opened} onClose={onClose} title={t('Delete "{{name}}"?', { name: folder.name })}>
       <Stack gap='sm'>
         <Text size='sm' c='red' fw={500}>
           {t('This action cannot be undone.')}

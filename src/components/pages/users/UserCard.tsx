@@ -57,7 +57,7 @@ export default function UserCard({ user }: { user: LimitedUser }) {
                     leftSection={<IconUserEdit size='1rem' />}
                     onClick={() => setOpen(true)}
                   >
-                    Edit
+                    {t('Edit')}
                   </Menu.Item>
                   <Menu.Item
                     disabled={!canInteract(currentUser?.role, user?.role)}

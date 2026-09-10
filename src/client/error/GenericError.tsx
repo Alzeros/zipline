@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Container, Paper, ScrollArea, Stack, Text, Title } from '@mantine/core';
 import { useRouteError } from 'react-router-dom';
 import FourOhFour from '../pages/404';
@@ -21,9 +22,9 @@ export default function GenericError({
   return (
     <Container my='lg'>
       <Stack gap='xs'>
-        <Title order={5}>{title || 'An error occurred'}</Title>
+        <Title order={5}>{title || t('An error occurred')}</Title>
         <Text c='dimmed'>
-          {message || 'Something went wrong. Please try again later, or report this issue if it persists.'}
+          {message || t('Something went wrong. Please try again later, or report this issue if it persists.')}
         </Text>
         {details && (
           <Paper withBorder px={3} py={3}>

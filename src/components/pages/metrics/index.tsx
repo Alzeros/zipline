@@ -113,7 +113,9 @@ export default function DashboardMetrics() {
           </Text>
         )}
         <Tooltip
-          label={!allTime ? 'This may take longer than usual to load.' : 'You are viewing all time stats.'}
+          label={
+            !allTime ? t('This may take longer than usual to load.') : t('You are viewing all time stats.')
+          }
         >
           <Button
             size='compact-sm'
@@ -147,8 +149,9 @@ export default function DashboardMetrics() {
           </div>
         ) : (
           <Text size='sm' c='red'>
-            Failed to load statistics for this time range. There may be no data available within the time
-            range specified. :(
+            {t(
+              'Failed to load statistics for this time range. There may be no data available within the time range specified. :(',
+            )}
           </Text>
         )}
       </Box>

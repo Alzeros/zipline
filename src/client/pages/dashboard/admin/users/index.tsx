@@ -1,8 +1,9 @@
+import { t } from 'i18next';
 import DashboardUsers from '@/components/pages/users';
 import { useTitle } from '@/lib/client/hooks/useTitle';
 
 export function Component() {
-  useTitle('Users');
+  useTitle(t('Users'));
 
   return <DashboardUsers />;
 }

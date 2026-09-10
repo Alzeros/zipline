@@ -1,4 +1,5 @@
 import type { Response } from '@/lib/api/response';
+import { translateApiError } from '@/lib/client/apiError';
 import useAvatar from '@/lib/client/hooks/useAvatar';
 import useLogin from '@/lib/client/hooks/useLogin';
 import { useLogout } from '@/lib/client/hooks/useLogout';
@@ -253,15 +254,16 @@ export default function Layout() {
   const copyToken = () => {
     modals.openConfirmModal({
       title: t('Copy token?'),
-      children:
+      children: t(
         'Are you sure you want to copy your token? Your token can interact with all parts of Zipline. Do not share this token with anyone.',
-      labels: { confirm: 'Copy', cancel: 'No, close this popup' },
+      ),
+      labels: { confirm: t('Copy'), cancel: t('No, close this popup') },
       onConfirm: async () => {
         const { data, error } = await fetchApi<Response['/api/user/token']>('/api/user/token');
         if (error) {
           showNotification({
             title: t('Error'),
-            message: error.error,
+            message: translateApiError(error),
             color: 'red',
             icon: <IconClipboardCopy size='1rem' />,
           });
@@ -282,15 +284,16 @@ export default function Layout() {
     modals.openConfirmModal({
       title: t('Refresh token?'),
 
-      children:
+      children: t(
         'Are you sure you want to refresh your token? Once you refresh/reset your token, you will need to update any scripts or applications that use your token.',
-      labels: { confirm: 'Refresh', cancel: 'No, close this popup' },
+      ),
+      labels: { confirm: t('Refresh'), cancel: t('No, close this popup') },
       onConfirm: async () => {
         const { data, error } = await fetchApi<Response['/api/user/token']>('/api/user/token', 'PATCH');
         if (error) {
           showNotification({
             title: t('Error'),
-            message: error.error,
+            message: translateApiError(error),
             color: 'red',
             icon: <IconRefreshDot size='1rem' />,
           });
@@ -328,7 +331,7 @@ export default function Layout() {
           />
 
           {config.website.titleLogo && (
-            <Avatar src={config.website.titleLogo} alt='Zipline logo' radius='sm' size='md' mr='md' />
+            <Avatar src={config.website.titleLogo} alt={t('Zipline logo')} radius='sm' size='md' mr='md' />
           )}
 
           <Title visibleFrom='sm' lineClamp={1} size={32}>
@@ -343,7 +346,7 @@ export default function Layout() {
                   color={colorScheme === 'dark' ? 'white' : 'black'}
                   leftSection={
                     avatar ? (
-                      <Avatar src={avatar} radius='sm' size='sm' alt={user?.username ?? 'User avatar'} />
+                      <Avatar src={avatar} radius='sm' size='sm' alt={user?.username ?? t('User avatar')} />
                     ) : (
                       <IconSettingsFilled size='1rem' />
                     )

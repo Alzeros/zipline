@@ -201,7 +201,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
             <Textarea
               mt='md'
-              label='Content'
+              label={t('Content')}
               description={t(
                 'The content of the notification. This can be blank, but at least one of the content or embed fields must be filled out',
               )}
@@ -212,7 +212,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
             <Switch
               mt='md'
-              label='Embed'
+              label={t('Embed')}
               description={t(
                 'Send the notification as an embed. This will allow for more customization below.',
               )}
@@ -223,19 +223,19 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
               <Paper withBorder p='sm' mt='md'>
                 <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
                   <TextInput
-                    label='Title'
+                    label={t('Title')}
                     description={t('The title of the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedTitle')}
                   />
 
                   <TextInput
-                    label='Description'
+                    label={t('Description')}
                     description={t('The description of the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedDescription')}
                   />
 
                   <TextInput
-                    label='Footer'
+                    label={t('Footer')}
                     description={t('The footer of the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedFooter')}
                   />
@@ -247,7 +247,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
                   />
 
                   <Switch
-                    label='Thumbnail'
+                    label={t('Thumbnail')}
                     description={t(
                       "Show the thumbnail (it will show the file if it's an image) in the embed",
                     )}
@@ -261,7 +261,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
                   />
 
                   <Switch
-                    label='Timestamp'
+                    label={t('Timestamp')}
                     description={t('Show the timestamp in the embed')}
                     {...formOnUpload.getInputProps('discordOnUploadEmbedTimestamp', { type: 'checkbox' })}
                   />
@@ -316,7 +316,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
             <Textarea
               mt='md'
-              label='Content'
+              label={t('Content')}
               description={t(
                 'The content of the notification. This can be blank, but at least one of the content or embed fields must be filled out',
               )}
@@ -327,7 +327,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
 
             <Switch
               mt='md'
-              label='Embed'
+              label={t('Embed')}
               description={t(
                 'Send the notification as an embed. This will allow for more customization below.',
               )}
@@ -338,19 +338,19 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
               <Paper withBorder p='sm' mt='md'>
                 <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
                   <TextInput
-                    label='Title'
+                    label={t('Title')}
                     description={t('The title of the embed')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedTitle')}
                   />
 
                   <TextInput
-                    label='Description'
+                    label={t('Description')}
                     description={t('The description of the embed')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedDescription')}
                   />
 
                   <TextInput
-                    label='Footer'
+                    label={t('Footer')}
                     description={t('The footer of the embed')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedFooter')}
                   />
@@ -362,7 +362,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
                   />
 
                   <Switch
-                    label='Timestamp'
+                    label={t('Timestamp')}
                     description={t('Show the timestamp in the embed')}
                     {...formOnShorten.getInputProps('discordOnShortenEmbedTimestamp', { type: 'checkbox' })}
                   />

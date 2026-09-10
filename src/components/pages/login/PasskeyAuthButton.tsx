@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Button } from '@mantine/core';
 import { IconKey } from '@tabler/icons-react';
 import { useState } from 'react';
@@ -24,7 +25,7 @@ export default function PasskeyAuthButton({ onAuthSuccess }: { onAuthSuccess: (d
         { 'x-zipline-client': JSON.stringify(getWebClient()) },
       );
 
-      if (error) throw new Error(error.error);
+      if (error) throw new Error(translateApiError(error));
       onAuthSuccess(data);
     } catch (e: any) {
       setErrored(true);

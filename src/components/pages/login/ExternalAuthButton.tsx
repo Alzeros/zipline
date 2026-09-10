@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { ActionIcon, Tooltip } from '@mantine/core';
 import styles from './ExternalAuthButton.module.css';
 
@@ -9,7 +10,7 @@ export default function ExternalAuthButton({
   leftSection: React.ReactNode;
 }) {
   return (
-    <Tooltip label={`Continue with ${provider}`}>
+    <Tooltip label={t('Continue with {{provider}}', { provider })}>
       <ActionIcon
         component={'a'}
         href={`/api/auth/oauth/${provider.toLowerCase()}`}

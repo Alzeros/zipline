@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import { readToDataURL } from '@/lib/base64';
 import { bytes } from '@/lib/bytes';
@@ -67,13 +68,13 @@ export default function EditUserModal({
     validate: {
       maxBytes(value, values) {
         if (values.fileType !== 'BY_BYTES') return;
-        if (typeof value !== 'string') return 'Invalid value';
+        if (typeof value !== 'string') return t('Invalid value');
         const byte = bytes(value);
-        if (!bytes || byte < 0) return 'Invalid byte format';
+        if (!bytes || byte < 0) return t('Invalid byte format');
       },
       maxFiles(value, values) {
         if (values.fileType !== 'BY_FILES') return;
-        if (typeof value !== 'number' || value < 0) return 'Invalid value';
+        if (typeof value !== 'number' || value < 0) return t('Invalid value');
       },
     },
     enhanceGetInputProps: ({ field }) => ({
@@ -101,14 +102,14 @@ export default function EditUserModal({
     let avatar64: string | null = null;
     if (values.avatar) {
       if (!values.avatar.type.startsWith('image/')) {
-        return form.setFieldError('avatar', 'Invalid file type');
+        return form.setFieldError('avatar', t('Invalid file type'));
       }
 
       try {
         avatar64 = await readToDataURL(values.avatar);
       } catch (e) {
         console.error(e);
-        return form.setFieldError('avatar', 'Failed to read avatar file');
+        return form.setFieldError('avatar', t('Failed to read avatar file'));
       }
     }
 
@@ -150,14 +151,14 @@ export default function EditUserModal({
     if (error) {
       notifications.show({
         title: t('Failed to edit user'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconUserCancel size='1rem' />,
       });
     } else {
       notifications.show({
         title: t('User edited'),
-        message: `User ${data?.username} has been edited`,
+        message: t('User {{username}} has been edited', { username: data?.username }),
         color: 'blue',
         icon: <IconUserEdit size='1rem' />,
       });

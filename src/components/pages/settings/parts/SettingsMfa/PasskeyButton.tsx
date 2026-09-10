@@ -1,4 +1,6 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
+import { Trans } from 'react-i18next';
 import RelativeDate from '@/components/RelativeDate';
 import { fetchApi } from '@/lib/fetchApi';
 import useObjectState from '@/lib/client/hooks/useObjectState';
@@ -50,7 +52,7 @@ export default function PasskeyButton() {
       });
     } catch (e: any) {
       setPkData({
-        error: e.message ?? 'An error occurred while creating a passkey',
+        error: e.message ?? t('An error occurred while creating a passkey'),
         loading: false,
         savedKey: null,
       });
@@ -79,7 +81,7 @@ export default function PasskeyButton() {
 
       notifications.show({
         title: t('Error while saving passkey'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconKeyOff size='1rem' />,
       });
@@ -105,10 +107,13 @@ export default function PasskeyButton() {
   const removePasskey = async (passkey: UserPasskey) => {
     modals.openConfirmModal({
       title: t('Are you sure?'),
-      children: `Your browser and device may still show "${passkey.name}" as an option to log in. If you want to remove it, you'll have to do so manually through your device's settings.`,
+      children: t(
+        'Your browser and device may still show "{{name}}" as an option to log in. If you want to remove it, you\'ll have to do so manually through your device\'s settings.',
+        { name: passkey.name },
+      ),
       labels: {
-        confirm: `Remove "${passkey.name}"`,
-        cancel: 'Cancel',
+        confirm: t('Remove "{{name}}"', { name: passkey.name }),
+        cancel: t('Cancel'),
       },
       confirmProps: {
         color: 'red',
@@ -121,7 +126,7 @@ export default function PasskeyButton() {
         if (error) {
           notifications.show({
             title: t('Error while removing passkey'),
-            message: error.error,
+            message: translateApiError(error),
             color: 'red',
             icon: <IconKeyOff size='1rem' />,
           });
@@ -153,19 +158,23 @@ export default function PasskeyButton() {
                   </ActionIcon>
                 </Group>
                 <Text size='sm'>
-                  {t('Passkey created')}
-                  <RelativeDate date={passkey.createdAt} />
+                  <Trans
+                    i18nKey='Passkey created <0/>'
+                    components={[<RelativeDate key='0' date={passkey.createdAt} />]}
+                  />
                   {passkey.lastUsed && (
-                    <>
-                      , last used <RelativeDate date={passkey.lastUsed} />.
-                    </>
+                    <Trans
+                      i18nKey=', last used <0/>.'
+                      components={[<RelativeDate key='0' date={passkey.lastUsed} />]}
+                    />
                   )}
                 </Text>
                 {!(passkey?.reg as Record<string, any>).webauthn && (
                   <Text size='xs' mt='xs' c='red'>
-                    {t('Warning: This passkey was created with an older version of Zipline and')}
-                    <b>{t('WILL NOT')}</b> work with this version. Please delete and recreate this passkey to
-                    ensure compatibility.
+                    <Trans
+                      i18nKey='Warning: This passkey was created with an older version of Zipline and <0>WILL NOT</0> work with this version. Please delete and recreate this passkey to ensure compatibility.'
+                      components={[<b key='0' />]}
+                    />
                   </Text>
                 )}
               </Paper>
@@ -180,10 +189,10 @@ export default function PasskeyButton() {
             disabled={!!pkData.error}
           >
             {pkData.error
-              ? 'Error while creating a passkey - try again later'
+              ? t('Error while creating a passkey - try again later')
               : pkData.loading
-                ? 'Loading...'
-                : 'Create a passkey'}
+                ? t('Loading...')
+                : t('Create a passkey')}
           </Button>
           {pkData.error && (
             <Text size='xs' c='red'>

@@ -13,6 +13,13 @@ export type LocaleCode = (typeof SUPPORTED_LOCALES)[number]['code'];
 
 export const LOCALE_STORAGE_KEY = 'zipline_locale';
 
+// 公开分享页（/view/:id、/view/url/:id）使用的固定语言。
+// 这两个页面面向的是「拿到链接的人」而非本站用户，且服务端渲染与客户端
+// hydrate 必须用同一种语言，所以不跟随登录用户的语言偏好。
+// 改成 'zh-CN' 即可让分享页也显示中文（代价是所有链接接收者都看到中文）。
+// 详见 ./initStatic.ts。
+export const SSR_VIEW_LOCALE: LocaleCode = 'en';
+
 // 采用英文原文作为翻译 key：未命中翻译时 i18next 回落到 key 本身，
 // 即原始英文，因此「未翻译」表现为显示英文而非报错或空白。
 //

@@ -43,7 +43,7 @@ export function handleUploadResponse<R = Response['/api/upload']>(
         data: null,
         error: {
           statusCode: xml.status,
-          error: `Failed to parse server response: ${xml.responseText}`,
+          error: t('Failed to parse server response: {{response}}', { response: xml.responseText }),
         },
       };
     }
@@ -62,7 +62,7 @@ export function handleUploadResponse<R = Response['/api/upload']>(
       data: null,
       error: {
         statusCode: 500,
-        error: `Failed to parse server response: ${xml.responseText}`,
+        error: t('Failed to parse server response: {{response}}', { response: xml.responseText }),
       },
     };
   }
@@ -127,7 +127,7 @@ export function showUploadModal(
   const pendingCount = files.filter((file) => file.pending).length;
 
   modals.open({
-    title: `Uploaded ${files.length} file${files.length > 1 ? 's' : ''}`,
+    title: t('Uploaded {{count}} files', { count: files.length }),
     size: 'auto',
     children: (
       <>

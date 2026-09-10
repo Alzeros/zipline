@@ -71,7 +71,7 @@ export default function QRCodeModal({
   return (
     <Modal title={t('QR Code')} opened={opened} onClose={onClose} size='sm' centered>
       {dataUrl ? (
-        <Image src={dataUrl} alt='QR Code' />
+        <Image src={dataUrl} alt={t('QR Code')} />
       ) : (
         <Text c='red' ta='center'>
           {t('Failed to generate QR code.')}
@@ -80,7 +80,7 @@ export default function QRCodeModal({
 
       <Select
         mt='md'
-        label='Format'
+        label={t('Format')}
         value={type}
         onChange={(value) => setType(value as Type)}
         data={[
@@ -96,7 +96,9 @@ export default function QRCodeModal({
           <Tooltip
             label={
               UNSUPPORTED_COPY.includes(type)
-                ? 'Copying this format is not supported in some browsers. You can copy the image normally via right-click or holding it.'
+                ? t(
+                    'Copying this format is not supported in some browsers. You can copy the image normally via right-click or holding it.',
+                  )
                 : ''
             }
             hidden={!UNSUPPORTED_COPY.includes(type)}
@@ -110,7 +112,7 @@ export default function QRCodeModal({
             </Button>
           </Tooltip>
           <Button onClick={downloadImage} leftSection={<IconDownload size='1rem' />}>
-            Download
+            {t('Download')}
           </Button>
         </Group>
       )}

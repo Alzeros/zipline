@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { ContextModalProps, ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
 import { Outlet } from 'react-router-dom';
@@ -13,7 +14,7 @@ const AlertModal = ({ context, id, innerProps }: ContextModalProps<{ modalBody: 
     <Text size='sm'>{innerProps.modalBody}</Text>
 
     <Button fullWidth mt='md' onClick={() => context.closeModal(id)}>
-      OK
+      {t('OK')}
     </Button>
   </>
 );

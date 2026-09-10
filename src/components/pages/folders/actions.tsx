@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import { copyLink } from '@/lib/client/copyLink';
 import { Folder } from '@/lib/db/models/folder';
@@ -26,14 +27,16 @@ export async function editFolderVisibility(folder: Folder, isPublic: boolean) {
   if (error) {
     notifications.show({
       title: t('Failed to edit folder visibility'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
       title: t('Folder visibility edited'),
-      message: `${data?.name} is now ${isPublic ? 'public' : 'private'}`,
+      message: isPublic
+        ? t('{{name}} is now public', { name: data?.name })
+        : t('{{name}} is now private', { name: data?.name }),
       color: 'green',
       icon: <IconCheck size='1rem' />,
     });
@@ -54,14 +57,16 @@ export async function editFolderUploads(folder: Folder, allowUploads: boolean) {
   if (error) {
     notifications.show({
       title: t('Failed to edit folder uploads policy'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconFolderOff size='1rem' />,
     });
   } else {
     notifications.show({
       title: t('Folder uploads policy edited'),
-      message: `${data?.name} will ${allowUploads ? 'now' : 'no longer'} allow anonymous uploads`,
+      message: allowUploads
+        ? t('{{name}} will now allow anonymous uploads', { name: data?.name })
+        : t('{{name}} will no longer allow anonymous uploads', { name: data?.name }),
       color: 'green',
       icon: <IconCheck size='1rem' />,
     });

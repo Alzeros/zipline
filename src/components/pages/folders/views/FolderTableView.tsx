@@ -85,13 +85,13 @@ function FolderDotsMenu({
           leftSection={folder.public ? <IconLock size='1rem' /> : <IconLockOpen size='1rem' />}
           onClick={withoutPropagation(() => editFolderVisibility(folder, !folder.public))}
         >
-          {folder.public ? 'Make Private' : 'Make Public'}
+          {folder.public ? t('Make Private') : t('Make Public')}
         </Menu.Item>
         <Menu.Item
           leftSection={folder.public ? <IconShareOff size='1rem' /> : <IconShare size='1rem' />}
           onClick={withoutPropagation(() => editFolderUploads(folder, !folder.allowUploads))}
         >
-          {folder.allowUploads ? 'Disallow anonymous uploads' : 'Allow anonymous uploads'}
+          {folder.allowUploads ? t('Disallow anonymous uploads') : t('Allow anonymous uploads')}
         </Menu.Item>
         <Menu.Item
           leftSection={<IconPencil size='1rem' />}

@@ -73,11 +73,11 @@ export async function uploadFiles(
 
   notifications.show({
     id: 'upload',
-    title: `Preparing file${files.length > 1 ? 's' : ''}`,
+    title: t('Preparing files', { count: files.length }),
     message:
       batches > 1
-        ? `Uploading ${files.length} file${files.length > 1 ? 's' : ''} in ${batches} batche${batches > 1 ? 's' : ''}`
-        : `Uploading ${files.length} file${files.length > 1 ? 's' : ''}`,
+        ? t('Uploading {{count}} files in {{batches}} batches', { count: files.length, batches })
+        : t('Uploading {{count}} files', { count: files.length }),
     loading: true,
     autoClose: false,
   });
@@ -112,7 +112,7 @@ export async function uploadFiles(
         () => {
           const { data: res, error } = handleUploadResponse<Response['/api/upload']>(req);
 
-          if (error || !res) return reject(new Error(error?.error ?? 'An unknown error occurred'));
+          if (error || !res) return reject(new Error(error?.error ?? t('An unknown error occurred')));
 
           resolve(res);
         },
@@ -120,7 +120,7 @@ export async function uploadFiles(
       );
 
       req.addEventListener('error', () => {
-        reject(new Error('Network error while uploading files'));
+        reject(new Error(t('Network error while uploading files')));
       });
 
       req.open('POST', '/api/upload');
@@ -139,8 +139,8 @@ export async function uploadFiles(
       notifications.update({
         title:
           batches > 1
-            ? `Uploading batch ${batchIndex + 1}/${batches}`
-            : `Uploading file${batchFiles.length > 1 ? 's' : ''}`,
+            ? t('Uploading batch {{current}}/{{total}}', { current: batchIndex + 1, total: batches })
+            : t('Uploading files', { count: batchFiles.length }),
         message: `${batchFiles.length} file${batchFiles.length > 1 ? 's' : ''}`,
         loading: true,
         autoClose: false,
@@ -156,11 +156,14 @@ export async function uploadFiles(
 
     notifications.update({
       id: 'upload',
-      title: partialCount > 0 ? 'Regular uploads complete' : 'Upload complete',
+      title: partialCount > 0 ? t('Regular uploads complete') : t('Upload complete'),
       message:
         partialCount > 0
-          ? `Uploaded ${files.length} file${files.length === 1 ? '' : 's'}. Starting ${partialCount} large file upload${partialCount === 1 ? '' : 's'}...`
-          : `Uploaded ${files.length} file${files.length === 1 ? '' : 's'}`,
+          ? t('Uploaded {{count}} files. Starting {{partial}} large file uploads...', {
+              count: files.length,
+              partial: partialCount,
+            })
+          : t('Uploaded {{count}} files', { count: files.length }),
       color: 'green',
       icon: <IconFileUpload size='1rem' />,
       autoClose: true,
@@ -182,7 +185,7 @@ export async function uploadFiles(
     notifications.update({
       id: 'upload',
       title: t('Error uploading files'),
-      message: error instanceof Error ? error.message : 'An unknown error occurred',
+      message: error instanceof Error ? error.message : t('An unknown error occurred'),
       color: 'red',
       icon: <IconFileXFilled size='1rem' />,
       autoClose: true,

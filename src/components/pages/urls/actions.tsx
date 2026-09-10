@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import { copyLink } from '@/lib/client/copyLink';
 import type { SafeConfig } from '@/lib/config/safe';
@@ -14,9 +15,11 @@ import { mutate } from 'swr';
 
 export async function deleteUrl(warnDeletion: boolean, url: Url) {
   conditionalWarning(warnDeletion, {
-    message: `Are you sure you want to delete ${url.code ?? url.vanity}? This action cannot be undone.`,
+    message: t('Are you sure you want to delete {{name}}? This action cannot be undone.', {
+      name: url.code ?? url.vanity,
+    }),
     onConfirm: () => handleDeleteUrl(url),
-    confirmLabel: `Delete '${url.code ?? url.vanity}'`,
+    confirmLabel: t("Delete '{{name}}'", { name: url.code ?? url.vanity }),
   });
 }
 
@@ -35,14 +38,14 @@ async function handleDeleteUrl(url: Url) {
   if (error) {
     notifications.show({
       title: t('Failed to delete url'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconLinkOff size='1rem' />,
     });
   } else {
     notifications.show({
       title: t('Url deleted'),
-      message: `Url ${data?.code ?? data?.vanity} has been deleted`,
+      message: t('Url {{name}} has been deleted', { name: data?.code ?? data?.vanity }),
       color: 'green',
       icon: <IconCheck size='1rem' />,
     });

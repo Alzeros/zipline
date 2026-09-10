@@ -73,7 +73,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         />
 
         <Switch
-          label='Healthcheck'
+          label={t('Healthcheck')}
           description={t('Enables a healthcheck route for uptime monitoring. Requires a server restart.')}
           {...form.getInputProps('featuresHealthcheck', { type: 'checkbox' })}
         />
@@ -116,7 +116,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
           {...form.getInputProps('featuresMetricsShowUserSpecific', { type: 'checkbox' })}
         />
 
-        <Divider label='Thumbnails' />
+        <Divider label={t('Thumbnails')} />
 
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing='lg'>
           <Switch

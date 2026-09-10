@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import { useSsrData } from '@/components/ZiplineSSRProvider';
 import { Anchor, Button, Modal, PasswordInput } from '@mantine/core';
 import { useEffect, useState } from 'react';
@@ -21,7 +22,7 @@ export default function ViewUrlId() {
   }, []);
 
   return password && !token ? (
-    <Modal onClose={() => {}} opened={true} withCloseButton={false} centered title='Password required'>
+    <Modal onClose={() => {}} opened={true} withCloseButton={false} centered title={t('Password required')}>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -36,7 +37,7 @@ export default function ViewUrlId() {
             const json = (await res.json()) as { token: string };
             window.location.replace(`/view/url/${url.id}?token=${encodeURIComponent(json.token)}`);
           } else {
-            setPasswordError('Invalid password');
+            setPasswordError(t('Invalid password'));
           }
         }}
       >
@@ -56,13 +57,19 @@ export default function ViewUrlId() {
           type='submit'
           disabled={passwordValue.trim().length === 0}
         >
-          Verify
+          {t('Verify')}
         </Button>
       </form>
     </Modal>
   ) : (
     <p>
-      Redirecting to <Anchor href={url.destination!}>{url.destination!}</Anchor>
+      <Trans
+        i18nKey='Redirecting to <0>{{destination}}</0>'
+        values={{ destination: url.destination! }}
+        components={[<Anchor key='0' href={url.destination!} />]}
+      >
+        Redirecting to <Anchor href={url.destination!}>{url.destination!}</Anchor>
+      </Trans>
     </p>
   );
 }

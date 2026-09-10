@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import { LimitedUser } from '@/lib/db/models/user';
 import { fetchApi } from '@/lib/fetchApi';
@@ -10,21 +11,25 @@ import { mutate } from 'swr';
 export async function deleteUser(user: LimitedUser) {
   modals.openConfirmModal({
     centered: true,
-    title: `Delete ${user.username}?`,
-    children: `Are you sure you want to delete ${user.username}? This action cannot be undone.`,
+    title: t('Delete {{username}}?', { username: user.username }),
+    children: t('Are you sure you want to delete {{username}}? This action cannot be undone.', {
+      username: user.username,
+    }),
     labels: {
-      cancel: 'Cancel',
-      confirm: 'Delete',
+      cancel: t('Cancel'),
+      confirm: t('Delete'),
     },
     confirmProps: { color: 'red' },
     onConfirm: () =>
       modals.openConfirmModal({
         centered: true,
-        title: `Delete ${user.username}'s data?`,
-        children: `Would you like to delete ${user.username}'s files and urls? This action cannot be undone.`,
+        title: t("Delete {{username}}'s data?", { username: user.username }),
+        children: t("Would you like to delete {{username}}'s files and urls? This action cannot be undone.", {
+          username: user.username,
+        }),
         labels: {
-          cancel: 'No, keep everything & only delete user',
-          confirm: 'Yes, delete everything',
+          cancel: t('No, keep everything & only delete user'),
+          confirm: t('Yes, delete everything'),
         },
         confirmProps: { color: 'red' },
         onConfirm: () => handleDeleteUser(user, true),
@@ -42,14 +47,14 @@ async function handleDeleteUser(user: LimitedUser, deleteFiles: boolean = false)
   if (error) {
     notifications.show({
       title: t('Failed to delete user'),
-      message: error.error,
+      message: translateApiError(error),
       color: 'red',
       icon: <IconUserCancel size='1rem' />,
     });
   } else {
     notifications.show({
       title: t('User deleted'),
-      message: `User ${data?.username} has been deleted`,
+      message: t('User {{username}} has been deleted', { username: data?.username }),
       color: 'blue',
       icon: <IconUserMinus size='1rem' />,
     });

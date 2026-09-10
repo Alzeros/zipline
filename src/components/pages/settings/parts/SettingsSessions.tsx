@@ -19,8 +19,9 @@ export default function SettingsSessions() {
   const handleLogOutOfAllDevices = async () => {
     modals.openConfirmModal({
       title: t('Log out of all devices?'),
-      children:
+      children: t(
         'Are you sure you want to log out of all devices? This will log you out of all devices except the current one.',
+      ),
       onConfirm: async () => {
         const { error } = await fetchApi('/api/user/sessions', 'DELETE', {
           all: true,
@@ -36,8 +37,8 @@ export default function SettingsSessions() {
         mutate();
       },
       labels: {
-        cancel: 'Cancel',
-        confirm: 'Log out',
+        cancel: t('Cancel'),
+        confirm: t('Log out'),
       },
     });
   };
@@ -45,7 +46,7 @@ export default function SettingsSessions() {
   const handleLogOutOfDevice = async (sessionId: string) => {
     modals.openConfirmModal({
       title: t('Log out of device?'),
-      children: 'Are you sure you want to log out of this device?',
+      children: t('Are you sure you want to log out of this device?'),
       onConfirm: async () => {
         const { error } = await fetchApi('/api/user/sessions', 'DELETE', {
           sessionId,
@@ -61,8 +62,8 @@ export default function SettingsSessions() {
         mutate();
       },
       labels: {
-        cancel: 'Cancel',
-        confirm: 'Log out',
+        cancel: t('Cancel'),
+        confirm: t('Log out'),
       },
     });
   };
@@ -119,8 +120,10 @@ export default function SettingsSessions() {
 
         <Skeleton visible={isLoading} animate mt='sm'>
           <Text c='dimmed'>
+            {/* count 必须始终是数字，否则 i18next 选不出复数变体、回落到裸 key，
+                会把 {{count}} 原样显示。加载中的遮挡交给外层 Skeleton。 */}
             {t('You are currently logged into {{count}} other devices', {
-              count: isLoading ? ('...' as unknown as number) : (data?.other?.length ?? 0),
+              count: data?.other?.length ?? 0,
             })}
           </Text>
         </Skeleton>

@@ -38,7 +38,7 @@ export async function loader({ params, request }: { params: Params<string>; requ
     `/api/server/folder/${params.id}?page=${encodeURIComponent(page)}&perpage=${encodeURIComponent(perpage)}`,
   );
   if (!res.ok) {
-    throw new Response('Folder not found', { status: 404 });
+    throw new Response(t('Folder not found'), { status: 404 });
   }
   return {
     initial: (await res.json()) as Response['/api/server/folder/[id]'],
@@ -98,7 +98,7 @@ export function Component() {
   const totalRecords = data?.total ?? 0;
   const cachedPages = data?.pages ?? 0;
 
-  useTitle(folder.name ?? 'Folder');
+  useTitle(folder.name ?? t('Folder'));
 
   const buildBreadcrumbs = () => {
     const items: FolderBreadcrumb[] = [];
@@ -170,7 +170,7 @@ export function Component() {
         {children.length > 0 && (
           <>
             <Title order={3} mt='md' mb='sm'>
-              Subfolders
+              {t('Subfolders')}
             </Title>
             <SimpleGrid
               cols={{
@@ -217,7 +217,7 @@ export function Component() {
         )}
 
         <Group justify='space-between' align='center' mt='md'>
-          <Text size='sm'>{`${from} - ${to} / ${totalRecords} files`}</Text>
+          <Text size='sm'>{t('{{from}} - {{to}} / {{total}} files', { from, to, total: totalRecords })}</Text>
 
           <Group gap='sm'>
             <Select

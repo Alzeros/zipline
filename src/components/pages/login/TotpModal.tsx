@@ -39,7 +39,7 @@ export default function TotpModal({
 
         <Group mt='sm' grow>
           <Button leftSection={<IconX size='1rem' />} color='red' variant='outline' onClick={onCancel}>
-            Cancel
+            {t('Cancel')}
           </Button>
           <Button
             leftSection={<IconShieldQuestion size='1rem' />}
@@ -47,7 +47,7 @@ export default function TotpModal({
             onClick={onVerify}
             type='submit'
           >
-            Verify
+            {t('Verify')}
           </Button>
         </Group>
       </form>

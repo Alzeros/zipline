@@ -1,5 +1,6 @@
 import { t } from 'i18next';
 import { LinksList } from '@/components/LinksList';
+import { SETTING_META } from './settingMeta';
 import { Response } from '@/lib/api/response';
 import { useTitle } from '@/lib/client/hooks/useTitle';
 import {
@@ -13,6 +14,7 @@ import {
   Text,
   ThemeIcon,
   Title,
+  Tooltip,
 } from '@mantine/core';
 import {
   IconAdjustmentsHorizontalFilled,
@@ -306,17 +308,27 @@ export default function DashboardServerSettings() {
 
             <Accordion.Panel>
               <Group gap='xs' wrap='wrap'>
-                {data!.tampered.map((setting) => (
-                  <Anchor
-                    key={setting}
-                    component='button'
-                    type='button'
-                    onClick={() => onTamperedClick(setting)}
-                    size='sm'
-                  >
-                    {setting}
-                  </Anchor>
-                ))}
+                {data!.tampered.map((setting) => {
+                  // tampered 里是数据库列名（coreTrustProxy 之类），对用户无意义。
+                  // 已知的列显示「分区 › 字段名」，Tooltip 给出真正需要改的环境变量名；
+                  // 未收录的列（例如上游新增字段）退回显示原始列名，不至于空白。
+                  const meta = SETTING_META[setting];
+                  const section =
+                    meta && SETTINGS_COMPONENTS[meta.section as keyof typeof SETTINGS_COMPONENTS];
+
+                  return (
+                    <Tooltip key={setting} label={meta?.env ?? setting} withArrow>
+                      <Anchor
+                        component='button'
+                        type='button'
+                        onClick={() => onTamperedClick(setting)}
+                        size='sm'
+                      >
+                        {meta ? `${section ? `${section.name} › ` : ''}${t(meta.label)}` : setting}
+                      </Anchor>
+                    </Tooltip>
+                  );
+                })}
               </Group>
             </Accordion.Panel>
           </Accordion.Item>

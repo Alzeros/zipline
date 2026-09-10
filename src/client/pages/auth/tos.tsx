@@ -7,7 +7,7 @@ import GenericError from '../../error/GenericError';
 import { useTitle } from '@/lib/client/hooks/useTitle';
 
 export function Component() {
-  useTitle('Terms of Service');
+  useTitle(t('Terms of Service'));
 
   const {
     data: config,
@@ -26,7 +26,7 @@ export function Component() {
     return (
       <GenericError
         title={t('Error loading TOS')}
-        message='Could not load Terms of Service file...'
+        message={t('Could not load Terms of Service file...')}
         details={error}
       />
     );

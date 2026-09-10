@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import type { File as DbFile } from '@/lib/db/models/file';
 import useSWR from 'swr';
 import { isDbFile } from './useFileUrls';
@@ -8,7 +9,7 @@ const FILE_BIG = '\n...\nThe file is too big to display click the download icon 
 async function readBlobText(file: File) {
   const raw = await new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
-    reader.onerror = () => reject(new Error('Failed to read file'));
+    reader.onerror = () => reject(new Error(t('Failed to read file')));
     reader.onload = () => resolve((reader.result ?? '') as string);
     reader.readAsText(file);
   });
@@ -23,7 +24,7 @@ async function readText(fileUrl: string) {
     },
   });
 
-  if (!res.ok) throw new Error('Failed to fetch file');
+  if (!res.ok) throw new Error(t('Failed to fetch file'));
   return await res.text();
 }
 
@@ -61,7 +62,7 @@ export default function useFileContent({
     },
   );
 
-  if (error) return 'Error loading file.';
+  if (error) return t('Error loading file.');
 
   return data ?? '';
 }

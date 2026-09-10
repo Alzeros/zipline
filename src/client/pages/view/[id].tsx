@@ -49,10 +49,10 @@ export default function ViewFileId() {
   const [passwordError, setPasswordError] = useState<string>('');
   const [detailsOpen, setDetailsOpen] = useState<boolean>(false);
 
-  useTitle(file.originalName ?? file.name ?? 'View File');
+  useTitle(file.originalName ?? file.name ?? t('View File'));
 
   return password && !token ? (
-    <Modal onClose={() => {}} opened={true} withCloseButton={false} centered title='Password required'>
+    <Modal onClose={() => {}} opened={true} withCloseButton={false} centered title={t('Password required')}>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -67,7 +67,7 @@ export default function ViewFileId() {
             const json = (await res.json()) as { token: string };
             window.location.replace(`/view/${file.name}?token=${encodeURIComponent(json.token)}`);
           } else {
-            setPasswordError('Invalid password');
+            setPasswordError(t('Invalid password'));
           }
         }}
       >
@@ -87,7 +87,7 @@ export default function ViewFileId() {
           type='submit'
           disabled={passwordValue.trim().length === 0}
         >
-          Verify
+          {t('Verify')}
         </Button>
       </form>
     </Modal>
@@ -167,7 +167,7 @@ export default function ViewFileId() {
               {user?.view!.showFolder &&
                 file.Folder &&
                 (file.Folder.public ? (
-                  <Tooltip label='View folder'>
+                  <Tooltip label={t('View folder')}>
                     <Anchor
                       component={Link}
                       ml='sm'
@@ -191,7 +191,7 @@ export default function ViewFileId() {
             </Group>
 
             <ActionIcon.Group>
-              <Tooltip label='View raw file'>
+              <Tooltip label={t('View raw file')}>
                 <ActionIcon
                   size='md'
                   variant='outline'

@@ -31,9 +31,9 @@ export default function Export4WarningSameInstance({
         {t('Same Instance Detected')}
       </Text>
       <Text size='sm' c='dimmed'>
-        Detected that you are importing data from the same instance as the current running one. Proceeding
-        with this import may lead to data conflicts or overwriting existing data. Please ensure that you
-        understand the implications before continuing.
+        {t(
+          'Detected that you are importing data from the same instance as the current running one. Proceeding with this import may lead to data conflicts or overwriting existing data. Please ensure that you understand the implications before continuing.',
+        )}
       </Text>
 
       <Checkbox.Card

@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import { Response } from '@/lib/api/response';
 import type { Config } from '@/lib/config/validate';
 import {
@@ -123,7 +124,11 @@ export default function GeneratorButton({
 
   return (
     <>
-      <Modal opened={opened} onClose={() => setOpen(false)} title={`Generate ${name} Uploader`}>
+      <Modal
+        opened={opened}
+        onClose={() => setOpen(false)}
+        title={t('Generate {{name}} Uploader', { name: t(name) })}
+      >
         {desc && (
           <Text size='sm' c='dimmed'>
             {desc}
@@ -155,7 +160,7 @@ export default function GeneratorButton({
 
           <Select
             data={[
-              { value: 'default', label: 'Default' },
+              { value: 'default', label: t('Default') },
               { value: 'random', label: t('Random') },
               { value: 'date', label: t('Date') },
               { value: 'uuid', label: t('UUID') },
@@ -182,7 +187,7 @@ export default function GeneratorButton({
           />
 
           <NumberInput
-            label='Compression'
+            label={t('Compression')}
             description={t(
               'The compression level to use on images (only). Leave blank to disable compression.',
             )}
@@ -267,9 +272,10 @@ export default function GeneratorButton({
               <Switch
                 label={t('Enable Wayland Compatibility')}
                 description={
-                  <>
-                    Use <Code>wl-copy</Code> instead of <Code>xclip</Code> for copying to clipboard.
-                  </>
+                  <Trans
+                    i18nKey='Use <0>wl-copy</0> instead of <1>xclip</1> for copying to clipboard.'
+                    components={[<Code key='0' />, <Code key='1' />]}
+                  />
                 }
                 checked={options.wl_enableCompatibility ?? false}
                 onChange={(event) =>
@@ -285,9 +291,10 @@ export default function GeneratorButton({
               <Switch
                 label={t('Enable macOS Compatibility')}
                 description={
-                  <>
-                    Use <Code>pbcopy</Code> instead of <Code>xclip</Code> for copying to clipboard.
-                  </>
+                  <Trans
+                    i18nKey='Use <0>pbcopy</0> instead of <1>xclip</1> for copying to clipboard.'
+                    components={[<Code key='0' />, <Code key='1' />]}
+                  />
                 }
                 checked={options.mac_enableCompatibility ?? false}
                 onChange={(event) =>
@@ -304,14 +311,13 @@ export default function GeneratorButton({
               <Switch
                 label={t('Using a DE other than Gnome, KDE or Sway?')}
                 description={
-                  <>
-                    If using a compositor such as{' '}
-                    <Anchor size='xs' component={Link} to='https://github.com/hyprwm/hyprland'>
-                      Hyprland
-                    </Anchor>
-                    , this option will set the <Code>XDG_CURRENT_DESKTOP=sway</Code> to workaround
-                    Flameshot&apos;s errors on Wayland. This is not needed on Xorg.
-                  </>
+                  <Trans
+                    i18nKey="If using a compositor such as <0>Hyprland</0>, this option will set the <1>XDG_CURRENT_DESKTOP=sway</1> to workaround Flameshot's errors on Wayland. This is not needed on Xorg."
+                    components={[
+                      <Anchor key='0' size='xs' component={Link} to='https://github.com/hyprwm/hyprland' />,
+                      <Code key='1' />,
+                    ]}
+                  />
                 }
                 checked={options.wl_compositorUnsupported ?? false}
                 onChange={(event) => setOption({ wl_compositorUnsupported: event.currentTarget.checked })}
@@ -320,9 +326,10 @@ export default function GeneratorButton({
 
               <Switch
                 label={
-                  <>
-                    Use <Code>echo</Code> instead of copying to clipboard
-                  </>
+                  <Trans
+                    i18nKey='Use <0>echo</0> instead of copying to clipboard'
+                    components={[<Code key='0' />]}
+                  />
                 }
                 description={t('Just output the url to the terminal instead of copying it to the clipboard.')}
                 checked={options.unix_useEcho ?? false}
@@ -339,8 +346,10 @@ export default function GeneratorButton({
 
           {isUnixLike && (
             <Text c='dimmed' size='sm'>
-              If you are having trouble getting Flameshot to work on Wayland, consult the{' '}
-              <Anchor href='https://zipline.diced.sh/docs/guides/wayland'>{t('Wayland guide')}</Anchor>.
+              <Trans
+                i18nKey='If you are having trouble getting Flameshot to work on Wayland, consult the <0>Wayland guide</0>.'
+                components={[<Anchor key='0' href='https://zipline.diced.sh/docs/guides/wayland' />]}
+              />
             </Text>
           )}
 
@@ -352,13 +361,13 @@ export default function GeneratorButton({
             leftSection={<IconDownload size='1rem' />}
             size='sm'
           >
-            Download
+            {t('Download')}
           </Button>
         </Stack>
       </Modal>
 
       <Button size='sm' leftSection={icon} onClick={() => setOpen(true)} disabled={isLoading || error}>
-        {name}
+        {t(name)}
       </Button>
     </>
   );

@@ -102,13 +102,13 @@ export default function FolderCard({
                   leftSection={folder.public ? <IconLock size='1rem' /> : <IconLockOpen size='1rem' />}
                   onClick={withoutPropagation(() => editFolderVisibility(folder, !folder.public))}
                 >
-                  {folder.public ? 'Make Private' : 'Make Public'}
+                  {folder.public ? t('Make Private') : t('Make Public')}
                 </Menu.Item>
                 <Menu.Item
                   leftSection={folder.public ? <IconShareOff size='1rem' /> : <IconShare size='1rem' />}
                   onClick={withoutPropagation(() => editFolderUploads(folder, !folder.allowUploads))}
                 >
-                  {folder.allowUploads ? 'Disallow anonymous uploads' : 'Allow anonymous uploads'}
+                  {folder.allowUploads ? t('Disallow anonymous uploads') : t('Allow anonymous uploads')}
                 </Menu.Item>
                 <Menu.Item
                   leftSection={<IconPencil size='1rem' />}
@@ -144,7 +144,7 @@ export default function FolderCard({
               <b>{t('Updated:')}</b> <RelativeDate date={folder.updatedAt} />
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>{t('Public:')}</b> {folder.public ? 'Yes' : 'No'}
+              <b>{t('Public:')}</b> {folder.public ? t('Yes') : t('No')}
             </Text>
             <Text size='xs' c='dimmed'>
               <b>{t('Files:')}</b> {filesCount}

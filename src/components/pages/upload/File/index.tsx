@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import { useConfig } from '@/components/ConfigProvider';
 import { bytes } from '@/lib/bytes';
 import { useUploadOptionsStore } from '@/lib/client/store/uploadOptions';
@@ -63,7 +64,10 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
       if (!blob) return;
       setFiles((prev) => [...prev, blob]);
       setVisibleCount(initialVisible);
-      showNotification({ message: `Image ${blob.name} pasted from clipboard`, color: 'blue' });
+      showNotification({
+        message: t('Image {{name}} pasted from clipboard', { name: blob.name }),
+        color: 'blue',
+      });
     }
   }, []);
 
@@ -84,11 +88,11 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
           color: 'yellow',
           icon: <IconDeviceSdCard size='1rem' />,
           message: (
-            <>
-              The upload may fail because the total size of the files (that are not being partially uploaded)
-              you are trying to upload is <b>{bytes(size)}</b>, which is larger than the limit of{' '}
-              <b>{bytes(bytes(config.files.maxFileSize))}</b>
-            </>
+            <Trans
+              i18nKey='The upload may fail because the total size of the files (that are not being partially uploaded) you are trying to upload is <0>{{size}}</0>, which is larger than the limit of <1>{{limit}}</1>'
+              values={{ size: bytes(size), limit: bytes(bytes(config.files.maxFileSize)) }}
+              components={[<b key='0' />, <b key='1' />]}
+            />
           ),
         });
       }
@@ -221,7 +225,10 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
       <Collapse expanded={progress.speed > 0 && progress.remaining > 0}>
         <Paper withBorder p='xs'>
           <Text ta='center' size='sm'>
-            {bytes(progress.speed)}/s, {humanizeDuration(progress.remaining)} remaining
+            {t('{{speed}}/s, {{remaining}} remaining', {
+              speed: bytes(progress.speed),
+              remaining: humanizeDuration(progress.remaining),
+            })}
           </Text>
         </Paper>
       </Collapse>
@@ -249,7 +256,7 @@ export default function UploadFile({ title, folder }: { title?: string; folder?:
       {hiddenFiles > 0 && (
         <Group justify='center' gap='xs' my='xs'>
           <Text size='sm' c='dimmed'>
-            {hiddenFiles} more file{hiddenFiles !== 1 && 's'} hidden{' '}
+            {t('{{count}} more files hidden', { count: hiddenFiles })}
           </Text>
           <Button
             size='compact-sm'

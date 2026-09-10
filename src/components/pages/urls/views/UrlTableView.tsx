@@ -16,9 +16,9 @@ import EditUrlModal from '../EditUrlModal';
 import QRCodeModal from '@/components/QRCodeModal';
 
 const NAMES = {
-  code: 'Code',
-  vanity: 'Vanity',
-  destination: 'Destination',
+  code: t('Code'),
+  vanity: t('Vanity'),
+  destination: t('Destination'),
 };
 
 function SearchFilter({
@@ -156,6 +156,7 @@ export default function UrlTableView() {
 
       <Box my='sm'>
         <DataTable
+          noRecordsText={t('No URLs')}
           withTableBorder
           minHeight={200}
           records={sorted ?? []}

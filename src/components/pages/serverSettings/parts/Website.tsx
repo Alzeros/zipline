@@ -51,7 +51,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
       try {
         sendValues.websiteExternalLinks = JSON.parse(values.websiteExternalLinks);
       } catch {
-        form.setFieldError('websiteExternalLinks', 'Invalid JSON');
+        form.setFieldError('websiteExternalLinks', t('Invalid JSON'));
       }
     }
 
@@ -84,7 +84,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
     <form onSubmit={form.onSubmit(onSubmit)}>
       <Stack gap='lg'>
         <TextInput
-          label='Title'
+          label={t('Title')}
           description={t('The title of the website in browser tabs and at the top.')}
           placeholder='Zipline'
           {...form.getInputProps('websiteTitle')}

@@ -1,4 +1,5 @@
 import { t as i18nT } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { useConfig } from '@/components/ConfigProvider';
 import { Response } from '@/lib/api/response';
 import { useUserStore } from '@/lib/client/store/user';
@@ -45,14 +46,14 @@ function OAuthButton({ provider, linked }: { provider: OAuthProviderType; linked
     if (error) {
       notifications.show({
         title: i18nT('Failed to unlink account'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconUserExclamation size='1rem' />,
       });
     } else {
       notifications.show({
         title: i18nT('Account unlinked'),
-        message: `Your ${names[provider]} account has been unlinked.`,
+        message: i18nT('Your {{provider}} account has been unlinked.', { provider: names[provider] }),
         color: 'green',
         icon: <IconCheck size='1rem' />,
       });

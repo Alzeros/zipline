@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { Alert, Button, Flex, Text } from '@mantine/core';
 import { IconEyeFilled } from '@tabler/icons-react';
 import { useState } from 'react';
@@ -25,12 +26,12 @@ export function RenderAlert({
       <Flex align='center' justify='space-between' wrap='wrap' gap='md'>
         <Text style={{ flex: 1, minWidth: '200px' }}>
           {!state
-            ? `This file is rendered through ${renderer}`
-            : `This file can be rendered through ${renderer}`}
+            ? t('This file is rendered through {{renderer}}', { renderer })
+            : t('This file can be rendered through {{renderer}}', { renderer })}
         </Text>
 
         <Button size='compact-sm' onClick={() => change(!state)} w={{ base: '100%', xs: 'auto' }}>
-          {state ? 'Show' : 'Hide'} rendered version
+          {state ? t('Show rendered version') : t('Hide rendered version')}
         </Button>
       </Flex>
     </Alert>

@@ -29,7 +29,9 @@ export default function ReloadPage() {
       <Collapse expanded={view}>
         <GenericError
           title={t('Failed to fetch dynamically imported module')}
-          message='This error can occur when a new version of the app is deployed while you have the page open. Please reload the page to update to the latest version.'
+          message={t(
+            'This error can occur when a new version of the app is deployed while you have the page open. Please reload the page to update to the latest version.',
+          )}
           details={{}}
         />
       </Collapse>

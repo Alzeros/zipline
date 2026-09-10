@@ -105,7 +105,7 @@ export function VersionInfo({ version }: { version: VersionData }) {
           },
           {
             label: t('Upstream?'),
-            value: version.isUpstream ? 'Yes' : 'No',
+            value: version.isUpstream ? t('Yes') : t('No'),
             color: version.isUpstream ? 'orange' : 'green',
           },
         ]}
@@ -129,7 +129,7 @@ export function VersionInfo({ version }: { version: VersionData }) {
               },
               {
                 label: t('Available to update'),
-                value: version.latest.commit.pull ? 'Yes' : 'No',
+                value: version.latest.commit.pull ? t('Yes') : t('No'),
                 color: version.latest.commit.pull ? 'green' : 'red',
               },
             ]}
@@ -143,11 +143,11 @@ export function VersionInfo({ version }: { version: VersionData }) {
             {version.latest.tag} is available
           </Title>
 
-          <VersionButton text='Changelogs' href={version.latest.url}>
+          <VersionButton text={t('Changelogs')} href={version.latest.url}>
             {version.latest.tag}
           </VersionButton>
 
-          <VersionButton text='Update' href='https://zipline.diced.sh/docs/get-started/docker#updating'>
+          <VersionButton text={t('Update')} href='https://zipline.diced.sh/docs/get-started/docker#updating'>
             {version.latest.tag}
           </VersionButton>
         </>

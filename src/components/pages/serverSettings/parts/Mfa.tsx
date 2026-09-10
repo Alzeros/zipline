@@ -55,7 +55,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         />
 
         <TextInput
-          label='Origin'
+          label={t('Origin')}
           description={t('The Origin to use for WebAuthn passkeys.')}
           placeholder='https://example.com'
           {...form.getInputProps('mfaPasskeysOrigin')}
@@ -69,7 +69,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
           {...form.getInputProps('mfaTotpEnabled', { type: 'checkbox' })}
         />
         <TextInput
-          label='Issuer'
+          label={t('Issuer')}
           description={t('The issuer to use for the TOTP token.')}
           placeholder='Zipline'
           {...form.getInputProps('mfaTotpIssuer')}

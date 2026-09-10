@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import { Export4 } from '@/lib/import/version4/validateExport';
 import { Avatar, Box, Group, Radio, Stack, Text } from '@mantine/core';
 
@@ -15,11 +16,14 @@ export default function Export4UserChoose({
     <Box my='lg'>
       <Text size='md'>{t('Select a user to import data from into the current user.')}</Text>
       <Text size='sm' c='dimmed'>
-        This option allows you to import data from a user in your export into the currently logged-in user,
-        even if both have the same username. Normally, the system skips importing users with usernames that
-        already exist in the system. <br /> <br /> <b>However</b>, if you&apos;ve just set up your instance
-        and reused the same username as your old instance, this option enables you to merge data from that
-        user into your logged-in account without needing to delete or replace it.{' '}
+        {t(
+          'This option allows you to import data from a user in your export into the currently logged-in user, even if both have the same username. Normally, the system skips importing users with usernames that already exist in the system.',
+        )}{' '}
+        <br /> <br />{' '}
+        <Trans
+          i18nKey="<0>However</0>, if you've just set up your instance and reused the same username as your old instance, this option enables you to merge data from that user into your logged-in account without needing to delete or replace it."
+          components={[<b key='0' />]}
+        />{' '}
         <b>
           {t('It is recommended to select a user with super-administrator permissions for this operation.')}
         </b>

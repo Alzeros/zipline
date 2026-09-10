@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Url } from '@/lib/db/models/url';
 import { fetchApi } from '@/lib/fetchApi';
 import useObjectState from '@/lib/client/hooks/useObjectState';
@@ -45,7 +46,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
     if (error) {
       showNotification({
         title: t('Failed to remove password...'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconPencilOff size='1rem' />,
       });
@@ -90,7 +91,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
     if (error) {
       showNotification({
         title: t('Failed to save changes...'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconPencilOff size='1rem' />,
       });
@@ -109,11 +110,15 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
   };
 
   return (
-    <Modal title={`Editing "${url?.vanity ?? url?.code ?? 'unknown'}"`} opened={!!url} onClose={onClose}>
+    <Modal
+      title={t('Editing "{{name}}"', { name: url?.vanity ?? url?.code ?? t('unknown') })}
+      opened={!!url}
+      onClose={onClose}
+    >
       <Stack gap='xs' my='sm'>
         <NumberInput
           label={t('Max Views')}
-          placeholder='Unlimited'
+          placeholder={t('Unlimited')}
           description={t(
             'The maximum number of clicks this URL can have before it is automatically deleted. Leave blank to allow as many views as you want.',
           )}
@@ -125,7 +130,7 @@ export default function EditUrlModal({ url, onClose }: { url: Url | null; onClos
 
         <TextInput
           label={t('Vanity')}
-          placeholder='Optional'
+          placeholder={t('Optional')}
           description={t('A custom alias for your URL. Leave blank to use the randomly generated code.')}
           value={urlData.vanity || ''}
           onChange={(event) =>

@@ -71,7 +71,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
           />
 
           <TextInput
-            label='Title'
+            label={t('Title')}
             description={t('The title for the PWA')}
             placeholder='Zipline'
             {...form.getInputProps('pwaTitle')}
@@ -85,7 +85,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
           />
 
           <TextInput
-            label='Description'
+            label={t('Description')}
             description={t('The description for the PWA')}
             placeholder='Zipline'
             {...form.getInputProps('pwaDescription')}
@@ -110,7 +110,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
             {t('Save')}
           </Button>
           <Button onClick={() => window.location.reload()} leftSection={<IconRefresh size='1rem' />}>
-            Refresh
+            {t('Refresh')}
           </Button>
         </Group>
       </form>

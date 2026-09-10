@@ -72,7 +72,7 @@ export default function InviteCard({
               </Text>
             )}
             <Text size='xs' c='dimmed'>
-              <b>{t('Max Uses:')}</b> {invite.maxUses ?? 'Unlimited'}
+              <b>{t('Max Uses:')}</b> {invite.maxUses ?? t('Unlimited')}
             </Text>
             <Text size='xs' c='dimmed'>
               <b>{t('Uses:')}</b> {invite.uses.toLocaleString()}

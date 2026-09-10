@@ -1,4 +1,6 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
+import { Trans } from 'react-i18next';
 import type { User } from '@/lib/db/models/user';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
@@ -46,7 +48,7 @@ export default function SettingsFileView() {
       <Paper withBorder p='sm'>
         <Title order={2}>{t('Viewing Files')}</Title>
         <Text c='dimmed' mt='xs'>
-          Loading…
+          {t('Loading…')}
         </Text>
       </Paper>
     );
@@ -98,7 +100,7 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
     if (!data && error) {
       notifications.show({
         title: t('Error while updating view settings'),
-        message: error.error,
+        message: translateApiError(error),
         color: 'red',
         icon: <IconFileX size='1rem' />,
       });
@@ -119,10 +121,12 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
     <Paper withBorder p='sm'>
       <Title order={2}>{t('Viewing Files')}</Title>
       <Text c='dimmed' mt='xs'>
-        All text fields support using{' '}
-        <Anchor target='_blank' href='https://zipline.diced.sh/docs/guides/variables/'>
-          variables.
-        </Anchor>
+        <Trans
+          i18nKey='All text fields support using <0>variables.</0>'
+          components={[
+            <Anchor key='0' target='_blank' href='https://zipline.diced.sh/docs/guides/variables/' />,
+          ]}
+        />
       </Text>
       <Stack gap='sm' mt='xs'>
         <form onSubmit={form.onSubmit(onSubmit)}>
@@ -179,9 +183,9 @@ function Form({ user, setUser }: { user: User; setUser: (u: User) => void }) {
             label={t('View Content Alignment')}
             description={t('Change the alignment of the content within view-routes')}
             data={[
-              { value: 'left', label: 'Left' },
-              { value: 'center', label: 'Center' },
-              { value: 'right', label: 'Right' },
+              { value: 'left', label: t('Left') },
+              { value: 'center', label: t('Center') },
+              { value: 'right', label: t('Right') },
             ]}
             renderOption={({ option }) => (
               <Group gap='xs'>

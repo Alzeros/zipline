@@ -72,7 +72,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
       <Table.Td>{user.id}</Table.Td>
       <Table.Td>{user.username}</Table.Td>
       <Table.Td>{user.password ? <IconCheck size='1rem' /> : <IconX size='1rem' />}</Table.Td>
-      <Table.Td>{{ USER: 'User', ADMIN: 'Admin', SUPERADMIN: 'Super Admin' }[user.role]}</Table.Td>
+      <Table.Td>{{ USER: t('User'), ADMIN: t('Admin'), SUPERADMIN: t('Super Admin') }[user.role]}</Table.Td>
       <Table.Td>
         {findOauthProviders(export4, user.id)
           .map((x) => x.provider.toLowerCase())
@@ -91,7 +91,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
 
   const userOauthProvidersRows = export4.data.userOauthProviders.map((provider, i) => (
     <Table.Tr key={i}>
-      <Table.Td>{findUser(export4, provider.userId)?.username ?? <i>unknown</i>}</Table.Td>
+      <Table.Td>{findUser(export4, provider.userId)?.username ?? <i>{t('unknown')}</i>}</Table.Td>
       <Table.Td>{provider.provider.toLowerCase()}</Table.Td>
       <Table.Td>{provider.username}</Table.Td>
       <Table.Td>{provider.oauthId}</Table.Td>
@@ -105,7 +105,11 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
       <Table.Td>{file.password ? <IconCheck size='1rem' /> : <IconX size='1rem' />}</Table.Td>
       <Table.Td>{bytes(file.size)}</Table.Td>
       <Table.Td>
-        {file.userId ? (findUser(export4, file.userId)?.username ?? <i>unknown</i>) : <i>unknown</i>}
+        {file.userId ? (
+          (findUser(export4, file.userId)?.username ?? <i>{t('unknown')}</i>)
+        ) : (
+          <i>{t('unknown')}</i>
+        )}
       </Table.Td>
     </Table.Tr>
   ));
@@ -114,9 +118,13 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
     <Table.Tr key={i}>
       <Table.Td>{folder.name}</Table.Td>
       <Table.Td>
-        {folder.userId ? (findUser(export4, folder.userId)?.username ?? <i>unknown</i>) : <i>unknown</i>}
+        {folder.userId ? (
+          (findUser(export4, folder.userId)?.username ?? <i>{t('unknown')}</i>)
+        ) : (
+          <i>{t('unknown')}</i>
+        )}
       </Table.Td>
-      <Table.Td>{folder.public ? 'Yes' : 'No'}</Table.Td>
+      <Table.Td>{folder.public ? t('Yes') : t('No')}</Table.Td>
       <Table.Td>{new Date(folder.createdAt).toLocaleString()}</Table.Td>
       <Table.Td>{folder.files.length}</Table.Td>
     </Table.Tr>
@@ -126,7 +134,11 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
     <Table.Tr key={i}>
       <Table.Td>{url.code}</Table.Td>
       <Table.Td>
-        {url.userId ? (findUser(export4, url.userId)?.username ?? <i>unknown</i>) : <i>unknown</i>}
+        {url.userId ? (
+          (findUser(export4, url.userId)?.username ?? <i>{t('unknown')}</i>)
+        ) : (
+          <i>{t('unknown')}</i>
+        )}
       </Table.Td>
       <Table.Td>
         <Anchor href={url.destination}>{url.destination}</Anchor>
@@ -143,9 +155,9 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
       <Table.Td>{invite.code}</Table.Td>
       <Table.Td>
         {invite.inviterId ? (
-          (findUser(export4, invite.inviterId)?.username ?? <i>unknown</i>)
+          (findUser(export4, invite.inviterId)?.username ?? <i>{t('unknown')}</i>)
         ) : (
-          <i>unknown</i>
+          <i>{t('unknown')}</i>
         )}
       </Table.Td>
       <Table.Td>{new Date(invite.createdAt).toLocaleString()}</Table.Td>
@@ -156,7 +168,11 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
   const tagsRows = export4.data.userTags.map((tag, i) => (
     <Table.Tr key={i}>
       <Table.Td>
-        {tag.userId ? (findUser(export4, tag.userId)?.username ?? <i>unknown</i>) : <i>unknown</i>}
+        {tag.userId ? (
+          (findUser(export4, tag.userId)?.username ?? <i>{t('unknown')}</i>)
+        ) : (
+          <i>{t('unknown')}</i>
+        )}
       </Table.Td>
       <Table.Td c={tag.color ?? undefined}>{tag.name}</Table.Td>
       <Table.Td>{tag.files.length}</Table.Td>
@@ -166,8 +182,9 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
   return (
     <>
       <Text c='dimmed' size='sm' my='xs'>
-        This data is not sent to the server. It is parsed and displayed in the browser. Data is only sent to
-        the server when you click the &quot;Import&quot; button.
+        {t(
+          'This data is not sent to the server. It is parsed and displayed in the browser. Data is only sent to the server when you click the "Import" button.',
+        )}
       </Text>
 
       <Accordion defaultValue='version' variant='contained'>
@@ -175,7 +192,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
           <Accordion.Control icon={<IconVersions size='1rem' />}>{t('Version Details')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
-              <TextDetail name='Export Version'>{export4.versions.export}</TextDetail>
+              <TextDetail name={t('Export Version')}>{export4.versions.export}</TextDetail>
               <TextDetail name='Node'>{export4.versions.node}</TextDetail>
               <TextDetail name='Zipline'>v{export4.versions.zipline}</TextDetail>
             </Stack>
@@ -186,14 +203,14 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
           <Accordion.Control icon={<IconTarget size='1rem' />}>{t('Request Details')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
-              <TextDetail name='User'>
+              <TextDetail name={t('User')}>
                 {reqUsername} ({reqId})
               </TextDetail>
 
-              <TextDetail name='At'>{new Date(export4.request.date).toLocaleString()}</TextDetail>
+              <TextDetail name={t('At')}>{new Date(export4.request.date).toLocaleString()}</TextDetail>
 
               <Button my='xs' onClick={toggleOs} size='compact-sm'>
-                {envOpened ? 'Hide' : 'Show'} OS Details
+                {envOpened ? t('Hide OS Details') : t('Show OS Details')}
               </Button>
 
               <Collapse expanded={osOpened}>
@@ -201,7 +218,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th w={300}>Key</Table.Th>
+                        <Table.Th w={300}>{t('Key')}</Table.Th>
                         <Table.Th>{t('Value')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
@@ -215,7 +232,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
               </Collapse>
 
               <Button my='xs' onClick={toggleEnv} size='compact-sm'>
-                {envOpened ? 'Hide' : 'Show'} Environment
+                {envOpened ? t('Hide Environment') : t('Show Environment')}
               </Button>
 
               <Collapse expanded={envOpened}>
@@ -223,7 +240,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
                   <Table>
                     <Table.Thead>
                       <Table.Tr>
-                        <Table.Th w={300}>Key</Table.Th>
+                        <Table.Th w={300}>{t('Key')}</Table.Th>
                         <Table.Th>{t('Value')}</Table.Th>
                       </Table.Tr>
                     </Table.Thead>
@@ -380,7 +397,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
         </Accordion.Item>
 
         <Accordion.Item value='urls'>
-          <Accordion.Control icon={<IconLink size='1rem' />}>Urls</Accordion.Control>
+          <Accordion.Control icon={<IconLink size='1rem' />}>{t('Urls')}</Accordion.Control>
           <Accordion.Panel>
             <Paper withBorder>
               {export4.data.urls.length ? (
@@ -440,7 +457,7 @@ export default function Export4Details({ export4 }: { export4: Export4 }) {
           <Accordion.Control icon={<IconGraphFilled size='1rem' />}>{t('Metrics')}</Accordion.Control>
           <Accordion.Panel>
             <Stack gap={2}>
-              <TextDetail name='Total Metrics Entries'>{export4.data.metrics.length}</TextDetail>
+              <TextDetail name={t('Total Metrics Entries')}>{export4.data.metrics.length}</TextDetail>
 
               <Text fw={700} c='dimmed' mb={-10}>
                 {t('Latest Metrics Entry:')}

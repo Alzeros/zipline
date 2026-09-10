@@ -50,6 +50,7 @@ export default function InviteTableView() {
 
       <Box my='sm'>
         <DataTable
+          noRecordsText={t('No invites')}
           withTableBorder
           minHeight={200}
           records={sorted ?? []}
@@ -85,13 +86,13 @@ export default function InviteTableView() {
               accessor: 'expiresAt',
               title: t('Expires'),
               sortable: true,
-              render: (invite) => (invite.expiresAt ? <RelativeDate date={invite.expiresAt} /> : 'Never'),
+              render: (invite) => (invite.expiresAt ? <RelativeDate date={invite.expiresAt} /> : t('Never')),
             },
             {
               accessor: 'maxUses',
               title: t('Max Uses'),
               sortable: true,
-              render: (invite) => (invite.maxUses ? invite.maxUses.toLocaleString() : 'Unlimited'),
+              render: (invite) => (invite.maxUses ? invite.maxUses.toLocaleString() : t('Unlimited')),
             },
             {
               accessor: 'uses',

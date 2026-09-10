@@ -11,7 +11,7 @@ export function openWarningModal(options: WarningModalOptions) {
   modals.openConfirmModal({
     title: t('Are you sure?'),
     labels: {
-      cancel: 'Cancel',
+      cancel: t('Cancel'),
       confirm: options.confirmLabel,
     },
     children: options.message,

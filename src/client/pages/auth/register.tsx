@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Trans } from 'react-i18next';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import useUser from '@/lib/client/hooks/useUser';
@@ -28,7 +29,7 @@ import { getWebClient } from '@/lib/api/detect';
 import { ApiError } from '@/lib/api/errors';
 
 export function Component() {
-  useTitle('Register');
+  useTitle(t('Register'));
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -68,8 +69,8 @@ export function Component() {
       tos: false,
     },
     validate: {
-      username: (value) => (value.length >= 1 ? null : 'Username is required'),
-      password: (value) => (value.length >= 1 ? null : 'Password is required'),
+      username: (value) => (value.length >= 1 ? null : t('Username is required')),
+      password: (value) => (value.length >= 1 ? null : t('Password is required')),
     },
     enhanceGetInputProps: ({ field }) => ({
       name: field,
@@ -88,7 +89,7 @@ export function Component() {
     const { username, password, tos } = values;
 
     if (tos === false && config!.website.tos) {
-      form.setFieldError('tos', 'You must agree to the Terms of Service to continue');
+      form.setFieldError('tos', t('You must agree to the Terms of Service to continue'));
       return;
     }
 
@@ -107,7 +108,7 @@ export function Component() {
 
     if (error) {
       if (ApiError.check(error, 1039)) {
-        form.setFieldError('username', 'Username is taken');
+        form.setFieldError('username', t('Username is taken'));
       } else {
         notifications.show({
           title: t('Failed to register'),
@@ -119,7 +120,7 @@ export function Component() {
     } else {
       notifications.show({
         title: t('Complete!'),
-        message: `Your "${data?.user?.username}" account has been created.`,
+        message: t('Your "{{username}}" account has been created.', { username: data?.user?.username }),
         color: 'green',
         icon: <IconPlus size='1rem' />,
       });
@@ -139,7 +140,7 @@ export function Component() {
     return (
       <GenericError
         title={t('Error loading configuration')}
-        message='Could not load server configuration...'
+        message={t('Could not load server configuration...')}
         details={configError}
       />
     );
@@ -166,7 +167,7 @@ export function Component() {
       {config.website.loginBackground && (
         <Image
           src={config.website.loginBackground}
-          alt='Background'
+          alt={t('Background')}
           style={{
             position: 'absolute',
             top: 0,
@@ -206,12 +207,21 @@ export function Component() {
 
         {invite && (
           <Text ta='center' size='sm' c='dimmed'>
-            You’ve been invited to join <b>{config?.website?.title ?? 'Zipline'}</b>
-            {invite.inviter && (
-              <>
-                {' '}
-                by <b>{invite.inviter.username}</b>
-              </>
+            {invite.inviter ? (
+              <Trans
+                i18nKey="You've been invited to join <0>{{title}}</0> by <1>{{username}}</1>"
+                values={{
+                  title: config?.website?.title ?? 'Zipline',
+                  username: invite.inviter.username,
+                }}
+                components={[<b key='0' />, <b key='1' />]}
+              />
+            ) : (
+              <Trans
+                i18nKey="You've been invited to join <0>{{title}}</0>"
+                values={{ title: config?.website?.title ?? 'Zipline' }}
+                components={[<b key='0' />]}
+              />
             )}
           </Text>
         )}
@@ -246,10 +256,10 @@ export function Component() {
               <Checkbox
                 label={
                   <Text size='xs'>
-                    I agree to the{' '}
-                    <Link to='/auth/tos' target='_blank'>
-                      {t('Terms of Service')}
-                    </Link>
+                    <Trans
+                      i18nKey='I agree to the <0>Terms of Service</0>'
+                      components={[<Link key='0' to='/auth/tos' target='_blank' />]}
+                    />
                   </Text>
                 }
                 required
@@ -264,13 +274,13 @@ export function Component() {
               variant={config.website.loginBackground ? 'outline' : 'filled'}
               leftSection={<IconUserPlus size='1rem' />}
             >
-              Register
+              {t('Register')}
             </Button>
           </Stack>
         </form>
 
         <Stack my='xs'>
-          <Divider label='or' />
+          <Divider label={t('or')} />
           <Button
             component={Link}
             to='/auth/login'
@@ -279,7 +289,7 @@ export function Component() {
             variant='outline'
             leftSection={<IconLogin size='1rem' />}
           >
-            Login
+            {t('Login')}
           </Button>
         </Stack>
       </Paper>
@@ -287,4 +297,4 @@ export function Component() {
   );
 }
 
-Component.displayName = 'Register';
+Component.displayName = t('Register');

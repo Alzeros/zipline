@@ -67,7 +67,7 @@ export default function UrlCard({
                   {t('Show QR code')}
                 </Menu.Item>
                 <Menu.Item leftSection={<IconPencil size='1rem' />} onClick={() => setSelectedUrl(url)}>
-                  Edit
+                  {t('Edit')}
                 </Menu.Item>
                 <Menu.Item
                   leftSection={<IconTrashFilled size='1rem' />}
@@ -87,7 +87,7 @@ export default function UrlCard({
               <b>{t('Views:')}</b> {url.views.toLocaleString()}
             </Text>
             <Text size='xs' c='dimmed'>
-              <b>{t('Enabled:')}</b> {url.enabled ? 'Yes' : 'No'}
+              <b>{t('Enabled:')}</b> {url.enabled ? t('Yes') : t('No')}
             </Text>
             <Text size='xs' c='dimmed'>
               <b>{t('Created:')}</b> <RelativeDate date={url.createdAt} />
@@ -97,7 +97,7 @@ export default function UrlCard({
             </Text>
             <Text size='xs' c='dimmed'>
               <b>{t('Destination:')}</b>{' '}
-              <Tooltip label={`Open "${trimUrl(50, url.destination.trim())}" in a new tab`}>
+              <Tooltip label={t('Open "{{url}}" in a new tab', { url: trimUrl(50, url.destination.trim()) })}>
                 <Anchor href={url.destination} target='_blank' rel='noopener noreferrer'>
                   {trimUrl(30, url.destination.trim())}
                 </Anchor>

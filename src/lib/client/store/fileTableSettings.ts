@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -9,15 +10,15 @@ const FIELDS: {
   visible: boolean;
   title: string;
 }[] = [
-  { property: 'name', visible: true, title: 'Name' },
-  { property: 'originalName', visible: false, title: 'Original Name' },
-  { property: 'tags', visible: true, title: 'Tags' },
-  { property: 'type', visible: true, title: 'Type' },
-  { property: 'size', visible: true, title: 'Size' },
-  { property: 'createdAt', visible: true, title: 'Created At' },
-  { property: 'favorite', visible: true, title: 'Favorite' },
-  { property: 'views', visible: true, title: 'Views' },
-  { property: 'anonymous', visible: false, title: 'Anonymous?' },
+  { property: 'name', visible: true, title: t('Name') },
+  { property: 'originalName', visible: false, title: t('Original Name') },
+  { property: 'tags', visible: true, title: t('Tags') },
+  { property: 'type', visible: true, title: t('Type') },
+  { property: 'size', visible: true, title: t('Size') },
+  { property: 'createdAt', visible: true, title: t('Created At') },
+  { property: 'favorite', visible: true, title: t('Favorite') },
+  { property: 'views', visible: true, title: t('Views') },
+  { property: 'anonymous', visible: false, title: t('Anonymous?') },
 ];
 
 export const defaultFields: FieldSettings[] = FIELDS.map(({ property, visible }) => ({

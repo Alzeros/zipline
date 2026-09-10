@@ -1,9 +1,10 @@
+import { t } from 'i18next';
 import useSWR from 'swr';
 import { Response } from '../../api/response';
 
 async function fetcher() {
   const res = await fetch('/api/version');
-  if (!res.ok) throw new Error('Failed to fetch version');
+  if (!res.ok) throw new Error(t('Failed to fetch version'));
 
   const r = await res.json();
   return r;

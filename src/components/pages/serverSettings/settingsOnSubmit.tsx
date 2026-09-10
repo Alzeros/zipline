@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { translateApiError } from '@/lib/client/apiError';
 import { Response } from '@/lib/api/response';
 import { fetchApi } from '@/lib/fetchApi';
 import { showNotification } from '@mantine/notifications';
@@ -36,7 +37,7 @@ export function settingsOnSubmit(navigate: NavigateFunction, form: ReturnType<ty
         title: t('Failed to save settings'),
         message: error.issues
           ? error.issues.map((x: { message: string }) => x.message).join('\n')
-          : error.error,
+          : translateApiError(error),
         color: 'red',
       });
 

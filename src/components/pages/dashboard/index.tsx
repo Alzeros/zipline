@@ -35,9 +35,10 @@ export default function DashboardHome() {
 
       <Skeleton visible={statsLoading} animate>
         <Text size='sm' c='dimmed'>
-          {t('You have {{count}} files uploaded.', {
-            count: statsLoading ? ('...' as unknown as number) : (stats?.filesUploaded ?? 0),
-          })}
+          {/* count 必须始终是数字：i18next 用 Intl.PluralRules 选单复数变体，
+              传入 '...' 之类的字符串会导致选择失败、回落到裸 key，把
+              {{count}} 原样显示给用户。加载中的遮挡交给外层 Skeleton。 */}
+          {t('You have {{count}} files uploaded.', { count: stats?.filesUploaded ?? 0 })}
         </Text>
       </Skeleton>
 

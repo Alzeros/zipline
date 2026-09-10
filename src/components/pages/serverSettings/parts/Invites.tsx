@@ -46,7 +46,7 @@ function Form({ data, isLoading }: { data: Response['/api/server/settings']; isL
         />
 
         <NumberInput
-          label='Length'
+          label={t('Length')}
           description={t('The length of the invite code.')}
           placeholder='6'
           min={1}
